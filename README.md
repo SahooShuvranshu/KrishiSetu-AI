@@ -74,6 +74,29 @@ The trained Keras/TensorFlow model is quantized and converted into the TensorFlo
 5. **Geospatial:** React-Leaflet mapped over OSM tiles.
 6. **Styling:** TailwindCSS using a custom "Agri-Brutalism" design system.
 
+## 📂 File Structure
+
+```text
+KrishiSetu-AI/
+├── docs/                      # GitHub Pages static landing site
+├── notebooks/                 # Jupyter Notebooks for ML training (MobileNetV2)
+├── public/                    # PWA Manifest, Service Worker, and ML Model binaries
+│   ├── model/                 # Quantized TFJS model files (model.json, .bin)
+│   ├── manifest.json          # Web App Manifest for PWA installation
+│   └── sw.js                  # Service Worker for 100% offline caching
+├── src/                       # React Frontend Source Code
+│   ├── components/            # UI Components (CameraScan, Navbar, TelemetryMap)
+│   ├── data/                  # Offline JSON datasets (disease definitions, soil matrix)
+│   ├── services/              # Core Logic (TFJS Loader, Gemini API, Web Speech API)
+│   ├── App.jsx                # Main Application Routing & State
+│   ├── index.css              # Agri-Brutalism Tailwind styling
+│   └── translations.js        # Multi-language dictionary (EN, HI, OR)
+├── .env                       # API Keys (Gemini)
+├── index.html                 # Main Entry Point
+├── tailwind.config.js         # Custom theme configuration
+└── vite.config.js             # Vite build settings
+```
+
 ## 🚀 Quick Start (Local Development)
 
 To run Krishi Setu locally on your machine:
@@ -106,6 +129,18 @@ Krishi Setu is an open-source initiative. Please read our [Contributing Guidelin
 
 ## 🔒 Security
 If you find a security vulnerability, please refer to our [Security Policy](SECURITY.md) to report it responsibly.
+
+## 🌟 Star History
+
+<div align="center">
+  <a href="https://star-history.com/#SahooShuvranshu/KrishiSetu-AI&Date">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=SahooShuvranshu/KrishiSetu-AI&type=Date&theme=dark" />
+      <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=SahooShuvranshu/KrishiSetu-AI&type=Date" />
+      <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=SahooShuvranshu/KrishiSetu-AI&type=Date" />
+    </picture>
+  </a>
+</div>
 
 ## 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
