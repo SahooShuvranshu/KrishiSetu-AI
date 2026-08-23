@@ -1,4 +1,4 @@
-const CACHE_NAME = 'krishisetu-v16'; // Fix blank screen crash
+const CACHE_NAME = 'krishisetu-v17'; // SessionStorage Splash Screen
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',

@@ -7,7 +7,7 @@ import StateTelemetryMap from './components/StateTelemetryMap';
 import { getTranslation } from './translations';
 
 function App() {
-  const [isSplashing, setIsSplashing] = useState(true);
+  const [isSplashing, setIsSplashing] = useState(!sessionStorage.getItem('krishisetu_splashed'));
   const [activeTab, setActiveTab] = useState('scan');
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [showSettings, setShowSettings] = useState(false);
@@ -20,7 +20,13 @@ function App() {
   const t = (key) => getTranslation(appLanguage, key);
   
   useEffect(() => {
-    const splashTimer = setTimeout(() => setIsSplashing(false), 2500);
+    let splashTimer;
+    if (isSplashing) {
+      splashTimer = setTimeout(() => {
+        setIsSplashing(false);
+        sessionStorage.setItem('krishisetu_splashed', 'true');
+      }, 2500);
+    }
     
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
