@@ -1,4 +1,4 @@
-const CACHE_NAME = 'krishisetu-v17'; // SessionStorage Splash Screen
+const CACHE_NAME = 'krishisetu-v18'; // Krishi Setu Name Fix & Offline Model Picker
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',

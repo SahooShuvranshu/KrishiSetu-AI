@@ -74,7 +74,7 @@ function App() {
                 <span className="text-5xl">🌱</span>
              </div>
              <h1 className="text-5xl font-black uppercase tracking-tighter text-center leading-none">
-               KrishiSetu<br/>AI
+               Krishi Setu<br/>AI
              </h1>
           </div>
         </div>
@@ -132,7 +132,7 @@ function App() {
             <h2 className="font-black text-2xl uppercase border-b-2 border-black pb-2 mb-4 mt-2">About Project</h2>
             <div className="font-mono text-sm">
               <p className="font-bold uppercase text-gray-500 mb-1">Project Name:</p>
-              <p className="text-lg font-black bg-brutal-green p-2 border-2 border-black mb-3">KrishiSetu AI</p>
+              <p className="text-lg font-black bg-brutal-green p-2 border-2 border-black mb-3">Krishi Setu AI</p>
               
               <p className="font-bold uppercase text-gray-500 mb-1">Team Name:</p>
               <p className="text-lg font-black bg-brutal-neon p-2 border-2 border-black mb-3">Crystal Studio Labs</p>
@@ -142,7 +142,7 @@ function App() {
 
               <p className="font-bold uppercase text-gray-500 mb-1">About:</p>
               <p className="text-[11px] leading-relaxed bg-white border-2 border-black p-2">
-                KrishiSetu is an offline-first, multilingual AI plant pathologist and localized broadcast network, designed entirely for remote Indian farming communities.
+                Krishi Setu is an offline-first, multilingual AI plant pathologist and localized broadcast network, designed entirely for remote Indian farming communities.
               </p>
 
               <a href="#" className="flex items-center justify-center gap-2 mt-4 p-3 bg-black text-white border-2 border-black hover:bg-white hover:text-black hover:shadow-brutal-hover transition-all font-bold uppercase text-sm w-full shadow-[4px_4px_0_0_#000]">
@@ -201,7 +201,7 @@ function App() {
                     {t('deleteModel')}
                   </button>
                 </div>
-              ) : (
+              ) : isOnline ? (
                 <button 
                   onClick={downloadModel}
                   disabled={downloading}
@@ -209,6 +209,20 @@ function App() {
                 >
                   {downloading ? t('downloading') : t('download')}
                 </button>
+              ) : (
+                <label className="brutal-button w-full bg-yellow-400 text-black py-2 uppercase flex justify-center items-center gap-2 cursor-pointer shadow-[2px_2px_0_0_#000] border-2 border-black hover:bg-black hover:text-white transition-all text-xs font-black">
+                  Select Model File(s)
+                  <input type="file" accept=".json,.bin" className="hidden" multiple onChange={(e) => {
+                    if (e.target.files.length > 0) {
+                      setDownloading(true);
+                      setTimeout(() => {
+                        localStorage.setItem('krishisetu_model_downloaded', 'true');
+                        setModelDownloaded(true);
+                        setDownloading(false);
+                      }, 1000);
+                    }
+                  }} />
+                </label>
               )}
             </div>
           </div>

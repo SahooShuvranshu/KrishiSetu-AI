@@ -1,6 +1,6 @@
 export const translations = {
   en: {
-    appTitle: "KrishiSetu",
+    appTitle: "Krishi Setu",
     appSubtitle: "Odisha Farmer Network",
     settings: "App Settings",
     selectLanguage: "Select Language",
