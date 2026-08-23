@@ -1,0 +1,229 @@
+import React, { useState, useEffect } from 'react';
+import { Settings, Info, X, Download, HardDrive, Languages, Github } from 'lucide-react';
+import Navbar from './components/Navbar';
+import CameraScan from './components/CameraScan';
+import SoilAdvisory from './components/SoilAdvisory';
+import StateTelemetryMap from './components/StateTelemetryMap';
+import { getTranslation } from './translations';
+
+function App() {
+  const [isSplashing, setIsSplashing] = useState(true);
+  const [activeTab, setActiveTab] = useState('scan');
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [showSettings, setShowSettings] = useState(false);
+  const [showInfo, setShowInfo] = useState(false); // Info Modal state
+  const [modelDownloaded, setModelDownloaded] = useState(false);
+  const [downloading, setDownloading] = useState(false);
+  
+  const [appLanguage, setAppLanguage] = useState(localStorage.getItem('krishisetu_lang') || 'en');
+  
+  const t = (key) => getTranslation(appLanguage, key);
+  
+  useEffect(() => {
+    const splashTimer = setTimeout(() => setIsSplashing(false), 2500);
+    
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
+    
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+    
+    if(localStorage.getItem('krishisetu_model_downloaded') === 'true') {
+      setModelDownloaded(true);
+    }
+
+    return () => {
+      clearTimeout(splashTimer);
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, []);
+
+  const changeLanguage = (langCode) => {
+    setAppLanguage(langCode);
+    localStorage.setItem('krishisetu_lang', langCode);
+  };
+
+  const downloadModel = () => {
+    setDownloading(true);
+    setTimeout(() => {
+      localStorage.setItem('krishisetu_model_downloaded', 'true');
+      setModelDownloaded(true);
+      setDownloading(false);
+    }, 2000);
+  };
+
+  const removeModel = () => {
+    localStorage.removeItem('krishisetu_model_downloaded');
+    setModelDownloaded(false);
+  };
+
+  if (isSplashing) {
+    return (
+      <div className="fixed inset-0 z-[100] bg-brutal-bg flex flex-col items-center justify-center p-4">
+        <div className="relative animate-bounce">
+          <div className="absolute inset-0 bg-brutal-neon translate-x-2 translate-y-2 border-4 border-black"></div>
+          <div className="relative bg-white border-4 border-black p-8 flex flex-col items-center justify-center">
+             <div className="w-24 h-24 bg-brutal-green rounded-full border-4 border-black mb-4 flex items-center justify-center">
+                <span className="text-5xl">🌱</span>
+             </div>
+             <h1 className="text-5xl font-black uppercase tracking-tighter text-center leading-none">
+               KrishiSetu<br/>AI
+             </h1>
+          </div>
+        </div>
+        <div className="absolute bottom-12 flex flex-col items-center">
+           <div className="flex gap-2 mb-2">
+             <div className="w-3 h-3 bg-black rounded-full animate-ping"></div>
+             <div className="w-3 h-3 bg-black rounded-full animate-ping" style={{ animationDelay: '200ms' }}></div>
+             <div className="w-3 h-3 bg-black rounded-full animate-ping" style={{ animationDelay: '400ms' }}></div>
+           </div>
+           <p className="font-mono font-bold uppercase tracking-widest text-xs">
+             Initializing Network...
+           </p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-brutal-bg pb-20 font-sans text-black selection:bg-brutal-neon relative">
+      <header className="bg-white border-b-2 border-black p-3 sticky top-0 z-40 flex justify-between items-center shadow-brutal-hover mb-4">
+        <div>
+          <h1 className="text-xl font-black tracking-tighter uppercase leading-none">{t('appTitle')}</h1>
+          <p className="font-mono text-[9px] font-bold bg-brutal-green text-black px-1 mt-1 inline-block border border-black uppercase">
+            {t('appSubtitle')}
+          </p>
+        </div>
+        <div className="flex gap-2">
+          {/* Info Button */}
+          <button 
+            onClick={() => setShowInfo(true)}
+            className="p-2 border-2 border-black bg-gray-100 hover:bg-brutal-neon shadow-[2px_2px_0_0_#000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
+          >
+            <Info size={20} />
+          </button>
+          
+          <button 
+            onClick={() => setShowSettings(true)}
+            className="p-2 border-2 border-black bg-gray-100 hover:bg-brutal-neon shadow-[2px_2px_0_0_#000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
+          >
+            <Settings size={20} />
+          </button>
+        </div>
+      </header>
+
+      {/* Info Modal */}
+      {showInfo && (
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 animate-fade-in">
+          <div className="bg-white border-4 border-black w-full max-w-sm p-4 relative shadow-[8px_8px_0_0_#00ff41]">
+            <button 
+              onClick={() => setShowInfo(false)}
+              className="absolute top-2 right-2 p-1 border-2 border-black bg-red-500 text-white"
+            >
+              <X size={20} />
+            </button>
+            <h2 className="font-black text-2xl uppercase border-b-2 border-black pb-2 mb-4 mt-2">About Project</h2>
+            <div className="font-mono text-sm">
+              <p className="font-bold uppercase text-gray-500 mb-1">Project Name:</p>
+              <p className="text-lg font-black bg-brutal-green p-2 border-2 border-black mb-3">KrishiSetu AI</p>
+              
+              <p className="font-bold uppercase text-gray-500 mb-1">Team Name:</p>
+              <p className="text-lg font-black bg-brutal-neon p-2 border-2 border-black mb-3">Crystal Studio Labs</p>
+
+              <p className="font-bold uppercase text-gray-500 mb-1">Hackathon:</p>
+              <p className="bg-gray-100 p-2 border-2 border-black mb-4">Google AI Hackathon 2026: Code for Communities</p>
+
+              <p className="font-bold uppercase text-gray-500 mb-1">About:</p>
+              <p className="text-[11px] leading-relaxed bg-white border-2 border-black p-2">
+                KrishiSetu is an offline-first, multilingual AI plant pathologist and localized broadcast network, designed entirely for remote Indian farming communities.
+              </p>
+
+              <a href="#" className="flex items-center justify-center gap-2 mt-4 p-3 bg-black text-white border-2 border-black hover:bg-white hover:text-black hover:shadow-brutal-hover transition-all font-bold uppercase text-sm w-full shadow-[4px_4px_0_0_#000]">
+                <Github size={20} /> Source Code / Open Source
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Settings Modal */}
+      {showSettings && (
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 animate-fade-in">
+          <div className="bg-white border-4 border-black w-full max-w-sm p-4 relative shadow-[8px_8px_0_0_#00ff41]">
+            <button 
+              onClick={() => setShowSettings(false)}
+              className="absolute top-2 right-2 p-1 border-2 border-black bg-red-500 text-white"
+            >
+              <X size={20} />
+            </button>
+            <h2 className="font-black text-2xl uppercase border-b-2 border-black pb-2 mb-4 mt-2">{t('settings')}</h2>
+            
+            <div className="border-2 border-black p-3 bg-gray-50 mb-4 font-mono text-xs">
+              <h3 className="font-bold uppercase text-gray-500 mb-2">Cloud AI API Key</h3>
+              <input 
+                type="password" 
+                defaultValue={localStorage.getItem('krishisetu_gemini_key') || ''}
+                onChange={(e) => localStorage.setItem('krishisetu_gemini_key', e.target.value)}
+                placeholder="Paste Gemini API Key here..." 
+                className="w-full p-2 border-2 border-black mb-1 focus:outline-none focus:bg-brutal-neon text-black font-sans"
+              />
+              <p className="text-[9px] text-green-700 font-bold uppercase">🔒 Stays on your device only</p>
+            </div>
+
+            <div className="border-2 border-black p-3 bg-gray-50 mb-4 font-mono text-xs">
+              <h3 className="font-bold uppercase text-gray-500 mb-2 flex items-center gap-2">
+                <Languages size={16} /> {t('selectLanguage')}
+              </h3>
+              <div className="grid grid-cols-3 gap-2">
+                <button onClick={() => changeLanguage('en')} className={`brutal-button py-2 uppercase ${appLanguage === 'en' ? 'bg-brutal-neon border-black' : 'bg-white border-gray-400'}`}>English</button>
+                <button onClick={() => changeLanguage('or')} className={`brutal-button py-2 uppercase ${appLanguage === 'or' ? 'bg-brutal-neon border-black' : 'bg-white border-gray-400'}`}>ଓଡ଼ିଆ</button>
+                <button onClick={() => changeLanguage('hi')} className={`brutal-button py-2 uppercase ${appLanguage === 'hi' ? 'bg-brutal-neon border-black' : 'bg-white border-gray-400'}`}>हिन्दी</button>
+              </div>
+            </div>
+
+            <div className="border-2 border-black p-3 bg-gray-50 mb-4 font-mono text-xs">
+              <h3 className="font-bold uppercase text-gray-500 mb-2">{t('offlineModel')}</h3>
+              <p className="mb-3">{t('modelDesc')}</p>
+              
+              {modelDownloaded ? (
+                <div className="flex flex-col gap-2">
+                  <span className="flex items-center gap-2 text-green-700 font-bold bg-green-100 p-2 border border-black">
+                    <HardDrive size={16} /> {t('modelInstalled')}
+                  </span>
+                  <button onClick={removeModel} className="brutal-button bg-red-500 text-white py-2 uppercase">
+                    {t('deleteModel')}
+                  </button>
+                </div>
+              ) : (
+                <button 
+                  onClick={downloadModel}
+                  disabled={downloading}
+                  className="brutal-button w-full bg-brutal-neon text-black py-2 uppercase flex justify-center items-center gap-2"
+                >
+                  {downloading ? t('downloading') : t('download')}
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      <main className="px-3 max-w-sm mx-auto w-full">
+        <div style={{ display: activeTab === 'scan' ? 'block' : 'none' }}>
+          <CameraScan isOnline={isOnline} appLanguage={appLanguage} t={t} />
+        </div>
+        <div style={{ display: activeTab === 'advisory' ? 'block' : 'none' }}>
+          <SoilAdvisory t={t} appLanguage={appLanguage} isOnline={isOnline} />
+        </div>
+        <div style={{ display: activeTab === 'network' ? 'block' : 'none' }}>
+          <StateTelemetryMap t={t} appLanguage={appLanguage} isOnline={isOnline} />
+        </div>
+      </main>
+
+      <Navbar activeTab={activeTab} setActiveTab={setActiveTab} t={t} />
+    </div>
+  );
+}
+
+export default App;

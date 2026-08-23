@@ -1,0 +1,42 @@
+[
+  {
+    "id": "wheat_rust",
+    "crop_name": "Wheat",
+    "disease_name": "Yellow Rust (Puccinia striiformis)",
+    "severity": "High",
+    "symptoms": "Yellow pustules arranged in linear stripes on leaf surface.",
+    "organic_remedy": "Neem oil spray (5ml/liter) and bio-control using Trichoderma harzianum.",
+    "chemical_remedy": "Propiconazole 25% EC @ 1ml/liter of water at initial symptom appearance.",
+    "regenerative_advice": "Rotate with non-cereal crops like Chickpea to disrupt fungal spores."
+  },
+  {
+    "id": "rice_blast",
+    "crop_name": "Rice",
+    "disease_name": "Rice Blast (Magnaporthe oryzae)",
+    "severity": "High",
+    "symptoms": "Spindle-shaped lesions with grayish centers on leaves and neck nodes.",
+    "organic_remedy": "Foliar application of Pseudomonas fluorescens (10g/liter).",
+    "chemical_remedy": "Tricyclazole 75% WP @ 0.6g/liter of water.",
+    "regenerative_advice": "Maintain balanced nitrogen application; avoid excess urea in humid weather."
+  },
+  {
+    "id": "rice_bph",
+    "crop_name": "Rice",
+    "disease_name": "Brown Plant Hopper (BPH - Nilaparvata lugens)",
+    "severity": "Outbreak",
+    "symptoms": "Yellowing and drying of plants forming circular patches known as hopper burn.",
+    "organic_remedy": "Alternate wetting and drying (AWD) irrigation; neem oil 10,000 ppm @ 2ml/liter.",
+    "chemical_remedy": "Pymetrozine 50% WG @ 0.6g/liter or Dinotefuran 20% SG @ 0.4g/liter.",
+    "regenerative_advice": "Promote spider & mirid bug natural predator conservation by avoiding broad-spectrum sprays."
+  },
+  {
+    "id": "cotton_leaf_curl",
+    "crop_name": "Cotton",
+    "disease_name": "Cotton Leaf Curl Virus (CLCuV)",
+    "severity": "Outbreak",
+    "symptoms": "Upward or downward curling of leaves with enation on under-surface veins.",
+    "organic_remedy": "Control whitefly vector using yellow sticky traps (15 traps/acre) and Neem seed kernel extract.",
+    "chemical_remedy": "Imidacloprid 17.8% SL @ 0.5ml/liter to manage whiteflies.",
+    "regenerative_advice": "Plant border rows of Maize or Sorghum to block whitefly migration."
+  }
+]

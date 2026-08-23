@@ -1,0 +1,17 @@
+{
+  "short_name": "KrishiSetu",
+  "name": "KrishiSetu AI - Diagnostic Scanner",
+  "icons": [
+    {
+      "src": "sprout.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#e8f4ec",
+  "theme_color": "#e8f4ec",
+  "display": "standalone",
+  "orientation": "portrait"
+}

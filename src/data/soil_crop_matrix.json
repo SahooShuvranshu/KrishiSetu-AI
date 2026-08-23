@@ -1,0 +1,38 @@
+[
+  {
+    "zone": "Coastal Odisha (Ganjam, Puri, Balasore)",
+    "soil_type": "Coastal Alluvial Soil",
+    "primary_crops": ["Paddy (Rice)", "Green Gram (Mung)", "Groundnut"],
+    "regenerative_rotations": [
+      {
+        "current_crop": "Paddy (Rice)",
+        "next_recommended": "Green Gram (Mung)",
+        "reason": "Planting Mung after Rice adds natural nitrogen back into your soil, saving you money on fertilizers."
+      }
+    ]
+  },
+  {
+    "zone": "Western Odisha (Kalahandi, Balangir, Bargarh)",
+    "soil_type": "Red & Yellow Soil",
+    "primary_crops": ["Cotton", "Paddy (Rice)", "Pigeon Pea (Arhar)"],
+    "regenerative_rotations": [
+      {
+        "current_crop": "Cotton",
+        "next_recommended": "Pigeon Pea (Arhar)",
+        "reason": "Arhar roots grow deep, protecting your soil from drying out and breaking the pest cycle naturally."
+      }
+    ]
+  },
+  {
+    "zone": "Northern Odisha (Mayurbhanj, Keonjhar)",
+    "soil_type": "Laterite Soil",
+    "primary_crops": ["Maize", "Mustard", "Vegetables"],
+    "regenerative_rotations": [
+      {
+        "current_crop": "Maize",
+        "next_recommended": "Mustard",
+        "reason": "Mustard keeps weeds away and maintains soil moisture during the winter season."
+      }
+    ]
+  }
+]
