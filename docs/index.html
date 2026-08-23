@@ -3,109 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krishi Setu AI | Crystal Studio Labs</title>
+    <title>KRISHI SETU // TERMINAL</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'brutal-green': '#a3e635',
-                        'brutal-neon': '#ccff00',
+                        'hazard-yellow': '#FFE800',
+                        'concrete': '#d4d4d8',
+                        'industrial-orange': '#ff5722'
                     },
                     boxShadow: {
-                        'brutal': '6px 6px 0px 0px rgba(0,0,0,1)',
-                        'brutal-sm': '3px 3px 0px 0px rgba(0,0,0,1)',
+                        'heavy': '8px 8px 0px 0px rgba(0,0,0,1)',
+                        'heavy-hover': '12px 12px 0px 0px rgba(0,0,0,1)',
+                    },
+                    backgroundImage: {
+                        'hazard-stripes': 'repeating-linear-gradient(45deg, #000 0, #000 20px, #FFE800 20px, #FFE800 40px)',
                     }
                 }
             }
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&display=swap');
-        body { font-family: 'Space Grotesk', sans-serif; background-color: #f4f4f5; }
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+        body { 
+            font-family: 'Space Grotesk', sans-serif; 
+            background-color: #e4e4e7; /* Light concrete */
+            text-transform: uppercase;
+        }
+        .mono { font-family: 'Space Mono', monospace; }
+        * { border-radius: 0 !important; } /* Strict industrial rule */
     </style>
 </head>
-<body class="text-black overflow-x-hidden">
+<body class="text-black overflow-x-hidden border-x-[16px] border-black min-h-screen">
 
-    <!-- Navigation -->
-    <nav class="border-b-4 border-black bg-white p-4 flex justify-between items-center">
-        <div class="text-2xl font-black tracking-tighter uppercase">🌱 Krishi Setu<br/><span class="text-xs tracking-widest text-gray-500">By Crystal Studio Labs</span></div>
-        <a href="https://github.com/SahooShuvranshu/KrishiSetu-AI" target="_blank" class="bg-black text-white px-4 py-2 font-bold uppercase border-2 border-black hover:bg-brutal-neon hover:text-black transition-colors shadow-brutal-sm">GitHub</a>
-    </nav>
+    <!-- Top Hazard Bar -->
+    <div class="h-4 w-full bg-hazard-stripes border-b-4 border-black"></div>
 
-    <!-- Hero Section -->
-    <header class="max-w-5xl mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
-        <div>
-            <div class="inline-block bg-brutal-neon border-2 border-black px-3 py-1 font-bold uppercase text-xs mb-6 shadow-brutal-sm">Google AI Hackathon 2026</div>
-            <h1 class="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none mb-6">
-                Offline AI for <span class="bg-brutal-green px-2 border-4 border-black inline-block mt-2 transform -rotate-2">Farmers.</span>
-            </h1>
-            <p class="text-lg md:text-xl font-medium mb-8 leading-relaxed border-l-4 border-black pl-4">
-                Krishi Setu is an offline-first, multilingual plant pathologist and localized broadcast network designed entirely for remote Indian farming communities.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4">
-                <a href="https://krishisetu-ai.onrender.com" target="_blank" class="bg-black text-brutal-neon border-4 border-black px-8 py-4 font-black uppercase text-xl text-center hover:bg-white hover:text-black hover:translate-y-1 transition-all shadow-brutal">
-                    Launch Web App 🚀
-                </a>
-                <a href="#features" class="bg-white text-black border-4 border-black px-8 py-4 font-black uppercase text-xl text-center hover:bg-gray-100 shadow-brutal">
-                    Learn More
-                </a>
+    <!-- Navigation / Header -->
+    <header class="border-b-4 border-black bg-concrete flex flex-col md:flex-row justify-between items-center p-4 gap-4">
+        <div class="flex items-center gap-4">
+            <div class="bg-black text-white px-3 py-1 font-black text-2xl tracking-tighter">KS-AI</div>
+            <div class="mono leading-tight text-xs md:text-sm font-bold">
+                SYS.ID: KRISHI_SETU_01<br/>
+                DEV: CRYSTAL_STUDIO_LABS<br/>
+                STAT: <span class="bg-hazard-yellow text-black px-1 border border-black">ONLINE</span>
             </div>
         </div>
-        
-        <!-- Hero Graphic -->
-        <div class="relative">
-            <div class="absolute inset-0 bg-brutal-neon translate-x-4 translate-y-4 border-4 border-black"></div>
-            <div class="relative bg-white border-4 border-black p-6 flex flex-col gap-4">
-                <div class="flex justify-between items-center border-b-4 border-black pb-4">
-                    <span class="font-black text-xl uppercase">Live Diagnostics</span>
-                    <span class="bg-red-500 w-4 h-4 rounded-full animate-pulse border-2 border-black"></span>
-                </div>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Rice_leaf_blast_-_Magnaporthe_grisea.jpg/800px-Rice_leaf_blast_-_Magnaporthe_grisea.jpg" alt="Leaf Disease Scan" class="w-full h-48 object-cover border-4 border-black grayscale contrast-125" />
-                <div class="bg-black text-white p-4 border-2 border-black font-mono">
-                    <p class="text-brutal-neon font-bold">> STATUS: INFECTED</p>
-                    <p class="text-sm">> DISEASE: Rice Leaf Blast</p>
-                    <p class="text-sm">> CONFIDENCE: 98.4%</p>
-                </div>
-            </div>
-        </div>
+        <a href="https://github.com/SahooShuvranshu/KrishiSetu-AI" target="_blank" class="bg-white border-4 border-black px-6 py-2 font-black text-lg hover:bg-black hover:text-white transition-none shadow-heavy">
+            [ SRC_CODE ]
+        </a>
     </header>
 
-    <!-- Features Section -->
-    <section id="features" class="border-t-4 border-black bg-brutal-green py-20">
-        <div class="max-w-5xl mx-auto px-4">
-            <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-12 text-center">Core Features</h2>
+    <!-- Main Hero Grid -->
+    <main class="grid md:grid-cols-12 gap-0 border-b-4 border-black">
+        
+        <!-- Left Panel: Text & CTA -->
+        <div class="md:col-span-7 p-8 md:p-12 border-r-4 border-black bg-white flex flex-col justify-center relative">
+            <div class="absolute top-4 left-4 mono text-[10px] text-gray-500 font-bold">BLOCK_01 // INITIATION</div>
             
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Feature 1 -->
-                <div class="bg-white border-4 border-black p-6 shadow-brutal hover:-translate-y-2 transition-transform">
-                    <div class="text-4xl mb-4">🔌</div>
-                    <h3 class="text-2xl font-black uppercase mb-3">100% Offline AI</h3>
-                    <p class="font-medium">Downloads lightweight TensorFlow.js models directly into the device's IndexedDB. Works perfectly in zero-internet rural fields.</p>
+            <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-[0.85] mb-8 mt-4">
+                OFFLINE<br/>
+                <span class="text-industrial-orange">CROP</span><br/>
+                DIAGNOSTICS.
+            </h1>
+            
+            <p class="mono text-sm md:text-base font-bold bg-concrete p-4 border-4 border-black mb-10 max-w-lg shadow-[4px_4px_0_0_#000]">
+                > Krishi Setu is an industrial-grade, offline-first AI plant pathologist. Built for remote sectors with zero network capability. Multilingual broadcast ready.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6">
+                <!-- IMPORTANT: Tell the user to replace this href with their render link later -->
+                <a href="https://krishisetu-ai.onrender.com" target="_blank" class="bg-hazard-yellow border-4 border-black px-8 py-5 font-black text-2xl flex items-center justify-between group shadow-heavy hover:shadow-heavy-hover hover:-translate-y-1 hover:-translate-x-1 transition-all">
+                    <span>EXECUTE APP</span>
+                    <span class="group-hover:translate-x-2 transition-transform">→</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Right Panel: Data & Visuals -->
+        <div class="md:col-span-5 bg-black text-white p-8 md:p-12 flex flex-col justify-between">
+            <div class="mono text-[10px] text-gray-500 font-bold mb-6 border-b border-gray-700 pb-2">BLOCK_02 // SYSTEM_SPECS</div>
+            
+            <!-- Tech HUD -->
+            <div class="flex flex-col gap-4 mb-12">
+                <div class="border-l-4 border-hazard-yellow pl-4">
+                    <div class="mono text-xs text-gray-400">ENGINE</div>
+                    <div class="font-black text-2xl tracking-tighter text-white">TENSORFLOW.JS EDGE</div>
                 </div>
-                
-                <!-- Feature 2 -->
-                <div class="bg-white border-4 border-black p-6 shadow-brutal hover:-translate-y-2 transition-transform">
-                    <div class="text-4xl mb-4">🌍</div>
-                    <h3 class="text-2xl font-black uppercase mb-3">Multilingual</h3>
-                    <p class="font-medium">Speaks the farmer's language. Real-time diagnostic translations in English, Odia, and Hindi, featuring built-in voice readouts.</p>
+                <div class="border-l-4 border-industrial-orange pl-4">
+                    <div class="mono text-xs text-gray-400">NETWORK GRID</div>
+                    <div class="font-black text-2xl tracking-tighter text-white">OPENSTREETMAP TELEMETRY</div>
                 </div>
-                
-                <!-- Feature 3 -->
-                <div class="bg-white border-4 border-black p-6 shadow-brutal hover:-translate-y-2 transition-transform">
-                    <div class="text-4xl mb-4">🗺️</div>
-                    <h3 class="text-2xl font-black uppercase mb-3">DPI Grid</h3>
-                    <p class="font-medium">When a farmer scans a diseased crop, the network broadcasts a secure JSON-LD alert to nearby districts via an OpenStreetMap dashboard.</p>
+                <div class="border-l-4 border-white pl-4">
+                    <div class="mono text-xs text-gray-400">STORAGE PROTOCOL</div>
+                    <div class="font-black text-2xl tracking-tighter text-white">INDEXED_DB PERSISTENCE</div>
+                </div>
+            </div>
+
+            <!-- Image Graphic -->
+            <div class="relative bg-concrete p-2 border-4 border-hazard-yellow group">
+                <div class="absolute -top-3 -right-3 bg-hazard-yellow text-black font-black px-2 py-1 text-xs border-2 border-black z-10">TARGET_LOCKED</div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Rice_leaf_blast_-_Magnaporthe_grisea.jpg/800px-Rice_leaf_blast_-_Magnaporthe_grisea.jpg" alt="Leaf Disease" class="w-full h-48 object-cover border-2 border-black grayscale contrast-[1.5] group-hover:grayscale-0 transition-all duration-500" />
+                <div class="absolute bottom-4 left-4 right-4 bg-black/90 text-white font-mono text-xs p-2 border border-white/30 backdrop-blur-sm">
+                    ANALYSIS: MAGNAPORTHE GRISEA DETECTED.
                 </div>
             </div>
         </div>
-    </section>
 
-    <footer class="bg-black text-white py-12 text-center border-t-4 border-white">
-        <p class="font-black uppercase text-2xl mb-4 tracking-tighter">Krishi Setu AI</p>
-        <p class="font-mono text-gray-400 text-sm">Built with ❤️ by Crystal Studio Labs</p>
-        <p class="font-mono text-gray-500 text-xs mt-2">Google AI Hackathon 2026 Submission</p>
+    </main>
+
+    <!-- Footer Bar -->
+    <footer class="bg-hazard-stripes h-12 flex items-center justify-center border-b-4 border-black">
+        <div class="bg-black text-hazard-yellow px-4 py-1 mono text-xs font-bold border-2 border-hazard-yellow uppercase tracking-widest">
+            WARNING: SYSTEM SUBMISSION // GOOGLE AI HACKATHON 2026 // CRYSTAL STUDIO LABS
+        </div>
     </footer>
 
 </body>
