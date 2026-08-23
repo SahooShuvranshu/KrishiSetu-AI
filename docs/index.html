@@ -5,18 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KRISHI SETU // AGRI-BRUTALISM</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'agri-neon': '#ccff00', /* High-vis agricultural yellow-green */
-                        'agri-dark': '#14532d', /* Deep tractor/forest green */
+                        'agri-neon': '#ccff00', 
+                        'agri-dark': '#14532d', 
                         'soil-gray': '#e4e4e7',
+                        'danger-red': '#ef4444'
                     },
                     boxShadow: {
                         'heavy': '8px 8px 0px 0px rgba(0,0,0,1)',
                         'heavy-hover': '12px 12px 0px 0px rgba(0,0,0,1)',
+                        'heavy-neon': '8px 8px 0px 0px #ccff00',
                     },
                     backgroundImage: {
                         'tractor-tread': 'repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(0,0,0,0.1) 10px, rgba(0,0,0,0.1) 20px)',
@@ -29,45 +34,44 @@
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
         body { 
             font-family: 'Space Grotesk', sans-serif; 
-            background-color: #f4f4f5; /* Clean paper/concrete */
+            background-color: #f4f4f5; 
             text-transform: uppercase;
         }
         .mono { font-family: 'Space Mono', monospace; }
-        * { border-radius: 0 !important; } /* Strict industrial rule kept */
+        * { border-radius: 0 !important; } 
     </style>
 </head>
-<body class="text-black overflow-x-hidden border-x-[16px] border-black min-h-screen flex flex-col">
+<body class="text-black overflow-x-hidden border-x-[8px] md:border-x-[16px] border-black min-h-screen flex flex-col">
 
     <!-- Top Pattern Bar -->
     <div class="h-6 w-full bg-agri-neon bg-tractor-tread border-b-4 border-black flex items-center px-4">
         <span class="mono text-[10px] font-black tracking-widest">/// AGRICULTURAL AI DEPLOYMENT /// ODISHA GRID ///</span>
     </div>
 
-    <!-- Navigation / Header -->
-    <header class="border-b-4 border-black bg-white flex flex-col md:flex-row justify-between items-center p-4 gap-4">
+    <!-- Navigation -->
+    <header class="border-b-4 border-black bg-white flex flex-col md:flex-row justify-between items-center p-4 gap-4 sticky top-0 z-50">
         <div class="flex items-center gap-4">
             <div class="bg-black text-agri-neon px-3 py-1 font-black text-2xl tracking-tighter border-2 border-black shadow-[4px_4px_0_0_#000]">🌱 KS-AI</div>
-            <div class="mono leading-tight text-xs md:text-sm font-bold text-gray-700">
+            <div class="mono leading-tight text-xs md:text-sm font-bold text-gray-700 hidden sm:block">
                 FIELD_NODE: KRISHI_SETU<br/>
-                DEV: CRYSTAL_STUDIO_LABS<br/>
                 STATUS: <span class="bg-agri-neon text-black px-1 border border-black font-black">HARVEST_READY</span>
             </div>
         </div>
-        <a href="https://github.com/SahooShuvranshu/KrishiSetu-AI" target="_blank" class="bg-white border-4 border-black px-6 py-2 font-black text-lg hover:bg-black hover:text-white transition-none shadow-heavy">
+        <a href="https://github.com/SahooShuvranshu/KrishiSetu-AI" target="_blank" class="bg-white border-4 border-black px-6 py-2 font-black text-lg hover:bg-black hover:text-white transition-none shadow-heavy hover:shadow-none hover:translate-x-1 hover:translate-y-1">
             [ SRC_CODE ]
         </a>
     </header>
 
-    <!-- Main Hero Grid -->
-    <main class="grid md:grid-cols-12 gap-0 border-b-4 border-black flex-grow">
+    <!-- Hero Section -->
+    <main class="grid md:grid-cols-12 gap-0 border-b-4 border-black flex-grow bg-[radial-gradient(#d4d4d8_1px,transparent_1px)] [background-size:16px_16px]">
         
-        <!-- Left Panel: Text & CTA -->
-        <div class="md:col-span-7 p-8 md:p-12 border-r-4 border-black bg-soil-gray flex flex-col justify-center relative bg-[radial-gradient(#d4d4d8_1px,transparent_1px)] [background-size:16px_16px]">
+        <!-- Left Panel -->
+        <div class="md:col-span-7 p-8 md:p-12 xl:p-16 border-r-0 md:border-r-4 border-black bg-soil-gray/90 flex flex-col justify-center relative" data-aos="fade-right">
             <div class="absolute top-4 left-4 mono text-[10px] text-agri-dark font-black bg-white px-2 py-1 border-2 border-black">SECTOR_01 // OVERVIEW</div>
             
             <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-[0.85] mb-8 mt-6">
                 OFFLINE<br/>
-                <span class="bg-agri-neon px-2 border-4 border-black inline-block -rotate-1 mt-2 mb-2 shadow-[6px_6px_0_0_#000]">CROP SAVER.</span><br/>
+                <span class="bg-agri-neon px-2 border-4 border-black inline-block -rotate-2 mt-2 mb-2 shadow-[6px_6px_0_0_#000]">CROP SAVER.</span><br/>
             </h1>
             
             <p class="mono text-sm md:text-base font-bold bg-white p-4 border-4 border-black mb-10 max-w-lg shadow-[4px_4px_0_0_#000] leading-relaxed">
@@ -75,58 +79,122 @@
             </p>
             
             <div class="flex flex-col sm:flex-row gap-6">
-                <!-- IMPORTANT: Replace href with actual render link -->
-                <a href="https://krishisetu-ai.onrender.com" target="_blank" class="bg-black text-agri-neon border-4 border-black px-8 py-5 font-black text-2xl flex items-center justify-between group shadow-heavy hover:shadow-heavy-hover hover:-translate-y-1 hover:-translate-x-1 transition-all">
+                <a href="https://krishisetu-ai.onrender.com" target="_blank" class="bg-black text-agri-neon border-4 border-black px-8 py-5 font-black text-2xl flex items-center justify-between group shadow-heavy hover:shadow-none hover:translate-y-2 hover:translate-x-2 transition-all">
                     <span>LAUNCH APP 🚜</span>
                     <span class="group-hover:translate-x-2 transition-transform">→</span>
                 </a>
             </div>
         </div>
 
-        <!-- Right Panel: Data & Visuals -->
-        <div class="md:col-span-5 bg-agri-dark text-white p-8 md:p-12 flex flex-col justify-between">
-            <div class="mono text-[10px] text-agri-neon font-bold mb-6 border-b border-agri-neon/30 pb-2">SECTOR_02 // AGRI_SPECS</div>
+        <!-- Right Panel Graphic -->
+        <div class="md:col-span-5 bg-agri-dark text-white p-8 md:p-12 flex flex-col justify-center relative" data-aos="fade-left" data-aos-delay="200">
+            <div class="absolute top-4 left-4 mono text-[10px] text-agri-neon font-bold mb-6 border-b border-agri-neon/30 pb-2">SECTOR_02 // AGRI_SPECS</div>
             
-            <!-- Tech HUD -->
-            <div class="flex flex-col gap-6 mb-12">
-                <div class="border-l-4 border-agri-neon pl-4">
-                    <div class="mono text-xs text-green-200">VISION ENGINE</div>
-                    <div class="font-black text-2xl tracking-tighter text-white">TENSORFLOW.JS EDGE</div>
-                </div>
-                <div class="border-l-4 border-white pl-4">
-                    <div class="mono text-xs text-green-200">TELEMETRY GRID</div>
-                    <div class="font-black text-2xl tracking-tighter text-white">OPENSTREETMAP</div>
-                </div>
-                <div class="border-l-4 border-agri-neon pl-4">
-                    <div class="mono text-xs text-green-200">TRANSLATION CORE</div>
-                    <div class="font-black text-2xl tracking-tighter text-white">ODIA & HINDI LOCALIZED</div>
-                </div>
-            </div>
-
-            <!-- Image Graphic -->
-            <div class="relative bg-white p-2 border-4 border-black shadow-[6px_6px_0_0_#ccff00] group">
+            <div class="relative bg-white p-2 border-4 border-black shadow-heavy-neon group mt-8">
                 <div class="absolute -top-4 -right-4 bg-agri-neon text-black font-black px-2 py-1 text-xs border-4 border-black shadow-[4px_4px_0_0_#000] z-10 rotate-3">
                     DIAGNOSIS_READY
                 </div>
-                <img src="disease_sample.jpg" alt="Leaf Disease" class="w-full h-48 object-cover border-4 border-black filter contrast-125" />
-                <div class="absolute bottom-4 left-4 right-4 bg-black/90 text-agri-neon font-mono text-xs p-2 border-2 border-black">
-                    > ANALYSIS: RICE LEAF BLAST DETECTED.
+                <!-- Local Image Fix -->
+                <img src="disease_sample.jpg" alt="Leaf Disease" class="w-full h-64 object-cover border-4 border-black filter contrast-125 grayscale group-hover:grayscale-0 transition-all duration-500" />
+                <div class="absolute bottom-4 left-4 right-4 bg-black/90 text-agri-neon font-mono text-xs p-3 border-2 border-black">
+                    > ANALYSIS: INFECTION DETECTED.<br/>
+                    > SYSTEM_STATUS: OPERATIONAL.
                 </div>
             </div>
         </div>
-
     </main>
 
-    <!-- Footer Bar -->
-    <footer class="h-16 flex items-center justify-center border-b-4 border-black bg-white">
-        <div class="text-black px-4 py-1 mono text-xs font-bold uppercase tracking-widest flex items-center gap-4">
-            <span>🌾 GOOGLE AI HACKATHON 2026</span>
-            <span class="w-2 h-2 bg-black"></span>
-            <span>CRYSTAL STUDIO LABS</span>
-            <span class="w-2 h-2 bg-black"></span>
-            <span>BUILT FOR BHARAT 🇮🇳</span>
+    <!-- Problem Statement -->
+    <section class="py-20 px-4 md:px-12 border-b-4 border-black bg-white" data-aos="fade-up">
+        <div class="max-w-6xl mx-auto">
+            <div class="mono text-sm text-danger-red font-black mb-4">/// THE CRISIS</div>
+            <h2 class="text-5xl md:text-6xl font-black tracking-tighter mb-12">WHY <span class="bg-black text-white px-2">KRISHI SETU?</span></h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-soil-gray border-4 border-black p-8 shadow-heavy">
+                    <h3 class="text-3xl font-black mb-4">THE CONNECTIVITY GAP</h3>
+                    <p class="font-mono font-bold leading-relaxed">Most cutting-edge agricultural AI tools fail at the last mile. Why? Because they require high-speed internet. In rural India, farm fields are dead zones. Farmers cannot upload 4K photos to the cloud to get help when their crops are dying.</p>
+                </div>
+                <div class="bg-agri-neon border-4 border-black p-8 shadow-heavy">
+                    <h3 class="text-3xl font-black mb-4">THE LANGUAGE BARRIER</h3>
+                    <p class="font-mono font-bold leading-relaxed">Even when AI tools work, they speak English. We asked: What if an AI could not only diagnose a crop instantly without the internet, but speak the remedy out loud in native Odia and Hindi?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Features Grid -->
+    <section class="py-20 px-4 md:px-12 bg-agri-dark text-white border-b-4 border-black" data-aos="fade-up">
+        <div class="max-w-6xl mx-auto">
+            <div class="mono text-sm text-agri-neon font-black mb-4">/// THE SOLUTION</div>
+            <h2 class="text-5xl md:text-6xl font-black tracking-tighter mb-12">CORE SYSTEMS</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white text-black border-4 border-black p-6 shadow-heavy-neon hover:-translate-y-2 transition-transform" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-4xl mb-4">🔌</div>
+                    <h3 class="text-2xl font-black mb-3">100% OFFLINE AI</h3>
+                    <p class="font-mono text-sm font-bold">Downloads lightweight TensorFlow.js models directly into the device's IndexedDB. Point the camera, get a diagnosis. Zero data required.</p>
+                </div>
+                
+                <div class="bg-white text-black border-4 border-black p-6 shadow-heavy-neon hover:-translate-y-2 transition-transform" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-4xl mb-4">🌍</div>
+                    <h3 class="text-2xl font-black mb-3">NATIVE TONGUE</h3>
+                    <p class="font-mono text-sm font-bold">Speaks the farmer's language. Real-time diagnostic translations in English, Odia, and Hindi, featuring built-in voice readouts.</p>
+                </div>
+                
+                <div class="bg-white text-black border-4 border-black p-6 shadow-heavy-neon hover:-translate-y-2 transition-transform" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="text-4xl mb-4">🗺️</div>
+                    <h3 class="text-2xl font-black mb-3">D.P.I. GRID</h3>
+                    <p class="font-mono text-sm font-bold">When a farmer scans a diseased crop, the network broadcasts a secure JSON-LD alert to nearby districts via an OpenStreetMap dashboard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="py-20 px-4 md:px-12 bg-[radial-gradient(#d4d4d8_1px,transparent_1px)] [background-size:16px_16px] border-b-4 border-black" data-aos="fade-up">
+        <div class="max-w-6xl mx-auto">
+            <div class="mono text-sm text-black font-black mb-4">/// THE ARCHITECTURE</div>
+            <h2 class="text-5xl md:text-6xl font-black tracking-tighter mb-12">TECH STACK</h2>
+            
+            <div class="flex flex-wrap gap-4">
+                <span class="bg-black text-white px-6 py-3 border-4 border-black font-black text-xl shadow-heavy">REACT + VITE (PWA)</span>
+                <span class="bg-agri-neon text-black px-6 py-3 border-4 border-black font-black text-xl shadow-heavy">TENSORFLOW.JS</span>
+                <span class="bg-white text-black px-6 py-3 border-4 border-black font-black text-xl shadow-heavy">GEMINI 3.6 FLASH</span>
+                <span class="bg-danger-red text-white px-6 py-3 border-4 border-black font-black text-xl shadow-heavy">INDEXED_DB</span>
+                <span class="bg-soil-gray text-black px-6 py-3 border-4 border-black font-black text-xl shadow-heavy">OPENSTREETMAP</span>
+                <span class="bg-black text-white px-6 py-3 border-4 border-black font-black text-xl shadow-heavy">TAILWINDCSS</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white pt-16 pb-8 px-4 border-b-[16px] border-agri-neon">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8 border-b-4 border-white/20 pb-12 mb-8">
+            <div>
+                <h2 class="text-4xl font-black tracking-tighter mb-2">KRISHI SETU AI</h2>
+                <p class="mono text-agri-neon font-bold text-sm">Google AI Hackathon 2026 // Code for Communities</p>
+            </div>
+            
+            <div class="flex flex-col items-start md:items-end gap-2">
+                <a href="https://github.com/SahooShuvranshu/KrishiSetu-AI" target="_blank" class="hover:text-agri-neon transition-colors mono font-bold">> VIEW REPOSITORY</a>
+                <a href="https://krishisetu-ai.onrender.com" target="_blank" class="hover:text-agri-neon transition-colors mono font-bold">> LAUNCH APPLICATION</a>
+            </div>
+        </div>
+        
+        <div class="text-center mono text-xs text-gray-500 font-bold uppercase">
+            Designed & Engineered by <span class="text-white">Crystal Studio Labs</span>. Built for Bharat 🇮🇳.
         </div>
     </footer>
 
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+        });
+    </script>
 </body>
 </html>
