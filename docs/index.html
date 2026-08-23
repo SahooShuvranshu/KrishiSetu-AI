@@ -262,16 +262,59 @@
     <!-- Tech Stack -->
     <section class="py-20 px-4 md:px-12 bg-[radial-gradient(#d4d4d8_1px,transparent_1px)] [background-size:16px_16px] border-b-4 border-black" data-aos="fade-up">
         <div class="max-w-6xl mx-auto">
-            <div class="mono text-sm text-black font-black mb-4">/// THE ARCHITECTURE</div>
+            <div class="mono text-sm text-black font-black mb-4 bg-white inline-block px-2 border-2 border-black py-1">/// THE ARCHITECTURE</div>
             <h2 class="text-5xl md:text-6xl font-black tracking-tighter mb-12">TECH STACK</h2>
             
-            <div class="flex flex-wrap gap-4">
-                <span class="bg-black text-white px-6 py-3 border-4 border-black font-black text-xl shadow-heavy">REACT + VITE (PWA)</span>
-                <span class="bg-agri-neon text-black px-6 py-3 border-4 border-black font-black text-xl shadow-heavy">TENSORFLOW.JS</span>
-                <span class="bg-white text-black px-6 py-3 border-4 border-black font-black text-xl shadow-heavy">GEMINI 3.6 FLASH</span>
-                <span class="bg-danger-red text-white px-6 py-3 border-4 border-black font-black text-xl shadow-heavy">INDEXED_DB</span>
-                <span class="bg-soil-gray text-black px-6 py-3 border-4 border-black font-black text-xl shadow-heavy">OPENSTREETMAP</span>
-                <span class="bg-black text-white px-6 py-3 border-4 border-black font-black text-xl shadow-heavy">TAILWINDCSS</span>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-black text-white border-4 border-black p-6 shadow-heavy hover:-translate-y-1 transition-transform" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="font-black text-3xl mb-2 text-agri-neon">TENSORFLOW.JS</h3>
+                    <p class="font-mono text-sm font-bold text-gray-300 leading-relaxed">Executes quantized machine learning vision models directly on the farmer's mobile CPU/GPU. The models are permanently cached inside the browser's IndexedDB, allowing for instantaneous, zero-latency inference without ever sending photos to a server.</p>
+                </div>
+                
+                <div class="bg-white text-black border-4 border-black p-6 shadow-heavy hover:-translate-y-1 transition-transform" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="font-black text-3xl mb-2">REACT + VITE (PWA)</h3>
+                    <p class="font-mono text-sm font-bold text-gray-700 leading-relaxed">The foundational frontend framework. It utilizes aggressive Service Worker caching strategies to intercept network requests, transforming the website into an installable Progressive Web App that survives in 100% offline environments.</p>
+                </div>
+                
+                <div class="bg-white text-black border-4 border-black p-6 shadow-heavy hover:-translate-y-1 transition-transform" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="font-black text-3xl mb-2 text-[#0a66c2]">GEMINI 3.6 FLASH</h3>
+                    <p class="font-mono text-sm font-bold text-gray-700 leading-relaxed">Powers the translation and generative agronomy advisory engine. When a connection is available, Gemini translates complex chemical and organic remedies into localized, easy-to-understand native dialects (Odia & Hindi).</p>
+                </div>
+
+                <div class="bg-agri-neon text-black border-4 border-black p-6 shadow-heavy hover:-translate-y-1 transition-transform" data-aos="fade-up" data-aos-delay="400">
+                    <h3 class="font-black text-3xl mb-2">OPENSTREETMAP</h3>
+                    <p class="font-mono text-sm font-bold text-gray-900 leading-relaxed">Provides the mapping layer for the DPI (Digital Public Infrastructure) Grid. Integrated via Leaflet.js, it broadcasts localized disease outbreaks to neighboring districts to prevent widespread crop failure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- F.A.Q. -->
+    <section class="py-20 px-4 md:px-12 bg-white border-b-4 border-black" data-aos="fade-up">
+        <div class="max-w-6xl mx-auto">
+            <div class="mono text-sm text-white font-black mb-4 bg-black inline-block px-2 border-2 border-black py-1">/// KNOWLEDGE BASE</div>
+            <h2 class="text-5xl md:text-6xl font-black tracking-tighter mb-12">F.A.Q.</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="border-l-8 border-agri-neon pl-6">
+                    <h4 class="font-black text-2xl mb-3 uppercase tracking-tight">How does it scan crops without the internet?</h4>
+                    <p class="font-mono text-sm font-bold text-gray-700 leading-relaxed">The magic is in the browser. When the app is launched for the first time, a Service Worker downloads the core app UI and the actual AI Model into the device's local storage. From then on, the device's own hardware runs the calculations.</p>
+                </div>
+                
+                <div class="border-l-8 border-black pl-6">
+                    <h4 class="font-black text-2xl mb-3 uppercase tracking-tight">Is the farmer's data private?</h4>
+                    <p class="font-mono text-sm font-bold text-gray-700 leading-relaxed">100%. Because inference happens locally on the edge via TensorFlow.js, pictures of the farmer's crops never leave their phone. The only data transmitted is an anonymous disease alert pinged to the DPI Grid (if online).</p>
+                </div>
+
+                <div class="border-l-8 border-agri-dark pl-6">
+                    <h4 class="font-black text-2xl mb-3 uppercase tracking-tight">Which languages are supported?</h4>
+                    <p class="font-mono text-sm font-bold text-gray-700 leading-relaxed">Currently, the UI and the AI advisory system natively support English, Odia (ଓଡ଼ିଆ), and Hindi (हिन्दी). It also utilizes the Web Speech API to read the remedies out loud to farmers who may struggle with reading.</p>
+                </div>
+
+                <div class="border-l-8 border-industrial-orange pl-6">
+                    <h4 class="font-black text-2xl mb-3 uppercase tracking-tight">Do they need to download an app from the Play Store?</h4>
+                    <p class="font-mono text-sm font-bold text-gray-700 leading-relaxed">No. Krishi Setu is a PWA (Progressive Web App). By simply visiting the URL, their browser will prompt them to "Add to Home Screen". It bypasses app store friction entirely while behaving exactly like a native app.</p>
+                </div>
             </div>
         </div>
     </section>
