@@ -1,15 +1,11 @@
 import offlineDiseases from '../data/offline_diseases.json';
+import * as tf from '@tensorflow/tfjs';
 
 let localModel = null;
 let classNames = null;
-let tf = null;
 
 export async function loadLocalModel() {
   try {
-    if (!tf) {
-      tf = await import('@tensorflow/tfjs');
-    }
-    
     if (!localModel) {
       // It expects the model.json to be in the public/model/ folder
       localModel = await tf.loadLayersModel('/model/model.json');

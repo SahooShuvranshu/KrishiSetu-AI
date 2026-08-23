@@ -1,4 +1,4 @@
-const CACHE_NAME = 'krishisetu-v18'; // Krishi Setu Name Fix & Offline Model Picker
+const CACHE_NAME = 'krishisetu-v19'; // Static TFJS Import for 100% Offline Reliability
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
