@@ -67,26 +67,26 @@ function App() {
 
   if (isSplashing) {
     return (
-      <div className="fixed inset-0 z-[100] bg-brutal-bg flex flex-col items-center justify-center p-4">
+      <div className="fixed inset-0 z-[100] bg-brutal-bg bg-agri-grid flex flex-col items-center justify-center p-4">
         <div className="relative animate-bounce">
-          <div className="absolute inset-0 bg-brutal-neon translate-x-2 translate-y-2 border-4 border-black"></div>
-          <div className="relative bg-white border-4 border-black p-8 flex flex-col items-center justify-center">
-             <div className="w-24 h-24 bg-brutal-green rounded-full border-4 border-black mb-4 flex items-center justify-center">
-                <span className="text-5xl">🌱</span>
+          <div className="absolute inset-0 bg-brutal-neon translate-x-3 translate-y-3 border-4 border-black"></div>
+          <div className="relative bg-white border-4 border-black p-8 flex flex-col items-center justify-center shadow-brutal-lg">
+             <div className="w-24 h-24 bg-brutal-green text-white border-4 border-black mb-4 flex items-center justify-center rotate-2 shadow-brutal">
+                <span className="text-5xl">🚜</span>
              </div>
-             <h1 className="text-5xl font-black uppercase tracking-tighter text-center leading-none">
-               Krishi Setu<br/>AI
+             <h1 className="text-6xl font-black uppercase tracking-tighter text-center leading-none">
+               Krishi<br/>Setu
              </h1>
           </div>
         </div>
         <div className="absolute bottom-12 flex flex-col items-center">
            <div className="flex gap-2 mb-2">
-             <div className="w-3 h-3 bg-black rounded-full animate-ping"></div>
-             <div className="w-3 h-3 bg-black rounded-full animate-ping" style={{ animationDelay: '200ms' }}></div>
-             <div className="w-3 h-3 bg-black rounded-full animate-ping" style={{ animationDelay: '400ms' }}></div>
+             <div className="w-4 h-4 bg-black animate-ping rounded-none border-2 border-white"></div>
+             <div className="w-4 h-4 bg-black animate-ping rounded-none border-2 border-white" style={{ animationDelay: '200ms' }}></div>
+             <div className="w-4 h-4 bg-black animate-ping rounded-none border-2 border-white" style={{ animationDelay: '400ms' }}></div>
            </div>
-           <p className="font-mono font-bold uppercase tracking-widest text-xs">
-             Initializing Network...
+           <p className="font-mono font-black uppercase tracking-widest text-xs bg-black text-brutal-neon px-2 py-1 border-2 border-black">
+             SYSTEM BOOT...
            </p>
         </div>
       </div>
@@ -94,11 +94,12 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-brutal-bg pb-20 font-sans text-black selection:bg-brutal-neon relative">
-      <header className="bg-white border-b-2 border-black p-3 sticky top-0 z-40 flex justify-between items-center shadow-brutal-hover mb-4">
+    <div className="min-h-screen bg-brutal-bg bg-agri-grid pb-24 font-sans text-black selection:bg-brutal-neon relative flex flex-col">
+      <div className="h-4 w-full bg-brutal-neon bg-tractor-tread border-b-4 border-black"></div>
+      <header className="bg-white border-b-4 border-black p-4 sticky top-0 z-40 flex justify-between items-center shadow-brutal mb-6">
         <div>
-          <h1 className="text-xl font-black tracking-tighter uppercase leading-none">{t('appTitle')}</h1>
-          <p className="font-mono text-[9px] font-bold bg-brutal-green text-black px-1 mt-1 inline-block border border-black uppercase">
+          <h1 className="text-3xl font-black tracking-tighter uppercase leading-none">{t('appTitle')}</h1>
+          <p className="font-mono text-[10px] font-black bg-black text-brutal-neon px-2 py-1 mt-1 inline-block border-2 border-black uppercase shadow-[2px_2px_0_0_#000]">
             {t('appSubtitle')}
           </p>
         </div>
