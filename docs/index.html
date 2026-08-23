@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KRISHI SETU // TERMINAL</title>
+    <title>KRISHI SETU // AGRI-BRUTALISM</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'hazard-yellow': '#FFE800',
-                        'concrete': '#d4d4d8',
-                        'industrial-orange': '#ff5722'
+                        'agri-neon': '#ccff00', /* High-vis agricultural yellow-green */
+                        'agri-dark': '#14532d', /* Deep tractor/forest green */
+                        'soil-gray': '#e4e4e7',
                     },
                     boxShadow: {
                         'heavy': '8px 8px 0px 0px rgba(0,0,0,1)',
                         'heavy-hover': '12px 12px 0px 0px rgba(0,0,0,1)',
                     },
                     backgroundImage: {
-                        'hazard-stripes': 'repeating-linear-gradient(45deg, #000 0, #000 20px, #FFE800 20px, #FFE800 40px)',
+                        'tractor-tread': 'repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(0,0,0,0.1) 10px, rgba(0,0,0,0.1) 20px)',
                     }
                 }
             }
@@ -29,26 +29,28 @@
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
         body { 
             font-family: 'Space Grotesk', sans-serif; 
-            background-color: #e4e4e7; /* Light concrete */
+            background-color: #f4f4f5; /* Clean paper/concrete */
             text-transform: uppercase;
         }
         .mono { font-family: 'Space Mono', monospace; }
-        * { border-radius: 0 !important; } /* Strict industrial rule */
+        * { border-radius: 0 !important; } /* Strict industrial rule kept */
     </style>
 </head>
-<body class="text-black overflow-x-hidden border-x-[16px] border-black min-h-screen">
+<body class="text-black overflow-x-hidden border-x-[16px] border-black min-h-screen flex flex-col">
 
-    <!-- Top Hazard Bar -->
-    <div class="h-4 w-full bg-hazard-stripes border-b-4 border-black"></div>
+    <!-- Top Pattern Bar -->
+    <div class="h-6 w-full bg-agri-neon bg-tractor-tread border-b-4 border-black flex items-center px-4">
+        <span class="mono text-[10px] font-black tracking-widest">/// AGRICULTURAL AI DEPLOYMENT /// ODISHA GRID ///</span>
+    </div>
 
     <!-- Navigation / Header -->
-    <header class="border-b-4 border-black bg-concrete flex flex-col md:flex-row justify-between items-center p-4 gap-4">
+    <header class="border-b-4 border-black bg-white flex flex-col md:flex-row justify-between items-center p-4 gap-4">
         <div class="flex items-center gap-4">
-            <div class="bg-black text-white px-3 py-1 font-black text-2xl tracking-tighter">KS-AI</div>
-            <div class="mono leading-tight text-xs md:text-sm font-bold">
-                SYS.ID: KRISHI_SETU_01<br/>
+            <div class="bg-black text-agri-neon px-3 py-1 font-black text-2xl tracking-tighter border-2 border-black shadow-[4px_4px_0_0_#000]">🌱 KS-AI</div>
+            <div class="mono leading-tight text-xs md:text-sm font-bold text-gray-700">
+                FIELD_NODE: KRISHI_SETU<br/>
                 DEV: CRYSTAL_STUDIO_LABS<br/>
-                STAT: <span class="bg-hazard-yellow text-black px-1 border border-black">ONLINE</span>
+                STATUS: <span class="bg-agri-neon text-black px-1 border border-black font-black">HARVEST_READY</span>
             </div>
         </div>
         <a href="https://github.com/SahooShuvranshu/KrishiSetu-AI" target="_blank" class="bg-white border-4 border-black px-6 py-2 font-black text-lg hover:bg-black hover:text-white transition-none shadow-heavy">
@@ -57,57 +59,58 @@
     </header>
 
     <!-- Main Hero Grid -->
-    <main class="grid md:grid-cols-12 gap-0 border-b-4 border-black">
+    <main class="grid md:grid-cols-12 gap-0 border-b-4 border-black flex-grow">
         
         <!-- Left Panel: Text & CTA -->
-        <div class="md:col-span-7 p-8 md:p-12 border-r-4 border-black bg-white flex flex-col justify-center relative">
-            <div class="absolute top-4 left-4 mono text-[10px] text-gray-500 font-bold">BLOCK_01 // INITIATION</div>
+        <div class="md:col-span-7 p-8 md:p-12 border-r-4 border-black bg-soil-gray flex flex-col justify-center relative bg-[radial-gradient(#d4d4d8_1px,transparent_1px)] [background-size:16px_16px]">
+            <div class="absolute top-4 left-4 mono text-[10px] text-agri-dark font-black bg-white px-2 py-1 border-2 border-black">SECTOR_01 // OVERVIEW</div>
             
-            <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-[0.85] mb-8 mt-4">
+            <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-[0.85] mb-8 mt-6">
                 OFFLINE<br/>
-                <span class="text-industrial-orange">CROP</span><br/>
-                DIAGNOSTICS.
+                <span class="bg-agri-neon px-2 border-4 border-black inline-block -rotate-1 mt-2 mb-2 shadow-[6px_6px_0_0_#000]">CROP SAVER.</span><br/>
             </h1>
             
-            <p class="mono text-sm md:text-base font-bold bg-concrete p-4 border-4 border-black mb-10 max-w-lg shadow-[4px_4px_0_0_#000]">
-                > Krishi Setu is an industrial-grade, offline-first AI plant pathologist. Built for remote sectors with zero network capability. Multilingual broadcast ready.
+            <p class="mono text-sm md:text-base font-bold bg-white p-4 border-4 border-black mb-10 max-w-lg shadow-[4px_4px_0_0_#000] leading-relaxed">
+                > Krishi Setu combines heavy-duty industrial brutalism with raw agricultural utility. It is an offline-first AI plant pathologist built for deep rural fields with zero internet.
             </p>
             
             <div class="flex flex-col sm:flex-row gap-6">
-                <!-- IMPORTANT: Tell the user to replace this href with their render link later -->
-                <a href="https://krishisetu-ai.onrender.com" target="_blank" class="bg-hazard-yellow border-4 border-black px-8 py-5 font-black text-2xl flex items-center justify-between group shadow-heavy hover:shadow-heavy-hover hover:-translate-y-1 hover:-translate-x-1 transition-all">
-                    <span>EXECUTE APP</span>
+                <!-- IMPORTANT: Replace href with actual render link -->
+                <a href="https://krishisetu-ai.onrender.com" target="_blank" class="bg-black text-agri-neon border-4 border-black px-8 py-5 font-black text-2xl flex items-center justify-between group shadow-heavy hover:shadow-heavy-hover hover:-translate-y-1 hover:-translate-x-1 transition-all">
+                    <span>LAUNCH APP 🚜</span>
                     <span class="group-hover:translate-x-2 transition-transform">→</span>
                 </a>
             </div>
         </div>
 
         <!-- Right Panel: Data & Visuals -->
-        <div class="md:col-span-5 bg-black text-white p-8 md:p-12 flex flex-col justify-between">
-            <div class="mono text-[10px] text-gray-500 font-bold mb-6 border-b border-gray-700 pb-2">BLOCK_02 // SYSTEM_SPECS</div>
+        <div class="md:col-span-5 bg-agri-dark text-white p-8 md:p-12 flex flex-col justify-between">
+            <div class="mono text-[10px] text-agri-neon font-bold mb-6 border-b border-agri-neon/30 pb-2">SECTOR_02 // AGRI_SPECS</div>
             
             <!-- Tech HUD -->
-            <div class="flex flex-col gap-4 mb-12">
-                <div class="border-l-4 border-hazard-yellow pl-4">
-                    <div class="mono text-xs text-gray-400">ENGINE</div>
+            <div class="flex flex-col gap-6 mb-12">
+                <div class="border-l-4 border-agri-neon pl-4">
+                    <div class="mono text-xs text-green-200">VISION ENGINE</div>
                     <div class="font-black text-2xl tracking-tighter text-white">TENSORFLOW.JS EDGE</div>
                 </div>
-                <div class="border-l-4 border-industrial-orange pl-4">
-                    <div class="mono text-xs text-gray-400">NETWORK GRID</div>
-                    <div class="font-black text-2xl tracking-tighter text-white">OPENSTREETMAP TELEMETRY</div>
-                </div>
                 <div class="border-l-4 border-white pl-4">
-                    <div class="mono text-xs text-gray-400">STORAGE PROTOCOL</div>
-                    <div class="font-black text-2xl tracking-tighter text-white">INDEXED_DB PERSISTENCE</div>
+                    <div class="mono text-xs text-green-200">TELEMETRY GRID</div>
+                    <div class="font-black text-2xl tracking-tighter text-white">OPENSTREETMAP</div>
+                </div>
+                <div class="border-l-4 border-agri-neon pl-4">
+                    <div class="mono text-xs text-green-200">TRANSLATION CORE</div>
+                    <div class="font-black text-2xl tracking-tighter text-white">ODIA & HINDI LOCALIZED</div>
                 </div>
             </div>
 
             <!-- Image Graphic -->
-            <div class="relative bg-concrete p-2 border-4 border-hazard-yellow group">
-                <div class="absolute -top-3 -right-3 bg-hazard-yellow text-black font-black px-2 py-1 text-xs border-2 border-black z-10">TARGET_LOCKED</div>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Rice_leaf_blast_-_Magnaporthe_grisea.jpg/800px-Rice_leaf_blast_-_Magnaporthe_grisea.jpg" alt="Leaf Disease" class="w-full h-48 object-cover border-2 border-black grayscale contrast-[1.5] group-hover:grayscale-0 transition-all duration-500" />
-                <div class="absolute bottom-4 left-4 right-4 bg-black/90 text-white font-mono text-xs p-2 border border-white/30 backdrop-blur-sm">
-                    ANALYSIS: MAGNAPORTHE GRISEA DETECTED.
+            <div class="relative bg-white p-2 border-4 border-black shadow-[6px_6px_0_0_#ccff00] group">
+                <div class="absolute -top-4 -right-4 bg-agri-neon text-black font-black px-2 py-1 text-xs border-4 border-black shadow-[4px_4px_0_0_#000] z-10 rotate-3">
+                    DIAGNOSIS_READY
+                </div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Rice_leaf_blast_-_Magnaporthe_grisea.jpg/800px-Rice_leaf_blast_-_Magnaporthe_grisea.jpg" alt="Leaf Disease" class="w-full h-48 object-cover border-4 border-black filter contrast-125" />
+                <div class="absolute bottom-4 left-4 right-4 bg-black/90 text-agri-neon font-mono text-xs p-2 border-2 border-black">
+                    > ANALYSIS: RICE LEAF BLAST DETECTED.
                 </div>
             </div>
         </div>
@@ -115,9 +118,13 @@
     </main>
 
     <!-- Footer Bar -->
-    <footer class="bg-hazard-stripes h-12 flex items-center justify-center border-b-4 border-black">
-        <div class="bg-black text-hazard-yellow px-4 py-1 mono text-xs font-bold border-2 border-hazard-yellow uppercase tracking-widest">
-            WARNING: SYSTEM SUBMISSION // GOOGLE AI HACKATHON 2026 // CRYSTAL STUDIO LABS
+    <footer class="h-16 flex items-center justify-center border-b-4 border-black bg-white">
+        <div class="text-black px-4 py-1 mono text-xs font-bold uppercase tracking-widest flex items-center gap-4">
+            <span>🌾 GOOGLE AI HACKATHON 2026</span>
+            <span class="w-2 h-2 bg-black"></span>
+            <span>CRYSTAL STUDIO LABS</span>
+            <span class="w-2 h-2 bg-black"></span>
+            <span>BUILT FOR BHARAT 🇮🇳</span>
         </div>
     </footer>
 
