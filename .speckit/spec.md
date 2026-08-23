@@ -17,5 +17,9 @@
 - **Tier 3 (Zero Download Lookup)**: Bundled local JSON symptom database (`src/data/offline_diseases.json`).
 
 ### 2.3 Cross-State Cooperation Grid (DPI Standard)
-- **Input**: District-level disease detection logs.
-- **Output**: Broadcast JSON-LD outbreak vector alerts to adjacent state nodes (Odisha 🤝 Andhra Pradesh 🤝 West Bengal 🤝 Punjab 🤝 Maharashtra 🤝 Tamil Nadu).
+- **Input**: District-level disease detection logs via `localStorage` broadcasting.
+- **Output**: Broadcast JSON-LD outbreak vector alerts to adjacent state nodes, visualized in a Live OpenStreetMap Dashboard.
+
+### 2.4 Live Environmental Engine
+- **Input**: Device GPS coordinates and RTC (Real-Time Clock).
+- **Output**: Auto-detected farming seasons (Kharif, Rabi, Zaid) and Live Weather API polling for hyper-local agricultural context.
