@@ -48,7 +48,24 @@ Build an interoperable digital agriculture network that delivers real-time, loca
 * **DPI Telemetry Grid:** Utilizes OpenStreetMap (Leaflet) to build an interoperable mesh. When devices regain connection, anonymous disease outbreaks are broadcasted to the grid to warn neighboring farmers of migrating blights.
 * **Agri-Brutalism UX:** Designed strictly for outdoor usability. Massive high-contrast buttons, thick borders, and heavy typography ensure readability under blinding sunlight and usability with muddy hands.
 
-## 🛠️ Architecture & Tech Stack
+---
+
+## 🧠 Machine Learning Architecture
+
+Krishi Setu brings state-of-the-art computer vision directly to the edge. Instead of relying on cloud APIs which inevitably fail in low-connectivity rural areas, the entire diagnostic pipeline runs locally on the farmer's smartphone.
+
+### 1. The Model (MobileNetV2 & Transfer Learning)
+We utilize a highly optimized **MobileNetV2** architecture fine-tuned via Transfer Learning. MobileNet was chosen specifically for its lightweight footprint and high accuracy on low-end mobile devices. The model is trained on a comprehensive agricultural dataset to classify multiple classes of crop diseases (e.g., Potato Early Blight, Tomato Late Blight, Healthy Leaves, etc.).
+
+### 2. Edge Inference via TensorFlow.js
+The trained Keras/TensorFlow model is quantized and converted into the TensorFlow.js format (`model.json` and `.bin` weight shards). 
+- **Zero-Latency:** Inference executes in real-time utilizing the smartphone's CPU or WebGL hardware acceleration.
+- **Privacy-Preserving:** Photos taken by the farmer never leave their device.
+- **Offline Execution:** The ML model binaries are precached via Service Workers into the browser's IndexedDB upon the first app load, ensuring the AI functions even in airplane mode.
+
+---
+
+## 🛠️ System Architecture & Tech Stack
 
 1. **Frontend Core:** React 18 + Vite
 2. **Offline Caching:** Vite-PWA with Workbox (Service Workers) for absolute caching of HTML/CSS/JS and Model Binaries.
@@ -77,11 +94,12 @@ echo "VITE_GEMINI_API_KEY=your_key_here" > .env
 npm run dev
 ```
 
-## 📚 Machine Learning Integration
-To train your own quantized crop disease models for the offline engine, we have included a Jupyter Notebook.
+## 📚 Machine Learning Integration Guide
+To train your own quantized crop disease models for the offline engine, we have included a Jupyter Notebook in this repository.
 1. Open `notebooks/KrishiSetu_Real_Model_Training.ipynb` in Google Colab.
-2. Provide a dataset (500+ images per class).
-3. Export the `model.json` and `.bin` files directly into the `/public/model` directory.
+2. Provide an agricultural dataset (minimum 500+ images per class recommended for high accuracy).
+3. The notebook will automatically apply OpenCV preprocessing and data augmentation.
+4. Export the resulting `model.json` and `.bin` files directly into the frontend's `/public/model` directory.
 
 ## 🤝 Contributing
 Krishi Setu is an open-source initiative. Please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) before submitting Pull Requests.
