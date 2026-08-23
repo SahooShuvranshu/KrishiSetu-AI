@@ -1,4 +1,4 @@
-﻿<div align="center">
+<div align="center">
   <img src="public/sprout.svg" alt="Krishi Setu Logo" width="120" />
   <h1>Krishi Setu AI</h1>
   <p><strong>100% Offline AI Crop Pathologist & Regenerative Agronomy Grid</strong></p>
@@ -43,7 +43,7 @@ Build an interoperable digital agriculture network that delivers real-time, loca
 ### 🌟 Key Features
 
 * **100% Offline AI Disease Scanning:** Uses highly quantized MobileNet/TensorFlow.js models permanently cached in IndexedDB to scan and diagnose leaf diseases directly on the device's CPU/GPU. No cloud needed. No latency.
-* **Generative Agronomy Engine:** Integrates Google's Gemini 3.6 Flash to translate complex chemical and organic treatments into easy-to-understand native dialects.
+* **Generative Agronomy Engine:** Integrates Google's Gemini Flash to translate complex chemical and organic treatments into easy-to-understand native dialects.
 * **Native Tongue & TTS Support:** Built-in localization for **Hindi** and **Odia** with Web Speech API integration to read remedies out loud for farmers facing literacy barriers.
 * **DPI Telemetry Grid:** Utilizes OpenStreetMap (Leaflet) to build an interoperable mesh. When devices regain connection, anonymous disease outbreaks are broadcasted to the grid to warn neighboring farmers of migrating blights.
 * **Agri-Brutalism UX:** Designed strictly for outdoor usability. Massive high-contrast buttons, thick borders, and heavy typography ensure readability under blinding sunlight and usability with muddy hands.
@@ -52,8 +52,8 @@ Build an interoperable digital agriculture network that delivers real-time, loca
 
 1. **Frontend Core:** React 18 + Vite
 2. **Offline Caching:** Vite-PWA with Workbox (Service Workers) for absolute caching of HTML/CSS/JS and Model Binaries.
-3. **Edge ML:** @tensorflow/tfjs static bundling to avoid dynamic import chunk failure offline.
-4. **LLM Engine:** @google/genai (Gemini 1.5/3.6 Flash fallback strategies).
+3. **Edge ML:** `@tensorflow/tfjs` static bundling to avoid dynamic import chunk failure offline.
+4. **LLM Engine:** `@google/genai` (Gemini Flash fallback strategies).
 5. **Geospatial:** React-Leaflet mapped over OSM tiles.
 6. **Styling:** TailwindCSS using a custom "Agri-Brutalism" design system.
 
@@ -61,7 +61,7 @@ Build an interoperable digital agriculture network that delivers real-time, loca
 
 To run Krishi Setu locally on your machine:
 
-\\\ash
+```bash
 # 1. Clone the repository
 git clone https://github.com/SahooShuvranshu/KrishiSetu-AI.git
 cd KrishiSetu-AI
@@ -75,14 +75,13 @@ echo "VITE_GEMINI_API_KEY=your_key_here" > .env
 
 # 4. Start the development server
 npm run dev
-\\\
+```
 
 ## 📚 Machine Learning Integration
 To train your own quantized crop disease models for the offline engine, we have included a Jupyter Notebook.
-1. Open \
-otebooks/KrishiSetu_Real_Model_Training.ipynb\ in Google Colab.
+1. Open `notebooks/KrishiSetu_Real_Model_Training.ipynb` in Google Colab.
 2. Provide a dataset (500+ images per class).
-3. Export the \model.json\ and \.bin\ files directly into the \/public/model\ directory.
+3. Export the `model.json` and `.bin` files directly into the `/public/model` directory.
 
 ## 🤝 Contributing
 Krishi Setu is an open-source initiative. Please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) before submitting Pull Requests.
