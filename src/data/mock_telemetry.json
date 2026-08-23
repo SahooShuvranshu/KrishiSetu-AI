@@ -1,0 +1,26 @@
+[
+  {
+    "origin": "Ganjam",
+    "target": "Khurda",
+    "pest": "Brown Plant Hopper",
+    "crop": "Paddy (Rice)",
+    "severity": "High",
+    "advice": "Farmers in Khurda should check their paddy fields today. An outbreak has been detected in neighboring Ganjam."
+  },
+  {
+    "origin": "Kalahandi",
+    "target": "Balangir",
+    "pest": "Whitefly",
+    "crop": "Cotton",
+    "severity": "Moderate",
+    "advice": "Use Neem oil spray as a precaution. Pests have been spotted moving north from Kalahandi."
+  },
+  {
+    "origin": "Mayurbhanj",
+    "target": "Keonjhar",
+    "pest": "Fall Armyworm",
+    "crop": "Maize",
+    "severity": "Low",
+    "advice": "Keep an eye on maize leaves for small holes. A minor spread was reported in Mayurbhanj."
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "KrishiSetuCrossStateTelemetry",
+  "type": "object",
+  "properties": {
+    "telemetryId": { "type": "string", "format": "uuid" },
+    "originStateCode": { "type": "string", "enum": ["OD", "PB", "HR", "MH", "TN", "UP", "KA", "WB", "AP"] },
+    "targetStateCode": { "type": "string" },
+    "eventType": { "type": "string", "enum": ["pest_outbreak_warning", "soil_degradation_alert", "climate_risk"] },
+    "cropTarget": { "type": "string" },
+    "pathogenOrPest": { "type": "string" },
+    "severityScore": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+    "districtVector": { "type": "string" },
+    "timestamp": { "type": "string", "format": "date-time" }
+  },
+  "required": ["telemetryId", "originStateCode", "eventType", "cropTarget", "severityScore", "timestamp"]
+}

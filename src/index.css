@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-brutal-bg text-black font-sans selection:bg-brutal-neon selection:text-black;
+  }
+}
+
+@layer components {
+  .brutal-box {
+    @apply bg-white border-4 border-black shadow-brutal transition-all duration-200;
+  }
+  .brutal-button {
+    @apply bg-brutal-green text-black font-bold border-4 border-black shadow-brutal active:shadow-none active:translate-x-1 active:translate-y-1 transition-all duration-100;
+  }
+}
+
+/* Hide scrollbar for cleaner brutalist look but keep functionality */
+::-webkit-scrollbar {
+  width: 12px;
+  border-left: 4px solid black;
+}
+::-webkit-scrollbar-track {
+  background: #e8f4ec;
+}
+::-webkit-scrollbar-thumb {
+  background: #000;
+  border-left: 4px solid black;
+}
