@@ -7,6 +7,30 @@
       "type": "image/svg+xml",
       "sizes": "any",
       "purpose": "any maskable"
+    },
+    {
+      "src": "sprout.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192"
+    },
+    {
+      "src": "sprout.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "https://raw.githubusercontent.com/SahooShuvranshu/KrishiSetu-AI/main/docs/disease_sample.jpg",
+      "sizes": "800x533",
+      "type": "image/jpeg",
+      "form_factor": "wide"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/SahooShuvranshu/KrishiSetu-AI/main/docs/disease_sample.jpg",
+      "sizes": "800x533",
+      "type": "image/jpeg",
+      "form_factor": "narrow"
     }
   ],
   "start_url": "/",
