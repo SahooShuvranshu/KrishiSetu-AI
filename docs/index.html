@@ -93,7 +93,7 @@
             </div>
         </div>
         <div class="flex gap-4">
-            <div id="google_translate_element" class="hidden"></div>
+            <div id="google_translate_element" style="position: absolute; left: -9999px;"></div>
             <div class="flex gap-2">
                 <button onclick="changeLang('en', this)" class="lang-btn bg-agri-neon text-black border-4 border-black px-2 py-1 font-black text-sm shadow-[2px_2px_0_0_#000]">EN</button>
                 <button onclick="changeLang('or', this)" class="lang-btn bg-white text-gray-500 border-4 border-black px-2 py-1 font-black text-sm shadow-[2px_2px_0_0_#000]">ଓଡ଼ିଆ</button>
@@ -398,7 +398,12 @@
             var selectField = document.querySelector('select.goog-te-combo');
             if(selectField) {
                 selectField.value = langCode;
-                selectField.dispatchEvent(new Event('change'));
+                selectField.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
+            } else {
+                // Fallback: Use cookie if widget is still loading
+                document.cookie = `googtrans=/en/${langCode}; path=/`;
+                document.cookie = `googtrans=/en/${langCode}; path=/; domain=${window.location.hostname}`;
+                window.location.reload();
             }
         }
     </script>
