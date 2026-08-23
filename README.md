@@ -27,6 +27,20 @@
 
 <br/>
 
+## 📑 Table of Contents
+- [🌾 The Crisis: Problem Statement 4](#-the-crisis-problem-statement-4-theme-cooperation)
+- [⚡ The Solution: Krishi Setu](#-the-solution-krishi-setu)
+- [🧠 Machine Learning Architecture](#-machine-learning-architecture)
+- [🛠️ System Architecture & Tech Stack](#️-system-architecture--tech-stack)
+- [📂 File Structure](#-file-structure)
+- [🚀 Quick Start (Local Development)](#-quick-start-local-development)
+- [☁️ One-Click Deployment](#️-one-click-deployment)
+- [📚 ML Integration Guide](#-machine-learning-integration-guide)
+- [🤝 Contributing & Security](#-contributing)
+- [🌟 Star History](#-star-history)
+
+---
+
 ## 🌾 The Crisis: Problem Statement 4 (Theme: Cooperation)
 
 Small and marginal farmers across India lack access to data-driven agricultural guidance. Relying on traditional methods instead of satellite data, soil health analytics, and climate forecasting leads to crop failure and threatens food security. The absence of shared digital infrastructure also blocks cross-state collaboration on climate-resilient farming.
@@ -117,6 +131,12 @@ echo "VITE_GEMINI_API_KEY=your_key_here" > .env
 npm run dev
 ```
 
+## ☁️ One-Click Deployment
+
+Deploy your own instance of Krishi Setu instantly using any of these platforms:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/SahooShuvranshu/KrishiSetu-AI) [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/SahooShuvranshu/KrishiSetu-AI) [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/SahooShuvranshu/KrishiSetu-AI)
+
 ## 📚 Machine Learning Integration Guide
 To train your own quantized crop disease models for the offline engine, we have included a Jupyter Notebook in this repository.
 1. Open `notebooks/KrishiSetu_Real_Model_Training.ipynb` in Google Colab.
@@ -150,9 +170,10 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 <br/>
 
 <div align="center">
-  <img src="public/sprout.svg" alt="Krishi Setu Leaf" width="50" />
-  <br/>
-  <h2><b>KRISHI SETU AI</b></h2>
+  <h2>
+    <img src="public/sprout.svg" alt="Leaf" width="35" align="center" /> 
+    <b>KRISHI SETU AI</b>
+  </h2>
   <p><i>Empowering the next generation of climate-resilient agriculture.</i></p>
   
   <br/>
