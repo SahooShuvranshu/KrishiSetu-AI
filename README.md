@@ -1,46 +1,98 @@
-# 🌾 KrishiSetu AI (krishisetu-ai)
-> **Interoperable Digital Public Infrastructure (DPI) & Mobile PWA for Cooperative, Climate-Resilient Agriculture in India.**
+﻿<div align="center">
+  <img src="public/sprout.svg" alt="Krishi Setu Logo" width="120" />
+  <h1>Krishi Setu AI</h1>
+  <p><strong>100% Offline AI Crop Pathologist & Regenerative Agronomy Grid</strong></p>
+  
+  <p>
+    <a href="https://krishisetu-ai.onrender.com/"><img src="https://img.shields.io/badge/Live_App-Render-46E3B7?style=for-the-badge&logo=render&logoColor=white" alt="Live App" /></a>
+    <a href="https://sahooshuvranshu.github.io/KrishiSetu-AI/"><img src="https://img.shields.io/badge/Landing_Page-GitHub_Pages-181717?style=for-the-badge&logo=github&logoColor=white" alt="Landing Page" /></a>
+  </p>
+
+  <p>
+    <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+    <img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" alt="Vite" />
+    <img src="https://img.shields.io/badge/TensorFlow.js-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" alt="TensorFlow.js" />
+    <img src="https://img.shields.io/badge/Gemini_3.6_Flash-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google Gemini" />
+    <img src="https://img.shields.io/badge/PWA-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white" alt="PWA" />
+    <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  </p>
+
+  <p>
+    <a href="SECURITY.md"><img src="https://img.shields.io/badge/Security-Protected-success?style=flat-square" alt="Security" /></a>
+    <a href="CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Code_of_Conduct-Enforced-blue?style=flat-square" alt="Code of Conduct" /></a>
+    <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-Welcome-brightgreen?style=flat-square" alt="PRs Welcome" /></a>
+    <img src="https://img.shields.io/github/license/SahooShuvranshu/KrishiSetu-AI?style=flat-square" alt="License" />
+  </p>
+</div>
+
+<br/>
+
+## 🌾 The Crisis: Problem Statement 4 (Theme: Cooperation)
+
+Small and marginal farmers across India lack access to data-driven agricultural guidance. Relying on traditional methods instead of satellite data, soil health analytics, and climate forecasting leads to crop failure and threatens food security. The absence of shared digital infrastructure also blocks cross-state collaboration on climate-resilient farming.
+
+### 🚜 The Challenge
+Build an interoperable digital agriculture network that delivers real-time, localised agro-advisories using AI. It should offer regenerative crop recommendations based on satellite data, soil health, and weather forecasting, plus a diagnostic tool for crop diseases, and be designed as a scalable digital public good enabling Indian states to share agricultural data models and strengthen cooperation on sustainable food production.
 
 ---
 
-## 🎯 The Problem
-Small and marginal farmers across India lack access to data-driven agricultural guidance. Relying on traditional practices instead of satellite data, soil health analytics, and climate forecasting leads to crop failure and threatens food security. The absence of shared digital infrastructure also blocks cross-state collaboration on climate-resilient farming.
+## ⚡ The Solution: Krishi Setu
 
-## 🚀 The Solution: KrishiSetu AI
-**KrishiSetu AI** is a mobile-first Progressive Web App (PWA) and open Digital Public Good (DPG) engineered around two core pillars:
+**Krishi Setu** (Agriculture Bridge) is a heavy-duty, offline-first digital public good built to bridge the connectivity gap for Indian farmers. Utilizing industrial-grade Progressive Web App (PWA) architecture and Edge AI, it delivers state-of-the-art agricultural guidance directly to the farmer's pocket—even in the deepest rural fields with **zero internet connection**.
 
-1. **Multilingual Farmer Co-Pilot (Mobile PWA)**: Real-time rear camera vision AI diagnostic tool powered by Google AI Studio (Gemini 2.5/3.0 Flash) and Speech/Translation APIs across Indian regional languages (Odia, Hindi, Marathi, Tamil, Telugu, Punjabi).
-2. **Device-Persistent On-Device ML (IndexedDB)**: Features a 1-click **"Offline Model Manager"** that saves lightweight MobileNet vision models permanently into device storage (`indexeddb://krishisetu-model`) for **100% offline camera disease diagnostics** in zero-internet rural fields.
-3. **Cross-State Interoperable Cooperation Grid (DPI Standard)**: Open JSON-LD telemetry protocol (`.speckit/dpi-spec.json`) connecting state agricultural boards (Odisha 🤝 Punjab 🤝 Maharashtra 🤝 Tamil Nadu 🤝 Andhra Pradesh 🤝 West Bengal) to exchange pest outbreak vectors and climate resilience models in real time.
+### 🌟 Key Features
 
----
+* **100% Offline AI Disease Scanning:** Uses highly quantized MobileNet/TensorFlow.js models permanently cached in IndexedDB to scan and diagnose leaf diseases directly on the device's CPU/GPU. No cloud needed. No latency.
+* **Generative Agronomy Engine:** Integrates Google's Gemini 3.6 Flash to translate complex chemical and organic treatments into easy-to-understand native dialects.
+* **Native Tongue & TTS Support:** Built-in localization for **Hindi** and **Odia** with Web Speech API integration to read remedies out loud for farmers facing literacy barriers.
+* **DPI Telemetry Grid:** Utilizes OpenStreetMap (Leaflet) to build an interoperable mesh. When devices regain connection, anonymous disease outbreaks are broadcasted to the grid to warn neighboring farmers of migrating blights.
+* **Agri-Brutalism UX:** Designed strictly for outdoor usability. Massive high-contrast buttons, thick borders, and heavy typography ensure readability under blinding sunlight and usability with muddy hands.
 
-## ✨ 3-Tier AI Diagnostic Engine Architecture
-- **Tier 1 (Cloud)**: Google AI Studio Gemini Flash API for deep cloud diagnostics.
-- **Tier 2 (On-Device Model)**: Persistent IndexedDB vision model cached on the phone for 100% offline mobile camera diagnostics.
-- **Tier 3 (Zero Download)**: Bundled local JSON symptom lookup database (`src/data/offline_diseases.json`).
+## 🛠️ Architecture & Tech Stack
 
----
+1. **Frontend Core:** React 18 + Vite
+2. **Offline Caching:** Vite-PWA with Workbox (Service Workers) for absolute caching of HTML/CSS/JS and Model Binaries.
+3. **Edge ML:** @tensorflow/tfjs static bundling to avoid dynamic import chunk failure offline.
+4. **LLM Engine:** @google/genai (Gemini 1.5/3.6 Flash fallback strategies).
+5. **Geospatial:** React-Leaflet mapped over OSM tiles.
+6. **Styling:** TailwindCSS using a custom "Agri-Brutalism" design system.
 
-## 🛠️ Official Google AI Stack Integrations
-- **Generative AI & Multimodal**: Google AI Studio Gemini API (`@google/genai`)
-- **Speech & Translation**: Web Speech API / Google Cloud Speech-to-Text & Text-to-Speech
-- **Geospatial & Climate**: Google Maps Platform + Open-Meteo / IMD & ISRO satellite indices
-- **Datasets**: Data.gov.in, Agmarknet Mandi rates, ICAR knowledge base
+## 🚀 Quick Start (Local Development)
 
----
+To run Krishi Setu locally on your machine:
 
-## 🏃 Quick Start Instructions
+\\\ash
+# 1. Clone the repository
+git clone https://github.com/SahooShuvranshu/KrishiSetu-AI.git
+cd KrishiSetu-AI
 
-```bash
-# 1. Install dependencies
+# 2. Install dependencies
 npm install
 
-# 2. Add your Gemini API Key in .env (Copy from .env.example)
-cp .env.example .env
+# 3. Configure Environment Variables
+# Create a .env file and add your Gemini API Key
+echo "VITE_GEMINI_API_KEY=your_key_here" > .env
 
-# 3. Start local development server
+# 4. Start the development server
 npm run dev
-```
+\\\
 
-Open `http://localhost:5173` on your computer or mobile browser!
+## 📚 Machine Learning Integration
+To train your own quantized crop disease models for the offline engine, we have included a Jupyter Notebook.
+1. Open \
+otebooks/KrishiSetu_Real_Model_Training.ipynb\ in Google Colab.
+2. Provide a dataset (500+ images per class).
+3. Export the \model.json\ and \.bin\ files directly into the \/public/model\ directory.
+
+## 🤝 Contributing
+Krishi Setu is an open-source initiative. Please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) before submitting Pull Requests.
+
+## 🔒 Security
+If you find a security vulnerability, please refer to our [Security Policy](SECURITY.md) to report it responsibly.
+
+## 📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+<div align="center">
+  <p>Built with 💡 by <b>Crystal Studio Labs</b></p>
+</div>
