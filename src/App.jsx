@@ -14,6 +14,7 @@ function App() {
   const [showInfo, setShowInfo] = useState(false); // Info Modal state
   const [modelDownloaded, setModelDownloaded] = useState(false);
   const [downloading, setDownloading] = useState(false);
+  const [geminiKey, setGeminiKey] = useState(localStorage.getItem('krishisetu_gemini_key') || '');
   
   const [appLanguage, setAppLanguage] = useState(localStorage.getItem('krishisetu_lang') || 'en');
   
@@ -167,14 +168,25 @@ function App() {
             
             <div className="border-2 border-black p-3 bg-gray-50 mb-4 font-mono text-xs">
               <h3 className="font-bold uppercase text-gray-500 mb-2">Cloud AI API Key</h3>
-              <input 
-                type="password" 
-                defaultValue={localStorage.getItem('krishisetu_gemini_key') || ''}
-                onChange={(e) => localStorage.setItem('krishisetu_gemini_key', e.target.value)}
-                placeholder="Paste Gemini API Key here..." 
-                className="w-full p-2 border-2 border-black mb-1 focus:outline-none focus:bg-brutal-neon text-black font-sans"
-              />
-              <p className="text-[9px] text-green-700 font-bold uppercase">🔒 Stays on your device only</p>
+              <div className="flex gap-2 mb-1">
+                <input 
+                  type="password" 
+                  value={geminiKey}
+                  onChange={(e) => setGeminiKey(e.target.value)}
+                  placeholder="Paste Gemini API Key..." 
+                  className="w-full p-2 border-2 border-black focus:outline-none focus:bg-brutal-neon text-black font-sans"
+                />
+                <button 
+                  onClick={() => {
+                    localStorage.setItem('krishisetu_gemini_key', geminiKey);
+                    alert("API Key Saved Successfully!");
+                  }}
+                  className="bg-black text-white px-3 font-bold uppercase border-2 border-black hover:bg-brutal-neon hover:text-black transition-colors"
+                >
+                  Save
+                </button>
+              </div>
+              <p className="text-[9px] text-green-700 font-bold uppercase mt-2">🔒 Stays on your device only</p>
             </div>
 
             <div className="border-2 border-black p-3 bg-gray-50 mb-4 font-mono text-xs">
