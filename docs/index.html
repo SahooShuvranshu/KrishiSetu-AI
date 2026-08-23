@@ -69,6 +69,11 @@
             white-space: nowrap;
             animation: marquee 20s linear infinite;
         }
+        
+        /* Hide Google Translate UI to keep brutalist look */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+        #goog-gt-tt { display: none !important; box-shadow: none !important; }
     </style>
 </head>
 <body class="text-black overflow-x-hidden border-x-[8px] md:border-x-[16px] border-black min-h-screen flex flex-col">
@@ -87,9 +92,17 @@
                 STATUS: <span class="bg-agri-neon text-black px-1 border border-black font-black">HARVEST_READY</span>
             </div>
         </div>
-        <a href="https://github.com/SahooShuvranshu/KrishiSetu-AI" target="_blank" class="bg-white border-4 border-black px-6 py-2 font-black text-lg hover:bg-black hover:text-white transition-none shadow-heavy hover:shadow-none hover:translate-x-1 hover:translate-y-1">
-            [ SRC_CODE ]
-        </a>
+        <div class="flex gap-4">
+            <div id="google_translate_element" class="hidden"></div>
+            <div class="flex gap-2">
+                <button onclick="changeLang('en', this)" class="lang-btn bg-agri-neon text-black border-4 border-black px-2 py-1 font-black text-sm shadow-[2px_2px_0_0_#000]">EN</button>
+                <button onclick="changeLang('or', this)" class="lang-btn bg-white text-gray-500 border-4 border-black px-2 py-1 font-black text-sm shadow-[2px_2px_0_0_#000]">ଓଡ଼ିଆ</button>
+                <button onclick="changeLang('hi', this)" class="lang-btn bg-white text-gray-500 border-4 border-black px-2 py-1 font-black text-sm shadow-[2px_2px_0_0_#000]">हिन्दी</button>
+            </div>
+            <a href="https://github.com/SahooShuvranshu/KrishiSetu-AI" target="_blank" class="bg-white border-4 border-black px-6 py-2 font-black text-lg hover:bg-black hover:text-white transition-none shadow-heavy hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+                [ SRC_CODE ]
+            </a>
+        </div>
     </header>
 
     <!-- Hero Section -->
@@ -337,6 +350,31 @@
             Designed & Engineered by <span class="text-white">Crystal Studio Labs</span>. Built for Bharat 🇮🇳.
         </div>
     </footer>
+
+    <!-- GTranslate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'hi,or,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        }
+        
+        function changeLang(langCode, btn) {
+            // Update active button styles
+            document.querySelectorAll('.lang-btn').forEach(b => {
+                b.classList.remove('bg-agri-neon', 'text-black');
+                b.classList.add('bg-white', 'text-gray-500');
+            });
+            btn.classList.add('bg-agri-neon', 'text-black');
+            btn.classList.remove('bg-white', 'text-gray-500');
+
+            // Trigger Google Translate hidden iframe
+            var selectField = document.querySelector('select.goog-te-combo');
+            if(selectField) {
+                selectField.value = langCode;
+                selectField.dispatchEvent(new Event('change'));
+            }
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <!-- AOS Script -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
