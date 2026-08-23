@@ -145,6 +145,32 @@ If you find a security vulnerability, please refer to our [Security Policy](SECU
 ## 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
+---
+
+<br/>
+
 <div align="center">
-  <p>Built with 💡 by <b>Crystal Studio Labs</b></p>
+  <img src="public/sprout.svg" alt="Krishi Setu Leaf" width="50" />
+  <br/>
+  <h2><b>KRISHI SETU AI</b></h2>
+  <p><i>Empowering the next generation of climate-resilient agriculture.</i></p>
+  
+  <br/>
+  
+  <code>🏆 Official Hackathon Submission - Track 4 (Cooperation) 🏆</code>
+  
+  <br/>
+  <br/>
+
+  <p>
+    <a href="https://krishisetu-ai.onrender.com/"><b>Live Web App</b></a> • 
+    <a href="https://sahooshuvranshu.github.io/KrishiSetu-AI/"><b>Landing Page</b></a> • 
+    <a href="https://github.com/SahooShuvranshu/KrishiSetu-AI/issues"><b>Report Bug</b></a>
+  </p>
+
+  <br/>
+
+  <p>Architected & Developed with 💚 by <strong>Crystal Studio Labs</strong></p>
+  <p><sub>Shuvransu Sekhar Sahoo • Snehal Kumar Moharana • Subhankar Mohapatra • Pruthiraj Lenka</sub></p>
 </div>
+<br/>
