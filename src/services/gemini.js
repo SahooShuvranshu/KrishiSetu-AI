@@ -8,7 +8,6 @@ export async function diagnoseCropLeaf(base64Image, language = 'English') {
   }
 
   const genAI = new GoogleGenerativeAI(API_KEY);
-  const model = genAI.getGenerativeModel({ model: 'gemini-3.6-flash' });
 
   const prompt = `You are a world-class agricultural pathologist in India.
 Diagnose this crop leaf image accurately for Indian farming conditions.
@@ -35,7 +34,16 @@ Return strictly a valid JSON object (no markdown formatting, no code blocks) wit
     }
   };
 
-  const response = await model.generateContent([prompt, imagePart]);
+  let response;
+  try {
+    const model = genAI.getGenerativeModel({ model: 'gemini-3.6-flash' });
+    response = await model.generateContent([prompt, imagePart]);
+  } catch (err) {
+    console.warn("Primary model failed, falling back to gemini-1.5-flash", err);
+    const fallbackModel = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    response = await fallbackModel.generateContent([prompt, imagePart]);
+  }
+
   const text = response.response.text();
   const cleanedText = text.replace(/```json|```/g, '').trim();
   const parsed = JSON.parse(cleanedText);

@@ -42,8 +42,8 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
         const diagnosis = await diagnoseCropLeaf(base64Image, appLanguage);
         setResult({
           source: 'Cloud AI',
-          disease: diagnosis.disease_name,
-          treatment: diagnosis.organic_remedy + '\n\n' + diagnosis.chemical_remedy
+          disease: diagnosis.disease,
+          treatment: diagnosis.treatment
         });
       } else {
         const img = new Image();
