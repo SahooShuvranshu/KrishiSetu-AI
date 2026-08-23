@@ -15,7 +15,7 @@
     @apply bg-white border-4 border-black shadow-brutal transition-all duration-200;
   }
   .brutal-button {
-    @apply bg-brutal-green text-black font-bold border-4 border-black shadow-brutal active:shadow-none active:translate-x-1 active:translate-y-1 transition-all duration-100;
+    @apply bg-brutal-neon text-black font-black uppercase tracking-widest border-4 border-black shadow-brutal active:shadow-none active:translate-x-1 active:translate-y-1 transition-all duration-100;
   }
 }
 
@@ -25,9 +25,9 @@
   border-left: 4px solid black;
 }
 ::-webkit-scrollbar-track {
-  background: #e8f4ec;
+  background: #f4f4f5; /* Concrete paper */
 }
 ::-webkit-scrollbar-thumb {
-  background: #000;
+  background: #14532d; /* Tractor Green */
   border-left: 4px solid black;
 }
