@@ -34,7 +34,7 @@ function App() {
   const [geminiKey, setGeminiKey] = useState(localStorage.getItem('krishisetu_gemini_key') || '');
   
   const [appLanguage, setAppLanguage] = useState(localStorage.getItem('krishisetu_lang') || 'en');
-  const [darkMode, setDarkMode] = useState(localStorage.getItem('krishisetu_darkmode') === 'true');
+  const [theme, setTheme] = useState(localStorage.getItem('krishisetu_theme') || 'default');
   const [notifications, setNotifications] = useState(localStorage.getItem('krishisetu_notifications') !== 'false');
   const [autoDetect, setAutoDetect] = useState(localStorage.getItem('krishisetu_autodetect') !== 'false');
   const toast = useToast();
@@ -91,9 +91,28 @@ function App() {
     localStorage.setItem('krishisetu_lang', langCode);
   };
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    localStorage.setItem('krishisetu_darkmode', (!darkMode).toString());
+  const cycleTheme = () => {
+    const themes = ['default', 'dark', 'bw'];
+    const currentIndex = themes.indexOf(theme);
+    const nextTheme = themes[(currentIndex + 1) % themes.length];
+    setTheme(nextTheme);
+    localStorage.setItem('krishisetu_theme', nextTheme);
+  };
+
+  const getThemeIcon = () => {
+    switch (theme) {
+      case 'dark': return <Moon size={16} />;
+      case 'bw': return <span className="text-xs font-black">B&W</span>;
+      default: return <Sun size={16} />;
+    }
+  };
+
+  const getThemeName = () => {
+    switch (theme) {
+      case 'dark': return 'Dark Mode';
+      case 'bw': return 'B&W Mode';
+      default: return 'Light Mode';
+    }
   };
 
   const toggleNotifications = () => {
@@ -156,7 +175,11 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-brutal-bg bg-agri-grid pb-24 font-sans text-black selection:bg-brutal-neon relative flex flex-col">
+    <div className={`min-h-screen bg-brutal-bg bg-agri-grid pb-24 font-sans relative flex flex-col ${
+      theme === 'dark' ? 'bg-gray-900 text-white' : 
+      theme === 'bw' ? 'bg-white text-black grayscale' : 
+      'bg-brutal-bg text-black'
+    }`}>
       <div className="h-4 w-full bg-brutal-neon bg-tractor-tread border-b-4 border-black"></div>
       <header className="bg-white border-b-4 border-black p-3 sticky top-0 z-40 flex justify-between items-center shadow-brutal mb-4">
         <div className="flex items-center gap-2">
@@ -314,17 +337,17 @@ function App() {
             <div className="border-2 border-black p-3 bg-gray-50 mb-4 font-mono text-xs">
               <h3 className="font-bold uppercase text-gray-500 mb-3">{t('preferences') || 'Preferences'}</h3>
               
-              {/* Dark Mode */}
+              {/* Theme Toggle */}
               <div className="flex items-center justify-between py-2 border-b border-black">
                 <div className="flex items-center gap-2">
-                  {darkMode ? <Moon size={16} /> : <Sun size={16} />}
-                  <span className="font-bold uppercase">{t('darkMode') || 'Dark Mode'}</span>
+                  {getThemeIcon()}
+                  <span className="font-bold uppercase">{getThemeName()}</span>
                 </div>
                 <button
-                  onClick={toggleDarkMode}
-                  className={`w-12 h-6 border-2 border-black relative transition-colors ${darkMode ? 'bg-brutal-neon' : 'bg-gray-300'}`}
+                  onClick={cycleTheme}
+                  className="px-3 py-1 border-2 border-black bg-brutal-neon font-black text-xs uppercase hover:bg-white transition-colors"
                 >
-                  <div className={`w-5 h-5 bg-black absolute top-0.5 transition-transform ${darkMode ? 'translate-x-6' : 'translate-x-0.5'}`} />
+                  {theme === 'default' ? '☀️' : theme === 'dark' ? '🌙' : '黑白'}
                 </button>
               </div>
 
