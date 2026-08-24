@@ -6,6 +6,34 @@
   body {
     @apply bg-brutal-bg text-black font-sans selection:bg-brutal-neon selection:text-black;
   }
+  
+  /* Dark mode */
+  .dark {
+    @apply bg-gray-900 text-white;
+  }
+  .dark .bg-white {
+    @apply bg-gray-800;
+  }
+  .dark .bg-gray-50 {
+    @apply bg-gray-800;
+  }
+  .dark .text-black {
+    @apply text-white;
+  }
+  .dark .border-black {
+    @apply border-gray-600;
+  }
+  
+  /* B&W mode */
+  .bw-mode {
+    filter: grayscale(100%);
+  }
+  .bw-mode .bg-brutal-neon {
+    @apply bg-gray-400;
+  }
+  .bw-mode .bg-brutal-green {
+    @apply bg-gray-700;
+  }
 }
 
 @layer components {
