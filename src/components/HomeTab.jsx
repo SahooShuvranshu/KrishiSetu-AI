@@ -36,7 +36,7 @@ export default function HomeTab({ t, appLanguage, isOnline, setActiveTab }) {
   ];
 
   return (
-    <div className="flex flex-col gap-4 animate-fade-in pb-8">
+    <div className="flex flex-col gap-4 animate-fade-in pb-8 bg-dots">
       {/* Hero Section */}
       <div className="bg-black text-white p-6 border-2 border-black shadow-brutal relative overflow-hidden">
         <div className="absolute top-0 right-0 w-32 h-32 bg-brutal-neon opacity-10 rounded-full -translate-y-1/2 translate-x-1/2" />

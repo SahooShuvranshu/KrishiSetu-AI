@@ -201,7 +201,7 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
   };
 
   return (
-    <div className="flex flex-col gap-4 animate-fade-in pb-10">
+    <div className="flex flex-col gap-4 animate-fade-in pb-10 bg-crosshatch">
       
       {!imagePreview && (
         <div className="flex flex-col gap-4 mt-4">

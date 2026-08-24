@@ -111,7 +111,7 @@ export default function MarketPrices({ t, appLanguage, isOnline }) {
   }, []);
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 bg-grid">
       <div className="bg-black text-white p-3 border-2 border-black shadow-brutal-hover flex justify-between items-center">
         <div>
           <h2 className="text-lg font-black uppercase tracking-tighter">{t('marketPrices') || 'Market Prices'}</h2>

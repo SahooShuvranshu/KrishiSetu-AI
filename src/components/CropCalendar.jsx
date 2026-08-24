@@ -58,7 +58,7 @@ export default function CropCalendar({ t, appLanguage }) {
   const currentSeason = getCurrentSeason();
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 bg-diagonal">
       <div className="bg-black text-white p-3 border-2 border-black shadow-brutal-hover flex justify-between items-center">
         <div>
           <h2 className="text-lg font-black uppercase tracking-tighter">{t('cropCalendar') || 'Crop Calendar'}</h2>
