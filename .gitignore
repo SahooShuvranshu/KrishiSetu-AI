@@ -56,6 +56,11 @@ public/model/*.tflite
 # TensorFlow.js model artifacts
 tfjs_model/
 
+# Internal tracking files
+todo.md
+phases.md
+model_train.md
+
 # Misc
 *.log
 coverage/
