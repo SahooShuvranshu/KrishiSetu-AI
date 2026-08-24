@@ -91,29 +91,13 @@ function App() {
     localStorage.setItem('krishisetu_lang', langCode);
   };
 
-  const cycleTheme = () => {
-    const themes = ['default', 'dark', 'bw'];
-    const currentIndex = themes.indexOf(theme);
-    const nextTheme = themes[(currentIndex + 1) % themes.length];
-    setTheme(nextTheme);
-    localStorage.setItem('krishisetu_theme', nextTheme);
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('krishisetu_theme', newTheme);
   };
 
-  const getThemeIcon = () => {
-    switch (theme) {
-      case 'dark': return <Moon size={16} />;
-      case 'bw': return <span className="text-xs font-black">B&W</span>;
-      default: return <Sun size={16} />;
-    }
-  };
-
-  const getThemeName = () => {
-    switch (theme) {
-      case 'dark': return 'Dark Mode';
-      case 'bw': return 'B&W Mode';
-      default: return 'Light Mode';
-    }
-  };
+  const isDark = theme === 'dark';
 
   const toggleNotifications = () => {
     setNotifications(!notifications);
@@ -175,17 +159,17 @@ function App() {
   }
 
   return (
-    <div className={`min-h-screen bg-brutal-bg bg-agri-grid pb-24 font-sans relative flex flex-col ${
-      theme === 'dark' ? 'bg-gray-900 text-white' : 
-      theme === 'bw' ? 'bg-white text-black grayscale' : 
-      'bg-brutal-bg text-black'
+    <div className={`min-h-screen pb-24 font-sans relative flex flex-col transition-colors duration-300 ${
+      isDark ? 'bg-gray-900 text-white' : 'bg-brutal-bg bg-agri-grid text-black'
     }`}>
-      <div className="h-4 w-full bg-brutal-neon bg-tractor-tread border-b-4 border-black"></div>
-      <header className="bg-white border-b-4 border-black p-3 sticky top-0 z-40 flex justify-between items-center shadow-brutal mb-4">
+      <div className={`h-4 w-full bg-brutal-neon bg-tractor-tread border-b-4 ${isDark ? 'border-gray-700' : 'border-black'}`}></div>
+      <header className={`${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-black'} border-b-4 p-3 sticky top-0 z-40 flex justify-between items-center shadow-brutal mb-4 transition-colors`}>  
         <div className="flex items-center gap-2">
           <div>
             <h1 className="text-2xl font-black tracking-tighter uppercase leading-none">{t('appTitle')}</h1>
-            <p className="font-mono text-[9px] font-black bg-black text-brutal-neon px-2 py-0.5 mt-1 inline-block border border-black uppercase">
+            <p className={`font-mono text-[9px] font-black px-2 py-0.5 mt-1 inline-block border uppercase ${
+              isDark ? 'bg-brutal-neon text-black border-brutal-neon' : 'bg-black text-brutal-neon border-black'
+            }`}>
               {t('appSubtitle')}
             </p>
           </div>
@@ -194,7 +178,7 @@ function App() {
         <div className="flex gap-2">
           <button 
             onClick={() => setShowInfo(true)}
-            className="p-2 border-2 border-black bg-gray-100 hover:bg-brutal-neon shadow-[2px_2px_0_0_#000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
+            className={`p-2 border-2 ${isDark ? 'bg-gray-700 border-gray-600 hover:bg-brutal-neon hover:text-black' : 'bg-gray-100 border-black hover:bg-brutal-neon'} shadow-[2px_2px_0_0_#000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all`}
             aria-label="About Project"
           >
             <Info size={18} />
@@ -202,7 +186,7 @@ function App() {
           
           <button 
             onClick={() => setShowSettings(true)}
-            className="p-2 border-2 border-black bg-gray-100 hover:bg-brutal-neon shadow-[2px_2px_0_0_#000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
+            className={`p-2 border-2 ${isDark ? 'bg-gray-700 border-gray-600 hover:bg-brutal-neon hover:text-black' : 'bg-gray-100 border-black hover:bg-brutal-neon'} shadow-[2px_2px_0_0_#000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all`}
             aria-label="App Settings"
           >
             <Settings size={18} />
@@ -213,44 +197,26 @@ function App() {
       {/* Info Modal */}
       {showInfo && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-end sm:items-center justify-center animate-fade-in" role="dialog" aria-modal="true" aria-label="About Project">
-          <div className="bg-white border-4 border-black w-full sm:max-w-sm max-h-[85vh] relative shadow-[8px_8px_0_0_#00ff41] sm:m-4 overflow-hidden flex flex-col">
-            {/* Header */}
-            <div className="p-4 pb-2 border-b-2 border-black flex-shrink-0">
-              <button 
-                onClick={() => setShowInfo(false)}
-                className="absolute top-3 right-3 p-1 border-2 border-black bg-red-500 text-white"
-              >
-                <X size={18} />
-              </button>
+          <div className={`${isDark ? 'bg-gray-800 border-gray-600' : 'bg-white border-black'} border-4 w-full sm:max-w-sm max-h-[85vh] relative shadow-[8px_8px_0_0_#00ff41] sm:m-4 overflow-hidden flex flex-col transition-colors`}>
+            <div className={`p-4 pb-2 border-b-2 ${isDark ? 'border-gray-600' : 'border-black'} flex-shrink-0`}>  
+              <button onClick={() => setShowInfo(false)} className="absolute top-3 right-3 p-1 border-2 border-black bg-red-500 text-white"><X size={18} /></button>
               <h2 className="font-black text-xl uppercase">About Project</h2>
             </div>
-            
-            {/* Scrollable content */}
             <div className="p-4 overflow-y-auto flex-1">
-            <div className="font-mono text-sm">
-              <p className="font-bold uppercase text-gray-500 mb-1">Project Name:</p>
-              <p className="text-lg font-black bg-brutal-green p-2 border-2 border-black mb-3">Krishi Setu AI</p>
-              
-              <p className="font-bold uppercase text-gray-500 mb-1">Team Name:</p>
-              <p className="text-lg font-black bg-brutal-neon p-2 border-2 border-black mb-3">Crystal Studio Labs</p>
-
-              <p className="font-bold uppercase text-gray-500 mb-1">Hackathon:</p>
-              <p className="bg-gray-100 p-2 border-2 border-black mb-4">Google AI Hackathon 2026: Code for Communities</p>
-
-              <p className="font-bold uppercase text-gray-500 mb-1">About:</p>
-              <p className="text-[11px] leading-relaxed bg-white border-2 border-black p-2">
-                Krishi Setu is an offline-first, multilingual AI plant pathologist and localized broadcast network, designed entirely for remote Indian farming communities.
-              </p>
-
-              <div className="flex gap-2 mt-4">
-                <a href="https://sahooshuvranshu.is-a.dev/KrishiSetu-AI/" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 p-3 bg-brutal-neon text-black border-2 border-black hover:bg-white transition-all font-bold uppercase text-xs shadow-[4px_4px_0_0_#000]">
-                  <ExternalLink size={16} /> Showcase
-                </a>
-                <a href="https://github.com/SahooShuvranshu/KrishiSetu-AI" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 p-3 bg-black text-white border-2 border-black hover:bg-white hover:text-black transition-all font-bold uppercase text-xs shadow-[4px_4px_0_0_#000]">
-                  <Github size={16} /> Source
-                </a>
+              <div className="font-mono text-sm">
+                <p className="font-bold uppercase text-gray-500 mb-1">Project Name:</p>
+                <p className="text-lg font-black bg-brutal-green p-2 border-2 border-black mb-3">Krishi Setu AI</p>
+                <p className="font-bold uppercase text-gray-500 mb-1">Team Name:</p>
+                <p className="text-lg font-black bg-brutal-neon p-2 border-2 border-black mb-3">Crystal Studio Labs</p>
+                <p className="font-bold uppercase text-gray-500 mb-1">Hackathon:</p>
+                <p className={`${isDark ? 'bg-gray-700' : 'bg-gray-100'} p-2 border-2 ${isDark ? 'border-gray-600' : 'border-black'} mb-4`}>Google AI Hackathon 2026: Code for Communities</p>
+                <p className="font-bold uppercase text-gray-500 mb-1">About:</p>
+                <p className={`text-[11px] leading-relaxed ${isDark ? 'bg-gray-700 border-gray-600' : 'bg-white border-black'} border-2 p-2`}>Krishi Setu is an offline-first, multilingual AI plant pathologist and localized broadcast network, designed entirely for remote Indian farming communities.</p>
+                <div className="flex gap-2 mt-4">
+                  <a href="https://sahooshuvranshu.is-a.dev/KrishiSetu-AI/" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 p-3 bg-brutal-neon text-black border-2 border-black hover:bg-white transition-all font-bold uppercase text-xs shadow-[4px_4px_0_0_#000]"><ExternalLink size={16} /> Showcase</a>
+                  <a href="https://github.com/SahooShuvranshu/KrishiSetu-AI" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 p-3 bg-black text-white border-2 border-black hover:bg-white hover:text-black transition-all font-bold uppercase text-xs shadow-[4px_4px_0_0_#000]"><Github size={16} /> Source</a>
+                </div>
               </div>
-            </div>
             </div>
           </div>
         </div>
@@ -259,167 +225,76 @@ function App() {
       {/* Settings Modal */}
       {showSettings && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-end sm:items-center justify-center animate-fade-in" role="dialog" aria-modal="true" aria-label="App Settings">
-          <div className="bg-white border-4 border-black w-full sm:max-w-sm max-h-[90vh] relative shadow-[8px_8px_0_0_#00ff41] sm:m-4">
-            {/* Header - sticky on mobile */}
-            <div className="sticky top-0 bg-white z-10 p-4 pb-2 border-b-2 border-black">
-              <button 
-                onClick={() => setShowSettings(false)}
-                className="absolute top-3 right-3 p-1 border-2 border-black bg-red-500 text-white"
-              >
-                <X size={18} />
-              </button>
+          <div className={`${isDark ? 'bg-gray-800 border-gray-600' : 'bg-white border-black'} border-4 w-full sm:max-w-sm max-h-[90vh] relative shadow-[8px_8px_0_0_#00ff41] sm:m-4 transition-colors`}>
+            <div className={`sticky top-0 z-10 p-4 pb-2 border-b-2 ${isDark ? 'bg-gray-800 border-gray-600' : 'bg-white border-black'}`}>
+              <button onClick={() => setShowSettings(false)} className="absolute top-3 right-3 p-1 border-2 border-black bg-red-500 text-white"><X size={18} /></button>
               <h2 className="font-black text-xl uppercase">{t('settings')}</h2>
             </div>
-            
-            {/* Scrollable content */}
             <div className="p-4 overflow-y-auto max-h-[calc(90vh-60px)]">
-            
-            <div className="border-2 border-black p-3 bg-gray-50 mb-4 font-mono text-xs">
-              <h3 className="font-bold uppercase text-gray-500 mb-2">Cloud AI API Key</h3>
-              <div className="flex gap-2 mb-1">
-                <input 
-                  type="password" 
-                  value={geminiKey}
-                  onChange={(e) => setGeminiKey(e.target.value)}
-                  placeholder="Paste Gemini API Key..." 
-                  className="w-full p-2 border-2 border-black focus:outline-none focus:bg-brutal-neon text-black font-sans"
-                />
-                <button 
-                  onClick={() => {
-                    localStorage.setItem('krishisetu_gemini_key', geminiKey);
-                    alert("API Key Saved Successfully!");
-                  }}
-                  className="bg-black text-white px-3 font-bold uppercase border-2 border-black hover:bg-brutal-neon hover:text-black transition-colors"
-                >
-                  Save
-                </button>
-              </div>
-              <p className="text-[9px] text-green-700 font-bold uppercase mt-2">🔒 Stays on your device only</p>
-            </div>
-
-            <div className="border-2 border-black p-3 bg-gray-50 mb-4 font-mono text-xs">
-              <h3 className="font-bold uppercase text-gray-500 mb-2 flex items-center gap-2">
-                <Languages size={16} /> {t('selectLanguage')}
-              </h3>
-              <div className="grid grid-cols-3 gap-2">
-                <button onClick={() => changeLanguage('en')} className={`brutal-button py-2 uppercase ${appLanguage === 'en' ? 'bg-brutal-neon border-black' : 'bg-white border-gray-400'}`}>English</button>
-                <button onClick={() => changeLanguage('or')} className={`brutal-button py-2 uppercase ${appLanguage === 'or' ? 'bg-brutal-neon border-black' : 'bg-white border-gray-400'}`}>ଓଡ଼ିଆ</button>
-                <button onClick={() => changeLanguage('hi')} className={`brutal-button py-2 uppercase ${appLanguage === 'hi' ? 'bg-brutal-neon border-black' : 'bg-white border-gray-400'}`}>हिन्दी</button>
-              </div>
-            </div>
-
-            <div className="border-2 border-black p-3 bg-gray-50 mb-4 font-mono text-xs">
-              <h3 className="font-bold uppercase text-gray-500 mb-2">{t('offlineModel')}</h3>
-              <p className="mb-3">{t('modelDesc')}</p>
-              
-              {modelDownloaded ? (
-                <div className="flex flex-col gap-2">
-                  <span className="flex items-center gap-2 text-green-700 font-bold bg-green-100 p-2 border border-black">
-                    <HardDrive size={16} /> {t('modelInstalled')}
-                  </span>
-                  <button onClick={removeModel} className="brutal-button bg-red-500 text-white py-2 uppercase">
-                    {t('deleteModel')}
-                  </button>
+              {/* API Key */}
+              <div className={`border-2 ${isDark ? 'border-gray-600 bg-gray-700' : 'border-black bg-gray-50'} p-3 mb-4 font-mono text-xs`}>  
+                <h3 className="font-bold uppercase text-gray-500 mb-2">Cloud AI API Key</h3>
+                <div className="flex gap-2 mb-1">
+                  <input type="password" value={geminiKey} onChange={(e) => setGeminiKey(e.target.value)} placeholder="Paste Gemini API Key..." className={`w-full p-2 border-2 ${isDark ? 'border-gray-600 bg-gray-600 text-white' : 'border-black'} focus:outline-none focus:bg-brutal-neon font-sans`} />
+                  <button onClick={() => { localStorage.setItem('krishisetu_gemini_key', geminiKey); toast.success('API Key Saved!', 'Settings'); }} className="bg-black text-white px-3 font-bold uppercase border-2 border-black hover:bg-brutal-neon hover:text-black transition-colors">Save</button>
                 </div>
-              ) : isOnline ? (
-                <button 
-                  onClick={downloadModel}
-                  disabled={downloading}
-                  className="brutal-button w-full bg-brutal-neon text-black py-2 uppercase flex justify-center items-center gap-2"
-                >
-                  {downloading ? t('downloading') : t('download')}
-                </button>
-              ) : (
-                <label className="brutal-button w-full bg-yellow-400 text-black py-2 uppercase flex justify-center items-center gap-2 cursor-pointer shadow-[2px_2px_0_0_#000] border-2 border-black hover:bg-black hover:text-white transition-all text-xs font-black">
-                  Select Model File(s)
-                  <input type="file" accept=".json,.bin" className="hidden" multiple onChange={(e) => {
-                    if (e.target.files.length > 0) {
-                      setDownloading(true);
-                      setTimeout(() => {
-                        localStorage.setItem('krishisetu_model_downloaded', 'true');
-                        setModelDownloaded(true);
-                        setDownloading(false);
-                      }, 1000);
-                    }
-                  }} />
-                </label>
-              )}
-            </div>
-
-            {/* Preferences */}
-            <div className="border-2 border-black p-3 bg-gray-50 mb-4 font-mono text-xs">
-              <h3 className="font-bold uppercase text-gray-500 mb-3">{t('preferences') || 'Preferences'}</h3>
-              
-              {/* Theme Toggle */}
-              <div className="flex items-center justify-between py-3 border-b border-black">
-                <div className="flex items-center gap-2">
-                  {getThemeIcon()}
-                  <span className="font-bold uppercase text-sm">{getThemeName()}</span>
+                <p className="text-[9px] text-green-400 font-bold uppercase mt-2">🔒 Stays on your device only</p>
+              </div>
+              {/* Language */}
+              <div className={`border-2 ${isDark ? 'border-gray-600 bg-gray-700' : 'border-black bg-gray-50'} p-3 mb-4 font-mono text-xs`}>  
+                <h3 className="font-bold uppercase text-gray-500 mb-2 flex items-center gap-2"><Languages size={16} /> {t('selectLanguage')}</h3>
+                <div className="grid grid-cols-3 gap-2">
+                  <button onClick={() => changeLanguage('en')} className={`brutal-button py-2 uppercase ${appLanguage === 'en' ? 'bg-brutal-neon border-black' : isDark ? 'bg-gray-600 border-gray-500' : 'bg-white border-gray-400'}`}>English</button>
+                  <button onClick={() => changeLanguage('or')} className={`brutal-button py-2 uppercase ${appLanguage === 'or' ? 'bg-brutal-neon border-black' : isDark ? 'bg-gray-600 border-gray-500' : 'bg-white border-gray-400'}`}>ଓଡ଼ିଆ</button>
+                  <button onClick={() => changeLanguage('hi')} className={`brutal-button py-2 uppercase ${appLanguage === 'hi' ? 'bg-brutal-neon border-black' : isDark ? 'bg-gray-600 border-gray-500' : 'bg-white border-gray-400'}`}>हिन्दी</button>
                 </div>
-                <button
-                  onClick={cycleTheme}
-                  className="px-4 py-2 border-2 border-black bg-brutal-neon font-black text-sm uppercase active:bg-white transition-colors min-w-[60px]"
-                >
-                  {theme === 'default' ? '☀️' : theme === 'dark' ? '🌙' : '黑白'}
-                </button>
               </div>
-
-              {/* Notifications */}
-              <div className="flex items-center justify-between py-3 border-b border-black">
-                <div className="flex items-center gap-2">
-                  {notifications ? <Bell size={18} /> : <BellOff size={18} />}
-                  <span className="font-bold uppercase text-sm">{t('notifications') || 'Notifications'}</span>
+              {/* Model */}
+              <div className={`border-2 ${isDark ? 'border-gray-600 bg-gray-700' : 'border-black bg-gray-50'} p-3 mb-4 font-mono text-xs`}>  
+                <h3 className="font-bold uppercase text-gray-500 mb-2">{t('offlineModel')}</h3>
+                <p className="mb-3">{t('modelDesc')}</p>
+                {modelDownloaded ? (
+                  <div className="flex flex-col gap-2">
+                    <span className="flex items-center gap-2 text-green-400 font-bold bg-green-900 p-2 border border-green-600"><HardDrive size={16} /> {t('modelInstalled')}</span>
+                    <button onClick={removeModel} className="brutal-button bg-red-500 text-white py-2 uppercase">{t('deleteModel')}</button>
+                  </div>
+                ) : isOnline ? (
+                  <button onClick={downloadModel} disabled={downloading} className="brutal-button w-full bg-brutal-neon text-black py-2 uppercase">{downloading ? t('downloading') : t('download')}</button>
+                ) : (
+                  <label className="brutal-button w-full bg-yellow-400 text-black py-2 uppercase cursor-pointer">Select Model File(s)<input type="file" accept=".json,.bin" className="hidden" multiple onChange={(e) => { if (e.target.files.length > 0) { setDownloading(true); setTimeout(() => { localStorage.setItem('krishisetu_model_downloaded', 'true'); setModelDownloaded(true); setDownloading(false); }, 1000); } }} /></label>
+                )}
+              </div>
+              {/* Preferences */}
+              <div className={`border-2 ${isDark ? 'border-gray-600 bg-gray-700' : 'border-black bg-gray-50'} p-3 mb-4 font-mono text-xs`}>  
+                <h3 className="font-bold uppercase text-gray-500 mb-3">{t('preferences') || 'Preferences'}</h3>
+                {/* Theme */}
+                <div className={`flex items-center justify-between py-3 border-b ${isDark ? 'border-gray-600' : 'border-black'}`}>  
+                  <div className="flex items-center gap-2">{isDark ? <Moon size={18} /> : <Sun size={18} />}<span className="font-bold uppercase text-sm">{isDark ? 'Dark Mode' : 'Light Mode'}</span></div>
+                  <button onClick={toggleTheme} className="px-4 py-2 border-2 border-black bg-brutal-neon font-black text-sm uppercase min-w-[60px]">{isDark ? '🌙' : '☀️'}</button>
                 </div>
-                <button
-                  onClick={toggleNotifications}
-                  className={`w-14 h-7 border-2 border-black relative transition-colors ${notifications ? 'bg-brutal-neon' : 'bg-gray-300'}`}
-                >
-                  <div className={`w-6 h-6 bg-black absolute top-0.5 transition-transform ${notifications ? 'translate-x-7' : 'translate-x-0.5'}`} />
-                </button>
-              </div>
-
-              {/* Auto-detect Location */}
-              <div className="flex items-center justify-between py-3">
-                <div className="flex items-center gap-2">
-                  <Smartphone size={18} />
-                  <span className="font-bold uppercase text-sm">{t('autoDetectLocation') || 'Auto-detect Zone'}</span>
+                {/* Notifications */}
+                <div className={`flex items-center justify-between py-3 border-b ${isDark ? 'border-gray-600' : 'border-black'}`}>  
+                  <div className="flex items-center gap-2">{notifications ? <Bell size={18} /> : <BellOff size={18} />}<span className="font-bold uppercase text-sm">{t('notifications') || 'Notifications'}</span></div>
+                  <button onClick={toggleNotifications} className={`w-14 h-7 border-2 border-black relative transition-colors ${notifications ? 'bg-brutal-neon' : 'bg-gray-400'}`}><div className={`w-6 h-6 bg-black absolute top-0.5 transition-transform ${notifications ? 'translate-x-7' : 'translate-x-0.5'}`} /></button>
                 </div>
-                <button
-                  onClick={toggleAutoDetect}
-                  className={`w-14 h-7 border-2 border-black relative transition-colors ${autoDetect ? 'bg-brutal-neon' : 'bg-gray-300'}`}
-                >
-                  <div className={`w-6 h-6 bg-black absolute top-0.5 transition-transform ${autoDetect ? 'translate-x-7' : 'translate-x-0.5'}`} />
-                </button>
+                {/* Auto-detect */}
+                <div className="flex items-center justify-between py-3">
+                  <div className="flex items-center gap-2"><Smartphone size={18} /><span className="font-bold uppercase text-sm">{t('autoDetectLocation') || 'Auto-detect Zone'}</span></div>
+                  <button onClick={toggleAutoDetect} className={`w-14 h-7 border-2 border-black relative transition-colors ${autoDetect ? 'bg-brutal-neon' : 'bg-gray-400'}`}><div className={`w-6 h-6 bg-black absolute top-0.5 transition-transform ${autoDetect ? 'translate-x-7' : 'translate-x-0.5'}`} /></button>
+                </div>
               </div>
-            </div>
-
-            {/* App Info */}
-            <div className="border-2 border-black p-3 bg-gray-50 mb-4 font-mono text-xs">
-              <h3 className="font-bold uppercase text-gray-500 mb-2">{t('appInfo') || 'App Info'}</h3>
-              <div className="flex justify-between py-1">
-                <span className="text-gray-600">Version</span>
-                <span className="font-bold">1.0.0</span>
+              {/* App Info */}
+              <div className={`border-2 ${isDark ? 'border-gray-600 bg-gray-700' : 'border-black bg-gray-50'} p-3 mb-4 font-mono text-xs`}>  
+                <h3 className="font-bold uppercase text-gray-500 mb-2">{t('appInfo') || 'App Info'}</h3>
+                <div className="flex justify-between py-1"><span className="text-gray-400">Version</span><span className="font-bold">1.0.0</span></div>
+                <div className="flex justify-between py-1"><span className="text-gray-400">Build</span><span className="font-bold">Production</span></div>
+                <div className={`flex justify-between py-1 border-t ${isDark ? 'border-gray-600' : 'border-black'} mt-2 pt-2`}><span className="text-gray-400">Storage</span><span className="font-bold">{(JSON.stringify(localStorage).length / 1024).toFixed(1)} KB</span></div>
               </div>
-              <div className="flex justify-between py-1">
-                <span className="text-gray-600">Build</span>
-                <span className="font-bold">Production</span>
+              {/* Danger Zone */}
+              <div className="border-2 border-red-500 p-3 bg-red-900/30 font-mono text-xs">
+                <h3 className="font-bold uppercase text-red-400 mb-2">{t('dangerZone') || 'Danger Zone'}</h3>
+                <button onClick={clearAllData} className="w-full bg-red-500 text-white p-2 border-2 border-black font-bold uppercase flex items-center justify-center gap-2 hover:bg-red-600"><Trash2 size={14} /> {t('clearAllData') || 'Clear All Data'}</button>
               </div>
-              <div className="flex justify-between py-1 border-t border-black mt-2 pt-2">
-                <span className="text-gray-600">Storage Used</span>
-                <span className="font-bold">{(JSON.stringify(localStorage).length / 1024).toFixed(1)} KB</span>
-              </div>
-            </div>
-
-            {/* Danger Zone */}
-            <div className="border-2 border-red-500 p-3 bg-red-50 font-mono text-xs">
-              <h3 className="font-bold uppercase text-red-600 mb-2">{t('dangerZone') || 'Danger Zone'}</h3>
-              <button 
-                onClick={clearAllData}
-                className="w-full bg-red-500 text-white p-2 border-2 border-black font-bold uppercase flex items-center justify-center gap-2 hover:bg-red-600 transition-colors"
-              >
-                <Trash2 size={14} /> {t('clearAllData') || 'Clear All Data'}
-              </button>
-            </div>
             </div>
           </div>
         </div>

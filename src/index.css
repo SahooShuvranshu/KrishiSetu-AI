@@ -74,6 +74,22 @@
   box-shadow: 8px 12px 0px 0px rgba(0,0,0,1);
 }
 
+/* Dark mode overrides */
+.dark .bg-white { background-color: #1f2937 !important; }
+.dark .bg-gray-50 { background-color: #374151 !important; }
+.dark .bg-gray-100 { background-color: #4b5563 !important; }
+.dark .bg-brutal-bg { background-color: #111827 !important; }
+.dark .text-black { color: #ffffff !important; }
+.dark .text-gray-600 { color: #9ca3af !important; }
+.dark .text-gray-500 { color: #9ca3af !important; }
+.dark .border-black { border-color: #4b5563 !important; }
+.dark .border-gray-300 { border-color: #4b5563 !important; }
+.dark .border-gray-400 { border-color: #6b7280 !important; }
+.dark .shadow-brutal { box-shadow: 6px 6px 0px 0px rgba(75,85,99,1) !important; }
+.dark .shadow-brutal-hover { box-shadow: 2px 2px 0px 0px rgba(75,85,99,1) !important; }
+.dark input, .dark select { background-color: #374151 !important; color: #ffffff !important; border-color: #4b5563 !important; }
+.dark ::placeholder { color: #9ca3af !important; }
+
 /* Background patterns */
 .bg-dots {
   background-image: radial-gradient(circle, #d1d5db 1px, transparent 1px);
