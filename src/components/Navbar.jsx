@@ -17,7 +17,7 @@ export default function Navbar({ activeTab, setActiveTab, t }) {
   ];
 
   return (
-    <nav className="fixed bottom-0 w-full bg-white border-t-4 border-black z-50 shadow-[0_-4px_0_0_#000]">
+    <nav className="fixed bottom-0 w-full bg-white border-t-4 border-black z-40 shadow-[0_-4px_0_0_#000]">
       <div className="flex justify-around items-stretch h-[56px] max-w-lg mx-auto">
         {tabs.map((tab) => (
           <button
