@@ -4,7 +4,7 @@
   <p><strong>100% Offline AI Crop Pathologist & Regenerative Agronomy Grid</strong></p>
   
   <p>
-    <a href="https://krishisetu-ai.onrender.com/"><img src="https://img.shields.io/badge/Live_App-Render-46E3B7?style=for-the-badge&logo=render&logoColor=white" alt="Live App" /></a>
+    <a href="https://krishi-setu-ai-seven.vercel.app/"><img src="https://img.shields.io/badge/Live_App-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live App" /></a>
     <a href="https://sahooshuvranshu.github.io/KrishiSetu-AI/"><img src="https://img.shields.io/badge/Landing_Page-GitHub_Pages-181717?style=for-the-badge&logo=github&logoColor=white" alt="Landing Page" /></a>
   </p>
 
@@ -14,6 +14,8 @@
     <img src="https://img.shields.io/badge/TensorFlow.js-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" alt="TensorFlow.js" />
     <img src="https://img.shields.io/badge/Gemini_3.6_Flash-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google Gemini" />
     <img src="https://img.shields.io/badge/PWA-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white" alt="PWA" />
+    <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" alt="Firebase" />
+    <img src="https://img.shields.io/badge/Google_Maps-4285F4?style=for-the-badge&logo=google-maps&logoColor=white" alt="Google Maps" />
     <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
   </p>
 
@@ -59,7 +61,10 @@ Build an interoperable digital agriculture network that delivers real-time, loca
 * **100% Offline AI Disease Scanning:** Uses highly quantized MobileNet/TensorFlow.js models permanently cached in IndexedDB to scan and diagnose leaf diseases directly on the device's CPU/GPU. No cloud needed. No latency.
 * **Generative Agronomy Engine:** Integrates Google's Gemini Flash to translate complex chemical and organic treatments into easy-to-understand native dialects.
 * **Native Tongue & TTS Support:** Built-in localization for **Hindi** and **Odia** with Web Speech API integration to read remedies out loud for farmers facing literacy barriers.
-* **DPI Telemetry Grid:** Utilizes OpenStreetMap (Leaflet) to build an interoperable mesh. When devices regain connection, anonymous disease outbreaks are broadcasted to the grid to warn neighboring farmers of migrating blights.
+* **DPI Telemetry Grid:** Utilizes Google Maps to build an interoperable mesh. When devices regain connection, anonymous disease outbreaks are broadcasted via Firebase to warn neighboring farmers of migrating blights.
+* **Google AI Integration:** Full hackathon compliance with Gemini API, Vertex AI, Google Maps, Firebase, Translation API, and Cloud TTS.
+* **PWA with Offline Support:** vite-plugin-pwa with Workbox for automatic caching of all assets.
+* **IndexedDB Image Storage:** No size limits for storing scan images (replaces localStorage 5MB limit).
 * **Agri-Brutalism UX:** Designed strictly for outdoor usability. Massive high-contrast buttons, thick borders, and heavy typography ensure readability under blinding sunlight and usability with muddy hands.
 
 ---
@@ -84,9 +89,12 @@ The trained Keras/TensorFlow model is quantized and converted into the TensorFlo
 1. **Frontend Core:** React 18 + Vite
 2. **Offline Caching:** Vite-PWA with Workbox (Service Workers) for absolute caching of HTML/CSS/JS and Model Binaries.
 3. **Edge ML:** `@tensorflow/tfjs` static bundling to avoid dynamic import chunk failure offline.
-4. **LLM Engine:** `@google/genai` (Gemini Flash fallback strategies).
-5. **Geospatial:** React-Leaflet mapped over OSM tiles.
-6. **Styling:** TailwindCSS using a custom "Agri-Brutalism" design system.
+4. **LLM Engine:** `@google/generative-ai` (Gemini Flash for crop diagnosis).
+5. **Real-time Sync:** Firebase Firestore for cross-device alert broadcasting.
+6. **Voice:** Google Cloud TTS with Web Speech API fallback.
+7. **Translation:** Google Translation API for dynamic AI response translation.
+8. **Geospatial:** Google Maps Platform for real-time disease mapping.
+9. **Styling:** TailwindCSS using a custom "Agri-Brutalism" design system.
 
 ## 📂 File Structure
 
@@ -95,20 +103,19 @@ KrishiSetu-AI/
 ├── docs/                      # GitHub Pages static landing site
 ├── notebooks/                 # Jupyter Notebooks for ML training (MobileNetV2)
 ├── public/                    # PWA Manifest, Service Worker, and ML Model binaries
-│   ├── model/                 # Quantized TFJS model files (model.json, .bin)
-│   ├── manifest.json          # Web App Manifest for PWA installation
-│   └── sw.js                  # Service Worker for 100% offline caching
+│   └── model/                 # Quantized TFJS model files (model.json, .bin)
 ├── src/                       # React Frontend Source Code
-│   ├── components/            # UI Components (CameraScan, Navbar, TelemetryMap)
-│   ├── data/                  # Offline JSON datasets (disease definitions, soil matrix)
-│   ├── services/              # Core Logic (TFJS Loader, Gemini API, Web Speech API)
+│   ├── components/            # UI Components (CameraScan, Navbar, TelemetryMap, ErrorBoundary)
+│   ├── config/                # Centralized constants (ODISHA_CENTER, IMAGE_SIZE)
+│   ├── services/              # Core Logic (Firebase, Gemini, TTS, Translation, TFJS Loader)
 │   ├── App.jsx                # Main Application Routing & State
 │   ├── index.css              # Agri-Brutalism Tailwind styling
+│   ├── main.jsx               # Entry point with PWA registration
 │   └── translations.js        # Multi-language dictionary (EN, HI, OR)
-├── .env                       # API Keys (Gemini)
+├── .env.example               # Required API keys template
 ├── index.html                 # Main Entry Point
 ├── tailwind.config.js         # Custom theme configuration
-└── vite.config.js             # Vite build settings
+└── vite.config.js             # Vite build settings with PWA plugin
 ```
 
 ## 🚀 Quick Start (Local Development)
