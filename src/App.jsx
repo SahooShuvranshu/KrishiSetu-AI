@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { Settings, Info, X, HardDrive, Languages, Github } from 'lucide-react';
 import Navbar from './components/Navbar';
 import ErrorBoundary from './components/ErrorBoundary';
+import StatusBadge from './components/StatusBadge';
 import { getTranslation } from './translations';
+import { useToast } from './components/Toast.jsx';
 
 // Lazy load tab components for faster initial load
 const CameraScan = lazy(() => import('./components/CameraScan'));
@@ -25,12 +27,13 @@ function App() {
   const [activeTab, setActiveTab] = useState('scan');
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [showSettings, setShowSettings] = useState(false);
-  const [showInfo, setShowInfo] = useState(false); // Info Modal state
+  const [showInfo, setShowInfo] = useState(false);
   const [modelDownloaded, setModelDownloaded] = useState(false);
   const [downloading, setDownloading] = useState(false);
   const [geminiKey, setGeminiKey] = useState(localStorage.getItem('krishisetu_gemini_key') || '');
   
   const [appLanguage, setAppLanguage] = useState(localStorage.getItem('krishisetu_lang') || 'en');
+  const toast = useToast();
   
   const t = (key) => getTranslation(appLanguage, key);
   
@@ -129,21 +132,23 @@ function App() {
   return (
     <div className="min-h-screen bg-brutal-bg bg-agri-grid pb-24 font-sans text-black selection:bg-brutal-neon relative flex flex-col">
       <div className="h-4 w-full bg-brutal-neon bg-tractor-tread border-b-4 border-black"></div>
-      <header className="bg-white border-b-4 border-black p-4 sticky top-0 z-40 flex justify-between items-center shadow-brutal mb-6">
-        <div>
-          <h1 className="text-3xl font-black tracking-tighter uppercase leading-none">{t('appTitle')}</h1>
-          <p className="font-mono text-[10px] font-black bg-black text-brutal-neon px-2 py-1 mt-1 inline-block border-2 border-black uppercase shadow-[2px_2px_0_0_#000]">
-            {t('appSubtitle')}
-          </p>
+      <header className="bg-white border-b-4 border-black p-3 sticky top-0 z-40 flex justify-between items-center shadow-brutal mb-4">
+        <div className="flex items-center gap-2">
+          <div>
+            <h1 className="text-2xl font-black tracking-tighter uppercase leading-none">{t('appTitle')}</h1>
+            <p className="font-mono text-[9px] font-black bg-black text-brutal-neon px-2 py-0.5 mt-1 inline-block border border-black uppercase">
+              {t('appSubtitle')}
+            </p>
+          </div>
+          <StatusBadge isOnline={isOnline} />
         </div>
         <div className="flex gap-2">
-          {/* Info Button */}
           <button 
             onClick={() => setShowInfo(true)}
             className="p-2 border-2 border-black bg-gray-100 hover:bg-brutal-neon shadow-[2px_2px_0_0_#000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
             aria-label="About Project"
           >
-            <Info size={20} />
+            <Info size={18} />
           </button>
           
           <button 
@@ -151,7 +156,7 @@ function App() {
             className="p-2 border-2 border-black bg-gray-100 hover:bg-brutal-neon shadow-[2px_2px_0_0_#000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
             aria-label="App Settings"
           >
-            <Settings size={20} />
+            <Settings size={18} />
           </button>
         </div>
       </header>

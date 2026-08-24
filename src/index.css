@@ -27,6 +27,25 @@
   animation: fade-in 0.3s ease-out;
 }
 
+/* Hover glow effect */
+.hover-glow {
+  transition: all 0.2s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(204, 255, 0, 0.5), 6px 6px 0px 0px rgba(0,0,0,1);
+}
+
+/* Card lift effect */
+.card-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 8px 12px 0px 0px rgba(0,0,0,1);
+}
+
 /* Hide scrollbar for cleaner brutalist look but keep functionality */
 ::-webkit-scrollbar {
   width: 12px;

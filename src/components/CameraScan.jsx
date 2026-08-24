@@ -6,6 +6,8 @@ import { runInBrowserVisionInference } from '../services/modelStorageService';
 import { speakText } from '../services/voice';
 import { broadcastAlert } from '../services/firebase';
 import { saveImage, getImage, deleteImage } from '../services/imageStorage';
+import ScanAnimation from './ScanAnimation';
+import { useToast } from './Toast.jsx';
 
 // Image compression utility
 const compressImage = (base64, maxWidth = 512) => {
@@ -40,6 +42,7 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [scanHistory, setScanHistory] = useState([]);
+  const toast = useToast();
 
   // Load scan history from IndexedDB
   useEffect(() => {
@@ -184,7 +187,7 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
     
     // Broadcast via Firebase (or localStorage fallback)
     await broadcastAlert(newAlert);
-    alert(t('broadcastSuccess'));
+    toast.success(t('broadcastSuccess'), 'Alert Sent');
   };
 
   return (
@@ -231,12 +234,7 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
         <div className="relative border-2 border-black shadow-brutal-hover bg-black aspect-[3/4] overflow-hidden">
           <img src={imagePreview} alt="Scan Preview" className="w-full h-full object-contain" />
           
-          {loading && (
-            <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center z-40 text-brutal-neon font-mono">
-              <RefreshCw size={32} className="animate-spin mb-3" />
-              <p className="text-sm uppercase tracking-widest">{t('checkingCrop')}</p>
-            </div>
-          )}
+          <ScanAnimation isActive={loading} message={t('checkingCrop')} />
         </div>
       )}
 
@@ -294,7 +292,7 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
                 } else {
                   // Fallback: copy to clipboard
                   await navigator.clipboard.writeText(shareText);
-                  alert('Diagnosis copied to clipboard!');
+                  toast.info('Diagnosis copied to clipboard!', 'Copied');
                 }
               }}
               className="brutal-button bg-brutal-neon text-black py-3 text-sm font-black border-2 border-black flex justify-center items-center uppercase"
