@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, Suspense, lazy } from 'react';
 import PropTypes from 'prop-types';
-import { Settings, Info, X, HardDrive, Languages, Github } from 'lucide-react';
+import { Settings, Info, X, HardDrive, Languages, Github, ExternalLink } from 'lucide-react';
 import Navbar from './components/Navbar';
 import ErrorBoundary from './components/ErrorBoundary';
 import StatusBadge from './components/StatusBadge';
@@ -8,6 +8,7 @@ import { getTranslation } from './translations';
 import { useToast } from './components/Toast.jsx';
 
 // Lazy load tab components for faster initial load
+const HomeTab = lazy(() => import('./components/HomeTab'));
 const CameraScan = lazy(() => import('./components/CameraScan'));
 const SoilAdvisory = lazy(() => import('./components/SoilAdvisory'));
 const StateTelemetryMap = lazy(() => import('./components/StateTelemetryMap'));
@@ -24,7 +25,7 @@ const TabLoader = () => (
 
 function App() {
   const [isSplashing, setIsSplashing] = useState(!sessionStorage.getItem('krishisetu_splashed'));
-  const [activeTab, setActiveTab] = useState('scan');
+  const [activeTab, setActiveTab] = useState('home');
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [showSettings, setShowSettings] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
@@ -187,9 +188,14 @@ function App() {
                 Krishi Setu is an offline-first, multilingual AI plant pathologist and localized broadcast network, designed entirely for remote Indian farming communities.
               </p>
 
-              <a href="https://github.com/SahooShuvranshu/KrishiSetu-AI" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 mt-4 p-3 bg-black text-white border-2 border-black hover:bg-white hover:text-black hover:shadow-brutal-hover transition-all font-bold uppercase text-sm w-full shadow-[4px_4px_0_0_#000]">
-                <Github size={20} /> Source Code / Open Source
-              </a>
+              <div className="flex gap-2 mt-4">
+                <a href="https://sahooshuvranshu.is-a.dev/KrishiSetu-AI/" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 p-3 bg-brutal-neon text-black border-2 border-black hover:bg-white transition-all font-bold uppercase text-xs shadow-[4px_4px_0_0_#000]">
+                  <ExternalLink size={16} /> Showcase
+                </a>
+                <a href="https://github.com/SahooShuvranshu/KrishiSetu-AI" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 p-3 bg-black text-white border-2 border-black hover:bg-white hover:text-black transition-all font-bold uppercase text-xs shadow-[4px_4px_0_0_#000]">
+                  <Github size={16} /> Source
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -284,6 +290,7 @@ function App() {
 
       <main className="px-3 max-w-sm mx-auto w-full">
         <Suspense fallback={<TabLoader />}>
+          {activeTab === 'home' && <HomeTab t={t} appLanguage={appLanguage} isOnline={isOnline} setActiveTab={setActiveTab} />}
           {activeTab === 'scan' && <CameraScan isOnline={isOnline} appLanguage={appLanguage} t={t} />}
           {activeTab === 'advisory' && <SoilAdvisory t={t} appLanguage={appLanguage} isOnline={isOnline} />}
           {activeTab === 'network' && <StateTelemetryMap t={t} appLanguage={appLanguage} isOnline={isOnline} />}

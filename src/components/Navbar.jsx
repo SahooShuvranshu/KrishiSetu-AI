@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Camera, Map, Leaf, Globe, Github } from 'lucide-react';
+import { Camera, Map, Leaf, Home } from 'lucide-react';
 
 Navbar.propTypes = {
   activeTab: PropTypes.string.isRequired,
@@ -10,6 +10,7 @@ Navbar.propTypes = {
 
 export default function Navbar({ activeTab, setActiveTab, t }) {
   const tabs = [
+    { id: 'home', icon: <Home size={22} />, label: t('home') || 'Home' },
     { id: 'scan', icon: <Camera size={22} />, label: t('cropDoctor') },
     { id: 'advisory', icon: <Leaf size={22} />, label: t('farmAdvice') },
     { id: 'network', icon: <Map size={22} />, label: t('alerts') },
@@ -40,29 +41,6 @@ export default function Navbar({ activeTab, setActiveTab, t }) {
             </span>
           </button>
         ))}
-        
-        {/* External links */}
-        <a
-          href="https://sahooshuvranshu.is-a.dev/KrishiSetu-AI/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-col items-center justify-center flex-1 h-full border-r-2 border-black bg-gray-50 text-gray-600 hover:bg-gray-100 transition-all duration-150"
-          aria-label="Showcase website"
-        >
-          <Globe size={22} />
-          <span className="text-[9px] mt-1 font-mono uppercase tracking-wider">SHOWCASE</span>
-        </a>
-        
-        <a
-          href="https://github.com/SahooShuvranshu/KrishiSetu-AI"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-col items-center justify-center flex-1 h-full bg-gray-50 text-gray-600 hover:bg-gray-100 transition-all duration-150"
-          aria-label="GitHub repository"
-        >
-          <Github size={22} />
-          <span className="text-[9px] mt-1 font-mono uppercase tracking-wider">SOURCE</span>
-        </a>
       </div>
     </nav>
   );
