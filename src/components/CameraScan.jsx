@@ -5,6 +5,7 @@ import { diagnoseCropLeaf } from '../services/gemini';
 import { runInBrowserVisionInference } from '../services/modelStorageService';
 import { speakText } from '../services/voice';
 import { broadcastAlert } from '../services/firebase';
+import { saveImage, getImage, deleteImage } from '../services/imageStorage';
 
 // Image compression utility
 const compressImage = (base64, maxWidth = 512) => {
@@ -40,17 +41,28 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
   const [result, setResult] = useState(null);
   const [scanHistory, setScanHistory] = useState([]);
 
-  // Load scan history from localStorage
+  // Load scan history from IndexedDB
   useEffect(() => {
-    const history = JSON.parse(localStorage.getItem('krishisetu_scan_history') || '[]');
-    setScanHistory(history);
+    const loadHistory = async () => {
+      try {
+        const history = JSON.parse(localStorage.getItem('krishisetu_scan_history') || '[]');
+        setScanHistory(history);
+      } catch (e) {
+        setScanHistory([]);
+      }
+    };
+    loadHistory();
   }, []);
 
+  // Load last scan image from IndexedDB
   useEffect(() => {
-    const savedImage = localStorage.getItem('krishisetu_last_scan');
-    if (savedImage) {
-      setImagePreview(savedImage);
-    }
+    const loadLastScan = async () => {
+      const savedImage = await getImage('last_scan');
+      if (savedImage) {
+        setImagePreview(savedImage);
+      }
+    };
+    loadLastScan();
   }, []);
 
   const handleImageSelect = (event) => {
@@ -62,11 +74,8 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
         // Compress image before storing and analyzing
         base64String = await compressImage(base64String);
         setImagePreview(base64String);
-        try {
-          localStorage.setItem('krishisetu_last_scan', base64String);
-        } catch (e) {
-          // Storage full - ignore silently
-        }
+        // Save to IndexedDB (no size limit)
+        await saveImage('last_scan', base64String);
         analyzeImage(base64String);
       };
       reader.readAsDataURL(file);
@@ -115,7 +124,7 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
     }
   };
 
-  const clearScan = () => {
+  const clearScan = async () => {
     // Save to history before clearing
     if (result) {
       const historyEntry = {
@@ -132,7 +141,7 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
     }
     setImagePreview(null);
     setResult(null);
-    localStorage.removeItem('krishisetu_last_scan');
+    await deleteImage('last_scan');
   };
 
   const clearHistory = () => {
