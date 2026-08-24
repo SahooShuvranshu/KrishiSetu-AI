@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Camera, Upload, RefreshCw, Share2 } from 'lucide-react';
+import { Camera, Upload, RefreshCw, Share2, WifiOff } from 'lucide-react';
 import { diagnoseCropLeaf } from '../services/gemini';
 import { runInBrowserVisionInference } from '../services/modelStorageService';
 import { speakText } from '../services/voice';
@@ -202,6 +202,16 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
 
   return (
     <div className="flex flex-col gap-4 animate-fade-in pb-10 bg-crosshatch">
+      {/* Offline Mode Banner */}
+      {!isOnline && (
+        <div className="bg-yellow-100 border-2 border-yellow-500 p-3 flex items-center gap-3">
+          <WifiOff size={20} className="text-yellow-600 flex-shrink-0" />
+          <div>
+            <p className="font-black text-xs uppercase text-yellow-800">Offline Mode Active</p>
+            <p className="font-mono text-[9px] text-yellow-700">Using local AI model. No internet required.</p>
+          </div>
+        </div>
+      )}
       
       {!imagePreview && (
         <div className="flex flex-col gap-4 mt-4">
