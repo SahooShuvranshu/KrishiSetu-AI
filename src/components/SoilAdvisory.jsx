@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { MapPin } from 'lucide-react';
+import { MapPin, Cloud, Calendar, TrendingUp } from 'lucide-react';
 import { getSoilData } from '../multilingual_data';
+import WeatherDashboard from './WeatherDashboard';
+import CropCalendar from './CropCalendar';
+import MarketPrices from './MarketPrices';
 
 SoilAdvisory.propTypes = {
   t: PropTypes.func.isRequired,
@@ -13,8 +16,10 @@ export default function SoilAdvisory({ t, appLanguage, isOnline }) {
   const [selectedSoil, setSelectedSoil] = useState(0);
   const [locating, setLocating] = useState(false);
   const [liveWeather, setLiveWeather] = useState(null);
+  const [activeSubTab, setActiveSubTab] = useState('advisory');
   
   const soilData = getSoilData(appLanguage);
+  const currentZone = soilData[selectedSoil];
   
   // Real-time Season Detection based on actual Month
   const getSeason = () => {
@@ -103,6 +108,48 @@ export default function SoilAdvisory({ t, appLanguage, isOnline }) {
         </select>
       </div>
 
+      {/* Sub-tabs for Weather, Calendar, Prices */}
+      <div className="flex gap-2">
+        <button
+          onClick={() => setActiveSubTab('advisory')}
+          className={`flex-1 p-2 border-2 border-black font-black text-xs uppercase ${activeSubTab === 'advisory' ? 'bg-brutal-green text-black' : 'bg-white text-gray-500'}`}
+        >
+          {t('farmAdvice') || 'Advice'}
+        </button>
+        <button
+          onClick={() => setActiveSubTab('weather')}
+          className={`flex-1 p-2 border-2 border-black font-black text-xs uppercase flex items-center justify-center gap-1 ${activeSubTab === 'weather' ? 'bg-blue-500 text-white' : 'bg-white text-gray-500'}`}
+        >
+          <Cloud size={14} /> {t('weather') || 'Weather'}
+        </button>
+        <button
+          onClick={() => setActiveSubTab('calendar')}
+          className={`flex-1 p-2 border-2 border-black font-black text-xs uppercase flex items-center justify-center gap-1 ${activeSubTab === 'calendar' ? 'bg-green-500 text-white' : 'bg-white text-gray-500'}`}
+        >
+          <Calendar size={14} /> {t('cropCalendar') || 'Calendar'}
+        </button>
+        <button
+          onClick={() => setActiveSubTab('prices')}
+          className={`flex-1 p-2 border-2 border-black font-black text-xs uppercase flex items-center justify-center gap-1 ${activeSubTab === 'prices' ? 'bg-yellow-500 text-white' : 'bg-white text-gray-500'}`}
+        >
+          <TrendingUp size={14} /> {t('marketPrices') || 'Prices'}
+        </button>
+      </div>
+
+      {/* Sub-tab Content */}
+      {activeSubTab === 'weather' && (
+        <WeatherDashboard t={t} appLanguage={appLanguage} isOnline={isOnline} zone={currentZone} />
+      )}
+
+      {activeSubTab === 'calendar' && (
+        <CropCalendar t={t} appLanguage={appLanguage} />
+      )}
+
+      {activeSubTab === 'prices' && (
+        <MarketPrices t={t} appLanguage={appLanguage} isOnline={isOnline} />
+      )}
+
+      {activeSubTab === 'advisory' && (
       <div className="grid gap-3">
         <div className="brutal-box bg-brutal-green p-0 border-2 overflow-hidden">
           
@@ -168,6 +215,7 @@ export default function SoilAdvisory({ t, appLanguage, isOnline }) {
           </div>
         </div>
       </div>
+      )}
     </div>
   );
 }
