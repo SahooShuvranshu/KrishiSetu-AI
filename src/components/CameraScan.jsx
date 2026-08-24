@@ -1,13 +1,50 @@
 import React, { useState, useEffect } from 'react';
-import { Camera, Upload, RefreshCw } from 'lucide-react';
+import PropTypes from 'prop-types';
+import { Camera, Upload, RefreshCw, Share2 } from 'lucide-react';
 import { diagnoseCropLeaf } from '../services/gemini';
 import { runInBrowserVisionInference } from '../services/modelStorageService';
 import { speakText } from '../services/voice';
+import { broadcastAlert } from '../services/firebase';
+
+// Image compression utility
+const compressImage = (base64, maxWidth = 512) => {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => {
+      // Only compress if image is larger than maxWidth
+      if (img.width <= maxWidth) {
+        resolve(base64);
+        return;
+      }
+      const canvas = document.createElement('canvas');
+      const ratio = maxWidth / img.width;
+      canvas.width = maxWidth;
+      canvas.height = img.height * ratio;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      resolve(canvas.toDataURL('image/jpeg', 0.8));
+    };
+    img.src = base64;
+  });
+};
+
+CameraScan.propTypes = {
+  isOnline: PropTypes.bool.isRequired,
+  appLanguage: PropTypes.string.isRequired,
+  t: PropTypes.func.isRequired
+};
 
 export default function CameraScan({ isOnline, appLanguage, t }) {
   const [imagePreview, setImagePreview] = useState(null);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
+  const [scanHistory, setScanHistory] = useState([]);
+
+  // Load scan history from localStorage
+  useEffect(() => {
+    const history = JSON.parse(localStorage.getItem('krishisetu_scan_history') || '[]');
+    setScanHistory(history);
+  }, []);
 
   useEffect(() => {
     const savedImage = localStorage.getItem('krishisetu_last_scan');
@@ -20,13 +57,15 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
-      reader.onloadend = () => {
-        const base64String = reader.result;
+      reader.onloadend = async () => {
+        let base64String = reader.result;
+        // Compress image before storing and analyzing
+        base64String = await compressImage(base64String);
         setImagePreview(base64String);
         try {
           localStorage.setItem('krishisetu_last_scan', base64String);
         } catch (e) {
-          console.warn("Storage full");
+          // Storage full - ignore silently
         }
         analyzeImage(base64String);
       };
@@ -77,25 +116,65 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
   };
 
   const clearScan = () => {
+    // Save to history before clearing
+    if (result) {
+      const historyEntry = {
+        id: Date.now(),
+        timestamp: new Date().toISOString(),
+        disease: result.disease,
+        treatment: result.treatment,
+        source: result.source,
+        thumbnail: imagePreview ? imagePreview.substring(0, 100) + '...' : null
+      };
+      const newHistory = [historyEntry, ...scanHistory].slice(0, 20); // Keep last 20
+      setScanHistory(newHistory);
+      localStorage.setItem('krishisetu_scan_history', JSON.stringify(newHistory));
+    }
     setImagePreview(null);
     setResult(null);
     localStorage.removeItem('krishisetu_last_scan');
   };
 
-  const broadcastAlert = () => {
+  const clearHistory = () => {
+    setScanHistory([]);
+    localStorage.removeItem('krishisetu_scan_history');
+  };
+
+  const handleBroadcastAlert = async () => {
     if (!result) return;
+    
+    // Get device location if available
+    let lat = 20.2961; // Default: Odisha center
+    let lng = 85.8245;
+    
+    try {
+      if (navigator.geolocation) {
+        const position = await new Promise((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(resolve, reject, {
+            enableHighAccuracy: true,
+            timeout: 5000
+          });
+        });
+        lat = position.coords.latitude;
+        lng = position.coords.longitude;
+      }
+    } catch (error) {
+      console.warn('GPS not available, using default location');
+    }
+    
     const newAlert = {
       origin: "Your Farm (Local)",
       target: "Nearby Districts",
-      lat: 20.29, // Default approx location
-      lng: 85.82,
+      lat: lat,
+      lng: lng,
       pest: result.disease.replace(/\(.*\)/, '').trim(),
       crop: "Local Crop",
       severity: "High",
       advice: "Automated AI Warning: A local farmer just detected this pest. Inspect crops immediately."
     };
-    const existing = JSON.parse(localStorage.getItem('krishisetu_alerts') || '[]');
-    localStorage.setItem('krishisetu_alerts', JSON.stringify([newAlert, ...existing]));
+    
+    // Broadcast via Firebase (or localStorage fallback)
+    await broadcastAlert(newAlert);
     alert(t('broadcastSuccess'));
   };
 
@@ -106,7 +185,10 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
         <div className="flex flex-col gap-4 mt-4">
           <p className="font-mono text-xs uppercase text-gray-600 text-center mb-2">{t('takePhotoInstruction')}</p>
           
-          <label className="brutal-button bg-brutal-neon text-black p-6 flex flex-col items-center justify-center gap-2 cursor-pointer border-2 border-black shadow-brutal text-lg uppercase tracking-wider">
+          <label 
+            className="brutal-button bg-brutal-neon text-black p-6 flex flex-col items-center justify-center gap-2 cursor-pointer border-2 border-black shadow-brutal text-lg uppercase tracking-wider"
+            aria-label="Open camera to take photo"
+          >
             <Camera size={40} />
             {t('openCamera')}
             <input 
@@ -115,10 +197,14 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
               capture="environment" 
               className="hidden" 
               onChange={handleImageSelect}
+              aria-hidden="true"
             />
           </label>
 
-          <label className="brutal-button bg-white text-black p-6 flex flex-col items-center justify-center gap-2 cursor-pointer border-2 border-black shadow-brutal text-lg uppercase tracking-wider">
+          <label 
+            className="brutal-button bg-white text-black p-6 flex flex-col items-center justify-center gap-2 cursor-pointer border-2 border-black shadow-brutal text-lg uppercase tracking-wider"
+            aria-label="Upload photo from gallery"
+          >
             <Upload size={40} />
             {t('uploadPhoto')}
             <input 
@@ -126,6 +212,7 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
               accept="image/*" 
               className="hidden" 
               onChange={handleImageSelect}
+              aria-hidden="true"
             />
           </label>
         </div>
@@ -175,13 +262,77 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
             </button>
           </div>
           
-          {/* BROADCAST BUTTON */}
-          <button 
-            onClick={broadcastAlert}
-            className="brutal-button w-full bg-red-500 text-white py-3 text-sm font-black border-2 border-black flex justify-center items-center uppercase mt-2 shadow-[4px_4px_0_0_#000]"
-          >
-            {t('broadcastAlert')}
-          </button>
+          {/* BROADCAST + SHARE BUTTONS */}
+          <div className="grid grid-cols-2 gap-2 mt-2">
+            <button 
+              onClick={handleBroadcastAlert}
+              className="brutal-button bg-red-500 text-white py-3 text-sm font-black border-2 border-black flex justify-center items-center uppercase shadow-[4px_4px_0_0_#000]"
+            >
+              {t('broadcastAlert')}
+            </button>
+            <button 
+              onClick={async () => {
+                const shareText = `Krishi Setu AI Diagnosis:\n${result.disease}\n\nAdvice:\n${result.treatment}`;
+                if (navigator.share) {
+                  try {
+                    await navigator.share({
+                      title: 'Krishi Setu - Crop Diagnosis',
+                      text: shareText
+                    });
+                  } catch (e) {
+                    // User cancelled share
+                  }
+                } else {
+                  // Fallback: copy to clipboard
+                  await navigator.clipboard.writeText(shareText);
+                  alert('Diagnosis copied to clipboard!');
+                }
+              }}
+              className="brutal-button bg-brutal-neon text-black py-3 text-sm font-black border-2 border-black flex justify-center items-center uppercase"
+            >
+              <Share2 size={16} className="mr-1" /> {t('share') || 'Share'}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Scan History */}
+      {scanHistory.length > 0 && !result && (
+        <div className="mt-6">
+          <div className="flex justify-between items-center mb-3">
+            <h3 className="font-black text-sm uppercase">{t('recentScans') || 'Recent Scans'}</h3>
+            <button
+              onClick={clearHistory}
+              className="text-xs font-bold text-red-500 underline"
+            >
+              {t('clearHistory') || 'Clear'}
+            </button>
+          </div>
+          <div className="flex flex-col gap-2">
+            {scanHistory.slice(0, 5).map((entry) => (
+              <div
+                key={entry.id}
+                className="brutal-box bg-white border-2 p-3 cursor-pointer hover:bg-gray-50"
+                onClick={() => {
+                  setResult({
+                    source: entry.source,
+                    disease: entry.disease,
+                    treatment: entry.treatment
+                  });
+                }}
+              >
+                <div className="flex justify-between items-start">
+                  <span className="font-black text-xs uppercase">{entry.disease}</span>
+                  <span className="text-[9px] font-mono text-gray-500">
+                    {new Date(entry.timestamp).toLocaleDateString()}
+                  </span>
+                </div>
+                <p className="text-[10px] font-mono text-gray-600 mt-1 truncate">
+                  {entry.source}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>

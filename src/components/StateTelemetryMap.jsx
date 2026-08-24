@@ -1,66 +1,63 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import { Bell, MapPin } from 'lucide-react';
+import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import { getTelemetryData } from '../multilingual_data';
+import { listenAlerts } from '../services/firebase';
+
+// Odisha center coordinates
+const ODISHA_CENTER = {
+  lat: 20.2961,
+  lng: 85.8245
+};
+
+const mapContainerStyle = {
+  width: '100%',
+  height: '300px'
+};
+
+const mapOptions = {
+  disableDefaultUI: false,
+  zoomControl: true,
+  streetViewControl: false,
+  mapTypeControl: false,
+  fullscreenControl: false
+};
+
+StateTelemetryMap.propTypes = {
+  t: PropTypes.func.isRequired,
+  appLanguage: PropTypes.string.isRequired,
+  isOnline: PropTypes.bool.isRequired
+};
 
 export default function StateTelemetryMap({ t, appLanguage, isOnline }) {
   const [alerts, setAlerts] = useState([]);
-  const mapRef = useRef(null);
-  const mapInstance = useRef(null);
+  const [selectedAlert, setSelectedAlert] = useState(null);
+  const [unsubscribe, setUnsubscribe] = useState(null);
 
+  // Load Google Maps script
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_KEY,
+    libraries: ['places']
+  });
+
+  // Load alerts from Firebase and local storage
   useEffect(() => {
     const baseData = getTelemetryData(appLanguage);
-    const localAlerts = JSON.parse(localStorage.getItem('krishisetu_alerts') || '[]');
-    setAlerts([...localAlerts, ...baseData]);
-  }, [appLanguage]);
-
-  // Leaflet Dynamic Map Loader
-  useEffect(() => {
-    if (!isOnline || alerts.length === 0 || !mapRef.current) return;
-
-    const initMap = async () => {
-      // 1. Inject Leaflet CSS
-      if (!document.getElementById('leaflet-css')) {
-        const link = document.createElement('link');
-        link.id = 'leaflet-css';
-        link.rel = 'stylesheet';
-        link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
-        document.head.appendChild(link);
-      }
-
-      // 2. Inject Leaflet JS
-      if (!window.L) {
-        const script = document.createElement('script');
-        script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-        document.head.appendChild(script);
-        await new Promise(r => script.onload = r);
-      }
-
-      // 3. Initialize Map
-      if (window.L && mapRef.current) {
-        if (mapInstance.current) {
-          mapInstance.current.remove();
-        }
-
-        const map = window.L.map(mapRef.current).setView([20.2376, 84.2700], 6); // Odisha Center
-        
-        window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '© OpenStreetMap'
-        }).addTo(map);
-
-        // 4. Add alert markers
-        alerts.forEach(alert => {
-          if (alert.lat && alert.lng) {
-            const marker = window.L.marker([alert.lat, alert.lng]).addTo(map);
-            marker.bindPopup(`<b>${alert.pest}</b><br>${alert.crop}`);
-          }
-        });
-        
-        mapInstance.current = map;
-      }
+    
+    // Try Firebase real-time listener
+    const unsub = listenAlerts((firebaseAlerts) => {
+      // Merge Firebase alerts with base data
+      const allAlerts = [...firebaseAlerts, ...baseData];
+      setAlerts(allAlerts);
+    });
+    
+    setUnsubscribe(() => unsub);
+    
+    return () => {
+      if (unsubscribe) unsubscribe();
     };
-
-    initMap();
-  }, [isOnline, alerts, appLanguage]);
+  }, []); // Run once on mount - appLanguage is passed to getTelemetryData inside
 
   return (
     <div className="flex flex-col gap-4 animate-fade-in pb-8">
@@ -74,9 +71,55 @@ export default function StateTelemetryMap({ t, appLanguage, isOnline }) {
 
       {isOnline && (
         <div className="brutal-box border-2 border-black p-1 bg-white">
-          <div ref={mapRef} className="w-full h-48 bg-gray-200 border-2 border-black z-0">
-             {/* Map renders here */}
-          </div>
+          {loadError ? (
+            <div className="w-full h-48 bg-gray-200 border-2 border-black flex items-center justify-center">
+              <p className="text-red-500 font-bold text-sm">Error loading Google Maps</p>
+            </div>
+          ) : !isLoaded ? (
+            <div className="w-full h-48 bg-gray-200 border-2 border-black flex items-center justify-center">
+              <p className="text-gray-500 font-bold text-sm">Loading Maps...</p>
+            </div>
+          ) : (
+            <GoogleMap
+              mapContainerStyle={mapContainerStyle}
+              center={ODISHA_CENTER}
+              zoom={7}
+              options={mapOptions}
+            >
+              {/* Alert markers */}
+              {alerts.map((alert, idx) => (
+                alert.lat && alert.lng && (
+                  <Marker
+                    key={alert.id || idx}
+                    position={{ lat: alert.lat, lng: alert.lng }}
+                    onClick={() => setSelectedAlert(alert)}
+                    icon={{
+                      url: alert.severity === 'High' || alert.severity === 'ଉଚ୍ଚ' || alert.severity === 'उच्च'
+                        ? 'https://maps.google.com/mapfiles/ms/icons/red-dot.png'
+                        : alert.severity === 'Moderate' || alert.severity === 'ମଧ୍ୟମ' || alert.severity === 'मध्यम'
+                        ? 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
+                        : 'https://maps.google.com/mapfiles/ms/icons/green-dot.png',
+                      scaledSize: { width: 32, height: 32 }
+                    }}
+                  />
+                )
+              ))}
+              
+              {/* Info window for selected marker */}
+              {selectedAlert && (
+                <InfoWindow
+                  position={{ lat: selectedAlert.lat, lng: selectedAlert.lng }}
+                  onCloseClick={() => setSelectedAlert(null)}
+                >
+                  <div className="p-2">
+                    <p className="font-bold text-sm">{selectedAlert.pest}</p>
+                    <p className="text-xs text-gray-600">{selectedAlert.crop}</p>
+                    <p className="text-xs mt-1">Severity: {selectedAlert.severity}</p>
+                  </div>
+                </InfoWindow>
+              )}
+            </GoogleMap>
+          )}
         </div>
       )}
 

@@ -1,10 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { Settings, Info, X, Download, HardDrive, Languages, Github } from 'lucide-react';
+import React, { useState, useEffect, useCallback, Suspense, lazy } from 'react';
+import PropTypes from 'prop-types';
+import { Settings, Info, X, HardDrive, Languages, Github } from 'lucide-react';
 import Navbar from './components/Navbar';
-import CameraScan from './components/CameraScan';
-import SoilAdvisory from './components/SoilAdvisory';
-import StateTelemetryMap from './components/StateTelemetryMap';
+import ErrorBoundary from './components/ErrorBoundary';
 import { getTranslation } from './translations';
+
+// Lazy load tab components for faster initial load
+const CameraScan = lazy(() => import('./components/CameraScan'));
+const SoilAdvisory = lazy(() => import('./components/SoilAdvisory'));
+const StateTelemetryMap = lazy(() => import('./components/StateTelemetryMap'));
+
+// Loading fallback for lazy components
+const TabLoader = () => (
+  <div className="flex items-center justify-center py-12">
+    <div className="text-center">
+      <div className="w-8 h-8 border-4 border-black border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
+      <p className="font-mono text-xs uppercase">Loading...</p>
+    </div>
+  </div>
+);
 
 function App() {
   const [isSplashing, setIsSplashing] = useState(!sessionStorage.getItem('krishisetu_splashed'));
@@ -20,6 +34,23 @@ function App() {
   
   const t = (key) => getTranslation(appLanguage, key);
   
+  // Handle Escape key for modals
+  const handleEscapeKey = useCallback((event) => {
+    if (event.key === 'Escape') {
+      if (showSettings) setShowSettings(false);
+      if (showInfo) setShowInfo(false);
+    }
+  }, [showSettings, showInfo]);
+
+  // Lock/unlock body scroll when modal is open
+  useEffect(() => {
+    if (showSettings || showInfo) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [showSettings, showInfo]);
+
   useEffect(() => {
     let splashTimer;
     if (isSplashing) {
@@ -34,6 +65,7 @@ function App() {
     
     window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline);
+    window.addEventListener('keydown', handleEscapeKey);
     
     if(localStorage.getItem('krishisetu_model_downloaded') === 'true') {
       setModelDownloaded(true);
@@ -43,8 +75,9 @@ function App() {
       clearTimeout(splashTimer);
       window.removeEventListener('online', handleOnline);
       window.removeEventListener('offline', handleOffline);
+      window.removeEventListener('keydown', handleEscapeKey);
     };
-  }, []);
+  }, [handleEscapeKey]);
 
   const changeLanguage = (langCode) => {
     setAppLanguage(langCode);
@@ -108,6 +141,7 @@ function App() {
           <button 
             onClick={() => setShowInfo(true)}
             className="p-2 border-2 border-black bg-gray-100 hover:bg-brutal-neon shadow-[2px_2px_0_0_#000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
+            aria-label="About Project"
           >
             <Info size={20} />
           </button>
@@ -115,6 +149,7 @@ function App() {
           <button 
             onClick={() => setShowSettings(true)}
             className="p-2 border-2 border-black bg-gray-100 hover:bg-brutal-neon shadow-[2px_2px_0_0_#000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
+            aria-label="App Settings"
           >
             <Settings size={20} />
           </button>
@@ -123,7 +158,7 @@ function App() {
 
       {/* Info Modal */}
       {showInfo && (
-        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 animate-fade-in">
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 animate-fade-in" role="dialog" aria-modal="true" aria-label="About Project">
           <div className="bg-white border-4 border-black w-full max-w-sm p-4 relative shadow-[8px_8px_0_0_#00ff41]">
             <button 
               onClick={() => setShowInfo(false)}
@@ -157,7 +192,7 @@ function App() {
 
       {/* Settings Modal */}
       {showSettings && (
-        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 animate-fade-in">
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 animate-fade-in" role="dialog" aria-modal="true" aria-label="App Settings">
           <div className="bg-white border-4 border-black w-full max-w-sm p-4 relative shadow-[8px_8px_0_0_#00ff41]">
             <button 
               onClick={() => setShowSettings(false)}
@@ -243,15 +278,11 @@ function App() {
       )}
 
       <main className="px-3 max-w-sm mx-auto w-full">
-        <div style={{ display: activeTab === 'scan' ? 'block' : 'none' }}>
-          <CameraScan isOnline={isOnline} appLanguage={appLanguage} t={t} />
-        </div>
-        <div style={{ display: activeTab === 'advisory' ? 'block' : 'none' }}>
-          <SoilAdvisory t={t} appLanguage={appLanguage} isOnline={isOnline} />
-        </div>
-        <div style={{ display: activeTab === 'network' ? 'block' : 'none' }}>
-          <StateTelemetryMap t={t} appLanguage={appLanguage} isOnline={isOnline} />
-        </div>
+        <Suspense fallback={<TabLoader />}>
+          {activeTab === 'scan' && <CameraScan isOnline={isOnline} appLanguage={appLanguage} t={t} />}
+          {activeTab === 'advisory' && <SoilAdvisory t={t} appLanguage={appLanguage} isOnline={isOnline} />}
+          {activeTab === 'network' && <StateTelemetryMap t={t} appLanguage={appLanguage} isOnline={isOnline} />}
+        </Suspense>
       </main>
 
       <Navbar activeTab={activeTab} setActiveTab={setActiveTab} t={t} />
