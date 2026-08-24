@@ -111,93 +111,66 @@ export default function MarketPrices({ t, appLanguage, isOnline }) {
   }, []);
 
   return (
-    <div className="flex flex-col gap-3 bg-grid">
-      <div className="bg-black text-white p-3 border-2 border-black shadow-brutal-hover flex justify-between items-center">
+    <div className="flex flex-col gap-2 bg-grid">
+      <div className="bg-black text-white p-2 border-2 border-black flex justify-between items-center">
         <div>
-          <h2 className="text-lg font-black uppercase tracking-tighter">{t('marketPrices') || 'Market Prices'}</h2>
-          <p className="font-mono text-[10px] text-brutal-neon">{t('mandiPrices') || 'Mandi Prices (INR/Quintal)'}</p>
+          <h2 className="text-sm font-black uppercase tracking-tighter">{t('marketPrices') || 'Market Prices'}</h2>
+          <p className="font-mono text-[8px] text-brutal-neon">{t('mandiPrices') || 'Mandi Prices (INR/Quintal)'}</p>
         </div>
-        <button 
-          onClick={refreshPrices}
-          disabled={loading}
-          className="p-2 hover:bg-white/20 transition-colors"
-          aria-label="Refresh prices"
-        >
-          <RefreshCw size={20} className={loading ? 'animate-spin' : ''} />
+        <button onClick={refreshPrices} disabled={loading} className="p-1.5 hover:bg-white/20 transition-colors" aria-label="Refresh prices">
+          <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
         </button>
       </div>
 
-      {/* Last Updated */}
-      <div className="flex justify-between items-center px-2">
-        <span className="font-mono text-[9px] text-gray-500 uppercase">
-          {t('lastUpdated') || 'Last updated'}: {lastUpdated.toLocaleTimeString()}
-        </span>
-        {!isOnline && (
-          <span className="font-mono text-[9px] text-orange-600 uppercase">
-            {t('cachedPrices') || 'Cached prices'}
-          </span>
-        )}
+      <div className="flex justify-between items-center px-1">
+        <span className="font-mono text-[8px] text-gray-500 uppercase">{t('lastUpdated') || 'Updated'}: {lastUpdated.toLocaleTimeString()}</span>
+        {!isOnline && <span className="font-mono text-[8px] text-orange-600 uppercase">{t('cachedPrices') || 'Cached'}</span>}
       </div>
 
-      {/* Crop Price Cards */}
-      <div className="grid gap-2">
+      <div className="grid gap-1.5">
         {Object.entries(prices).map(([cropKey, crop]) => (
-          <div 
-            key={cropKey}
-            className="brutal-box bg-white border-2 border-black cursor-pointer hover:bg-gray-50 transition-colors"
-            onClick={() => setSelectedCrop(selectedCrop === cropKey ? null : cropKey)}
-          >
-            <div className="p-3 flex justify-between items-center">
-              <div className="flex items-center gap-3">
-                <span className="text-2xl">{crop.icon}</span>
+          <div key={cropKey} className="bg-white border-2 border-black cursor-pointer hover:bg-gray-50 transition-colors" onClick={() => setSelectedCrop(selectedCrop === cropKey ? null : cropKey)}>
+            <div className="p-2 flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <span className="text-lg">{crop.icon}</span>
                 <div>
-                  <p className="font-black text-sm">{crop.name[appLanguage] || crop.name.en}</p>
-                  <p className="font-mono text-[9px] text-gray-500">
-                    {crop.varieties.length} {t('varieties') || 'varieties'}
-                  </p>
+                  <p className="font-black text-[11px]">{crop.name[appLanguage] || crop.name.en}</p>
+                  <p className="font-mono text-[8px] text-gray-500">{crop.varieties.length} {t('varieties') || 'varieties'}</p>
                 </div>
               </div>
               <div className="text-right">
-                <p className="font-black text-lg">₹{crop.varieties[0].price.toLocaleString()}</p>
-                <div className="flex items-center gap-1 justify-end">
+                <p className="font-black text-sm">₹{crop.varieties[0].price.toLocaleString()}</p>
+                <div className="flex items-center gap-0.5 justify-end">
                   <PriceChange change={crop.varieties[0].change} />
-                  <span className={`font-mono text-[10px] ${crop.varieties[0].change > 0 ? 'text-green-600' : crop.varieties[0].change < 0 ? 'text-red-600' : 'text-gray-400'}`}>
+                  <span className={`font-mono text-[9px] ${crop.varieties[0].change > 0 ? 'text-green-600' : crop.varieties[0].change < 0 ? 'text-red-600' : 'text-gray-400'}`}>
                     {crop.varieties[0].change > 0 ? '+' : ''}{crop.varieties[0].change}
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Expanded Details */}
             {selectedCrop === cropKey && (
-              <div className="border-t-2 border-black p-3 bg-brutal-bg">
-                {/* All Varieties */}
-                <div className="mb-3">
-                  <p className="font-mono text-[9px] uppercase text-gray-500 mb-2">{t('varieties') || 'Varieties'}:</p>
+              <div className="border-t-2 border-black p-2 bg-brutal-bg">
+                <div className="mb-2">
+                  <p className="font-mono text-[8px] uppercase text-gray-500 mb-1">{t('varieties') || 'Varieties'}:</p>
                   {crop.varieties.map((v, idx) => (
-                    <div key={idx} className="flex justify-between items-center py-1 border-b border-gray-200 last:border-0">
-                      <span className="font-mono text-xs font-bold">{v.name}</span>
-                      <div className="flex items-center gap-2">
-                        <span className="font-black text-sm">₹{v.price.toLocaleString()}</span>
+                    <div key={idx} className="flex justify-between items-center py-0.5 border-b border-gray-200 last:border-0">
+                      <span className="font-mono text-[10px] font-bold">{v.name}</span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-black text-[11px]">₹{v.price.toLocaleString()}</span>
                         <div className="flex items-center gap-0.5">
                           <PriceChange change={v.change} />
-                          <span className={`font-mono text-[9px] ${v.change > 0 ? 'text-green-600' : v.change < 0 ? 'text-red-600' : 'text-gray-400'}`}>
-                            {v.change > 0 ? '+' : ''}{v.change}
-                          </span>
+                          <span className={`font-mono text-[8px] ${v.change > 0 ? 'text-green-600' : v.change < 0 ? 'text-red-600' : 'text-gray-400'}`}>{v.change > 0 ? '+' : ''}{v.change}</span>
                         </div>
                       </div>
                     </div>
                   ))}
                 </div>
-
-                {/* Available Mandis */}
                 <div>
-                  <p className="font-mono text-[9px] uppercase text-gray-500 mb-1">{t('availableAt') || 'Available at'}:</p>
+                  <p className="font-mono text-[8px] uppercase text-gray-500 mb-0.5">{t('availableAt') || 'Available at'}:</p>
                   <div className="flex flex-wrap gap-1">
                     {crop.mandis.map((mandi, idx) => (
-                      <span key={idx} className="bg-white border border-black px-2 py-0.5 font-mono text-[10px]">
-                        {mandi}
-                      </span>
+                      <span key={idx} className="bg-white border border-black px-1.5 py-0.5 font-mono text-[9px]">{mandi}</span>
                     ))}
                   </div>
                 </div>
@@ -207,11 +180,8 @@ export default function MarketPrices({ t, appLanguage, isOnline }) {
         ))}
       </div>
 
-      {/* Disclaimer */}
-      <div className="bg-yellow-50 border-2 border-yellow-400 p-2 text-center">
-        <p className="font-mono text-[9px] text-yellow-700 uppercase">
-          ⚠️ {t('priceDisclaimer') || 'Prices are indicative. Contact local mandi for actual rates.'}
-        </p>
+      <div className="bg-yellow-50 border-2 border-yellow-400 p-1.5 text-center">
+        <p className="font-mono text-[8px] text-yellow-700 uppercase">⚠️ {t('priceDisclaimer') || 'Prices are indicative. Contact local mandi for actual rates.'}</p>
       </div>
     </div>
   );

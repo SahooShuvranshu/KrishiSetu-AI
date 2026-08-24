@@ -38,25 +38,25 @@ function Toast({ toast, onRemove }) {
 
   return (
     <div
-      className={`flex items-start gap-3 p-3 border-2 border-black shadow-brutal ${typeConfig.bg} text-white max-w-sm w-full transition-all duration-300 ${
+      className={`flex items-start gap-2 p-2 border-2 border-black shadow-[3px_3px_0_0_#000] ${typeConfig.bg} text-white max-w-xs w-full transition-all duration-300 ${
         isRemoving ? 'opacity-0 translate-x-full' : 'opacity-100 translate-x-0'
       }`}
     >
-      <Icon size={20} className="flex-shrink-0 mt-0.5" />
+      <Icon size={16} className="flex-shrink-0 mt-0.5" />
       <div className="flex-1">
         {toast.title && (
-          <p className="font-black text-sm uppercase">{toast.title}</p>
+          <p className="font-black text-[11px] uppercase">{toast.title}</p>
         )}
-        <p className="font-mono text-xs opacity-90">{toast.message}</p>
+        <p className="font-mono text-[10px] opacity-90">{toast.message}</p>
       </div>
       <button
         onClick={() => {
           setIsRemoving(true);
           setTimeout(() => onRemove(toast.id), 300);
         }}
-        className="flex-shrink-0 p-1 hover:bg-white/20 transition-colors"
+        className="flex-shrink-0 p-0.5 hover:bg-white/20 transition-colors"
       >
-        <X size={16} />
+        <X size={14} />
       </button>
     </div>
   );
@@ -88,7 +88,7 @@ export function ToastProvider({ children }) {
       {children}
       
       {/* Toast container */}
-      <div className="fixed top-4 right-4 z-[200] flex flex-col gap-2 max-w-sm">
+      <div className="fixed top-2 right-2 z-[200] flex flex-col gap-1.5 max-w-xs">
         {toasts.map(t => (
           <Toast key={t.id} toast={t} onRemove={removeToast} />
         ))}
