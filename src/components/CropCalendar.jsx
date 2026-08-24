@@ -58,13 +58,13 @@ export default function CropCalendar({ t, appLanguage }) {
   const currentSeason = getCurrentSeason();
 
   return (
-    <div className="flex flex-col gap-3 bg-diagonal">
-      <div className="bg-black text-white p-3 border-2 border-black shadow-brutal-hover flex justify-between items-center">
+    <div className="flex flex-col gap-2 bg-diagonal">
+      <div className="bg-black text-white p-2 border-2 border-black flex justify-between items-center">
         <div>
-          <h2 className="text-lg font-black uppercase tracking-tighter">{t('cropCalendar') || 'Crop Calendar'}</h2>
-          <p className="font-mono text-[10px] text-brutal-green">{t('odishaGuide') || 'Odisha Planting Guide'}</p>
+          <h2 className="text-sm font-black uppercase tracking-tighter">{t('cropCalendar') || 'Crop Calendar'}</h2>
+          <p className="font-mono text-[8px] text-brutal-green">{t('odishaGuide') || 'Odisha Planting Guide'}</p>
         </div>
-        <Calendar size={24} className="text-brutal-neon" strokeWidth={2} />
+        <Calendar size={18} className="text-brutal-neon" strokeWidth={2} />
       </div>
 
       {Object.entries(CROP_CALENDAR).map(([season, data]) => {
@@ -72,34 +72,34 @@ export default function CropCalendar({ t, appLanguage }) {
         const isCurrent = season === currentSeason;
         
         return (
-          <div key={season} className={`brutal-box border-2 border-black ${isCurrent ? 'ring-2 ring-brutal-green' : ''}`}>
+          <div key={season} className={`border-2 border-black ${isCurrent ? 'ring-2 ring-brutal-green' : ''}`}>
             <button
               onClick={() => setExpandedSeason(isExpanded ? null : season)}
-              className={`w-full p-3 flex justify-between items-center ${data.color} ${isCurrent ? 'bg-brutal-green/20' : ''}`}
+              className={`w-full p-2 flex justify-between items-center ${data.color} ${isCurrent ? 'bg-brutal-green/20' : ''}`}
             >
               <div className="text-left">
-                <div className="flex items-center gap-2">
-                  <span className="font-black text-sm">{data.name[appLanguage] || data.name.en}</span>
+                <div className="flex items-center gap-1.5">
+                  <span className="font-black text-xs">{data.name[appLanguage] || data.name.en}</span>
                   {isCurrent && (
-                    <span className="bg-black text-brutal-neon text-[9px] font-black px-2 py-0.5 uppercase">
+                    <span className="bg-black text-brutal-neon text-[8px] font-black px-1.5 py-0.5 uppercase">
                       {t('currentSeason') || 'Current'}
                     </span>
                   )}
                 </div>
-                <span className="font-mono text-[10px] text-gray-600">{data.months[appLanguage] || data.months.en}</span>
+                <span className="font-mono text-[9px] text-gray-600">{data.months[appLanguage] || data.months.en}</span>
               </div>
-              {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+              {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
             </button>
 
             {isExpanded && (
-              <div className="p-3 bg-white border-t-2 border-black">
-                <div className="grid gap-2">
+              <div className="p-2 bg-white border-t-2 border-black">
+                <div className="grid gap-1.5">
                   {data.crops.map((crop, idx) => (
-                    <div key={idx} className="flex gap-3 p-2 bg-brutal-bg border border-black">
-                      <span className="text-2xl">{crop.icon}</span>
+                    <div key={idx} className="flex gap-2 p-1.5 bg-brutal-bg border border-black">
+                      <span className="text-lg">{crop.icon}</span>
                       <div className="flex-1">
-                        <p className="font-black text-xs">{crop.name[appLanguage] || crop.name.en}</p>
-                        <p className="font-mono text-[10px] text-gray-600 mt-1 leading-relaxed">
+                        <p className="font-black text-[10px]">{crop.name[appLanguage] || crop.name.en}</p>
+                        <p className="font-mono text-[9px] text-gray-600 leading-relaxed">
                           {crop.tips[appLanguage] || crop.tips.en}
                         </p>
                       </div>

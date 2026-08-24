@@ -201,36 +201,34 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
   };
 
   return (
-    <div className="flex flex-col gap-4 animate-fade-in pb-10 bg-crosshatch">
-      {/* Offline Mode Banner */}
+    <div className="flex flex-col gap-2.5 animate-fade-in pb-10 bg-crosshatch">
       {!isOnline && (
-        <div className="bg-yellow-100 border-2 border-yellow-500 p-3 flex items-center gap-3">
-          <WifiOff size={20} className="text-yellow-600 flex-shrink-0" />
+        <div className="bg-yellow-100 border-2 border-yellow-500 p-2 flex items-center gap-2">
+          <WifiOff size={16} className="text-yellow-600 flex-shrink-0" />
           <div>
-            <p className="font-black text-xs uppercase text-yellow-800">Offline Mode Active</p>
-            <p className="font-mono text-[9px] text-yellow-700">Using local AI model. No internet required.</p>
+            <p className="font-black text-[10px] uppercase text-yellow-800">Offline Mode Active</p>
+            <p className="font-mono text-[8px] text-yellow-700">Using local AI model.</p>
           </div>
         </div>
       )}
       
       {!imagePreview && (
-        <div className="flex flex-col gap-4 mt-4">
-          {/* Crop Selection */}
-          <div className="bg-white border-2 border-black p-3">
-            <p className="font-mono text-[10px] uppercase text-gray-500 mb-2">{t('selectCrop') || 'Select Crop Type'}:</p>
-            <div className="grid grid-cols-3 gap-2">
+        <div className="flex flex-col gap-2.5 mt-2">
+          <div className="bg-white border-2 border-black p-2">
+            <p className="font-mono text-[9px] uppercase text-gray-500 mb-1.5">{t('selectCrop') || 'Select Crop Type'}:</p>
+            <div className="grid grid-cols-3 gap-1.5">
               {cropOptions.map((crop) => (
                 <button
                   key={crop.id}
                   onClick={() => setSelectedCrop(crop.id)}
-                  className={`p-2 border-2 border-black text-center transition-all ${
+                  className={`p-1.5 border-2 border-black text-center transition-all ${
                     selectedCrop === crop.id 
                       ? 'bg-brutal-neon shadow-[2px_2px_0_0_#000]' 
                       : 'bg-white hover:bg-gray-50'
                   }`}
                 >
-                  <span className="text-xl block">{crop.icon}</span>
-                  <span className="font-black text-[9px] uppercase block mt-1">{crop.name[appLanguage] || crop.name.en}</span>
+                  <span className="text-base block">{crop.icon}</span>
+                  <span className="font-black text-[8px] uppercase block mt-0.5">{crop.name[appLanguage] || crop.name.en}</span>
                 </button>
               ))}
             </div>
@@ -239,40 +237,26 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
           <p className="font-mono text-xs uppercase text-gray-600 text-center">{t('takePhotoInstruction')}</p>
           
           <label 
-            className="brutal-button bg-brutal-neon text-black p-6 flex flex-col items-center justify-center gap-2 cursor-pointer border-2 border-black shadow-brutal text-lg uppercase tracking-wider"
+            className="brutal-button bg-brutal-neon text-black p-4 flex flex-col items-center justify-center gap-1.5 cursor-pointer border-2 border-black shadow-brutal text-sm uppercase tracking-wider"
             aria-label="Open camera to take photo"
           >
-            <Camera size={40} />
+            <Camera size={28} />
             {t('openCamera')}
-            <input 
-              type="file" 
-              accept="image/*" 
-              capture="environment" 
-              className="hidden" 
-              onChange={handleImageSelect}
-              aria-hidden="true"
-            />
+            <input type="file" accept="image/*" capture="environment" className="hidden" onChange={handleImageSelect} aria-hidden="true" />
           </label>
 
           <label 
-            className="brutal-button bg-white text-black p-6 flex flex-col items-center justify-center gap-2 cursor-pointer border-2 border-black shadow-brutal text-lg uppercase tracking-wider"
+            className="brutal-button bg-white text-black p-4 flex flex-col items-center justify-center gap-1.5 cursor-pointer border-2 border-black shadow-brutal text-sm uppercase tracking-wider"
             aria-label="Upload photo from gallery"
           >
-            <Upload size={40} />
+            <Upload size={28} />
             {t('uploadPhoto')}
-            <input 
-              type="file" 
-              accept="image/*" 
-              className="hidden" 
-              onChange={handleImageSelect}
-              aria-hidden="true"
-            />
+            <input type="file" accept="image/*" className="hidden" onChange={handleImageSelect} aria-hidden="true" />
           </label>
 
-          {/* Tips */}
-          <div className="bg-yellow-50 border-2 border-yellow-400 p-3">
-            <p className="font-black text-xs uppercase mb-1">{t('scanTips') || '📸 Scan Tips:'}</p>
-            <ul className="font-mono text-[10px] text-gray-700 space-y-1">
+          <div className="bg-yellow-50 border-2 border-yellow-400 p-2">
+            <p className="font-black text-[10px] uppercase mb-1">{t('scanTips') || '📸 Scan Tips:'}</p>
+            <ul className="font-mono text-[9px] text-gray-700 space-y-0.5">
               <li>• {t('tip1') || 'Take close-up photo of affected leaf'}</li>
               <li>• {t('tip2') || 'Ensure good lighting'}</li>
               <li>• {t('tip3') || 'Include multiple leaves if possible'}</li>
@@ -290,104 +274,57 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
       )}
 
       {result && (
-        <div className="brutal-box p-4 bg-brutal-green border-2 border-black">
-          <div className="flex justify-between items-start mb-3 border-b-2 border-black pb-2">
-            <h3 className="font-black text-lg uppercase tracking-tighter leading-none">
+        <div className="brutal-box p-3 bg-brutal-green border-2 border-black">
+          <div className="flex justify-between items-start mb-2 border-b-2 border-black pb-1.5">
+            <h3 className="font-black text-sm uppercase tracking-tighter leading-none">
               {result.disease}
             </h3>
-            <span className="bg-black text-brutal-neon font-mono text-[9px] px-2 py-1 font-bold rounded-sm">
+            <span className="bg-black text-brutal-neon font-mono text-[8px] px-1.5 py-0.5 font-bold">
               {result.source}
             </span>
           </div>
           
-          <div className="mb-4 font-mono font-bold text-xs bg-white p-3 border-2 border-black whitespace-pre-line leading-relaxed">
-            <h4 className="uppercase text-[10px] text-gray-500 mb-2 border-b border-gray-300 pb-1">{t('advice')}:</h4>
+          <div className="mb-3 font-mono font-bold text-[10px] bg-white p-2 border-2 border-black whitespace-pre-line leading-relaxed">
+            <h4 className="uppercase text-[9px] text-gray-500 mb-1 border-b border-gray-300 pb-0.5">{t('advice')}:</h4>
             {result.treatment}
           </div>
           
-          <div className="grid grid-cols-2 gap-2 mb-2">
-            <button 
-              onClick={() => speakText(result.treatment, appLanguage)}
-              className="brutal-button bg-black text-brutal-neon py-3 text-sm font-black border-2 border-black flex justify-center items-center uppercase"
-            >
+          <div className="grid grid-cols-2 gap-1.5 mb-1.5">
+            <button onClick={() => speakText(result.treatment, appLanguage)} className="bg-black text-brutal-neon py-2 text-[10px] font-black border-2 border-black flex justify-center items-center uppercase">
               {t('playAudio')}
             </button>
-            <button 
-              onClick={clearScan}
-              className="brutal-button bg-white text-black py-3 text-sm font-black border-2 border-black flex justify-center items-center uppercase"
-            >
+            <button onClick={clearScan} className="bg-white text-black py-2 text-[10px] font-black border-2 border-black flex justify-center items-center uppercase">
               {t('newPhoto')}
             </button>
           </div>
           
-          {/* BROADCAST + SHARE BUTTONS */}
-          <div className="grid grid-cols-2 gap-2 mt-2">
-            <button 
-              onClick={handleBroadcastAlert}
-              className="brutal-button bg-red-500 text-white py-3 text-sm font-black border-2 border-black flex justify-center items-center uppercase shadow-[4px_4px_0_0_#000]"
-            >
+          <div className="grid grid-cols-2 gap-1.5">
+            <button onClick={handleBroadcastAlert} className="bg-red-500 text-white py-2 text-[10px] font-black border-2 border-black flex justify-center items-center uppercase shadow-[3px_3px_0_0_#000]">
               {t('broadcastAlert')}
             </button>
-            <button 
-              onClick={async () => {
-                const shareText = `Krishi Setu AI Diagnosis:\n${result.disease}\n\nAdvice:\n${result.treatment}`;
-                if (navigator.share) {
-                  try {
-                    await navigator.share({
-                      title: 'Krishi Setu - Crop Diagnosis',
-                      text: shareText
-                    });
-                  } catch (e) {
-                    // User cancelled share
-                  }
-                } else {
-                  // Fallback: copy to clipboard
-                  await navigator.clipboard.writeText(shareText);
-                  toast.info('Diagnosis copied to clipboard!', 'Copied');
-                }
-              }}
-              className="brutal-button bg-brutal-neon text-black py-3 text-sm font-black border-2 border-black flex justify-center items-center uppercase"
-            >
-              <Share2 size={16} className="mr-1" /> {t('share') || 'Share'}
+            <button onClick={async () => { const shareText = `Krishi Setu AI Diagnosis:\n${result.disease}\n\nAdvice:\n${result.treatment}`; if (navigator.share) { try { await navigator.share({ title: 'Krishi Setu - Crop Diagnosis', text: shareText }); } catch (e) {} } else { await navigator.clipboard.writeText(shareText); toast.info('Copied!', 'Copied'); } }} className="bg-brutal-neon text-black py-2 text-[10px] font-black border-2 border-black flex justify-center items-center uppercase">
+              <Share2 size={12} className="mr-1" /> {t('share') || 'Share'}
             </button>
           </div>
         </div>
       )}
 
-      {/* Scan History */}
       {scanHistory.length > 0 && !result && (
-        <div className="mt-6">
-          <div className="flex justify-between items-center mb-3">
-            <h3 className="font-black text-sm uppercase">{t('recentScans') || 'Recent Scans'}</h3>
-            <button
-              onClick={clearHistory}
-              className="text-xs font-bold text-red-500 underline"
-            >
+        <div className="mt-4">
+          <div className="flex justify-between items-center mb-2">
+            <h3 className="font-black text-xs uppercase">{t('recentScans') || 'Recent Scans'}</h3>
+            <button onClick={clearHistory} className="text-[9px] font-bold text-red-500 underline">
               {t('clearHistory') || 'Clear'}
             </button>
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-1.5">
             {scanHistory.slice(0, 5).map((entry) => (
-              <div
-                key={entry.id}
-                className="brutal-box bg-white border-2 p-3 cursor-pointer hover:bg-gray-50"
-                onClick={() => {
-                  setResult({
-                    source: entry.source,
-                    disease: entry.disease,
-                    treatment: entry.treatment
-                  });
-                }}
-              >
+              <div key={entry.id} className="bg-white border-2 border-black p-2 cursor-pointer hover:bg-gray-50" onClick={() => setResult({ source: entry.source, disease: entry.disease, treatment: entry.treatment })}>
                 <div className="flex justify-between items-start">
-                  <span className="font-black text-xs uppercase">{entry.disease}</span>
-                  <span className="text-[9px] font-mono text-gray-500">
-                    {new Date(entry.timestamp).toLocaleDateString()}
-                  </span>
+                  <span className="font-black text-[10px] uppercase">{entry.disease}</span>
+                  <span className="text-[8px] font-mono text-gray-500">{new Date(entry.timestamp).toLocaleDateString()}</span>
                 </div>
-                <p className="text-[10px] font-mono text-gray-600 mt-1 truncate">
-                  {entry.source}
-                </p>
+                <p className="text-[8px] font-mono text-gray-600 truncate">{entry.source}</p>
               </div>
             ))}
           </div>

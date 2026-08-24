@@ -54,159 +54,127 @@ export default function HomeTab({ t, appLanguage, isOnline, setActiveTab }) {
   ];
 
   return (
-    <div className="flex flex-col gap-4 animate-fade-in pb-8 bg-dots">
-      {/* Hero Section - Offline First Focus */}
-      <div className="bg-black text-white p-5 border-2 border-black shadow-brutal relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-40 h-40 bg-brutal-neon opacity-5 rounded-full -translate-y-1/2 translate-x-1/2" />
-        <div className="absolute bottom-0 left-0 w-24 h-24 bg-brutal-green opacity-10 rounded-full translate-y-1/2 -translate-x-1/2" />
-        
+    <div className="flex flex-col gap-2.5 animate-fade-in pb-8 bg-dots">
+      {/* Hero Section */}
+      <div className="bg-black text-white p-3 border-2 border-black shadow-brutal relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-24 h-24 bg-brutal-neon opacity-5 rounded-full -translate-y-1/2 translate-x-1/2" />
         <div className="relative">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-16 h-16 bg-brutal-neon text-black border-2 border-black flex items-center justify-center text-4xl shadow-[4px_4px_0_0_#ccff00]">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-10 h-10 bg-brutal-neon text-black border-2 border-black flex items-center justify-center text-2xl shadow-[3px_3px_0_0_#ccff00]">
               🚜
             </div>
             <div>
-              <h1 className="text-3xl font-black uppercase leading-none">{t('appTitle')}</h1>
-              <p className="font-mono text-[10px] text-brutal-neon mt-1">{t('appSubtitle')}</p>
+              <h1 className="text-xl font-black uppercase leading-none">{t('appTitle')}</h1>
+              <p className="font-mono text-[8px] text-brutal-neon mt-0.5">{t('appSubtitle')}</p>
             </div>
           </div>
-          
           <StatusBadge isOnline={isOnline} />
         </div>
       </div>
 
-      {/* Offline Status Banner */}
-      <div className={`border-2 border-black p-4 ${isOnline ? 'bg-green-100' : 'bg-yellow-100'}`}>
-        <div className="flex items-center gap-3">
-          <div className={`p-2 border-2 border-black ${isOnline ? 'bg-green-500' : 'bg-yellow-500'}`}>
-            {isOnline ? <Wifi size={20} className="text-white" /> : <WifiOff size={20} className="text-white" />}
+      {/* Offline Status */}
+      <div className={`border-2 border-black p-2.5 ${isOnline ? 'bg-green-100' : 'bg-yellow-100'}`}>
+        <div className="flex items-center gap-2">
+          <div className={`p-1.5 border-2 border-black ${isOnline ? 'bg-green-500' : 'bg-yellow-500'}`}>
+            {isOnline ? <Wifi size={16} className="text-white" /> : <WifiOff size={16} className="text-white" />}
           </div>
           <div className="flex-1">
-            <p className="font-black text-sm uppercase">
+            <p className="font-black text-xs uppercase">
               {isOnline ? '🟢 Online Mode' : '🔴 Offline Mode'}
             </p>
-            <p className="font-mono text-[10px] text-gray-600 mt-1">
-              {isOnline 
-                ? 'Full AI available. Syncing data in background...'
-                : 'AI model runs locally. No internet needed for diagnosis.'
-              }
+            <p className="font-mono text-[9px] text-gray-600">
+              {isOnline ? 'Full AI available.' : 'AI runs locally. No internet needed.'}
             </p>
           </div>
         </div>
       </div>
 
       {/* Model Status */}
-      <div className={`border-2 border-black p-4 ${modelReady ? 'bg-brutal-neon' : 'bg-white'}`}>
-        <div className="flex items-center gap-3">
-          <div className={`p-2 border-2 border-black ${modelReady ? 'bg-black text-brutal-neon' : 'bg-gray-200'}`}>
-            {modelReady ? <CheckCircle size={24} /> : <AlertCircle size={24} />}
+      <div className={`border-2 border-black p-2.5 ${modelReady ? 'bg-brutal-neon' : 'bg-white'}`}>
+        <div className="flex items-center gap-2">
+          <div className={`p-1.5 border-2 border-black ${modelReady ? 'bg-black text-brutal-neon' : 'bg-gray-200'}`}>
+            {modelReady ? <CheckCircle size={18} /> : <AlertCircle size={18} />}
           </div>
           <div className="flex-1">
-            <p className="font-black text-sm uppercase">
+            <p className="font-black text-xs uppercase">
               {modelReady ? '✅ AI Model Ready' : '⚠️ AI Model Not Installed'}
             </p>
-            <p className="font-mono text-[10px] text-gray-600 mt-1">
-              {modelReady 
-                ? 'TensorFlow.js model cached. Works offline.'
-                : 'Go to Settings → Download Model for offline diagnosis.'
-              }
+            <p className="font-mono text-[9px] text-gray-600">
+              {modelReady ? 'Cached. Works offline.' : 'Settings → Download Model.'}
             </p>
           </div>
-          {!modelReady && (
-            <button 
-              onClick={() => setActiveTab('home')}
-              className="bg-brutal-neon text-black px-3 py-2 border-2 border-black font-black text-xs uppercase"
-            >
-              Install
-            </button>
-          )}
         </div>
       </div>
 
       {/* Quick Actions */}
-      <div className="grid grid-cols-3 gap-2">
+      <div className="grid grid-cols-3 gap-1.5">
         {features.map((feature, idx) => (
           <button
             key={idx}
             onClick={feature.action}
-            className="bg-white border-2 border-black p-4 flex flex-col items-center gap-2 hover:bg-gray-50 active:bg-gray-100 transition-colors shadow-[2px_2px_0_0_#000] relative"
+            className="bg-white border-2 border-black p-2.5 flex flex-col items-center gap-1.5 hover:bg-gray-50 active:bg-gray-100 transition-colors shadow-[2px_2px_0_0_#000] relative"
           >
             {feature.badge && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-black w-5 h-5 flex items-center justify-center border border-black">
+              <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[8px] font-black w-4 h-4 flex items-center justify-center border border-black">
                 {feature.badge}
               </span>
             )}
-            <div className={`${feature.color} p-3 border-2 border-black`}>
+            <div className={`${feature.color} p-2 border-2 border-black`}>
               {feature.icon}
             </div>
-            <span className="font-black text-[10px] uppercase text-center">{feature.title}</span>
+            <span className="font-black text-[9px] uppercase text-center leading-tight">{feature.title}</span>
           </button>
         ))}
       </div>
 
-      {/* Stats Grid */}
-      <div className="grid grid-cols-3 gap-2">
-        <div className="bg-white border-2 border-black p-3 shadow-[2px_2px_0_0_#000] text-center">
-          <Cpu size={20} className="mx-auto mb-1 text-brutal-green" />
-          <p className="font-black text-lg">{modelReady ? '✓' : '✗'}</p>
-          <p className="font-mono text-[8px] text-gray-500 uppercase">AI Model</p>
+      {/* Stats */}
+      <div className="grid grid-cols-3 gap-1.5">
+        <div className="bg-white border-2 border-black p-2 shadow-[2px_2px_0_0_#000] text-center">
+          <Cpu size={16} className="mx-auto mb-0.5 text-brutal-green" />
+          <p className="font-black text-sm">{modelReady ? '✓' : '✗'}</p>
+          <p className="font-mono text-[7px] text-gray-500 uppercase">AI Model</p>
         </div>
-        <div className="bg-white border-2 border-black p-3 shadow-[2px_2px_0_0_#000] text-center">
-          <Camera size={20} className="mx-auto mb-1 text-blue-500" />
-          <p className="font-black text-lg">{scanCount}</p>
-          <p className="font-mono text-[8px] text-gray-500 uppercase">Scans</p>
+        <div className="bg-white border-2 border-black p-2 shadow-[2px_2px_0_0_#000] text-center">
+          <Camera size={16} className="mx-auto mb-0.5 text-blue-500" />
+          <p className="font-black text-sm">{scanCount}</p>
+          <p className="font-mono text-[7px] text-gray-500 uppercase">Scans</p>
         </div>
-        <div className="bg-white border-2 border-black p-3 shadow-[2px_2px_0_0_#000] text-center">
-          <HardDrive size={20} className="mx-auto mb-1 text-purple-500" />
-          <p className="font-black text-lg">3</p>
-          <p className="font-mono text-[8px] text-gray-500 uppercase">Languages</p>
+        <div className="bg-white border-2 border-black p-2 shadow-[2px_2px_0_0_#000] text-center">
+          <HardDrive size={16} className="mx-auto mb-0.5 text-purple-500" />
+          <p className="font-black text-sm">3</p>
+          <p className="font-mono text-[7px] text-gray-500 uppercase">Languages</p>
         </div>
       </div>
 
       {/* How Offline Works */}
-      <div className="bg-white border-2 border-black p-4">
-        <h3 className="font-black text-sm uppercase mb-3 flex items-center gap-2">
-          <span className="text-xl">🔌</span> How Offline Works
+      <div className="bg-white border-2 border-black p-2.5">
+        <h3 className="font-black text-xs uppercase mb-2 flex items-center gap-1.5">
+          <span className="text-sm">🔌</span> How Offline Works
         </h3>
-        <div className="space-y-2">
-          <div className="flex items-start gap-2">
-            <span className="bg-brutal-neon text-black text-[10px] font-black px-2 py-0.5 border border-black">1</span>
-            <p className="font-mono text-[10px] text-gray-600">AI model downloads to your phone once (15MB)</p>
-          </div>
-          <div className="flex items-start gap-2">
-            <span className="bg-brutal-neon text-black text-[10px] font-black px-2 py-0.5 border border-black">2</span>
-            <p className="font-mono text-[10px] text-gray-600">Model runs in browser - no server needed</p>
-          </div>
-          <div className="flex items-start gap-2">
-            <span className="bg-brutal-neon text-black text-[10px] font-black px-2 py-0.5 border border-black">3</span>
-            <p className="font-mono text-[10px] text-gray-600">Photos never leave your device - 100% private</p>
-          </div>
-          <div className="flex items-start gap-2">
-            <span className="bg-brutal-neon text-black text-[10px] font-black px-2 py-0.5 border border-black">4</span>
-            <p className="font-mono text-[10px] text-gray-600">Alerts queue locally, sync when online</p>
-          </div>
+        <div className="space-y-1.5">
+          {[
+            'AI model downloads to your phone once (15MB)',
+            'Model runs in browser - no server needed',
+            'Photos never leave your device - 100% private',
+            'Alerts queue locally, sync when online'
+          ].map((text, i) => (
+            <div key={i} className="flex items-start gap-1.5">
+              <span className="bg-brutal-neon text-black text-[8px] font-black px-1.5 py-0.5 border border-black shrink-0">{i+1}</span>
+              <p className="font-mono text-[9px] text-gray-600">{text}</p>
+            </div>
+          ))}
         </div>
       </div>
 
       {/* Links */}
-      <div className="flex gap-2">
-        <a
-          href="https://sahooshuvranshu.is-a.dev/KrishiSetu-AI/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex-1 bg-white border-2 border-black p-3 flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors shadow-[2px_2px_0_0_#000]"
-        >
-          <ExternalLink size={16} />
-          <span className="font-black text-xs uppercase">{t('showcase') || 'Showcase'}</span>
+      <div className="flex gap-1.5">
+        <a href="https://sahooshuvranshu.is-a.dev/KrishiSetu-AI/" target="_blank" rel="noopener noreferrer" className="flex-1 bg-white border-2 border-black p-2 flex items-center justify-center gap-1.5 hover:bg-gray-50 transition-colors shadow-[2px_2px_0_0_#000]">
+          <ExternalLink size={12} />
+          <span className="font-black text-[10px] uppercase">{t('showcase') || 'Showcase'}</span>
         </a>
-        <a
-          href="https://github.com/SahooShuvranshu/KrishiSetu-AI"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex-1 bg-white border-2 border-black p-3 flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors shadow-[2px_2px_0_0_#000]"
-        >
-          <Github size={16} />
-          <span className="font-black text-xs uppercase">{t('source') || 'Source'}</span>
+        <a href="https://github.com/SahooShuvranshu/KrishiSetu-AI" target="_blank" rel="noopener noreferrer" className="flex-1 bg-white border-2 border-black p-2 flex items-center justify-center gap-1.5 hover:bg-gray-50 transition-colors shadow-[2px_2px_0_0_#000]">
+          <Github size={12} />
+          <span className="font-black text-[10px] uppercase">{t('source') || 'Source'}</span>
         </a>
       </div>
     </div>

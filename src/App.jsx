@@ -135,22 +135,22 @@ function App() {
       <div className="fixed inset-0 z-[100] bg-brutal-bg bg-agri-grid flex flex-col items-center justify-center p-4">
         <div className="relative animate-bounce">
           <div className="absolute inset-0 bg-brutal-neon translate-x-3 translate-y-3 border-4 border-black"></div>
-          <div className="relative bg-white border-4 border-black p-8 flex flex-col items-center justify-center shadow-brutal-lg">
-             <div className="w-24 h-24 bg-brutal-green text-white border-4 border-black mb-4 flex items-center justify-center rotate-2 shadow-brutal">
-                <span className="text-5xl">🚜</span>
+          <div className="relative bg-white border-4 border-black p-6 flex flex-col items-center justify-center shadow-brutal-lg">
+             <div className="w-16 h-16 bg-brutal-green text-white border-4 border-black mb-3 flex items-center justify-center rotate-2 shadow-brutal">
+                <span className="text-3xl">🚜</span>
              </div>
-             <h1 className="text-6xl font-black uppercase tracking-tighter text-center leading-none">
+             <h1 className="text-4xl font-black uppercase tracking-tighter text-center leading-none">
                Krishi<br/>Setu
              </h1>
           </div>
         </div>
-        <div className="absolute bottom-12 flex flex-col items-center">
-           <div className="flex gap-2 mb-2">
-             <div className="w-4 h-4 bg-black animate-ping rounded-none border-2 border-white"></div>
-             <div className="w-4 h-4 bg-black animate-ping rounded-none border-2 border-white" style={{ animationDelay: '200ms' }}></div>
-             <div className="w-4 h-4 bg-black animate-ping rounded-none border-2 border-white" style={{ animationDelay: '400ms' }}></div>
+        <div className="absolute bottom-8 flex flex-col items-center">
+           <div className="flex gap-1.5 mb-1.5">
+             <div className="w-3 h-3 bg-black animate-ping rounded-none border-2 border-white"></div>
+             <div className="w-3 h-3 bg-black animate-ping rounded-none border-2 border-white" style={{ animationDelay: '200ms' }}></div>
+             <div className="w-3 h-3 bg-black animate-ping rounded-none border-2 border-white" style={{ animationDelay: '400ms' }}></div>
            </div>
-           <p className="font-mono font-black uppercase tracking-widest text-xs bg-black text-brutal-neon px-2 py-1 border-2 border-black">
+           <p className="font-mono font-black uppercase tracking-widest text-[10px] bg-black text-brutal-neon px-2 py-0.5 border-2 border-black">
              SYSTEM BOOT...
            </p>
         </div>
@@ -159,15 +159,15 @@ function App() {
   }
 
   return (
-    <div className={`min-h-screen pb-24 font-sans relative flex flex-col transition-colors duration-300 ${
+    <div className={`min-h-screen pb-16 font-sans relative flex flex-col transition-colors duration-300 ${
       isDark ? 'bg-gray-900 text-white' : 'bg-brutal-bg bg-agri-grid text-black'
     }`}>
       <div className={`h-4 w-full bg-brutal-neon bg-tractor-tread border-b-4 ${isDark ? 'border-gray-700' : 'border-black'}`}></div>
-      <header className={`${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-black'} border-b-4 p-3 sticky top-0 z-40 flex justify-between items-center shadow-brutal mb-4 transition-colors`}>  
-        <div className="flex items-center gap-2">
+      <header className={`${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-black'} border-b-4 px-2 py-1.5 sticky top-0 z-40 flex justify-between items-center shadow-brutal mb-2 transition-colors`}>  
+        <div className="flex items-center gap-1.5">
           <div>
-            <h1 className="text-2xl font-black tracking-tighter uppercase leading-none">{t('appTitle')}</h1>
-            <p className={`font-mono text-[9px] font-black px-2 py-0.5 mt-1 inline-block border uppercase ${
+            <h1 className="text-lg sm:text-xl font-black tracking-tighter uppercase leading-none">{t('appTitle')}</h1>
+            <p className={`font-mono text-[8px] font-black px-1.5 py-0.5 mt-0.5 inline-block border uppercase ${
               isDark ? 'bg-brutal-neon text-black border-brutal-neon' : 'bg-black text-brutal-neon border-black'
             }`}>
               {t('appSubtitle')}
@@ -175,21 +175,21 @@ function App() {
           </div>
           <StatusBadge isOnline={isOnline} />
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-1">
           <button 
             onClick={() => setShowInfo(true)}
-            className={`p-2 border-2 ${isDark ? 'bg-gray-700 border-gray-600 hover:bg-brutal-neon hover:text-black' : 'bg-gray-100 border-black hover:bg-brutal-neon'} shadow-[2px_2px_0_0_#000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all`}
+            className={`p-1.5 border-2 ${isDark ? 'bg-gray-700 border-gray-600 hover:bg-brutal-neon hover:text-black' : 'bg-gray-100 border-black hover:bg-brutal-neon'} shadow-[2px_2px_0_0_#000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all`}
             aria-label="About Project"
           >
-            <Info size={18} />
+            <Info size={16} />
           </button>
           
           <button 
             onClick={() => setShowSettings(true)}
-            className={`p-2 border-2 ${isDark ? 'bg-gray-700 border-gray-600 hover:bg-brutal-neon hover:text-black' : 'bg-gray-100 border-black hover:bg-brutal-neon'} shadow-[2px_2px_0_0_#000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all`}
+            className={`p-1.5 border-2 ${isDark ? 'bg-gray-700 border-gray-600 hover:bg-brutal-neon hover:text-black' : 'bg-gray-100 border-black hover:bg-brutal-neon'} shadow-[2px_2px_0_0_#000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all`}
             aria-label="App Settings"
           >
-            <Settings size={18} />
+            <Settings size={16} />
           </button>
         </div>
       </header>
@@ -197,24 +197,24 @@ function App() {
       {/* Info Modal */}
       {showInfo && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-end sm:items-center justify-center animate-fade-in" role="dialog" aria-modal="true" aria-label="About Project">
-          <div className={`${isDark ? 'bg-gray-800 border-gray-600' : 'bg-white border-black'} border-4 w-full sm:max-w-sm max-h-[85vh] relative shadow-[8px_8px_0_0_#00ff41] sm:m-4 overflow-hidden flex flex-col transition-colors`}>
-            <div className={`p-4 pb-2 border-b-2 ${isDark ? 'border-gray-600' : 'border-black'} flex-shrink-0`}>  
-              <button onClick={() => setShowInfo(false)} className="absolute top-3 right-3 p-1 border-2 border-black bg-red-500 text-white"><X size={18} /></button>
-              <h2 className="font-black text-xl uppercase">About Project</h2>
+          <div className={`${isDark ? 'bg-gray-800 border-gray-600' : 'bg-white border-black'} border-4 w-full sm:max-w-xs max-h-[80vh] relative shadow-[8px_8px_0_0_#00ff41] sm:m-4 overflow-hidden flex flex-col transition-colors rounded-t-xl sm:rounded-none`}>
+            <div className={`px-3 py-2 border-b-2 ${isDark ? 'border-gray-600' : 'border-black'} flex-shrink-0`}>  
+              <button onClick={() => setShowInfo(false)} className="absolute top-2 right-2 p-0.5 border-2 border-black bg-red-500 text-white"><X size={14} /></button>
+              <h2 className="font-black text-base uppercase">About Project</h2>
             </div>
-            <div className="p-4 overflow-y-auto flex-1">
-              <div className="font-mono text-sm">
-                <p className="font-bold uppercase text-gray-500 mb-1">Project Name:</p>
-                <p className="text-lg font-black bg-brutal-green p-2 border-2 border-black mb-3">Krishi Setu AI</p>
-                <p className="font-bold uppercase text-gray-500 mb-1">Team Name:</p>
-                <p className="text-lg font-black bg-brutal-neon p-2 border-2 border-black mb-3">Crystal Studio Labs</p>
-                <p className="font-bold uppercase text-gray-500 mb-1">Hackathon:</p>
-                <p className={`${isDark ? 'bg-gray-700' : 'bg-gray-100'} p-2 border-2 ${isDark ? 'border-gray-600' : 'border-black'} mb-4`}>Google AI Hackathon 2026: Code for Communities</p>
-                <p className="font-bold uppercase text-gray-500 mb-1">About:</p>
-                <p className={`text-[11px] leading-relaxed ${isDark ? 'bg-gray-700 border-gray-600' : 'bg-white border-black'} border-2 p-2`}>Krishi Setu is an offline-first, multilingual AI plant pathologist and localized broadcast network, designed entirely for remote Indian farming communities.</p>
-                <div className="flex gap-2 mt-4">
-                  <a href="https://sahooshuvranshu.is-a.dev/KrishiSetu-AI/" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 p-3 bg-brutal-neon text-black border-2 border-black hover:bg-white transition-all font-bold uppercase text-xs shadow-[4px_4px_0_0_#000]"><ExternalLink size={16} /> Showcase</a>
-                  <a href="https://github.com/SahooShuvranshu/KrishiSetu-AI" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 p-3 bg-black text-white border-2 border-black hover:bg-white hover:text-black transition-all font-bold uppercase text-xs shadow-[4px_4px_0_0_#000]"><Github size={16} /> Source</a>
+            <div className="p-3 overflow-y-auto flex-1">
+              <div className="font-mono text-xs">
+                <p className="font-bold uppercase text-gray-500 mb-0.5 text-[10px]">Project Name:</p>
+                <p className="text-sm font-black bg-brutal-green p-1.5 border-2 border-black mb-2">Krishi Setu AI</p>
+                <p className="font-bold uppercase text-gray-500 mb-0.5 text-[10px]">Team Name:</p>
+                <p className="text-sm font-black bg-brutal-neon p-1.5 border-2 border-black mb-2">Crystal Studio Labs</p>
+                <p className="font-bold uppercase text-gray-500 mb-0.5 text-[10px]">Hackathon:</p>
+                <p className={`${isDark ? 'bg-gray-700' : 'bg-gray-100'} p-1.5 border-2 ${isDark ? 'border-gray-600' : 'border-black'} mb-2`}>Google AI Hackathon 2026</p>
+                <p className="font-bold uppercase text-gray-500 mb-0.5 text-[10px]">About:</p>
+                <p className={`text-[10px] leading-relaxed ${isDark ? 'bg-gray-700 border-gray-600' : 'bg-white border-black'} border-2 p-2`}>Krishi Setu is an offline-first, multilingual AI plant pathologist for remote Indian farming communities.</p>
+                <div className="flex gap-2 mt-3">
+                  <a href="https://sahooshuvranshu.is-a.dev/KrishiSetu-AI/" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-1.5 p-2 bg-brutal-neon text-black border-2 border-black hover:bg-white transition-all font-bold uppercase text-[10px] shadow-[3px_3px_0_0_#000]"><ExternalLink size={12} /> Showcase</a>
+                  <a href="https://github.com/SahooShuvranshu/KrishiSetu-AI" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-1.5 p-2 bg-black text-white border-2 border-black hover:bg-white hover:text-black transition-all font-bold uppercase text-[10px] shadow-[3px_3px_0_0_#000]"><Github size={12} /> Source</a>
                 </div>
               </div>
             </div>
@@ -225,82 +225,82 @@ function App() {
       {/* Settings Modal */}
       {showSettings && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-end sm:items-center justify-center animate-fade-in" role="dialog" aria-modal="true" aria-label="App Settings">
-          <div className={`${isDark ? 'bg-gray-800 border-gray-600' : 'bg-white border-black'} border-4 w-full sm:max-w-sm max-h-[90vh] relative shadow-[8px_8px_0_0_#00ff41] sm:m-4 transition-colors`}>
-            <div className={`sticky top-0 z-10 p-4 pb-2 border-b-2 ${isDark ? 'bg-gray-800 border-gray-600' : 'bg-white border-black'}`}>
-              <button onClick={() => setShowSettings(false)} className="absolute top-3 right-3 p-1 border-2 border-black bg-red-500 text-white"><X size={18} /></button>
-              <h2 className="font-black text-xl uppercase">{t('settings')}</h2>
+          <div className={`${isDark ? 'bg-gray-800 border-gray-600' : 'bg-white border-black'} border-4 w-full sm:max-w-xs max-h-[85vh] relative shadow-[8px_8px_0_0_#00ff41] sm:m-4 transition-colors rounded-t-xl sm:rounded-none`}>
+            <div className={`sticky top-0 z-10 px-3 py-2 border-b-2 ${isDark ? 'bg-gray-800 border-gray-600' : 'bg-white border-black'}`}>
+              <button onClick={() => setShowSettings(false)} className="absolute top-2 right-2 p-0.5 border-2 border-black bg-red-500 text-white"><X size={14} /></button>
+              <h2 className="font-black text-base uppercase">{t('settings')}</h2>
             </div>
-            <div className="p-4 overflow-y-auto max-h-[calc(90vh-60px)]">
+            <div className="px-3 py-2 overflow-y-auto max-h-[calc(85vh-44px)]">
               {/* API Key */}
-              <div className={`border-2 ${isDark ? 'border-gray-600 bg-gray-700' : 'border-black bg-gray-50'} p-3 mb-4 font-mono text-xs`}>  
-                <h3 className="font-bold uppercase text-gray-500 mb-2">Cloud AI API Key</h3>
-                <div className="flex gap-2 mb-1">
-                  <input type="password" value={geminiKey} onChange={(e) => setGeminiKey(e.target.value)} placeholder="Paste Gemini API Key..." className={`w-full p-2 border-2 ${isDark ? 'border-gray-600 bg-gray-600 text-white' : 'border-black'} focus:outline-none focus:bg-brutal-neon font-sans`} />
-                  <button onClick={() => { localStorage.setItem('krishisetu_gemini_key', geminiKey); toast.success('API Key Saved!', 'Settings'); }} className="bg-black text-white px-3 font-bold uppercase border-2 border-black hover:bg-brutal-neon hover:text-black transition-colors">Save</button>
+              <div className={`border-2 ${isDark ? 'border-gray-600 bg-gray-700' : 'border-black bg-gray-50'} p-2 mb-2.5 font-mono text-[10px]`}>  
+                <h3 className="font-bold uppercase text-gray-500 mb-1">Cloud AI API Key</h3>
+                <div className="flex gap-1.5 mb-1">
+                  <input type="password" value={geminiKey} onChange={(e) => setGeminiKey(e.target.value)} placeholder="Paste Gemini API Key..." className={`w-full p-1.5 border-2 ${isDark ? 'border-gray-600 bg-gray-600 text-white' : 'border-black'} focus:outline-none focus:bg-brutal-neon font-sans text-[11px]`} />
+                  <button onClick={() => { localStorage.setItem('krishisetu_gemini_key', geminiKey); toast.success('API Key Saved!', 'Settings'); }} className="bg-black text-white px-2 font-bold uppercase border-2 border-black hover:bg-brutal-neon hover:text-black transition-colors whitespace-nowrap">Save</button>
                 </div>
-                <p className="text-[9px] text-green-400 font-bold uppercase mt-2">🔒 Stays on your device only</p>
+                <p className="text-[8px] text-green-400 font-bold uppercase">🔒 Stays on device only</p>
               </div>
               {/* Language */}
-              <div className={`border-2 ${isDark ? 'border-gray-600 bg-gray-700' : 'border-black bg-gray-50'} p-3 mb-4 font-mono text-xs`}>  
-                <h3 className="font-bold uppercase text-gray-500 mb-2 flex items-center gap-2"><Languages size={16} /> {t('selectLanguage')}</h3>
-                <div className="grid grid-cols-3 gap-2">
-                  <button onClick={() => changeLanguage('en')} className={`brutal-button py-2 uppercase ${appLanguage === 'en' ? 'bg-brutal-neon border-black' : isDark ? 'bg-gray-600 border-gray-500' : 'bg-white border-gray-400'}`}>English</button>
-                  <button onClick={() => changeLanguage('or')} className={`brutal-button py-2 uppercase ${appLanguage === 'or' ? 'bg-brutal-neon border-black' : isDark ? 'bg-gray-600 border-gray-500' : 'bg-white border-gray-400'}`}>ଓଡ଼ିଆ</button>
-                  <button onClick={() => changeLanguage('hi')} className={`brutal-button py-2 uppercase ${appLanguage === 'hi' ? 'bg-brutal-neon border-black' : isDark ? 'bg-gray-600 border-gray-500' : 'bg-white border-gray-400'}`}>हिन्दी</button>
+              <div className={`border-2 ${isDark ? 'border-gray-600 bg-gray-700' : 'border-black bg-gray-50'} p-2 mb-2.5 font-mono text-[10px]`}>  
+                <h3 className="font-bold uppercase text-gray-500 mb-1.5 flex items-center gap-1.5"><Languages size={13} /> {t('selectLanguage')}</h3>
+                <div className="grid grid-cols-3 gap-1.5">
+                  <button onClick={() => changeLanguage('en')} className={`py-1.5 px-1 border-2 border-black font-black uppercase text-[10px] ${appLanguage === 'en' ? 'bg-brutal-neon' : isDark ? 'bg-gray-600' : 'bg-white'}`}>English</button>
+                  <button onClick={() => changeLanguage('or')} className={`py-1.5 px-1 border-2 border-black font-black uppercase text-[10px] ${appLanguage === 'or' ? 'bg-brutal-neon' : isDark ? 'bg-gray-600' : 'bg-white'}`}>ଓଡ଼ିଆ</button>
+                  <button onClick={() => changeLanguage('hi')} className={`py-1.5 px-1 border-2 border-black font-black uppercase text-[10px] ${appLanguage === 'hi' ? 'bg-brutal-neon' : isDark ? 'bg-gray-600' : 'bg-white'}`}>हिन्दी</button>
                 </div>
               </div>
               {/* Model */}
-              <div className={`border-2 ${isDark ? 'border-gray-600 bg-gray-700' : 'border-black bg-gray-50'} p-3 mb-4 font-mono text-xs`}>  
-                <h3 className="font-bold uppercase text-gray-500 mb-2">{t('offlineModel')}</h3>
-                <p className="mb-3">{t('modelDesc')}</p>
+              <div className={`border-2 ${isDark ? 'border-gray-600 bg-gray-700' : 'border-black bg-gray-50'} p-2 mb-2.5 font-mono text-[10px]`}>  
+                <h3 className="font-bold uppercase text-gray-500 mb-1">{t('offlineModel')}</h3>
+                <p className="mb-2 leading-tight">{t('modelDesc')}</p>
                 {modelDownloaded ? (
-                  <div className="flex flex-col gap-2">
-                    <span className="flex items-center gap-2 text-green-400 font-bold bg-green-900 p-2 border border-green-600"><HardDrive size={16} /> {t('modelInstalled')}</span>
-                    <button onClick={removeModel} className="brutal-button bg-red-500 text-white py-2 uppercase">{t('deleteModel')}</button>
+                  <div className="flex flex-col gap-1.5">
+                    <span className="flex items-center gap-1.5 text-green-400 font-bold bg-green-900 p-1.5 border border-green-600"><HardDrive size={13} /> {t('modelInstalled')}</span>
+                    <button onClick={removeModel} className="bg-red-500 text-white py-1.5 px-2 border-2 border-black font-black uppercase text-[10px]">{t('deleteModel')}</button>
                   </div>
                 ) : isOnline ? (
-                  <button onClick={downloadModel} disabled={downloading} className="brutal-button w-full bg-brutal-neon text-black py-2 uppercase">{downloading ? t('downloading') : t('download')}</button>
+                  <button onClick={downloadModel} disabled={downloading} className="w-full bg-brutal-neon text-black py-1.5 px-2 border-2 border-black font-black uppercase text-[10px]">{downloading ? t('downloading') : t('download')}</button>
                 ) : (
-                  <label className="brutal-button w-full bg-yellow-400 text-black py-2 uppercase cursor-pointer">Select Model File(s)<input type="file" accept=".json,.bin" className="hidden" multiple onChange={(e) => { if (e.target.files.length > 0) { setDownloading(true); setTimeout(() => { localStorage.setItem('krishisetu_model_downloaded', 'true'); setModelDownloaded(true); setDownloading(false); }, 1000); } }} /></label>
+                  <label className="w-full bg-yellow-400 text-black py-1.5 px-2 border-2 border-black font-black uppercase text-[10px] cursor-pointer block">Select Model File(s)<input type="file" accept=".json,.bin" className="hidden" multiple onChange={(e) => { if (e.target.files.length > 0) { setDownloading(true); setTimeout(() => { localStorage.setItem('krishisetu_model_downloaded', 'true'); setModelDownloaded(true); setDownloading(false); }, 1000); } }} /></label>
                 )}
               </div>
               {/* Preferences */}
-              <div className={`border-2 ${isDark ? 'border-gray-600 bg-gray-700' : 'border-black bg-gray-50'} p-3 mb-4 font-mono text-xs`}>  
-                <h3 className="font-bold uppercase text-gray-500 mb-3">{t('preferences') || 'Preferences'}</h3>
+              <div className={`border-2 ${isDark ? 'border-gray-600 bg-gray-700' : 'border-black bg-gray-50'} p-2 mb-2.5 font-mono text-[10px]`}>  
+                <h3 className="font-bold uppercase text-gray-500 mb-1.5">{t('preferences') || 'Preferences'}</h3>
                 {/* Theme */}
-                <div className={`flex items-center justify-between py-3 border-b ${isDark ? 'border-gray-600' : 'border-black'}`}>  
-                  <div className="flex items-center gap-2">{isDark ? <Moon size={18} /> : <Sun size={18} />}<span className="font-bold uppercase text-sm">{isDark ? 'Dark Mode' : 'Light Mode'}</span></div>
-                  <button onClick={toggleTheme} className="px-4 py-2 border-2 border-black bg-brutal-neon font-black text-sm uppercase min-w-[60px]">{isDark ? '🌙' : '☀️'}</button>
+                <div className={`flex items-center justify-between py-2 border-b ${isDark ? 'border-gray-600' : 'border-black'}`}>  
+                  <div className="flex items-center gap-1.5">{isDark ? <Moon size={14} /> : <Sun size={14} />}<span className="font-bold uppercase text-[11px]">{isDark ? 'Dark Mode' : 'Light Mode'}</span></div>
+                  <button onClick={toggleTheme} className="px-3 py-1 border-2 border-black bg-brutal-neon font-black text-[11px] uppercase">{isDark ? '🌙' : '☀️'}</button>
                 </div>
                 {/* Notifications */}
-                <div className={`flex items-center justify-between py-3 border-b ${isDark ? 'border-gray-600' : 'border-black'}`}>  
-                  <div className="flex items-center gap-2">{notifications ? <Bell size={18} /> : <BellOff size={18} />}<span className="font-bold uppercase text-sm">{t('notifications') || 'Notifications'}</span></div>
-                  <button onClick={toggleNotifications} className={`w-14 h-7 border-2 border-black relative transition-colors ${notifications ? 'bg-brutal-neon' : 'bg-gray-400'}`}><div className={`w-6 h-6 bg-black absolute top-0.5 transition-transform ${notifications ? 'translate-x-7' : 'translate-x-0.5'}`} /></button>
+                <div className={`flex items-center justify-between py-2 border-b ${isDark ? 'border-gray-600' : 'border-black'}`}>  
+                  <div className="flex items-center gap-1.5">{notifications ? <Bell size={14} /> : <BellOff size={14} />}<span className="font-bold uppercase text-[11px]">{t('notifications') || 'Notifications'}</span></div>
+                  <button onClick={toggleNotifications} className={`w-11 h-6 border-2 border-black relative transition-colors ${notifications ? 'bg-brutal-neon' : 'bg-gray-400'}`}><div className={`w-5 h-5 bg-black absolute top-0.5 transition-transform ${notifications ? 'translate-x-5' : 'translate-x-0.5'}`} /></button>
                 </div>
                 {/* Auto-detect */}
-                <div className="flex items-center justify-between py-3">
-                  <div className="flex items-center gap-2"><Smartphone size={18} /><span className="font-bold uppercase text-sm">{t('autoDetectLocation') || 'Auto-detect Zone'}</span></div>
-                  <button onClick={toggleAutoDetect} className={`w-14 h-7 border-2 border-black relative transition-colors ${autoDetect ? 'bg-brutal-neon' : 'bg-gray-400'}`}><div className={`w-6 h-6 bg-black absolute top-0.5 transition-transform ${autoDetect ? 'translate-x-7' : 'translate-x-0.5'}`} /></button>
+                <div className="flex items-center justify-between py-2">
+                  <div className="flex items-center gap-1.5"><Smartphone size={14} /><span className="font-bold uppercase text-[11px]">{t('autoDetectLocation') || 'Auto-detect Zone'}</span></div>
+                  <button onClick={toggleAutoDetect} className={`w-11 h-6 border-2 border-black relative transition-colors ${autoDetect ? 'bg-brutal-neon' : 'bg-gray-400'}`}><div className={`w-5 h-5 bg-black absolute top-0.5 transition-transform ${autoDetect ? 'translate-x-5' : 'translate-x-0.5'}`} /></button>
                 </div>
               </div>
               {/* App Info */}
-              <div className={`border-2 ${isDark ? 'border-gray-600 bg-gray-700' : 'border-black bg-gray-50'} p-3 mb-4 font-mono text-xs`}>  
-                <h3 className="font-bold uppercase text-gray-500 mb-2">{t('appInfo') || 'App Info'}</h3>
-                <div className="flex justify-between py-1"><span className="text-gray-400">Version</span><span className="font-bold">1.0.0</span></div>
-                <div className="flex justify-between py-1"><span className="text-gray-400">Build</span><span className="font-bold">Production</span></div>
-                <div className={`flex justify-between py-1 border-t ${isDark ? 'border-gray-600' : 'border-black'} mt-2 pt-2`}><span className="text-gray-400">Storage</span><span className="font-bold">{(JSON.stringify(localStorage).length / 1024).toFixed(1)} KB</span></div>
+              <div className={`border-2 ${isDark ? 'border-gray-600 bg-gray-700' : 'border-black bg-gray-50'} p-2 mb-2.5 font-mono text-[10px]`}>  
+                <h3 className="font-bold uppercase text-gray-500 mb-1">{t('appInfo') || 'App Info'}</h3>
+                <div className="flex justify-between py-0.5"><span className="text-gray-400">Version</span><span className="font-bold">1.0.0</span></div>
+                <div className="flex justify-between py-0.5"><span className="text-gray-400">Build</span><span className="font-bold">Production</span></div>
+                <div className={`flex justify-between py-0.5 border-t ${isDark ? 'border-gray-600' : 'border-black'} mt-1 pt-1`}><span className="text-gray-400">Storage</span><span className="font-bold">{(JSON.stringify(localStorage).length / 1024).toFixed(1)} KB</span></div>
               </div>
               {/* Danger Zone */}
-              <div className="border-2 border-red-500 p-3 bg-red-900/30 font-mono text-xs">
-                <h3 className="font-bold uppercase text-red-400 mb-2">{t('dangerZone') || 'Danger Zone'}</h3>
-                <button onClick={clearAllData} className="w-full bg-red-500 text-white p-2 border-2 border-black font-bold uppercase flex items-center justify-center gap-2 hover:bg-red-600"><Trash2 size={14} /> {t('clearAllData') || 'Clear All Data'}</button>
+              <div className="border-2 border-red-500 p-2 bg-red-900/30 font-mono text-[10px] mb-2">
+                <h3 className="font-bold uppercase text-red-400 mb-1">{t('dangerZone') || 'Danger Zone'}</h3>
+                <button onClick={clearAllData} className="w-full bg-red-500 text-white p-1.5 border-2 border-black font-bold uppercase flex items-center justify-center gap-1.5 hover:bg-red-600"><Trash2 size={12} /> {t('clearAllData') || 'Clear All Data'}</button>
               </div>
             </div>
           </div>
         </div>
       )}
 
-      <main className="px-3 max-w-sm mx-auto w-full">
+      <main className="px-2 max-w-sm mx-auto w-full">
         <Suspense fallback={<TabLoader />}>
           {activeTab === 'home' && <HomeTab t={t} appLanguage={appLanguage} isOnline={isOnline} setActiveTab={setActiveTab} />}
           {activeTab === 'scan' && <CameraScan isOnline={isOnline} appLanguage={appLanguage} t={t} />}

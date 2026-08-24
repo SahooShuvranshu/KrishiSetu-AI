@@ -9,7 +9,7 @@ StatusBadge.propTypes = {
 export default function StatusBadge({ isOnline }) {
   return (
     <div 
-      className={`flex items-center gap-1 px-2 py-1 border-2 border-black font-mono text-[10px] font-black uppercase ${
+      className={`flex items-center gap-0.5 px-1.5 py-0.5 border-2 border-black font-mono text-[8px] font-black uppercase ${
         isOnline 
           ? 'bg-green-500 text-white' 
           : 'bg-red-500 text-white animate-pulse'
@@ -17,13 +17,13 @@ export default function StatusBadge({ isOnline }) {
     >
       {isOnline ? (
         <>
-          <Wifi size={12} />
-          <span>ONLINE</span>
+          <Wifi size={10} />
+          <span>ON</span>
         </>
       ) : (
         <>
-          <WifiOff size={12} />
-          <span>OFFLINE</span>
+          <WifiOff size={10} />
+          <span>OFF</span>
         </>
       )}
     </div>

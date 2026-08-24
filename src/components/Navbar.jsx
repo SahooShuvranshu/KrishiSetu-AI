@@ -18,7 +18,7 @@ export default function Navbar({ activeTab, setActiveTab, t }) {
 
   return (
     <nav className="fixed bottom-0 w-full bg-white border-t-4 border-black z-50 shadow-[0_-4px_0_0_#000]">
-      <div className="flex justify-around items-stretch h-[68px] max-w-lg mx-auto">
+      <div className="flex justify-around items-stretch h-[56px] max-w-lg mx-auto">
         {tabs.map((tab) => (
           <button
             key={tab.id}
@@ -36,7 +36,7 @@ export default function Navbar({ activeTab, setActiveTab, t }) {
             }`}>
               {tab.icon}
             </div>
-            <span className="text-[9px] mt-1 font-mono uppercase tracking-wider text-center">
+            <span className="text-[8px] mt-0.5 font-mono uppercase tracking-wider text-center leading-none">
               {tab.label}
             </span>
           </button>
