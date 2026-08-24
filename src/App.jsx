@@ -182,7 +182,7 @@ function App() {
                 Krishi Setu is an offline-first, multilingual AI plant pathologist and localized broadcast network, designed entirely for remote Indian farming communities.
               </p>
 
-              <a href="#" className="flex items-center justify-center gap-2 mt-4 p-3 bg-black text-white border-2 border-black hover:bg-white hover:text-black hover:shadow-brutal-hover transition-all font-bold uppercase text-sm w-full shadow-[4px_4px_0_0_#000]">
+              <a href="https://github.com/SahooShuvranshu/KrishiSetu-AI" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 mt-4 p-3 bg-black text-white border-2 border-black hover:bg-white hover:text-black hover:shadow-brutal-hover transition-all font-bold uppercase text-sm w-full shadow-[4px_4px_0_0_#000]">
                 <Github size={20} /> Source Code / Open Source
               </a>
             </div>
