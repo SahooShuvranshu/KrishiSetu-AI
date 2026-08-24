@@ -3,45 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KRISHI SETU // AGRI-BRUTALISM</title>
+    <title>KRISHI SETU // OFFLINE CROP SAVER</title>
     <link rel="icon" type="image/svg+xml" href="./sprout.svg" />
-
-    <!-- SEO & Meta Tags -->
-    <meta name="description" content="Krishi Setu AI - 100% Offline AI Crop Diagnostics. Built for deeply rural Indian farmers with zero internet connection. Multilingual support.">
-    <meta name="keywords" content="Agriculture AI, Offline AI, Crop Disease, TensorFlow.js, PWA, Indian Farming, Krishi Setu">
+    <meta name="description" content="Krishi Setu AI - 100% Offline AI Crop Diagnostics. Built for deeply rural Indian farmers with zero internet. Multilingual support in English, Odia, and Hindi.">
+    <meta name="keywords" content="Agriculture AI, Offline AI, Crop Disease, TensorFlow.js, PWA, Indian Farming, Krishi Setu, Gemini, Vertex AI">
     <meta name="author" content="Crystal Studio Labs">
-    
-    <!-- OpenGraph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://krishi-setu-ai-seven.vercel.app/">
     <meta property="og:title" content="Krishi Setu AI | Offline Crop Diagnostics">
-    <meta property="og:description" content="100% Offline AI Crop Diagnostics. Built for deeply rural Indian farmers with zero internet connection.">
+    <meta property="og:description" content="100% Offline AI Crop Diagnostics for rural Indian farmers.">
     <meta property="og:image" content="https://raw.githubusercontent.com/SahooShuvranshu/KrishiSetu-AI/main/docs/disease_sample.jpg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://krishi-setu-ai-seven.vercel.app/">
-    <meta property="twitter:title" content="Krishi Setu AI | Offline Crop Diagnostics">
-    <meta property="twitter:description" content="100% Offline AI Crop Diagnostics. Built for deeply rural Indian farmers with zero internet connection.">
-    <meta property="twitter:image" content="https://raw.githubusercontent.com/SahooShuvranshu/KrishiSetu-AI/main/docs/disease_sample.jpg">
-
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- AOS Animation CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'agri-neon': '#ccff00', 
-                        'agri-dark': '#14532d', 
+                        'agri-neon': '#ccff00',
+                        'agri-dark': '#14532d',
                         'soil-gray': '#e4e4e7',
                         'danger-red': '#ef4444'
                     },
                     boxShadow: {
                         'heavy': '8px 8px 0px 0px rgba(0,0,0,1)',
-                        'heavy-hover': '12px 12px 0px 0px rgba(0,0,0,1)',
                         'heavy-neon': '8px 8px 0px 0px #ccff00',
                     },
                     backgroundImage: {
@@ -53,43 +38,27 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
-        body { 
-            font-family: 'Space Grotesk', sans-serif; 
-            background-color: #f4f4f5; 
-            text-transform: uppercase;
-        }
+        body { font-family: 'Space Grotesk', sans-serif; background-color: #f4f4f5; text-transform: uppercase; }
         .mono { font-family: 'Space Mono', monospace; }
-        * { border-radius: 0 !important; } 
-        
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-            display: inline-block;
-            white-space: nowrap;
-            animation: marquee 20s linear infinite;
-        }
-
-        /* Hide elements by language */
+        * { border-radius: 0 !important; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { display: inline-block; white-space: nowrap; animation: marquee 20s linear infinite; }
+        /* Language switching */
         [data-lang] { display: none !important; }
         [data-lang="en"].active { display: block !important; }
         [data-lang="or"].active { display: block !important; }
         [data-lang="hi"].active { display: block !important; }
         span[data-lang] { display: none !important; }
-        span[data-lang="en"].active { display: inline !important; }
-        span[data-lang="or"].active { display: inline !important; }
-        span[data-lang="hi"].active { display: inline !important; }
+        span[data-lang="en"].active, span[data-lang="or"].active, span[data-lang="hi"].active { display: inline !important; }
         p[data-lang] { display: none !important; }
-        p[data-lang="en"].active { display: block !important; }
-        p[data-lang="or"].active { display: block !important; }
-        p[data-lang="hi"].active { display: block !important; }
+        p[data-lang="en"].active, p[data-lang="or"].active, p[data-lang="hi"].active { display: block !important; }
         h1[data-lang], h2[data-lang], h3[data-lang], h4[data-lang] { display: none !important; }
         h1[data-lang].active, h2[data-lang].active, h3[data-lang].active, h4[data-lang].active { display: block !important; }
-        div[data-lang] { display: none !important; }
-        div[data-lang="en"].active { display: block !important; }
-        div[data-lang="or"].active { display: block !important; }
-        div[data-lang="hi"].active { display: block !important; }
+        /* Tech logo styles */
+        .tech-logo { height: 48px; width: auto; filter: brightness(0); }
+        .tech-logo-white { height: 48px; width: auto; filter: brightness(0) invert(1); }
+        .tech-logo-sm { height: 32px; width: auto; filter: brightness(0); }
+        .tech-logo-sm-white { height: 32px; width: auto; filter: brightness(0) invert(1); }
     </style>
 </head>
 <body class="text-black overflow-x-hidden border-x-[8px] md:border-x-[16px] border-black min-h-screen flex flex-col">
@@ -114,19 +83,14 @@
                 <button onclick="changeLang('or', this)" class="lang-btn bg-white text-gray-500 border-4 border-black px-2 py-1 font-black text-sm shadow-[2px_2px_0_0_#000]">ଓଡ଼ିଆ</button>
                 <button onclick="changeLang('hi', this)" class="lang-btn bg-white text-gray-500 border-4 border-black px-2 py-1 font-black text-sm shadow-[2px_2px_0_0_#000]">हिन्दी</button>
             </div>
-            <a href="https://github.com/SahooShuvranshu/KrishiSetu-AI" target="_blank" class="bg-white border-4 border-black px-6 py-2 font-black text-lg hover:bg-black hover:text-white transition-none shadow-heavy hover:shadow-none hover:translate-x-1 hover:translate-y-1">
-                [ SRC_CODE ]
-            </a>
+            <a href="https://github.com/SahooShuvranshu/KrishiSetu-AI" target="_blank" class="bg-white border-4 border-black px-6 py-2 font-black text-lg hover:bg-black hover:text-white transition-none shadow-heavy hover:shadow-none hover:translate-x-1 hover:translate-y-1">[ SRC_CODE ]</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- HERO -->
     <main class="grid md:grid-cols-12 gap-0 border-b-4 border-black flex-grow bg-[radial-gradient(#d4d4d8_1px,transparent_1px)] [background-size:16px_16px]">
-        
-        <!-- Left Panel -->
         <div class="md:col-span-7 p-8 md:p-12 xl:p-16 border-r-0 md:border-r-4 border-black bg-soil-gray/90 flex flex-col justify-center relative" data-aos="fade-right">
             <div class="absolute top-4 left-4 mono text-[10px] text-agri-dark font-black bg-white px-2 py-1 border-2 border-black">SECTOR_01 // OVERVIEW</div>
-            
             <h1 class="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter leading-[0.85] mb-8 mt-6 break-words">
                 <span data-lang="en" class="active">OFFLINE<br/></span>
                 <span data-lang="or">ଅଫଲାଇନ୍<br/></span>
@@ -137,13 +101,11 @@
                     <span data-lang="hi">फ़सल रक्षक.</span>
                 </span><br/>
             </h1>
-            
             <p class="mono text-sm md:text-base font-bold bg-white p-4 border-4 border-black mb-10 max-w-lg shadow-[4px_4px_0_0_#000] leading-relaxed">
-                <span data-lang="en" class="active">> Krishi Setu combines heavy-duty industrial brutalism with raw agricultural utility. It is an offline-first AI plant pathologist built for deep rural fields with zero internet.</span>
-                <span data-lang="or">> କୃଷି ସେତୁ ଶିଳ୍ପ ବ୍ରୁଟାଲିଜିମ୍ ଏବଂ କୃଷି ଉପଯୋଗିତାକୁ ମିଶାଇଥାଏ। ଏହା ଇଣ୍ଟରନେଟ୍ ବିନା ଗ୍ରାମାଞ୍ଚଳ ପାଇଁ ଅଫଲାଇନ୍ AI ପ୍ଲାଣ୍ଟ ପାଥୋଲୋଜିଷ୍ଟ।</span>
-                <span data-lang="hi">> कृषि सेतु भारी उद्योग ब्रूटलिज़्म और कृषि उपयोगिता को जोड़ता है। यह ज़ीरो इंटरनेट वाले ग्रामीण खेतों के लिए बना अफ़लाइन AI प्लांट पैथोलॉजिस्ट है।</span>
+                <span data-lang="en" class="active">> An offline-first AI plant pathologist built for deep rural fields with zero internet. Powered by Google AI.</span>
+                <span data-lang="or">> ଇଣ୍ଟରନେଟ୍ ବିନା ଗ୍ରାମାଞ୍ଚଳ ପାଇଁ ଅଫଲାଇନ୍ AI ପ୍ଲାଣ୍ଟ ପାଥୋଲୋଜିଷ୍ଟ। Google AI ଦ୍ୱାରା ସଞ୍ଚାଳିତ।</span>
+                <span data-lang="hi">> ज़ीरो इंटरनेट वाले ग्रामीण खेतों के लिए अफ़लाइन AI प्लांट पैथोलॉजिस्ट। Google AI द्वारा संचालित।</span>
             </p>
-            
             <div class="flex flex-col sm:flex-row gap-6">
                 <a href="https://krishi-setu-ai-seven.vercel.app" target="_blank" class="bg-black text-agri-neon border-4 border-black px-8 py-5 font-black text-2xl flex items-center justify-between group shadow-heavy hover:shadow-none hover:translate-y-2 hover:translate-x-2 transition-all">
                     <span>
@@ -155,601 +117,405 @@
                 </a>
             </div>
         </div>
-
-        <!-- Right Panel Graphic -->
         <div class="md:col-span-5 bg-agri-dark text-white p-8 md:p-12 flex flex-col justify-center relative" data-aos="fade-left" data-aos-delay="200">
             <div class="absolute top-4 left-4 mono text-[10px] text-agri-neon font-bold mb-6 border-b border-agri-neon/30 pb-2">SECTOR_02 // AGRI_SPECS</div>
-            
             <div class="relative bg-white p-2 border-4 border-black shadow-heavy-neon group mt-8">
-                <div class="absolute -top-4 -right-4 bg-agri-neon text-black font-black px-2 py-1 text-xs border-4 border-black shadow-[4px_4px_0_0_#000] z-10 rotate-3">
-                    DIAGNOSIS_READY
-                </div>
+                <div class="absolute -top-4 -right-4 bg-agri-neon text-black font-black px-2 py-1 text-xs border-4 border-black shadow-[4px_4px_0_0_#000] z-10 rotate-3">DIAGNOSIS_READY</div>
                 <img src="disease_sample.jpg" alt="Leaf Disease" class="w-full h-64 object-cover border-4 border-black filter contrast-125 grayscale group-hover:grayscale-0 transition-all duration-500" />
                 <div class="absolute bottom-4 left-4 right-4 bg-black/90 text-agri-neon font-mono text-xs p-3 border-2 border-black">
-                    > ANALYSIS: INFECTION DETECTED.<br/>
-                    > SYSTEM_STATUS: OPERATIONAL.
+                    > ANALYSIS: INFECTION DETECTED.<br/> > SYSTEM_STATUS: OPERATIONAL.
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Newspaper Side-Scroll Ticker -->
+    <!-- Marquee -->
     <div class="w-full bg-agri-neon border-b-4 border-black overflow-hidden flex items-center h-16 relative whitespace-nowrap">
         <div class="animate-marquee font-black text-2xl tracking-widest text-black">
-            /// NO INTERNET REQUIRED /// BUILT FOR BHARAT /// OFFLINE AI /// 100% FREE /// MULTILINGUAL SUPPORT /// ODISHA GRID /// NO INTERNET REQUIRED /// BUILT FOR BHARAT /// OFFLINE AI /// 100% FREE /// MULTILINGUAL SUPPORT /// ODISHA GRID /// NO INTERNET REQUIRED /// BUILT FOR BHARAT /// OFFLINE AI /// 100% FREE /// MULTILINGUAL SUPPORT /// ODISHA GRID ///
+            /// NO INTERNET REQUIRED /// BUILT FOR BHARAT /// OFFLINE AI /// 100% FREE /// MULTILINGUAL /// ODISHA GRID /// NO INTERNET REQUIRED /// BUILT FOR BHARAT /// OFFLINE AI /// 100% FREE /// MULTILINGUAL /// ODISHA GRID /// NO INTERNET REQUIRED /// BUILT FOR BHARAT /// OFFLINE AI /// 100% FREE /// MULTILINGUAL /// ODISHA GRID ///
         </div>
     </div>
 
-    <!-- The Meaning of Krishi Setu -->
-    <section class="py-16 px-4 md:px-12 border-b-4 border-black bg-soil-gray bg-[radial-gradient(#a3e635_1px,transparent_1px)] [background-size:16px_16px]" data-aos="fade-up">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-8 items-center justify-center">
-            <div class="text-6xl md:text-8xl font-black tracking-tighter text-black bg-white p-4 border-4 border-black shadow-heavy rotate-2 break-words">
-                कृषि<br/>सेतु
-            </div>
-            <div class="bg-white border-4 border-black p-8 shadow-heavy max-w-2xl -rotate-1">
-                <div class="mono text-sm text-agri-dark font-black mb-2">/// ETYMOLOGY</div>
-                <h3 class="font-black text-4xl tracking-tighter mb-4">
-                    <span data-lang="en" class="active">WHAT DOES IT MEAN?</span>
-                    <span data-lang="or">ଏହାର ଅର୍ଥ କ'ଣ?</span>
-                    <span data-lang="hi">इसका क्या अर्थ है?</span>
-                </h3>
-                <p class="font-mono font-bold text-xl mb-2 border-b-2 border-black pb-2"><span class="text-agri-dark text-2xl">Krishi (कृषि):</span> 
-                    <span data-lang="en" class="active">Agriculture & Farming</span>
-                    <span data-lang="or">କୃଷି ଓ ଚାଷ</span>
-                    <span data-lang="hi">कृषि और खेती</span>
-                </p>
-                <p class="font-mono font-bold text-xl mb-4 border-b-2 border-black pb-2"><span class="text-agri-dark text-2xl">Setu (सेतु):</span> 
-                    <span data-lang="en" class="active">Bridge</span>
-                    <span data-lang="or">ସେତୁ (ସମ୍ପର୍କ)</span>
-                    <span data-lang="hi">सेतु (पुल)</span>
-                </p>
-                <p class="font-mono text-sm leading-relaxed text-black font-bold">
-                    <span data-lang="en" class="active">Krishi Setu is the technological bridge connecting the world's most advanced Artificial Intelligence directly to the deeply disconnected, internet-deprived rural farms of India.</span>
-                    <span data-lang="or">କୃଷି ସେତୁ ହେଉଛି ବିଶ୍ୱର ସର୍ବୋତ୍ତମ AI କୁ ଭାରତର ଗ୍ରାମାଞ୍ଚଳ ଖେତ ସହ ସିଧାସଳଖ ସଂଯୋଗ କରୁଥିବା ପ୍ରଯୁକ୍ତିଗତ ସେତୁ।</span>
-                    <span data-lang="hi">कृषि सेतु विश्व के सबसे उन्नत AI को भारत के ग्रामीण खेतों से सीधे जोड़ने वाला तकनीकी पुल है।</span>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Official Hackathon Problem Statement -->
-    <section class="py-20 px-4 md:px-12 border-b-4 border-black bg-white" data-aos="fade-up">
+    <!-- PROBLEM STATEMENT -->
+    <section class="py-16 md:py-20 px-4 md:px-12 border-b-4 border-black bg-white" data-aos="fade-up">
         <div class="max-w-6xl mx-auto">
-            <div class="flex flex-wrap gap-4 mb-10">
+            <div class="flex flex-wrap gap-3 mb-8">
                 <div class="mono text-sm text-white font-black bg-black px-4 py-2 border-4 border-black shadow-[4px_4px_0_0_#000]">PROBLEM STATEMENT 4</div>
                 <div class="mono text-sm text-black font-black bg-agri-neon px-4 py-2 border-4 border-black shadow-[4px_4px_0_0_#000]">THEME: COOPERATION</div>
             </div>
-            
-            <div class="grid md:grid-cols-12 gap-12">
-                <!-- The Problem -->
+            <div class="grid md:grid-cols-12 gap-8 md:gap-12">
                 <div class="md:col-span-5">
                     <h3 class="text-3xl md:text-5xl font-black tracking-tighter mb-6 uppercase border-b-8 border-black pb-4">
                         <span data-lang="en" class="active">The Problem</span>
                         <span data-lang="or">ସମସ୍ୟା</span>
                         <span data-lang="hi">समस्या</span>
                     </h3>
-                    <p class="font-mono font-bold text-lg leading-relaxed text-gray-800">
-                        <span data-lang="en" class="active">Small and marginal farmers across India lack access to data-driven agricultural guidance. Relying on traditional methods instead of satellite data, soil health analytics, and climate forecasting leads to crop failure and threatens food security. The absence of shared digital infrastructure also blocks cross-state collaboration on climate-resilient farming.</span>
-                        <span data-lang="or">ଭାରତର ଛୋଟ ଏବଂ ସୀମାନ୍ତ ଚାଷୀମାନଙ୍କ ପାଖରେ ତଥ୍ୟ-ଆଧାରିତ କୃଷି ମାର୍ଗଦର୍ଶନ ନାହିଁ। ଉପଗ୍ରହ ତଥ୍ୟ, ମୃତ୍ତିକା ସ୍ୱାସ୍ଥ୍ୟ ଏବଂ ଜଳବାୟୁ ପୂର୍ବାନୁମାନ ବଦଳରେ ପାରମ୍ପରିକ ପ୍ରକ୍ରିୟା ଉପରେ ନିର୍ଭର କରିବା ଫସଲ ବିଫଳତା ଆଣେ।</span>
-                        <span data-lang="hi">भारत भर के छोटे और सीमांत किसानों को डेटा-संचालित कृषि मार्गदर्शन तक पहुंच नहीं है। उपग्रह डेटा, मृदा स्वास्थ्य विश्लेषण और जलवायु पूर्वानुमान के बजाय पारंपरिक तरीकों पर निर्भरता फसल विफलता का कारण बनती है।</span>
+                    <p class="font-mono font-bold text-base md:text-lg leading-relaxed text-gray-800">
+                        <span data-lang="en" class="active">Small and marginal farmers across India lack access to data-driven agricultural guidance. The absence of shared digital infrastructure blocks cross-state collaboration on climate-resilient farming.</span>
+                        <span data-lang="or">ଭାରତର ଛୋଟ ଚାଷୀମାନଙ୍କ ପାଖରେ ତଥ୍ୟ-ଆଧାରିତ କୃଷି ମାର୍ଗଦର୍ଶନ ନାହିଁ। ଡିଜିଟାଲ୍ ଭିତ୍ତିଭୂମିର ଅଭାବ ଅନ୍ତଃ-ରାଜ୍ୟ ସହଯୋଗକୁ ବ୍ଲକ୍ କରେ।</span>
+                        <span data-lang="hi">भारत भर के छोटे किसानों को डेटा-संचालित कृषि मार्गदर्शन नहीं मिलता। डिजिटल इंफ्रास्ट्रक्चर की कमी अंतर-राज्य सहयोग को रोकती है।</span>
                     </p>
                 </div>
-                
-                <!-- The Challenge -->
-                <div class="md:col-span-7 bg-agri-dark text-white border-4 border-black p-8 md:p-10 shadow-heavy">
-                    <h3 class="text-3xl md:text-4xl font-black tracking-tighter mb-6 uppercase text-agri-neon">
+                <div class="md:col-span-7 bg-agri-dark text-white border-4 border-black p-6 md:p-8 shadow-heavy">
+                    <h3 class="text-2xl md:text-4xl font-black tracking-tighter mb-4 uppercase text-agri-neon">
                         <span data-lang="en" class="active">The Challenge</span>
                         <span data-lang="or">ଚ୍ୟାଲେଞ୍ଜ</span>
                         <span data-lang="hi">चुनौती</span>
                     </h3>
-                    <p class="font-mono font-bold text-base md:text-lg leading-relaxed">
-                        <span data-lang="en" class="active">Build an interoperable digital agriculture network that delivers real-time, localised agro-advisories using AI. It should offer regenerative crop recommendations based on satellite data, soil health, and weather forecasting, plus a diagnostic tool for crop diseases, and be designed as a scalable digital public good enabling Indian states to share agricultural data models and strengthen cooperation on sustainable food production.</span>
-                        <span data-lang="or">AI ବ୍ୟବହାର କରି ବାସ୍ତବ-ସମୟ ସ୍ଥାନୀୟ କୃଷି ପରାମର୍ଶ ପ୍ରଦାନ କରୁଥିବା ଏକ ଅନ୍ତର୍କ୍ରିୟାତ୍ମକ ଡିଜିଟାଲ୍ କୃଷି ନେଟୱର୍କ ନିର୍ମାଣ କରନ୍ତୁ।</span>
-                        <span data-lang="hi">AI का उपयोग करके वास्तविक समय, स्थानीयकृत कृषि सलाह देने वाला एक अंतरसंचालनीय डिजिटल कृषि नेटवर्क बनाएं।</span>
+                    <p class="font-mono font-bold text-sm md:text-base leading-relaxed">
+                        <span data-lang="en" class="active">Build an interoperable digital agriculture network that delivers real-time, localised agro-advisories using AI. It should be designed as a scalable digital public good enabling Indian states to share agricultural data models and strengthen cooperation on sustainable food production.</span>
+                        <span data-lang="or">AI ବ୍ୟବହାର କରି ବାସ୍ତବ-ସମୟ ସ୍ଥାନୀୟ କୃଷି ପରାମର୍ଶ ପ୍ରଦାନ କରୁଥିବା ଅନ୍ତର୍କ୍ରିୟାତ୍ମକ ଡିଜିଟାଲ୍ କୃଷି ନେଟୱର୍କ ନିର୍ମାଣ କରନ୍ତୁ।</span>
+                        <span data-lang="hi">AI का उपयोग करके वास्तविक समय, स्थानीयकृत कृषि सलाह देने वाला अंतरसंचालनीय डिजिटल कृषि नेटवर्क बनाएं।</span>
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Krishi Setu? -->
-    <section class="py-20 px-4 md:px-12 border-b-4 border-black bg-soil-gray" data-aos="fade-up">
+    <!-- WHY KRISHI SETU -->
+    <section class="py-16 md:py-20 px-4 md:px-12 border-b-4 border-black bg-soil-gray" data-aos="fade-up">
         <div class="max-w-6xl mx-auto">
             <div class="mono text-sm text-danger-red font-black mb-4">/// THE CRISIS</div>
-            <h2 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-12">WHY <span class="bg-black text-white px-2">KRISHI SETU?</span></h2>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-soil-gray border-4 border-black p-8 shadow-heavy">
-                    <h3 class="text-3xl font-black mb-4">
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-10">WHY <span class="bg-black text-white px-2">KRISHI SETU?</span></h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-soil-gray border-4 border-black p-6 md:p-8 shadow-heavy">
+                    <h3 class="text-2xl md:text-3xl font-black mb-4">
                         <span data-lang="en" class="active">THE CONNECTIVITY GAP</span>
                         <span data-lang="or">ସଂଯୋଗ ଖାଡ଼ି</span>
                         <span data-lang="hi">कनेक्टिविटी अंतर</span>
                     </h3>
-                    <p class="font-mono font-bold leading-relaxed">
-                        <span data-lang="en" class="active">Most cutting-edge agricultural AI tools fail at the last mile. Why? Because they require high-speed internet. In rural India, farm fields are dead zones. Farmers cannot upload 4K photos to the cloud to get help when their crops are dying.</span>
-                        <span data-lang="or">ଅଧିକାଂଶ କୃଷି AI ଟୁଲ୍ ଶେଷ ମାଇଲରେ ବିଫଳ ହୁଏ। କାରଣ? ସେମାନଙ୍କୁ ହାଇ-ସ୍ପିଡ୍ ଇଣ୍ଟରନେଟ୍ ଦରକାର।</span>
-                        <span data-lang="hi">अधिकांश कृषि AI टूल्स अंतिम मील में विफल हो जाते हैं। क्यों? क्योंकि उन्हें हाई-स्पीड इंटरनेट चाहिए।</span>
+                    <p class="font-mono font-bold leading-relaxed text-sm md:text-base">
+                        <span data-lang="en" class="active">Most agricultural AI tools fail at the last mile because they require high-speed internet. In rural India, farm fields are dead zones.</span>
+                        <span data-lang="or">ଅଧିକାଂଶ କୃଷି AI ଟୁଲ୍ ଶେଷ ମାଇଲରେ ବିଫଳ ହୁଏ କାରଣ ସେମାନଙ୍କୁ ହାଇ-ସ୍ପିଡ୍ ଇଣ୍ଟରନେଟ୍ ଦରକାର।</span>
+                        <span data-lang="hi">अधिकांश कृषि AI टूल्स अंतिम मील में विफल होते हैं क्योंकि उन्हें हाई-स्पीड इंटरनेट चाहिए।</span>
                     </p>
                 </div>
-                <div class="bg-agri-neon border-4 border-black p-8 shadow-heavy">
-                    <h3 class="text-3xl font-black mb-4">
+                <div class="bg-agri-neon border-4 border-black p-6 md:p-8 shadow-heavy">
+                    <h3 class="text-2xl md:text-3xl font-black mb-4">
                         <span data-lang="en" class="active">THE LANGUAGE BARRIER</span>
                         <span data-lang="or">ଭାଷା ବାଧା</span>
                         <span data-lang="hi">भाषा की बाधा</span>
                     </h3>
-                    <p class="font-mono font-bold leading-relaxed">
-                        <span data-lang="en" class="active">Even when AI tools work, they speak English. We asked: What if an AI could not only diagnose a crop instantly without the internet, but speak the remedy out loud in native Odia and Hindi?</span>
-                        <span data-lang="or">AI ଟୁଲ୍ କାମ କଲେ ମଧ୍ୟ ସେଗୁଡିକ ଇଂରାଜୀରେ କଥା ହୁଏ। ଆମେ ପଚାରିଲୁ: ଯଦି AI ଇଣ୍ଟରନେଟ୍ ବିନା ଫସଲ ଚିହ୍ନଟ କରିପାରିବ ଏବଂ ଓଡ଼ିଆ ଓ ହିନ୍ଦୀରେ ଉପଚାର କହିପାରିବ?</span>
-                        <span data-lang="hi">जब AI टूल्स काम करते हैं तब भी वे अंग्रेजी में बोलते हैं। हमने पूछा: क्या होगा अगर AI इंटरनेट के बिना फसल का तुरंत निदान करे और ओडिया और हिंदी में उपचार बताए?</span>
+                    <p class="font-mono font-bold leading-relaxed text-sm md:text-base">
+                        <span data-lang="en" class="active">Even when AI tools work, they speak English. What if an AI could diagnose a crop instantly and speak the remedy in native Odia and Hindi?</span>
+                        <span data-lang="or">AI ଟୁଲ୍ କାମ କଲେ ମଧ୍ୟ ସେଗୁଡିକ ଇଂରାଜୀରେ କଥା ହୁଏ। ଯଦି AI ଓଡ଼ିଆ ଓ ହିନ୍ଦୀରେ ଉପଚାର କହିପାରିବ?</span>
+                        <span data-lang="hi">AI टूल्स अंग्रेजी में बोलते हैं। क्या होगा अगर AI ओडिया और हिंदी में उपचार बताए?</span>
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Core Features Grid -->
-    <section class="py-20 px-4 md:px-12 bg-agri-dark text-white border-b-4 border-black" data-aos="fade-up">
+    <!-- CORE FEATURES -->
+    <section class="py-16 md:py-20 px-4 md:px-12 bg-agri-dark text-white border-b-4 border-black" data-aos="fade-up">
         <div class="max-w-6xl mx-auto">
             <div class="mono text-sm text-agri-neon font-black mb-4">/// THE SOLUTION</div>
-            <h2 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-12">CORE SYSTEMS</h2>
-            
-            <div class="grid md:grid-cols-3 gap-8">
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-10">CORE SYSTEMS</h2>
+            <div class="grid md:grid-cols-3 gap-6">
                 <div class="bg-white text-black border-4 border-black p-6 shadow-heavy-neon hover:-translate-y-2 transition-transform" data-aos="zoom-in" data-aos-delay="100">
                     <div class="text-4xl mb-4">🔌</div>
-                    <h3 class="text-2xl font-black mb-3">
-                        <span data-lang="en" class="active">100% OFFLINE AI</span>
-                        <span data-lang="or">100% ଅଫଲାଇନ୍ AI</span>
-                        <span data-lang="hi">100% ऑफ़लाइन AI</span>
-                    </h3>
-                    <p class="font-mono text-sm font-bold">
-                        <span data-lang="en" class="active">Downloads lightweight TensorFlow.js models directly into the device's IndexedDB. Point the camera, get a diagnosis. Zero data required.</span>
-                        <span data-lang="or">ହାଲ୍କା TensorFlow.js ମଡେଲ୍ ସିଧାସଳଖ ଡିଭାଇସ୍‌ର IndexedDB ରେ ଡାଉନଲୋଡ୍ ହୁଏ। କ୍ୟାମେରା ଦେଖାନ୍ତୁ, ରୋଗ ଚିହ୍ନଟ ପାଆନ୍ତୁ।</span>
-                        <span data-lang="hi">हल्के TensorFlow.js मॉडल सीधे डिवाइस के IndexedDB में डाउनलोड होते हैं। कैमरा दिखाएं, निदान पाएं।</span>
-                    </p>
+                    <h3 class="text-xl font-black mb-3"><span data-lang="en" class="active">100% OFFLINE AI</span><span data-lang="or">100% ଅଫଲାଇନ୍ AI</span><span data-lang="hi">100% ऑफ़लाइन AI</span></h3>
+                    <p class="font-mono text-sm font-bold"><span data-lang="en" class="active">Downloads TensorFlow.js models into IndexedDB. Point camera, get diagnosis. Zero data required.</span><span data-lang="or">TensorFlow.js ମଡେଲ୍ IndexedDB ରେ ଡାଉନଲୋଡ୍ ହୁଏ। କ୍ୟାମେରା ଦେଖାନ୍ତୁ, ରୋଗ ଚିହ୍ନଟ ପାଆନ୍ତୁ।</span><span data-lang="hi">TensorFlow.js मॉडल IndexedDB में डाउनलोड होते हैं। कैमरा दिखाएं, निदान पाएं।</span></p>
                 </div>
-                
                 <div class="bg-white text-black border-4 border-black p-6 shadow-heavy-neon hover:-translate-y-2 transition-transform" data-aos="zoom-in" data-aos-delay="200">
                     <div class="text-4xl mb-4">🌍</div>
-                    <h3 class="text-2xl font-black mb-3">
-                        <span data-lang="en" class="active">NATIVE TONGUE</span>
-                        <span data-lang="or">ମାତୃଭାଷା</span>
-                        <span data-lang="hi">मातृभाषा</span>
-                    </h3>
-                    <p class="font-mono text-sm font-bold">
-                        <span data-lang="en" class="active">Speaks the farmer's language. Real-time diagnostic translations in English, Odia, and Hindi, featuring built-in voice readouts.</span>
-                        <span data-lang="or">ଚାଷୀର ଭାଷାରେ କଥା ହୁଏ। ଇଂରାଜୀ, ଓଡ଼ିଆ ଏବଂ ହିନ୍ଦୀରେ ବାସ୍ତବ-ସମୟ ଅନୁବାଦ।</span>
-                        <span data-lang="hi">किसान की भाषा में बोलता है। अंग्रेजी, ओडिया और हिंदी में वास्तविक समय अनुवाद।</span>
-                    </p>
+                    <h3 class="text-xl font-black mb-3"><span data-lang="en" class="active">NATIVE TONGUE</span><span data-lang="or">ମାତୃଭାଷା</span><span data-lang="hi">मातृभाषा</span></h3>
+                    <p class="font-mono text-sm font-bold"><span data-lang="en" class="active">Speaks the farmer's language. Real-time translations in English, Odia, and Hindi with voice readouts.</span><span data-lang="or">ଚାଷୀର ଭାଷାରେ କଥା ହୁଏ। ଇଂରାଜୀ, ଓଡ଼ିଆ ଏବଂ ହିନ୍ଦୀରେ ଅନୁବାଦ।</span><span data-lang="hi">किसान की भाषा में बोलता है। अंग्रेजी, ओडिया और हिंदी में अनुवाद।</span></p>
                 </div>
-                
                 <div class="bg-white text-black border-4 border-black p-6 shadow-heavy-neon hover:-translate-y-2 transition-transform" data-aos="zoom-in" data-aos-delay="300">
                     <div class="text-4xl mb-4">🗺️</div>
-                    <h3 class="text-2xl font-black mb-3">D.P.I. GRID</h3>
-                    <p class="font-mono text-sm font-bold">
-                        <span data-lang="en" class="active">When a farmer scans a diseased crop, the network broadcasts a real-time alert via Firebase to nearby districts via Google Maps.</span>
-                        <span data-lang="or">ଯେତେବେଳେ ଜଣେ ଚାଷୀ ରୋଗଗ୍ରସ୍ତ ଫସଲ ସ୍କାନ୍ କରେ, ନେଟୱର୍କ Google Maps ଏବଂ Firebase ମାଧ୍ୟମରେ ବାସ୍ତବ-ସମୟ ସତର୍କତା ପ୍ରସାରଣ କରେ।</span>
-                        <span data-lang="hi">जब किसान रोगग्रस्त फसल को स्कैन करता है, नेटवर्क Google Maps और Firebase के माध्यम से वास्तविक समय अलर्ट प्रसारित करता है।</span>
-                    </p>
+                    <h3 class="text-xl font-black mb-3">D.P.I. GRID</h3>
+                    <p class="font-mono text-sm font-bold"><span data-lang="en" class="active">Broadcasts real-time disease alerts via Firebase to nearby districts through Google Maps.</span><span data-lang="or">Firebase ଏବଂ Google Maps ମାଧ୍ୟମରେ ବାସ୍ତବ-ସମୟ ସତର୍କତା ପ୍ରସାରଣ କରେ।</span><span data-lang="hi">Firebase और Google Maps के माध्यम से वास्तविक समय अलर्ट प्रसारित करता है।</span></p>
                 </div>
             </div>
-            
-            <!-- Additional Features -->
-            <div class="grid md:grid-cols-3 gap-8 mt-8">
+            <div class="grid md:grid-cols-3 gap-6 mt-6">
                 <div class="bg-white text-black border-4 border-black p-6 shadow-heavy hover:-translate-y-2 transition-transform" data-aos="zoom-in" data-aos-delay="400">
                     <div class="text-4xl mb-4">☁️</div>
-                    <h3 class="text-2xl font-black mb-3">
-                        <span data-lang="en" class="active">WEATHER DASHBOARD</span>
-                        <span data-lang="or">ପାଗ ଡ୍ୟାସବୋର୍ଡ</span>
-                        <span data-lang="hi">मौसम डैशबोर्ड</span>
-                    </h3>
-                    <p class="font-mono text-sm font-bold">
-                        <span data-lang="en" class="active">Real-time weather data with 3-day forecast. Smart farm tips based on temperature, wind, and precipitation conditions.</span>
-                        <span data-lang="or">3-ଦିନର ପୂର୍ବାନୁମାନ ସହ ବାସ୍ତବ-ସମୟ ପାଗ ତଥ୍ୟ। ତାପମାନ, ପବନ ଏବଂ ବୃଷ୍ଟି ଅନୁସାରେ ସ୍ମାର୍ଟ ଚାଷ ଟିପ୍ସ।</span>
-                        <span data-lang="hi">3-दिन के पूर्वानुमान के साथ वास्तविक समय मौसम डेटा। तापमान, हवा और वर्षा के आधार पर स्मार्ट खेती टिप्स।</span>
-                    </p>
+                    <h3 class="text-xl font-black mb-3"><span data-lang="en" class="active">WEATHER DASHBOARD</span><span data-lang="or">ପାଗ ଡ୍ୟାସବୋର୍ଡ</span><span data-lang="hi">मौसम डैशबोर्ड</span></h3>
+                    <p class="font-mono text-sm font-bold"><span data-lang="en" class="active">3-day forecast with smart farm tips based on temperature, wind, and precipitation.</span><span data-lang="or">3-ଦିନର ପୂର୍ବାନୁମାନ ସହ ସ୍ମାର୍ଟ ଚାଷ ଟିପ୍ସ।</span><span data-lang="hi">3-दिन का पूर्वानुमान और स्मार्ट खेती टिप्स।</span></p>
                 </div>
-                
                 <div class="bg-white text-black border-4 border-black p-6 shadow-heavy hover:-translate-y-2 transition-transform" data-aos="zoom-in" data-aos-delay="500">
                     <div class="text-4xl mb-4">📅</div>
-                    <h3 class="text-2xl font-black mb-3">
-                        <span data-lang="en" class="active">CROP CALENDAR</span>
-                        <span data-lang="or">ଫସଲ କ୍ୟାଲେଣ୍ଡର</span>
-                        <span data-lang="hi">फ़सल कैलेंडर</span>
-                    </h3>
-                    <p class="font-mono text-sm font-bold">
-                        <span data-lang="en" class="active">Kharif, Rabi, and Zaid season guides. Know exactly what to plant and when for maximum yield in Odisha.</span>
-                        <span data-lang="or">ଖରିଫ୍, ରବି ଏବଂ ଜାଏଦ୍ ଋତୁ ଗାଇଡ୍। ଓଡ଼ିଶାରେ ସର୍ବୋଚ୍ଚ ଉତ୍ପାଦନ ପାଇଁ ଠିକ୍ ସମୟରେ କ'ଣ ଲଗାଇବେ ଜାଣନ୍ତୁ।</span>
-                        <span data-lang="hi">खरीफ, रबी और जायद मौसम गाइड। ओडिशा में अधिकतम उपज के लिए जानें कब और क्या बोना है।</span>
-                    </p>
+                    <h3 class="text-xl font-black mb-3"><span data-lang="en" class="active">CROP CALENDAR</span><span data-lang="or">ଫସଲ କ୍ୟାଲେଣ୍ଡର</span><span data-lang="hi">फ़सल कैलेंडर</span></h3>
+                    <p class="font-mono text-sm font-bold"><span data-lang="en" class="active">Kharif, Rabi, and Zaid season guides for Odisha crops.</span><span data-lang="or">ଓଡ଼ିଶା ଫସଲ ପାଇଁ ଖରିଫ୍, ରବି ଏବଂ ଜାଏଦ୍ ଗାଇଡ୍।</span><span data-lang="hi">ओडिशा फसलों के लिए खरीफ, रबी और जायद गाइड।</span></p>
                 </div>
-                
                 <div class="bg-white text-black border-4 border-black p-6 shadow-heavy hover:-translate-y-2 transition-transform" data-aos="zoom-in" data-aos-delay="600">
                     <div class="text-4xl mb-4">📈</div>
-                    <h3 class="text-2xl font-black mb-3">
-                        <span data-lang="en" class="active">MARKET PRICES</span>
-                        <span data-lang="or">ବଜାର ଦାମ</span>
-                        <span data-lang="hi">बाज़ार भाव</span>
-                    </h3>
-                    <p class="font-mono text-sm font-bold">
-                        <span data-lang="en" class="active">Live Mandi prices for major crops. Track price trends and find the best markets to sell your produce.</span>
-                        <span data-lang="or">ପ୍ରମୁଖ ଫସଲ ପାଇଁ ଲାଇଭ୍ ମଣ୍ଡି ଦାମ। ଦାମ ଟ୍ରେଣ୍ଡ୍ ଟ୍ରାକ୍ କରନ୍ତୁ।</span>
-                        <span data-lang="hi">प्रमुख फसलों के लाइव मंडी भाव। कीमत रुझान ट्रैक करें और बेचने के लिए सबसे अच्छा बाज़ार खोजें।</span>
-                    </p>
+                    <h3 class="text-xl font-black mb-3"><span data-lang="en" class="active">MARKET PRICES</span><span data-lang="or">ବଜାର ଦାମ</span><span data-lang="hi">बाज़ार भाव</span></h3>
+                    <p class="font-mono text-sm font-bold"><span data-lang="en" class="active">Live Mandi prices for major crops. Track price trends and find best markets.</span><span data-lang="or">ପ୍ରମୁଖ ଫସଲ ପାଇଁ ଲାଇଭ୍ ମଣ୍ଡି ଦାମ।</span><span data-lang="hi">प्रमुख फसलों के लाइव मंडी भाव।</span></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Google AI Integration -->
-    <section class="py-20 px-4 md:px-12 bg-white border-b-4 border-black" data-aos="fade-up">
+    <!-- GOOGLE AI INTEGRATION -->
+    <section class="py-16 md:py-20 px-4 md:px-12 bg-white border-b-4 border-black" data-aos="fade-up">
         <div class="max-w-6xl mx-auto">
             <div class="mono text-sm text-[#4285F4] font-black mb-4 bg-white inline-block px-2 border-2 border-black py-1">/// HACKATHON COMPLIANCE</div>
-            <h2 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-12">GOOGLE AI <span class="bg-[#4285F4] text-white px-2">INTEGRATION</span></h2>
-            
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-10">GOOGLE AI <span class="bg-[#4285F4] text-white px-2">INTEGRATION</span></h2>
             <div class="grid md:grid-cols-3 gap-6">
+                <!-- Gemini -->
                 <div class="bg-white border-4 border-black p-6 shadow-heavy hover:-translate-y-1 transition-transform" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="w-12 h-12 bg-[#4285F4] text-white border-2 border-black flex items-center justify-center font-black text-xl">G</div>
+                        <img src="https://fonts.gstatic.com/s/i/genericbranding/gemini_sparkle_2025.svg" alt="Gemini" class="h-12 w-12" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                        <div class="w-12 h-12 bg-[#4285F4] text-white border-2 border-black flex items-center justify-center font-black text-xl hidden">G</div>
                         <h3 class="font-black text-xl">GEMINI API</h3>
                     </div>
                     <p class="font-mono text-sm font-bold text-gray-700">
-                        <span data-lang="en" class="active">Powering crop disease diagnosis with Google's latest AI model.</span>
-                        <span data-lang="or">Google ର ସର୍ବଶେଷ AI ମଡେଲ୍ ସହ ଫସଲ ରୋଗ ନିର୍ଣ୍ଣୟ।</span>
-                        <span data-lang="hi">Google के नवीनतम AI मॉडल से फसल रोग निदान।</span>
+                        <span data-lang="en" class="active">Powering crop disease diagnosis with Google's multimodal AI.</span>
+                        <span data-lang="or">Google ର multimodal AI ସହ ଫସଲ ରୋଗ ନିର୍ଣ୍ଣୟ।</span>
+                        <span data-lang="hi">Google के multimodal AI से फसल रोग निदान।</span>
                     </p>
                 </div>
-                
+                <!-- Vertex AI -->
                 <div class="bg-white border-4 border-black p-6 shadow-heavy hover:-translate-y-1 transition-transform" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="w-12 h-12 bg-[#0F9D58] text-white border-2 border-black flex items-center justify-center font-black text-xl">V</div>
+                        <img src="https://cloud.google.com/images/products/vertex-ai/vertex-ai-logo.svg" alt="Vertex AI" class="h-12 w-12" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                        <div class="w-12 h-12 bg-[#0F9D58] text-white border-2 border-black flex items-center justify-center font-black text-xl hidden">V</div>
                         <h3 class="font-black text-xl">VERTEX AI</h3>
                     </div>
                     <p class="font-mono text-sm font-bold text-gray-700">
                         <span data-lang="en" class="active">Training custom ML models for Odisha-specific crop diseases.</span>
-                        <span data-lang="or">ଓଡ଼ିଶା-ନିର୍ଦ୍ଦିଷ୍ଟ ଫସଲ ରୋଗ ପାଇଁ କଷ୍ଟମ୍ ML ମଡେଲ୍ ତାଲିମ।</span>
-                        <span data-lang="hi">ओडिशा-विशिष्ट फसल रोगों के लिए कस्टम ML मॉडल प्रशिक्षण।</span>
+                        <span data-lang="or">ଓଡ଼ିଶା-ନିର୍ଦ୍ଦିଷ୍ଟ ଫସଲ ରୋଗ ପାଇଁ ML ମଡେଲ୍ ତାଲିମ।</span>
+                        <span data-lang="hi">ओडिशा-विशिष्ट फसल रोगों के लिए ML मॉडल प्रशिक्षण।</span>
                     </p>
                 </div>
-                
+                <!-- Google Maps -->
                 <div class="bg-white border-4 border-black p-6 shadow-heavy hover:-translate-y-1 transition-transform" data-aos="fade-up" data-aos-delay="300">
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="w-12 h-12 bg-[#FFBA00] text-black border-2 border-black flex items-center justify-center font-black text-xl">M</div>
+                        <img src="https://developers.google.com/static/maps/images/maps-logo.svg" alt="Google Maps" class="h-12 w-12" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                        <div class="w-12 h-12 bg-[#FFBA00] text-black border-2 border-black flex items-center justify-center font-black text-xl hidden">M</div>
                         <h3 class="font-black text-xl">GOOGLE MAPS</h3>
                     </div>
                     <p class="font-mono text-sm font-bold text-gray-700">
                         <span data-lang="en" class="active">Real-time disease mapping and alert broadcasting across districts.</span>
-                        <span data-lang="or">ଜିଲ୍ଲା ଜୁଡ଼ି ବାସ୍ତବ-ସମୟ ରୋଗ ମ୍ୟାପିଂ ଏବଂ ସତର୍କତା ପ୍ରସାରଣ।</span>
-                        <span data-lang="hi">जिल्लों में वास्तविक समय रोग मैपिंग और अलर्ट प्रसारण।</span>
+                        <span data-lang="or">ଜିଲ୍ଲା ଜୁଡ଼ି ବାସ୍ତବ-ସମୟ ରୋଗ ମ୍ୟାପିଂ।</span>
+                        <span data-lang="hi">जिल्लों में वास्तविक समय रोग मैपिंग।</span>
                     </p>
                 </div>
             </div>
-            
-            <div class="grid md:grid-cols-4 gap-4 mt-8">
+            <!-- Supporting Google Services -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
                 <div class="bg-gray-100 border-2 border-black p-4 text-center">
-                    <div class="text-2xl mb-2">🔥</div>
+                    <img src="https://firebase.google.com/images/branding/logo-mark.png" alt="Firebase" class="h-8 mx-auto mb-2" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+                    <div class="text-2xl mb-2 hidden">🔥</div>
                     <p class="font-black text-sm">FIREBASE</p>
-                    <p class="font-mono text-[10px] text-gray-600">
-                        <span data-lang="en" class="active">Real-time sync</span>
-                        <span data-lang="or">ବାସ୍ତବ-ସମୟ ସିଙ୍କ</span>
-                        <span data-lang="hi">रीयल-टाइम सिंक</span>
-                    </p>
+                    <p class="font-mono text-[10px] text-gray-600"><span data-lang="en" class="active">Real-time sync</span><span data-lang="or">ବାସ୍ତବ-ସମୟ ସିଙ୍କ</span><span data-lang="hi">रीयल-टाइम सिंक</span></p>
                 </div>
                 <div class="bg-gray-100 border-2 border-black p-4 text-center">
-                    <div class="text-2xl mb-2">🌐</div>
+                    <img src="https://www.gstatic.com/images/branding/product/1x/translate_48dp.png" alt="Translation" class="h-8 mx-auto mb-2" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+                    <div class="text-2xl mb-2 hidden">🌐</div>
                     <p class="font-black text-sm">TRANSLATION</p>
-                    <p class="font-mono text-[10px] text-gray-600">
-                        <span data-lang="en" class="active">Multi-language</span>
-                        <span data-lang="or">ବହୁ-ଭାଷା</span>
-                        <span data-lang="hi">बहु-भाषा</span>
-                    </p>
+                    <p class="font-mono text-[10px] text-gray-600"><span data-lang="en" class="active">Multi-language</span><span data-lang="or">ବହୁ-ଭାଷା</span><span data-lang="hi">बहु-भाषा</span></p>
                 </div>
                 <div class="bg-gray-100 border-2 border-black p-4 text-center">
-                    <div class="text-2xl mb-2">🗣️</div>
+                    <img src="https://www.gstatic.com/images/branding/product/1x/cloud_speech_to_text_48dp.png" alt="Cloud TTS" class="h-8 mx-auto mb-2" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+                    <div class="text-2xl mb-2 hidden">🗣️</div>
                     <p class="font-black text-sm">CLOUD TTS</p>
-                    <p class="font-mono text-[10px] text-gray-600">
-                        <span data-lang="en" class="active">Voice readout</span>
-                        <span data-lang="or">ସ୍ୱର ପଢ଼ିବା</span>
-                        <span data-lang="hi">आवाज़ में सुनें</span>
-                    </p>
+                    <p class="font-mono text-[10px] text-gray-600"><span data-lang="en" class="active">Voice readout</span><span data-lang="or">ସ୍ୱର ପଢ଼ିବା</span><span data-lang="hi">आवाज़ में सुनें</span></p>
                 </div>
                 <div class="bg-gray-100 border-2 border-black p-4 text-center">
                     <div class="text-2xl mb-2">🤖</div>
                     <p class="font-black text-sm">GEMINI FLASH</p>
-                    <p class="font-mono text-[10px] text-gray-600">
-                        <span data-lang="en" class="active">AI diagnosis</span>
-                        <span data-lang="or">AI ନିର୍ଣ୍ଣୟ</span>
-                        <span data-lang="hi">AI निदान</span>
-                    </p>
+                    <p class="font-mono text-[10px] text-gray-600"><span data-lang="en" class="active">AI diagnosis</span><span data-lang="or">AI ନିର୍ଣ୍ଣୟ</span><span data-lang="hi">AI निदान</span></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Personnel Dossier (Team) -->
-    <section class="py-20 px-4 md:px-12 bg-soil-gray border-b-4 border-black bg-[radial-gradient(#a3e635_1px,transparent_1px)] [background-size:16px_16px]" data-aos="fade-up">
-        <div class="max-w-6xl mx-auto">
-            <div class="mono text-sm text-agri-dark font-black mb-4 bg-white inline-block px-2 py-1 border-2 border-black">/// PERSONNEL DOSSIER</div>
-            <h2 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-12">CRYSTAL STUDIO <span class="bg-black text-agri-neon px-2">LABS</span></h2>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white border-4 border-black p-6 shadow-heavy hover:-translate-y-2 transition-transform" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="w-12 h-12 bg-agri-neon border-4 border-black mb-4 flex items-center justify-center font-black text-xl shadow-[4px_4px_0_0_#000]">01</div>
-                    <h3 class="font-black text-xl mb-1 uppercase tracking-tighter leading-tight min-h-[3rem]">Shuvransu Sekhar Sahoo</h3>
-                    <p class="font-mono text-xs text-gray-500 mb-6 font-bold">FOUNDING MEMBER</p>
-                    <div class="flex gap-4 border-t-4 border-black pt-4">
-                        <a href="https://github.com/SahooShuvranshu" target="_blank" class="hover:text-agri-dark transition-colors" title="GitHub"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
-                        <a href="https://linkedin.com/in/sahooshuvranshu" target="_blank" class="hover:text-[#0a66c2] transition-colors" title="LinkedIn"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-                        <a href="https://sahooshuvranshu.is-a.dev" target="_blank" class="hover:text-agri-dark transition-colors" title="Website"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></a>
-                    </div>
-                </div>
-
-                <div class="bg-white border-4 border-black p-6 shadow-heavy hover:-translate-y-2 transition-transform" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="w-12 h-12 bg-white border-4 border-black mb-4 flex items-center justify-center font-black text-xl shadow-[4px_4px_0_0_#000]">02</div>
-                    <h3 class="font-black text-xl mb-1 uppercase tracking-tighter leading-tight min-h-[3rem]">Snehal Kumar Moharana</h3>
-                    <p class="font-mono text-xs text-gray-500 mb-6 font-bold">FOUNDING MEMBER</p>
-                    <div class="flex gap-4 border-t-4 border-black pt-4">
-                        <a href="#" target="_blank" class="hover:text-agri-dark transition-colors" title="GitHub"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
-                        <a href="#" target="_blank" class="hover:text-[#0a66c2] transition-colors" title="LinkedIn"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-                    </div>
-                </div>
-
-                <div class="bg-white border-4 border-black p-6 shadow-heavy hover:-translate-y-2 transition-transform" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="w-12 h-12 bg-white border-4 border-black mb-4 flex items-center justify-center font-black text-xl shadow-[4px_4px_0_0_#000]">03</div>
-                    <h3 class="font-black text-xl mb-1 uppercase tracking-tighter leading-tight min-h-[3rem]">Subhankar Mohapatra</h3>
-                    <p class="font-mono text-xs text-gray-500 mb-6 font-bold">FOUNDING MEMBER</p>
-                    <div class="flex gap-4 border-t-4 border-black pt-4">
-                        <a href="#" target="_blank" class="hover:text-agri-dark transition-colors" title="GitHub"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
-                        <a href="#" target="_blank" class="hover:text-[#0a66c2] transition-colors" title="LinkedIn"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-                    </div>
-                </div>
-
-                <div class="bg-white border-4 border-black p-6 shadow-heavy hover:-translate-y-2 transition-transform" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="w-12 h-12 bg-white border-4 border-black mb-4 flex items-center justify-center font-black text-xl shadow-[4px_4px_0_0_#000]">04</div>
-                    <h3 class="font-black text-xl mb-1 uppercase tracking-tighter leading-tight min-h-[3rem]">Pruthiraj Lenka</h3>
-                    <p class="font-mono text-xs text-gray-500 mb-6 font-bold">FOUNDING MEMBER</p>
-                    <div class="flex gap-4 border-t-4 border-black pt-4">
-                        <a href="#" target="_blank" class="hover:text-agri-dark transition-colors" title="GitHub"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
-                        <a href="#" target="_blank" class="hover:text-[#0a66c2] transition-colors" title="LinkedIn"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tech Stack -->
-    <section class="py-20 px-4 md:px-12 bg-[radial-gradient(#d4d4d8_1px,transparent_1px)] [background-size:16px_16px] border-b-4 border-black" data-aos="fade-up">
+    <!-- TECH STACK -->
+    <section class="py-16 md:py-20 px-4 md:px-12 bg-[radial-gradient(#d4d4d8_1px,transparent_1px)] [background-size:16px_16px] border-b-4 border-black" data-aos="fade-up">
         <div class="max-w-6xl mx-auto">
             <div class="mono text-sm text-black font-black mb-4 bg-white inline-block px-2 border-2 border-black py-1">/// THE ARCHITECTURE</div>
-            <h2 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-12">TECH STACK</h2>
-            
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-10">TECH STACK</h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="bg-black text-white border-4 border-black p-6 shadow-heavy hover:-translate-y-1 transition-transform" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="font-black text-2xl md:text-3xl mb-2 text-agri-neon">TENSORFLOW.JS</h3>
-                    <p class="font-mono text-sm font-bold text-gray-300 leading-relaxed">
-                        <span data-lang="en" class="active">Executes quantized machine learning vision models directly on the farmer's mobile CPU/GPU. The models are permanently cached inside the browser's IndexedDB, allowing for instantaneous, zero-latency inference without ever sending photos to a server.</span>
-                        <span data-lang="or">ଚାଷୀର ମୋବାଇଲ୍ CPU/GPU ରେ ସିଧାସଳଖ TensorFlow.js ମଡେଲ୍ ଚାଲେ। ଫଟୋ ସର୍ଭରକୁ ପଠାଇବା ଆବଶ୍ୟକ ନାହିଁ।</span>
-                        <span data-lang="hi">किसान के मोबाइल CPU/GPU पर सीधे TensorFlow.js मॉडल चलते हैं। फ़ोटो सर्वर को भेजने की आवश्यकता नहीं।</span>
-                    </p>
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/TensorFlowLogo.svg" alt="TensorFlow.js" class="h-10" onerror="this.style.display='none'" />
+                        <h3 class="font-black text-2xl text-agri-neon">TENSORFLOW.JS</h3>
+                    </div>
+                    <p class="font-mono text-sm font-bold text-gray-300 leading-relaxed"><span data-lang="en" class="active">Executes quantized ML vision models directly on the farmer's mobile CPU/GPU. Models cached in IndexedDB for zero-latency offline inference.</span><span data-lang="or">ଚାଷୀର ମୋବାଇଲ୍ CPU/GPU ରେ TensorFlow.js ମଡେଲ୍ ଚାଲେ। ଫଟୋ ସର୍ଭରକୁ ପଠାଇବା ଆବଶ୍ୟକ ନାହିଁ।</span><span data-lang="hi">किसान के मोबाइल पर TensorFlow.js मॉडल चलते हैं। फ़ोटो सर्वर को नहीं जाती।</span></p>
                 </div>
-                
                 <div class="bg-white text-black border-4 border-black p-6 shadow-heavy hover:-translate-y-1 transition-transform" data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="font-black text-2xl md:text-3xl mb-2">REACT + VITE (PWA)</h3>
-                    <p class="font-mono text-sm font-bold text-gray-700 leading-relaxed">
-                        <span data-lang="en" class="active">The foundational frontend framework. It utilizes aggressive Service Worker caching strategies to intercept network requests, transforming the website into an installable Progressive Web App that survives in 100% offline environments.</span>
-                        <span data-lang="or">ସେବା କର୍ମୀ କ୍ୟାଚିଂ ରଣନୀତି ବ୍ୟବହାର କରି ୱେବସାଇଟ୍ କୁ 100% ଅଫଲାଇନ୍ PWA ରେ ପରିଣତ କରେ।</span>
-                        <span data-lang="hi">Service Worker कैशिंग रणनीतियों का उपयोग करके वेबसाइट को 100% ऑफ़लाइन PWA में बदलता है।</span>
-                    </p>
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React" class="h-10" onerror="this.style.display='none'" />
+                        <h3 class="font-black text-2xl">REACT + VITE (PWA)</h3>
+                    </div>
+                    <p class="font-mono text-sm font-bold text-gray-700 leading-relaxed"><span data-lang="en" class="active">Progressive Web App with Service Worker caching. Installable on any phone without app stores. Survives 100% offline environments.</span><span data-lang="or">Service Worker ସହ PWA। 100% ଅଫଲାଇନ୍ ପରିବେଶରେ କାମ କରେ।</span><span data-lang="hi">Service Worker के साथ PWA। 100% ऑफ़लाइन वातावरण में काम करता है।</span></p>
                 </div>
-                
                 <div class="bg-white text-black border-4 border-black p-6 shadow-heavy hover:-translate-y-1 transition-transform" data-aos="fade-up" data-aos-delay="300">
-                    <h3 class="font-black text-2xl md:text-3xl mb-2">GEMINI FLASH</h3>
-                    <p class="font-mono text-sm font-bold text-gray-700 leading-relaxed">
-                        <span data-lang="en" class="active">Acts as the agronomy intelligence engine. Once the farmer regains basic connectivity, Gemini translates complex chemical and organic treatments into simple, localized steps in Hindi or Odia.</span>
-                        <span data-lang="or">ଜ୍ଞାନ ଇଞ୍ଜିନ୍ ଭାବରେ କାର୍ଯ୍ୟ କରେ। ହିନ୍ଦୀ କିମ୍ବା ଓଡ଼ିଆରେ ସରଳ ପରାମର୍ଶ ଦିଏ।</span>
-                        <span data-lang="hi">ज्ञान इंजिन के रूप में कार्य करता है। हिंदी या ओडिया में सरल सलाह देता है।</span>
-                    </p>
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Gemini_logo.svg" alt="Gemini" class="h-10" onerror="this.style.display='none'" />
+                        <h3 class="font-black text-2xl">GEMINI FLASH</h3>
+                    </div>
+                    <p class="font-mono text-sm font-bold text-gray-700 leading-relaxed"><span data-lang="en" class="active">Agronomy intelligence engine. Translates complex treatments into simple, localized steps in Hindi or Odia when online.</span><span data-lang="or">ଜ୍ଞାନ ଇଞ୍ଜିନ୍। ହିନ୍ଦୀ କିମ୍ବା ଓଡ଼ିଆରେ ସରଳ ପରାମର୍ଶ ଦିଏ।</span><span data-lang="hi">ज्ञान इंजिन। हिंदी या ओडिया में सरल सलाह देता है।</span></p>
                 </div>
-
                 <div class="bg-black text-white border-4 border-black p-6 shadow-heavy hover:-translate-y-1 transition-transform" data-aos="fade-up" data-aos-delay="400">
-                    <h3 class="font-black text-2xl md:text-3xl mb-2 text-agri-neon">GOOGLE MAPS + FIREBASE</h3>
-                    <p class="font-mono text-sm font-bold text-gray-300 leading-relaxed">
-                        <span data-lang="en" class="active">Powers the state telemetry grid with real-time alerts. When a farmer scans a diseased crop, Firebase broadcasts the alert to nearby districts via Google Maps, enabling unprecedented cross-state agricultural cooperation.</span>
-                        <span data-lang="or">ବାସ୍ତବ-ସମୟ ସତର୍କତା ସହ ରାଜ୍ୟ ଟେଲିମେଟ୍ରି ଗ୍ରିଡ୍ ଚଳାଏ। Google Maps ଏବଂ Firebase ମାଧ୍ୟମରେ ସତର୍କତା ପ୍ରସାରଣ କରେ।</span>
-                        <span data-lang="hi">Google Maps और Firebase के माध्यम से वास्तविक समय अलर्ट के साथ राज्य टेलीमेट्री ग्रिड चलाता है।</span>
-                    </p>
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="https://firebase.google.com/images/branding/logo-mark.png" alt="Firebase" class="h-10" onerror="this.style.display='none'" />
+                        <h3 class="font-black text-2xl text-agri-neon">GOOGLE MAPS + FIREBASE</h3>
+                    </div>
+                    <p class="font-mono text-sm font-bold text-gray-300 leading-relaxed"><span data-lang="en" class="active">Powers the state telemetry grid. When a farmer scans a diseased crop, Firebase broadcasts alerts via Google Maps to nearby districts.</span><span data-lang="or">ରାଜ୍ୟ ଟେଲିମେଟ୍ରି ଗ୍ରିଡ୍। Google Maps ଏବଂ Firebase ମାଧ୍ୟମରେ ସତର୍କତା ପ୍ରସାରଣ।</span><span data-lang="hi">Google Maps और Firebase से अलर्ट प्रसारण।</span></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Demo Video Section -->
-    <section class="py-20 px-4 md:px-12 bg-white border-b-4 border-black" data-aos="fade-up">
+    <!-- DEMO -->
+    <section class="py-16 md:py-20 px-4 md:px-12 bg-white border-b-4 border-black" data-aos="fade-up">
         <div class="max-w-6xl mx-auto">
             <div class="mono text-sm text-agri-dark font-black mb-4">/// DEMO</div>
-            <h2 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-12">SEE IT <span class="bg-agri-neon px-2 border-4 border-black inline-block rotate-1">IN ACTION</span></h2>
-            
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-10">SEE IT <span class="bg-agri-neon px-2 border-4 border-black inline-block rotate-1">IN ACTION</span></h2>
             <div class="bg-black border-4 border-black shadow-heavy p-4">
                 <div class="aspect-video bg-gray-900 border-2 border-gray-700 flex items-center justify-center">
                     <div class="text-center">
                         <div class="text-6xl mb-4">🎬</div>
-                        <p class="text-agri-neon font-mono text-sm uppercase">
-                            <span data-lang="en" class="active">Demo Video Coming Soon</span>
-                            <span data-lang="or">ଡେମୋ ଭିଡିଓ ଶୀଘ୍ର ଆସୁଛି</span>
-                            <span data-lang="hi">डेमो वीडियो जल्द आ रहा है</span>
-                        </p>
-                        <p class="text-gray-500 font-mono text-xs mt-2">
-                            <span data-lang="en" class="active">Recording in progress...</span>
-                            <span data-lang="or">ରେକର୍ଡିଂ ଚାଲିଛି...</span>
-                            <span data-lang="hi">रिकॉर्डिंग जारी है...</span>
-                        </p>
+                        <p class="text-agri-neon font-mono text-sm uppercase"><span data-lang="en" class="active">Demo Video Coming Soon</span><span data-lang="or">ଡେମୋ ଭିଡିଓ ଶୀଘ୍ର ଆସୁଛି</span><span data-lang="hi">डेमो वीडियो जल्द आ रहा है</span></p>
                     </div>
                 </div>
             </div>
-            
-            <div class="grid md:grid-cols-3 gap-4 mt-8">
+            <div class="grid md:grid-cols-3 gap-4 mt-6">
                 <div class="bg-soil-gray border-2 border-black p-4 text-center">
                     <div class="text-3xl mb-2">📸</div>
-                    <p class="font-black text-sm">
-                        <span data-lang="en" class="active">STEP 1: SCAN</span>
-                        <span data-lang="or">ପଦକ୍ଷେପ 1: ସ୍କାନ୍</span>
-                        <span data-lang="hi">चरण 1: स्कैन</span>
-                    </p>
-                    <p class="font-mono text-xs text-gray-600">
-                        <span data-lang="en" class="active">Take photo of sick leaf</span>
-                        <span data-lang="or">ରୋଗୀ ପତ୍ରର ଫଟୋ ନିଅନ୍ତୁ</span>
-                        <span data-lang="hi">बीमार पत्ती की फ़ोटो लें</span>
-                    </p>
+                    <p class="font-black text-sm"><span data-lang="en" class="active">STEP 1: SCAN</span><span data-lang="or">ପଦକ୍ଷେପ 1: ସ୍କାନ୍</span><span data-lang="hi">चरण 1: स्कैन</span></p>
+                    <p class="font-mono text-xs text-gray-600"><span data-lang="en" class="active">Take photo of sick leaf</span><span data-lang="or">ରୋଗୀ ପତ୍ରର ଫଟୋ ନିଅନ୍ତୁ</span><span data-lang="hi">बीमार पत्ती की फ़ोटो लें</span></p>
                 </div>
                 <div class="bg-soil-gray border-2 border-black p-4 text-center">
                     <div class="text-3xl mb-2">🤖</div>
-                    <p class="font-black text-sm">
-                        <span data-lang="en" class="active">STEP 2: DIAGNOSE</span>
-                        <span data-lang="or">ପଦକ୍ଷେପ 2: ନିର୍ଣ୍ଣୟ</span>
-                        <span data-lang="hi">चरण 2: निदान</span>
-                    </p>
-                    <p class="font-mono text-xs text-gray-600">
-                        <span data-lang="en" class="active">AI identifies disease</span>
-                        <span data-lang="or">AI ରୋଗ ଚିହ୍ନଟ କରେ</span>
-                        <span data-lang="hi">AI रोग पहचानता है</span>
-                    </p>
+                    <p class="font-black text-sm"><span data-lang="en" class="active">STEP 2: DIAGNOSE</span><span data-lang="or">ପଦକ୍ଷେପ 2: ନିର୍ଣ୍ଣୟ</span><span data-lang="hi">चरण 2: निदान</span></p>
+                    <p class="font-mono text-xs text-gray-600"><span data-lang="en" class="active">AI identifies disease</span><span data-lang="or">AI ରୋଗ ଚିହ୍ନଟ କରେ</span><span data-lang="hi">AI रोग पहचानता है</span></p>
                 </div>
                 <div class="bg-soil-gray border-2 border-black p-4 text-center">
                     <div class="text-3xl mb-2">💊</div>
-                    <p class="font-black text-sm">
-                        <span data-lang="en" class="active">STEP 3: TREAT</span>
-                        <span data-lang="or">ପଦକ୍ଷେପ 3: ଚିକିତ୍ସା</span>
-                        <span data-lang="hi">चरण 3: उपचार</span>
-                    </p>
-                    <p class="font-mono text-xs text-gray-600">
-                        <span data-lang="en" class="active">Get localized advice</span>
-                        <span data-lang="or">ସ୍ଥାନୀୟ ପରାମର୍ଶ ପାଆନ୍ତୁ</span>
-                        <span data-lang="hi">स्थानीय सलाह पाएं</span>
-                    </p>
+                    <p class="font-black text-sm"><span data-lang="en" class="active">STEP 3: TREAT</span><span data-lang="or">ପଦକ୍ଷେପ 3: ଚିକିତ୍ସା</span><span data-lang="hi">चरण 3: उपचार</span></p>
+                    <p class="font-mono text-xs text-gray-600"><span data-lang="en" class="active">Get localized advice</span><span data-lang="or">ସ୍ଥାନୀୟ ପରାମର୍ଶ ପାଆନ୍ତୁ</span><span data-lang="hi">स्थानीय सलाह पाएं</span></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- F.A.Q. -->
-    <section class="py-20 px-4 md:px-12 bg-white border-b-4 border-black" data-aos="fade-up">
+    <!-- ETYMOLOGY -->
+    <section class="py-16 px-4 md:px-12 border-b-4 border-black bg-soil-gray bg-[radial-gradient(#a3e635_1px,transparent_1px)] [background-size:16px_16px]" data-aos="fade-up">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-8 items-center justify-center">
+            <div class="text-6xl md:text-8xl font-black tracking-tighter text-black bg-white p-4 border-4 border-black shadow-heavy rotate-2 break-words">कृषि<br/>सेतु</div>
+            <div class="bg-white border-4 border-black p-6 md:p-8 shadow-heavy max-w-2xl -rotate-1">
+                <div class="mono text-sm text-agri-dark font-black mb-2">/// ETYMOLOGY</div>
+                <h3 class="font-black text-3xl md:text-4xl tracking-tighter mb-4"><span data-lang="en" class="active">WHAT DOES IT MEAN?</span><span data-lang="or">ଏହାର ଅର୍ଥ କ'ଣ?</span><span data-lang="hi">इसका क्या अर्थ है?</span></h3>
+                <p class="font-mono font-bold text-lg mb-2 border-b-2 border-black pb-2"><span class="text-agri-dark text-xl">Krishi (कृषि):</span> <span data-lang="en" class="active">Agriculture & Farming</span><span data-lang="or">କୃଷି ଓ ଚାଷ</span><span data-lang="hi">कृषि और खेती</span></p>
+                <p class="font-mono font-bold text-lg mb-4 border-b-2 border-black pb-2"><span class="text-agri-dark text-xl">Setu (सेतु):</span> <span data-lang="en" class="active">Bridge</span><span data-lang="or">ସେତୁ</span><span data-lang="hi">सेतु (पुल)</span></p>
+                <p class="font-mono text-sm leading-relaxed text-black font-bold"><span data-lang="en" class="active">The technological bridge connecting the world's most advanced AI directly to India's disconnected rural farms.</span><span data-lang="or">ବିଶ୍ୱର ସର୍ବୋତ୍ତମ AI କୁ ଭାରତର ଗ୍ରାମାଞ୍ଚଳ ସହ ସଂଯୋଗ କରୁଥିବା ପ୍ରଯୁକ୍ତିଗତ ସେତୁ।</span><span data-lang="hi">विश्व के सबसे उन्नत AI को भारत के ग्रामीण खेतों से जोड़ने वाला तकनीकी पुल।</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="py-16 md:py-20 px-4 md:px-12 bg-soil-gray border-b-4 border-black bg-[radial-gradient(#a3e635_1px,transparent_1px)] [background-size:16px_16px]" data-aos="fade-up">
+        <div class="max-w-6xl mx-auto">
+            <div class="mono text-sm text-agri-dark font-black mb-4 bg-white inline-block px-2 py-1 border-2 border-black">/// PERSONNEL DOSSIER</div>
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-10">CRYSTAL STUDIO <span class="bg-black text-agri-neon px-2">LABS</span></h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white border-4 border-black p-6 shadow-heavy hover:-translate-y-2 transition-transform" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="w-12 h-12 bg-agri-neon border-4 border-black mb-4 flex items-center justify-center font-black text-xl shadow-[4px_4px_0_0_#000]">01</div>
+                    <h3 class="font-black text-lg mb-1 uppercase tracking-tighter leading-tight min-h-[3rem]">Shuvransu Sekhar Sahoo</h3>
+                    <p class="font-mono text-xs text-gray-500 mb-4 font-bold">FOUNDING MEMBER</p>
+                    <div class="flex gap-3 border-t-4 border-black pt-3">
+                        <a href="https://github.com/SahooShuvranshu" target="_blank" class="hover:text-agri-dark" title="GitHub"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+                        <a href="https://linkedin.com/in/sahooshuvranshu" target="_blank" class="hover:text-[#0a66c2]"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                        <a href="https://sahooshuvranshu.is-a.dev" target="_blank" class="hover:text-agri-dark"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></a>
+                    </div>
+                </div>
+                <div class="bg-white border-4 border-black p-6 shadow-heavy hover:-translate-y-2 transition-transform" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="w-12 h-12 bg-white border-4 border-black mb-4 flex items-center justify-center font-black text-xl shadow-[4px_4px_0_0_#000]">02</div>
+                    <h3 class="font-black text-lg mb-1 uppercase tracking-tighter leading-tight min-h-[3rem]">Snehal Kumar Moharana</h3>
+                    <p class="font-mono text-xs text-gray-500 mb-4 font-bold">FOUNDING MEMBER</p>
+                    <div class="flex gap-3 border-t-4 border-black pt-3">
+                        <a href="#" target="_blank" class="hover:text-agri-dark" title="GitHub"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+                        <a href="#" target="_blank" class="hover:text-[#0a66c2]"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                    </div>
+                </div>
+                <div class="bg-white border-4 border-black p-6 shadow-heavy hover:-translate-y-2 transition-transform" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="w-12 h-12 bg-white border-4 border-black mb-4 flex items-center justify-center font-black text-xl shadow-[4px_4px_0_0_#000]">03</div>
+                    <h3 class="font-black text-lg mb-1 uppercase tracking-tighter leading-tight min-h-[3rem]">Subhankar Mohapatra</h3>
+                    <p class="font-mono text-xs text-gray-500 mb-4 font-bold">FOUNDING MEMBER</p>
+                    <div class="flex gap-3 border-t-4 border-black pt-3">
+                        <a href="#" target="_blank" class="hover:text-agri-dark" title="GitHub"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+                        <a href="#" target="_blank" class="hover:text-[#0a66c2]"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                    </div>
+                </div>
+                <div class="bg-white border-4 border-black p-6 shadow-heavy hover:-translate-y-2 transition-transform" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="w-12 h-12 bg-white border-4 border-black mb-4 flex items-center justify-center font-black text-xl shadow-[4px_4px_0_0_#000]">04</div>
+                    <h3 class="font-black text-lg mb-1 uppercase tracking-tighter leading-tight min-h-[3rem]">Pruthiraj Lenka</h3>
+                    <p class="font-mono text-xs text-gray-500 mb-4 font-bold">FOUNDING MEMBER</p>
+                    <div class="flex gap-3 border-t-4 border-black pt-3">
+                        <a href="#" target="_blank" class="hover:text-agri-dark" title="GitHub"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+                        <a href="#" target="_blank" class="hover:text-[#0a66c2]"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 md:py-20 px-4 md:px-12 bg-white border-b-4 border-black" data-aos="fade-up">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-12 text-center">
-                <span data-lang="en" class="active">FREQUENTLY ASKED</span>
-                <span data-lang="or">ବାରମ୍ବାର ପଚାରାଯାଉଥିବା ପ୍ରଶ୍ନ</span>
-                <span data-lang="hi">अक्सर पूछे जाने वाले प्रश्न</span>
-            </h2>
-            
-            <div class="grid md:grid-cols-2 gap-12">
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-10 text-center"><span data-lang="en" class="active">FREQUENTLY ASKED</span><span data-lang="or">ବାରମ୍ବାର ପଚାରାଯାଉଥିବା ପ୍ରଶ୍ନ</span><span data-lang="hi">अक्सर पूछे जाने वाले प्रश्न</span></h2>
+            <div class="grid md:grid-cols-2 gap-8">
                 <div class="border-l-8 border-agri-neon pl-6">
-                    <h4 class="font-black text-2xl mb-3 uppercase tracking-tight">
-                        <span data-lang="en" class="active">How does it scan crops without the internet?</span>
-                        <span data-lang="or">ଏହା ଇଣ୍ଟରନେଟ୍ ବିନା ଫସଲ କିପରି ସ୍କାନ୍ କରେ?</span>
-                        <span data-lang="hi">यह इंटरनेट के बिना फसल कैसे स्कैन करता है?</span>
-                    </h4>
-                    <p class="font-mono text-sm font-bold text-gray-700 leading-relaxed">
-                        <span data-lang="en" class="active">The magic is in the browser. When the app is launched for the first time, a Service Worker downloads the core app UI and the actual AI Model into the device's local storage. From then on, the device's own hardware runs the calculations.</span>
-                        <span data-lang="or">ଜାଦୁ ବ୍ରାଉଜର୍ ରେ ଅଛି। ପ୍ରଥମ ଥର ଆପ୍ ଖୋଲିଲେ Service Worker ମଡେଲ୍ ଡାଉନଲୋଡ୍ କରେ। ତାପରେ ଡିଭାଇସ୍ ନିଜେ ହିସାବ କରେ।</span>
-                        <span data-lang="hi">जादू ब्राउज़र में है। पहली बार ऐप खोलने पर Service Worker मॉडल डाउनलोड करता है। उसके बाद डिवाइस खुद गणना करता है।</span>
-                    </p>
+                    <h4 class="font-black text-xl mb-3 uppercase tracking-tight"><span data-lang="en" class="active">How does it scan without internet?</span><span data-lang="or">ଏହା ଇଣ୍ଟରନେଟ୍ ବିନା କିପରି ସ୍କାନ୍ କରେ?</span><span data-lang="hi">यह इंटरनेट के बिना कैसे स्कैन करता है?</span></h4>
+                    <p class="font-mono text-sm font-bold text-gray-700 leading-relaxed"><span data-lang="en" class="active">A Service Worker downloads the AI model into your phone's storage on first launch. From then on, the device's own hardware runs all calculations locally.</span><span data-lang="or">Service Worker ପ୍ରଥମ ଥର ଖୋଲିଲେ ମଡେଲ୍ ଡାଉନଲୋଡ୍ କରେ। ତାପରେ ଡିଭାଇସ୍ ନିଜେ ହିସାବ କରେ।</span><span data-lang="hi">पहली बार खोलने पर Service Worker मॉडल डाउनलोड करता है। उसके बाद डिवाइस खुद गणना करता है।</span></p>
                 </div>
-                
                 <div class="border-l-8 border-black pl-6">
-                    <h4 class="font-black text-2xl mb-3 uppercase tracking-tight">
-                        <span data-lang="en" class="active">Is the farmer's data private?</span>
-                        <span data-lang="or">ଚାଷୀର ତଥ୍ୟ ନିଜର ଅଛି କି?</span>
-                        <span data-lang="hi">किसान का डेटा निजी है?</span>
-                    </h4>
-                    <p class="font-mono text-sm font-bold text-gray-700 leading-relaxed">
-                        <span data-lang="en" class="active">100%. Because inference happens locally on the edge via TensorFlow.js, pictures of the farmer's crops never leave their phone. The only data transmitted is an anonymous disease alert pinged to the DPI Grid (if online).</span>
-                        <span data-lang="or">100%। TensorFlow.js ଦ୍ୱାରା ହିସାବ ସ୍ଥାନୀୟ ଭାବରେ ହୁଏ, ତେଣୁ ଫସଲ ଫଟୋ ଫୋନ୍ ଛାଡ଼େ ନାହିଁ।</span>
-                        <span data-lang="hi">100%। TensorFlow.js से गणना स्थानीय रूप से होती है, इसलिए फसल की फ़ोटो फ़ोन नहीं छोड़ती।</span>
-                    </p>
+                    <h4 class="font-black text-xl mb-3 uppercase tracking-tight"><span data-lang="en" class="active">Is the farmer's data private?</span><span data-lang="or">ଚାଷୀର ତଥ୍ୟ ନିଜର ଅଛି କି?</span><span data-lang="hi">किसान का डेटा निजी है?</span></h4>
+                    <p class="font-mono text-sm font-bold text-gray-700 leading-relaxed"><span data-lang="en" class="active">100%. Inference happens locally via TensorFlow.js — crop photos never leave the phone. Only an anonymous disease alert is sent when online.</span><span data-lang="or">100%। TensorFlow.js ଦ୍ୱାରା ସ୍ଥାନୀୟ ହିସାବ। ଫସଲ ଫଟୋ ଫୋନ୍ ଛାଡ଼େ ନାହିଁ।</span><span data-lang="hi">100%। TensorFlow.js से स्थानीय गणना। फसल की फ़ोटो फ़ोन नहीं छोड़ती।</span></p>
                 </div>
-
                 <div class="border-l-8 border-agri-dark pl-6">
-                    <h4 class="font-black text-2xl mb-3 uppercase tracking-tight">
-                        <span data-lang="en" class="active">Which languages are supported?</span>
-                        <span data-lang="or">କେଉଁ ଭାଷା ସମର୍ଥିତ?</span>
-                        <span data-lang="hi">कौन सी भाषाएं समर्थित हैं?</span>
-                    </h4>
-                    <p class="font-mono text-sm font-bold text-gray-700 leading-relaxed">
-                        <span data-lang="en" class="active">Currently, the UI and the AI advisory system natively support English, Odia (ଓଡ଼ିଆ), and Hindi (हिन्दी). It also utilizes the Web Speech API to read the remedies out loud to farmers who may struggle with reading.</span>
-                        <span data-lang="or">ବର୍ତ୍ତମାନ, UI ଏବଂ AI ପରାମର୍ଶ ଇଂରାଜୀ, ଓଡ଼ିଆ ଏବଂ ହିନ୍ଦୀ ସମର୍ଥନ କରେ। Web Speech API ଦ୍ୱାରା ଉପଚାର ପଢ଼ି ଶୁଣାଏ।</span>
-                        <span data-lang="hi">वर्तमान में UI और AI सलाह अंग्रेजी, ओडिया और हिंदी को सपोर्ट करते हैं। Web Speech API से उपचार सुनाता है।</span>
-                    </p>
+                    <h4 class="font-black text-xl mb-3 uppercase tracking-tight"><span data-lang="en" class="active">Which languages are supported?</span><span data-lang="or">କେଉଁ ଭାଷା ସମର୍ଥିତ?</span><span data-lang="hi">कौन सी भाषाएं?</span></h4>
+                    <p class="font-mono text-sm font-bold text-gray-700 leading-relaxed"><span data-lang="en" class="active">English, Odia, and Hindi with Web Speech API voice readouts for farmers who struggle with reading.</span><span data-lang="or">ଇଂରାଜୀ, ଓଡ଼ିଆ ଏବଂ ହିନ୍ଦୀ। Web Speech API ଦ୍ୱାରା ଉପଚାର ପଢ଼ି ଶୁଣାଏ।</span><span data-lang="hi">अंग्रेजी, ओडिया और हिंदी। Web Speech API से उपचार सुनाता है।</span></p>
                 </div>
-
                 <div class="border-l-8 border-danger-red pl-6">
-                    <h4 class="font-black text-2xl mb-3 uppercase tracking-tight">
-                        <span data-lang="en" class="active">Do they need to download an app from the Play Store?</span>
-                        <span data-lang="or">କ'ଣ ସେମାନଙ୍କୁ Play Store ରୁ ଆପ୍ ଡାଉନଲୋଡ୍ କରିବାକୁ ପଡ଼ିବ?</span>
-                        <span data-lang="hi">क्या उन्हें Play Store से ऐप डाउनलोड करना होगा?</span>
-                    </h4>
-                    <p class="font-mono text-sm font-bold text-gray-700 leading-relaxed">
-                        <span data-lang="en" class="active">No. Krishi Setu is a PWA (Progressive Web App). By simply visiting the URL, their browser will prompt them to "Add to Home Screen". It bypasses app store friction entirely while behaving exactly like a native app.</span>
-                        <span data-lang="or">ନାହିଁ। କୃଷି ସେତୁ ଏକ PWA। ସିଧାସଳଖ URL ଭିଜିଟ୍ କଲେ ବ୍ରାଉଜର୍ "ହୋମ୍ ସ୍କ୍ରିନ୍ ରେ ଯୋଗ କରନ୍ତୁ" କହିବ।</span>
-                        <span data-lang="hi">नहीं। कृषि सेतु एक PWA है। बस URL पर जाएं, ब्राउज़र "होम स्क्रीन में जोड़ें" कहेगा।</span>
-                    </p>
+                    <h4 class="font-black text-xl mb-3 uppercase tracking-tight"><span data-lang="en" class="active">Need to download from Play Store?</span><span data-lang="or">Play Store ରୁ ଡାଉନଲୋଡ୍ ଦରକାର?</span><span data-lang="hi">Play Store से डाउनलोड?</span></h4>
+                    <p class="font-mono text-sm font-bold text-gray-700 leading-relaxed"><span data-lang="en" class="active">No. Krishi Setu is a PWA — visit the URL and your browser will prompt "Add to Home Screen". Works like a native app without app stores.</span><span data-lang="or">ନାହିଁ। କୃଷି ସେତୁ PWA — URL ଭିଜିଟ୍ କଲେ ବ୍ରାଉଜର୍ "ହୋମ୍ ସ୍କ୍ରିନ୍ ରେ ଯୋଗ କରନ୍ତୁ" କହିବ।</span><span data-lang="hi">नहीं। कृषि सेतु PWA है — URL पर जाएं, ब्राउज़र "होम स्क्रीन में जोड़ें" कहेगा।</span></p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black text-white pt-16 pb-8 px-4 border-b-[16px] border-agri-neon">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8 border-b-4 border-white/20 pb-12 mb-8">
+    <footer class="bg-black text-white pt-12 pb-8 px-4 border-b-[16px] border-agri-neon">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8 border-b-4 border-white/20 pb-8 mb-6">
             <div>
-                <h2 class="text-4xl font-black tracking-tighter mb-2">KRISHI SETU AI</h2>
+                <h2 class="text-3xl font-black tracking-tighter mb-2">KRISHI SETU AI</h2>
                 <p class="mono text-agri-neon font-bold text-sm">Google AI Hackathon 2026 // Code for Communities</p>
             </div>
-            
             <div class="flex flex-col items-start md:items-end gap-2">
                 <a href="https://github.com/SahooShuvranshu/KrishiSetu-AI" target="_blank" class="hover:text-agri-neon transition-colors mono font-bold">> VIEW REPOSITORY</a>
                 <a href="https://krishi-setu-ai-seven.vercel.app" target="_blank" class="bg-agri-neon text-black px-4 py-2 font-black text-lg border-2 border-black hover:bg-white transition-colors shadow-[4px_4px_0_0_#000]">🚀 LAUNCH APP</a>
             </div>
         </div>
-        
         <div class="text-center mono text-xs text-gray-500 font-bold uppercase">
             Designed & Engineered by <span class="text-white">Crystal Studio Labs</span>. Built for Bharat 🇮🇳.
         </div>
     </footer>
 
-    <!-- Inline Language Switcher Script (no Google Translate) -->
+    <!-- Language Switcher -->
     <script>
         let currentLang = 'en';
-
         function changeLang(langCode, btn) {
             currentLang = langCode;
-
-            // Update button styles
             document.querySelectorAll('.lang-btn').forEach(b => {
                 b.classList.remove('bg-agri-neon', 'text-black');
                 b.classList.add('bg-white', 'text-gray-500');
             });
             btn.classList.add('bg-agri-neon', 'text-black');
             btn.classList.remove('bg-white', 'text-gray-500');
-
-            // Show/hide all data-lang elements
             document.querySelectorAll('[data-lang]').forEach(el => {
                 el.classList.remove('active');
-                if (el.getAttribute('data-lang') === langCode) {
-                    el.classList.add('active');
-                }
+                if (el.getAttribute('data-lang') === langCode) el.classList.add('active');
             });
-
-            // Update html lang attribute
             document.documentElement.lang = langCode === 'or' ? 'or' : langCode === 'hi' ? 'hi' : 'en';
         }
     </script>
-
-    <!-- AOS Script -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100,
-        });
-    </script>
+    <script>AOS.init({ duration: 800, once: true, offset: 100 });</script>
 </body>
 </html>
