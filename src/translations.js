@@ -1,4 +1,7 @@
-export const translations = {
+import { translateText } from './services/translation';
+
+// Static translations for offline use
+const staticTranslations = {
   en: {
     appTitle: "Krishi Setu",
     appSubtitle: "Odisha Farmer Network",
@@ -29,7 +32,10 @@ export const translations = {
     broadcastAlert: "BROADCAST TO NETWORK",
     broadcastSuccess: "Alert successfully broadcasted to nearby farmers!",
     autoDetectGps: "📍 AUTO-DETECT GPS",
-    gpsSuccess: "GPS Locked! Auto-selecting nearest zone..."
+    gpsSuccess: "GPS Locked! Auto-selecting nearest zone...",
+    recentScans: "Recent Scans",
+    clearHistory: "Clear",
+    share: "Share"
   },
   or: {
     appTitle: "କୃଷିସେତୁ",
@@ -61,7 +67,10 @@ export const translations = {
     broadcastAlert: "ନେଟୱାର୍କକୁ ପଠାନ୍ତୁ",
     broadcastSuccess: "ନିକଟସ୍ଥ କୃଷକମାନଙ୍କୁ ସତର୍କ ସୂଚନା ପଠାଗଲା!",
     autoDetectGps: "📍 ଲୋକେସନ୍ ଖୋଜନ୍ତୁ",
-    gpsSuccess: "ଲୋକେସନ୍ ମିଳିଲା! ଅଞ୍ଚଳ ବଛାଯାଉଛି..."
+    gpsSuccess: "ଲୋକେସନ୍ ମିଳିଲା! ଅଞ୍ଚଳ ବଛାଯାଉଛି...",
+    recentScans: "ଶେଷ ସ୍କାନ",
+    clearHistory: "ସଫା କରନ୍ତୁ",
+    share: "ଶେୟାର"
   },
   hi: {
     appTitle: "कृषिसेतु",
@@ -93,10 +102,40 @@ export const translations = {
     broadcastAlert: "नेटवर्क पर भेजें",
     broadcastSuccess: "आसपास के किसानों को चेतावनी भेजी गई!",
     autoDetectGps: "📍 जीपीएस खोजें",
-    gpsSuccess: "जीपीएस मिल गया! क्षेत्र चुना जा रहा है..."
+    gpsSuccess: "जीपीएस मिल गया! क्षेत्र चुना जा रहा है...",
+    recentScans: "हाल की स्कैन",
+    clearHistory: "साफ़ करें",
+    share: "शेयर"
   }
 };
 
+/**
+ * Get translation for a key
+ * Uses static translations for offline, can use Translation API for dynamic text
+ * 
+ * @param {string} lang - Language code
+ * @param {string} key - Translation key
+ * @returns {string} - Translated text
+ */
 export const getTranslation = (lang, key) => {
-  return translations[lang][key] || translations['en'][key];
+  return staticTranslations[lang]?.[key] || staticTranslations['en']?.[key] || key;
+};
+
+/**
+ * Translate dynamic text (for AI responses, etc.)
+ * Uses Google Translation API when online, falls back to original text
+ * 
+ * @param {string} text - Text to translate
+ * @param {string} targetLang - Target language
+ * @param {string} sourceLang - Source language (default: en)
+ * @returns {Promise<string>} - Translated text
+ */
+export const translateDynamicText = async (text, targetLang, sourceLang = 'en') => {
+  return await translateText(text, targetLang, sourceLang);
+};
+
+export default {
+  translations: staticTranslations,
+  getTranslation,
+  translateDynamicText
 };

@@ -1,5 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Camera, Map, Leaf } from 'lucide-react';
+
+Navbar.propTypes = {
+  activeTab: PropTypes.string.isRequired,
+  setActiveTab: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired
+};
 
 export default function Navbar({ activeTab, setActiveTab, t }) {
   const tabs = [

@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { MapPin } from 'lucide-react';
 import { getSoilData } from '../multilingual_data';
+
+SoilAdvisory.propTypes = {
+  t: PropTypes.func.isRequired,
+  appLanguage: PropTypes.string.isRequired,
+  isOnline: PropTypes.bool.isRequired
+};
 
 export default function SoilAdvisory({ t, appLanguage, isOnline }) {
   const [selectedSoil, setSelectedSoil] = useState(0);
@@ -85,7 +92,8 @@ export default function SoilAdvisory({ t, appLanguage, isOnline }) {
       <div className="brutal-box p-3 bg-white border-2">
         <label className="font-mono font-bold text-[10px] uppercase mb-1 block">{t('selectZone')}:</label>
         <select 
-          className="w-full p-2 border-2 border-black font-bold uppercase text-sm bg-brutal-bg focus:outline-none appearance-none cursor-pointer"
+          className="w-full p-2 pr-8 border-2 border-black font-bold uppercase text-sm bg-brutal-bg focus:outline-none appearance-none cursor-pointer bg-no-repeat bg-[length:1.5em_1.5em] bg-[right_0.5rem_center]"
+          style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='black'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E")` }}
           value={selectedSoil}
           onChange={(e) => setSelectedSoil(parseInt(e.target.value))}
         >

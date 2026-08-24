@@ -13,7 +13,6 @@ export async function loadLocalModel() {
       // Load classes
       const response = await fetch('/model/classes.json');
       classNames = await response.json();
-      console.log("Local TFJS Model loaded successfully!");
     }
     return true;
   } catch (err) {
