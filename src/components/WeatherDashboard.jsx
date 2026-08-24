@@ -108,7 +108,7 @@ export default function WeatherDashboard({ t, appLanguage, isOnline, zone }) {
   const WeatherIcon = weatherInfo.icon;
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 bg-dots">
       {/* Current Weather */}
       <div className="brutal-box bg-gradient-to-br from-blue-600 to-blue-800 text-white p-4 border-2 border-black shadow-brutal">
         <div className="flex justify-between items-start mb-3">

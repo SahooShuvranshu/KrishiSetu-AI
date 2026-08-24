@@ -66,7 +66,7 @@ export default function StateTelemetryMap({ t, appLanguage, isOnline }) {
   }, []); // Run once on mount - appLanguage is passed to getTelemetryData inside
 
   return (
-    <div className="flex flex-col gap-4 animate-fade-in pb-8">
+    <div className="flex flex-col gap-4 animate-fade-in pb-8 bg-diagonal">
       
       <div className="bg-black text-white p-3 border-2 border-black shadow-brutal-hover flex justify-between items-center">
         <div>
