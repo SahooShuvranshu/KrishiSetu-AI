@@ -34,6 +34,12 @@ export default function StateTelemetryMap({ t, appLanguage, isOnline }) {
   const [alerts, setAlerts] = useState([]);
   const [selectedAlert, setSelectedAlert] = useState(null);
   const [unsubscribe, setUnsubscribe] = useState(null);
+  const [filterSeverity, setFilterSeverity] = useState('all');
+
+  // Filter alerts by severity
+  const filteredAlerts = filterSeverity === 'all' 
+    ? alerts 
+    : alerts.filter(a => a.severity?.toLowerCase() === filterSeverity);
 
   // Load Google Maps script
   const { isLoaded, loadError } = useLoadScript({
@@ -129,8 +135,36 @@ export default function StateTelemetryMap({ t, appLanguage, isOnline }) {
         </p>
       </div>
 
+      {/* Filter Tabs */}
+      <div className="flex gap-2">
+        <button
+          onClick={() => setFilterSeverity('all')}
+          className={`flex-1 p-2 border-2 border-black font-black text-[10px] uppercase ${filterSeverity === 'all' ? 'bg-black text-white' : 'bg-white'}`}
+        >
+          {t('allAlerts') || 'All'} ({alerts.length})
+        </button>
+        <button
+          onClick={() => setFilterSeverity('high')}
+          className={`flex-1 p-2 border-2 border-black font-black text-[10px] uppercase ${filterSeverity === 'high' ? 'bg-red-500 text-white' : 'bg-white'}`}
+        >
+          🔴 {t('high') || 'High'}
+        </button>
+        <button
+          onClick={() => setFilterSeverity('moderate')}
+          className={`flex-1 p-2 border-2 border-black font-black text-[10px] uppercase ${filterSeverity === 'moderate' ? 'bg-yellow-400' : 'bg-white'}`}
+        >
+          🟡 {t('moderate') || 'Moderate'}
+        </button>
+        <button
+          onClick={() => setFilterSeverity('low')}
+          className={`flex-1 p-2 border-2 border-black font-black text-[10px] uppercase ${filterSeverity === 'low' ? 'bg-green-500 text-white' : 'bg-white'}`}
+        >
+          🟢 {t('low') || 'Low'}
+        </button>
+      </div>
+
       <div className="flex flex-col gap-3 mt-2">
-        {alerts.map((alert, idx) => (
+        {filteredAlerts.map((alert, idx) => (
           <div key={idx} className="brutal-box bg-white border-2 p-3 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-1 bg-red-500"></div>
             

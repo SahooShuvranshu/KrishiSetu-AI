@@ -42,7 +42,17 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [scanHistory, setScanHistory] = useState([]);
+  const [selectedCrop, setSelectedCrop] = useState('general');
   const toast = useToast();
+
+  const cropOptions = [
+    { id: 'general', icon: '🌱', name: { en: 'General', or: 'ସାଧାରଣ', hi: 'सामान्य' } },
+    { id: 'paddy', icon: '🌾', name: { en: 'Paddy', or: 'ଧାନ', hi: 'धान' } },
+    { id: 'cotton', icon: '🏵️', name: { en: 'Cotton', or: 'କପା', hi: 'कपाहा' } },
+    { id: 'tomato', icon: '🍅', name: { en: 'Tomato', or: 'ଟମାଟୋ', hi: 'टमाटर' } },
+    { id: 'potato', icon: '🥔', name: { en: 'Potato', or: 'ଆଳୁ', hi: 'आलू' } },
+    { id: 'maize', icon: '🌽', name: { en: 'Maize', or: 'ମକା', hi: 'मक्का' } }
+  ];
 
   // Load scan history from IndexedDB
   useEffect(() => {
@@ -195,7 +205,28 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
       
       {!imagePreview && (
         <div className="flex flex-col gap-4 mt-4">
-          <p className="font-mono text-xs uppercase text-gray-600 text-center mb-2">{t('takePhotoInstruction')}</p>
+          {/* Crop Selection */}
+          <div className="bg-white border-2 border-black p-3">
+            <p className="font-mono text-[10px] uppercase text-gray-500 mb-2">{t('selectCrop') || 'Select Crop Type'}:</p>
+            <div className="grid grid-cols-3 gap-2">
+              {cropOptions.map((crop) => (
+                <button
+                  key={crop.id}
+                  onClick={() => setSelectedCrop(crop.id)}
+                  className={`p-2 border-2 border-black text-center transition-all ${
+                    selectedCrop === crop.id 
+                      ? 'bg-brutal-neon shadow-[2px_2px_0_0_#000]' 
+                      : 'bg-white hover:bg-gray-50'
+                  }`}
+                >
+                  <span className="text-xl block">{crop.icon}</span>
+                  <span className="font-black text-[9px] uppercase block mt-1">{crop.name[appLanguage] || crop.name.en}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <p className="font-mono text-xs uppercase text-gray-600 text-center">{t('takePhotoInstruction')}</p>
           
           <label 
             className="brutal-button bg-brutal-neon text-black p-6 flex flex-col items-center justify-center gap-2 cursor-pointer border-2 border-black shadow-brutal text-lg uppercase tracking-wider"
@@ -227,6 +258,16 @@ export default function CameraScan({ isOnline, appLanguage, t }) {
               aria-hidden="true"
             />
           </label>
+
+          {/* Tips */}
+          <div className="bg-yellow-50 border-2 border-yellow-400 p-3">
+            <p className="font-black text-xs uppercase mb-1">{t('scanTips') || '📸 Scan Tips:'}</p>
+            <ul className="font-mono text-[10px] text-gray-700 space-y-1">
+              <li>• {t('tip1') || 'Take close-up photo of affected leaf'}</li>
+              <li>• {t('tip2') || 'Ensure good lighting'}</li>
+              <li>• {t('tip3') || 'Include multiple leaves if possible'}</li>
+            </ul>
+          </div>
         </div>
       )}
 

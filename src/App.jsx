@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, Suspense, lazy } from 'react';
 import PropTypes from 'prop-types';
-import { Settings, Info, X, HardDrive, Languages, Github, ExternalLink } from 'lucide-react';
+import { Settings, Info, X, HardDrive, Languages, Github, ExternalLink, Moon, Sun, Bell, BellOff, Trash2, Smartphone } from 'lucide-react';
 import Navbar from './components/Navbar';
 import ErrorBoundary from './components/ErrorBoundary';
 import StatusBadge from './components/StatusBadge';
@@ -34,6 +34,9 @@ function App() {
   const [geminiKey, setGeminiKey] = useState(localStorage.getItem('krishisetu_gemini_key') || '');
   
   const [appLanguage, setAppLanguage] = useState(localStorage.getItem('krishisetu_lang') || 'en');
+  const [darkMode, setDarkMode] = useState(localStorage.getItem('krishisetu_darkmode') === 'true');
+  const [notifications, setNotifications] = useState(localStorage.getItem('krishisetu_notifications') !== 'false');
+  const [autoDetect, setAutoDetect] = useState(localStorage.getItem('krishisetu_autodetect') !== 'false');
   const toast = useToast();
   
   const t = (key) => getTranslation(appLanguage, key);
@@ -86,6 +89,28 @@ function App() {
   const changeLanguage = (langCode) => {
     setAppLanguage(langCode);
     localStorage.setItem('krishisetu_lang', langCode);
+  };
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    localStorage.setItem('krishisetu_darkmode', (!darkMode).toString());
+  };
+
+  const toggleNotifications = () => {
+    setNotifications(!notifications);
+    localStorage.setItem('krishisetu_notifications', (!notifications).toString());
+  };
+
+  const toggleAutoDetect = () => {
+    setAutoDetect(!autoDetect);
+    localStorage.setItem('krishisetu_autodetect', (!autoDetect).toString());
+  };
+
+  const clearAllData = () => {
+    if (window.confirm('Are you sure you want to clear all app data?')) {
+      localStorage.clear();
+      window.location.reload();
+    }
   };
 
   const downloadModel = () => {
@@ -283,6 +308,81 @@ function App() {
                   }} />
                 </label>
               )}
+            </div>
+
+            {/* Preferences */}
+            <div className="border-2 border-black p-3 bg-gray-50 mb-4 font-mono text-xs">
+              <h3 className="font-bold uppercase text-gray-500 mb-3">{t('preferences') || 'Preferences'}</h3>
+              
+              {/* Dark Mode */}
+              <div className="flex items-center justify-between py-2 border-b border-black">
+                <div className="flex items-center gap-2">
+                  {darkMode ? <Moon size={16} /> : <Sun size={16} />}
+                  <span className="font-bold uppercase">{t('darkMode') || 'Dark Mode'}</span>
+                </div>
+                <button
+                  onClick={toggleDarkMode}
+                  className={`w-12 h-6 border-2 border-black relative transition-colors ${darkMode ? 'bg-brutal-neon' : 'bg-gray-300'}`}
+                >
+                  <div className={`w-5 h-5 bg-black absolute top-0.5 transition-transform ${darkMode ? 'translate-x-6' : 'translate-x-0.5'}`} />
+                </button>
+              </div>
+
+              {/* Notifications */}
+              <div className="flex items-center justify-between py-2 border-b border-black">
+                <div className="flex items-center gap-2">
+                  {notifications ? <Bell size={16} /> : <BellOff size={16} />}
+                  <span className="font-bold uppercase">{t('notifications') || 'Notifications'}</span>
+                </div>
+                <button
+                  onClick={toggleNotifications}
+                  className={`w-12 h-6 border-2 border-black relative transition-colors ${notifications ? 'bg-brutal-neon' : 'bg-gray-300'}`}
+                >
+                  <div className={`w-5 h-5 bg-black absolute top-0.5 transition-transform ${notifications ? 'translate-x-6' : 'translate-x-0.5'}`} />
+                </button>
+              </div>
+
+              {/* Auto-detect Location */}
+              <div className="flex items-center justify-between py-2">
+                <div className="flex items-center gap-2">
+                  <Smartphone size={16} />
+                  <span className="font-bold uppercase">{t('autoDetectLocation') || 'Auto-detect Zone'}</span>
+                </div>
+                <button
+                  onClick={toggleAutoDetect}
+                  className={`w-12 h-6 border-2 border-black relative transition-colors ${autoDetect ? 'bg-brutal-neon' : 'bg-gray-300'}`}
+                >
+                  <div className={`w-5 h-5 bg-black absolute top-0.5 transition-transform ${autoDetect ? 'translate-x-6' : 'translate-x-0.5'}`} />
+                </button>
+              </div>
+            </div>
+
+            {/* App Info */}
+            <div className="border-2 border-black p-3 bg-gray-50 mb-4 font-mono text-xs">
+              <h3 className="font-bold uppercase text-gray-500 mb-2">{t('appInfo') || 'App Info'}</h3>
+              <div className="flex justify-between py-1">
+                <span className="text-gray-600">Version</span>
+                <span className="font-bold">1.0.0</span>
+              </div>
+              <div className="flex justify-between py-1">
+                <span className="text-gray-600">Build</span>
+                <span className="font-bold">Production</span>
+              </div>
+              <div className="flex justify-between py-1 border-t border-black mt-2 pt-2">
+                <span className="text-gray-600">Storage Used</span>
+                <span className="font-bold">{(JSON.stringify(localStorage).length / 1024).toFixed(1)} KB</span>
+              </div>
+            </div>
+
+            {/* Danger Zone */}
+            <div className="border-2 border-red-500 p-3 bg-red-50 font-mono text-xs">
+              <h3 className="font-bold uppercase text-red-600 mb-2">{t('dangerZone') || 'Danger Zone'}</h3>
+              <button 
+                onClick={clearAllData}
+                className="w-full bg-red-500 text-white p-2 border-2 border-black font-bold uppercase flex items-center justify-center gap-2 hover:bg-red-600 transition-colors"
+              >
+                <Trash2 size={14} /> {t('clearAllData') || 'Clear All Data'}
+              </button>
             </div>
           </div>
         </div>
