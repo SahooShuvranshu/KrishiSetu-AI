@@ -65,3 +65,5 @@ model_train.md
 *.log
 coverage/
 .nyc_output/
+
+.vercel

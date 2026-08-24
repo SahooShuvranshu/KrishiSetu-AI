@@ -17,35 +17,23 @@
     
     <!-- OpenGraph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://krishisetu-ai.onrender.com/">
+    <meta property="og:url" content="https://krishi-setu-ai-seven.vercel.app/">
     <meta property="og:title" content="Krishi Setu AI | Offline Crop Diagnostics">
     <meta property="og:description" content="100% Offline AI Crop Diagnostics. Built for deeply rural Indian farmers with zero internet connection.">
     <meta property="og:image" content="https://raw.githubusercontent.com/SahooShuvranshu/KrishiSetu-AI/main/docs/disease_sample.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://krishisetu-ai.onrender.com/">
+    <meta property="twitter:url" content="https://krishi-setu-ai-seven.vercel.app/">
     <meta property="twitter:title" content="Krishi Setu AI | Offline Crop Diagnostics">
     <meta property="twitter:description" content="100% Offline AI Crop Diagnostics. Built for deeply rural Indian farmers with zero internet connection.">
     <meta property="twitter:image" content="https://raw.githubusercontent.com/SahooShuvranshu/KrishiSetu-AI/main/docs/disease_sample.jpg">
 
     <meta name="theme-color" content="#f4f4f5" />
-    <link rel="manifest" href="/manifest.json" />
     <title>Krishi Setu AI</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js').then((registration) => {
-            console.log('SW registered: ', registration);
-          }).catch((registrationError) => {
-            console.log('SW registration failed: ', registrationError);
-          });
-        });
-      }
-    </script>
   </body>
 </html>
