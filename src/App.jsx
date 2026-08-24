@@ -212,15 +212,21 @@ function App() {
 
       {/* Info Modal */}
       {showInfo && (
-        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 animate-fade-in" role="dialog" aria-modal="true" aria-label="About Project">
-          <div className="bg-white border-4 border-black w-full max-w-sm p-4 relative shadow-[8px_8px_0_0_#00ff41]">
-            <button 
-              onClick={() => setShowInfo(false)}
-              className="absolute top-2 right-2 p-1 border-2 border-black bg-red-500 text-white"
-            >
-              <X size={20} />
-            </button>
-            <h2 className="font-black text-2xl uppercase border-b-2 border-black pb-2 mb-4 mt-2">About Project</h2>
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-end sm:items-center justify-center animate-fade-in" role="dialog" aria-modal="true" aria-label="About Project">
+          <div className="bg-white border-4 border-black w-full sm:max-w-sm max-h-[85vh] relative shadow-[8px_8px_0_0_#00ff41] sm:m-4 overflow-hidden flex flex-col">
+            {/* Header */}
+            <div className="p-4 pb-2 border-b-2 border-black flex-shrink-0">
+              <button 
+                onClick={() => setShowInfo(false)}
+                className="absolute top-3 right-3 p-1 border-2 border-black bg-red-500 text-white"
+              >
+                <X size={18} />
+              </button>
+              <h2 className="font-black text-xl uppercase">About Project</h2>
+            </div>
+            
+            {/* Scrollable content */}
+            <div className="p-4 overflow-y-auto flex-1">
             <div className="font-mono text-sm">
               <p className="font-bold uppercase text-gray-500 mb-1">Project Name:</p>
               <p className="text-lg font-black bg-brutal-green p-2 border-2 border-black mb-3">Krishi Setu AI</p>
@@ -245,21 +251,28 @@ function App() {
                 </a>
               </div>
             </div>
+            </div>
           </div>
         </div>
       )}
 
       {/* Settings Modal */}
       {showSettings && (
-        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 animate-fade-in" role="dialog" aria-modal="true" aria-label="App Settings">
-          <div className="bg-white border-4 border-black w-full max-w-sm p-4 relative shadow-[8px_8px_0_0_#00ff41]">
-            <button 
-              onClick={() => setShowSettings(false)}
-              className="absolute top-2 right-2 p-1 border-2 border-black bg-red-500 text-white"
-            >
-              <X size={20} />
-            </button>
-            <h2 className="font-black text-2xl uppercase border-b-2 border-black pb-2 mb-4 mt-2">{t('settings')}</h2>
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-end sm:items-center justify-center animate-fade-in" role="dialog" aria-modal="true" aria-label="App Settings">
+          <div className="bg-white border-4 border-black w-full sm:max-w-sm max-h-[90vh] relative shadow-[8px_8px_0_0_#00ff41] sm:m-4">
+            {/* Header - sticky on mobile */}
+            <div className="sticky top-0 bg-white z-10 p-4 pb-2 border-b-2 border-black">
+              <button 
+                onClick={() => setShowSettings(false)}
+                className="absolute top-3 right-3 p-1 border-2 border-black bg-red-500 text-white"
+              >
+                <X size={18} />
+              </button>
+              <h2 className="font-black text-xl uppercase">{t('settings')}</h2>
+            </div>
+            
+            {/* Scrollable content */}
+            <div className="p-4 overflow-y-auto max-h-[calc(90vh-60px)]">
             
             <div className="border-2 border-black p-3 bg-gray-50 mb-4 font-mono text-xs">
               <h3 className="font-bold uppercase text-gray-500 mb-2">Cloud AI API Key</h3>
@@ -338,44 +351,44 @@ function App() {
               <h3 className="font-bold uppercase text-gray-500 mb-3">{t('preferences') || 'Preferences'}</h3>
               
               {/* Theme Toggle */}
-              <div className="flex items-center justify-between py-2 border-b border-black">
+              <div className="flex items-center justify-between py-3 border-b border-black">
                 <div className="flex items-center gap-2">
                   {getThemeIcon()}
-                  <span className="font-bold uppercase">{getThemeName()}</span>
+                  <span className="font-bold uppercase text-sm">{getThemeName()}</span>
                 </div>
                 <button
                   onClick={cycleTheme}
-                  className="px-3 py-1 border-2 border-black bg-brutal-neon font-black text-xs uppercase hover:bg-white transition-colors"
+                  className="px-4 py-2 border-2 border-black bg-brutal-neon font-black text-sm uppercase active:bg-white transition-colors min-w-[60px]"
                 >
                   {theme === 'default' ? '☀️' : theme === 'dark' ? '🌙' : '黑白'}
                 </button>
               </div>
 
               {/* Notifications */}
-              <div className="flex items-center justify-between py-2 border-b border-black">
+              <div className="flex items-center justify-between py-3 border-b border-black">
                 <div className="flex items-center gap-2">
-                  {notifications ? <Bell size={16} /> : <BellOff size={16} />}
-                  <span className="font-bold uppercase">{t('notifications') || 'Notifications'}</span>
+                  {notifications ? <Bell size={18} /> : <BellOff size={18} />}
+                  <span className="font-bold uppercase text-sm">{t('notifications') || 'Notifications'}</span>
                 </div>
                 <button
                   onClick={toggleNotifications}
-                  className={`w-12 h-6 border-2 border-black relative transition-colors ${notifications ? 'bg-brutal-neon' : 'bg-gray-300'}`}
+                  className={`w-14 h-7 border-2 border-black relative transition-colors ${notifications ? 'bg-brutal-neon' : 'bg-gray-300'}`}
                 >
-                  <div className={`w-5 h-5 bg-black absolute top-0.5 transition-transform ${notifications ? 'translate-x-6' : 'translate-x-0.5'}`} />
+                  <div className={`w-6 h-6 bg-black absolute top-0.5 transition-transform ${notifications ? 'translate-x-7' : 'translate-x-0.5'}`} />
                 </button>
               </div>
 
               {/* Auto-detect Location */}
-              <div className="flex items-center justify-between py-2">
+              <div className="flex items-center justify-between py-3">
                 <div className="flex items-center gap-2">
-                  <Smartphone size={16} />
-                  <span className="font-bold uppercase">{t('autoDetectLocation') || 'Auto-detect Zone'}</span>
+                  <Smartphone size={18} />
+                  <span className="font-bold uppercase text-sm">{t('autoDetectLocation') || 'Auto-detect Zone'}</span>
                 </div>
                 <button
                   onClick={toggleAutoDetect}
-                  className={`w-12 h-6 border-2 border-black relative transition-colors ${autoDetect ? 'bg-brutal-neon' : 'bg-gray-300'}`}
+                  className={`w-14 h-7 border-2 border-black relative transition-colors ${autoDetect ? 'bg-brutal-neon' : 'bg-gray-300'}`}
                 >
-                  <div className={`w-5 h-5 bg-black absolute top-0.5 transition-transform ${autoDetect ? 'translate-x-6' : 'translate-x-0.5'}`} />
+                  <div className={`w-6 h-6 bg-black absolute top-0.5 transition-transform ${autoDetect ? 'translate-x-7' : 'translate-x-0.5'}`} />
                 </button>
               </div>
             </div>
@@ -406,6 +419,7 @@ function App() {
               >
                 <Trash2 size={14} /> {t('clearAllData') || 'Clear All Data'}
               </button>
+            </div>
             </div>
           </div>
         </div>
