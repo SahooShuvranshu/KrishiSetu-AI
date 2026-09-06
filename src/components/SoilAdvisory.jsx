@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { MapPin, Cloud, Calendar, TrendingUp } from 'lucide-react';
 import { getSoilData } from '../multilingual_data';
+import { getCurrentPosition } from '../services/geolocation';
+import { useApp } from '../context/AppContext';
 import WeatherDashboard from './WeatherDashboard';
 import CropCalendar from './CropCalendar';
 import MarketPrices from './MarketPrices';
 
-SoilAdvisory.propTypes = {
-  t: PropTypes.func.isRequired,
-  appLanguage: PropTypes.string.isRequired,
-  isOnline: PropTypes.bool.isRequired
-};
-
-export default function SoilAdvisory({ t, appLanguage, isOnline }) {
+export default function SoilAdvisory() {
+  const { t, appLanguage, isOnline } = useApp();
   const [selectedSoil, setSelectedSoil] = useState(0);
   const [locating, setLocating] = useState(false);
   const [liveWeather, setLiveWeather] = useState(null);
@@ -48,32 +44,32 @@ export default function SoilAdvisory({ t, appLanguage, isOnline }) {
     }
   }, [selectedSoil, isOnline]);
   
-  const autoDetectLocation = () => {
+  const autoDetectLocation = async () => {
     setLocating(true);
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setLocating(false);
-          const lat = position.coords.latitude;
-          if (lat < 20.0) {
-            setSelectedSoil(1); // Coastal
-          } else if (lat > 21.5) {
-            setSelectedSoil(0); // Northern
-          } else {
-            setSelectedSoil(3); // Western
-          }
-          alert(t('gpsSuccess'));
-        },
-        (error) => {
-          setLocating(false);
-          alert("Demo Mode: GPS signal weak indoors. Auto-selecting nearest zone anyway.");
-          setSelectedSoil(1);
-        },
-        { enableHighAccuracy: true, timeout: 5000 }
-      );
-    } else {
+    try {
+      const position = await getCurrentPosition();
       setLocating(false);
-      alert("GPS not supported.");
+      const lat = position.coords.latitude;
+      if (lat < 20.0) {
+        setSelectedSoil(1); // Coastal
+      } else if (lat > 21.5) {
+        setSelectedSoil(0); // Northern
+      } else {
+        setSelectedSoil(3); // Western
+      }
+      alert(t('gpsSuccess'));
+    } catch (error) {
+      setLocating(false);
+      if (error.message === 'GEOLOCATION_DEBOUNCED') {
+        // Button mashed too quickly - keep current zone, no alert spam
+        return;
+      }
+      if (error.message === 'GEOLOCATION_UNSUPPORTED') {
+        alert("GPS not supported.");
+        return;
+      }
+      alert("Demo Mode: GPS signal weak indoors. Auto-selecting nearest zone anyway.");
+      setSelectedSoil(1);
     }
   };
 
@@ -87,7 +83,7 @@ export default function SoilAdvisory({ t, appLanguage, isOnline }) {
       <button 
         onClick={autoDetectLocation}
         disabled={locating}
-        className="bg-blue-500 text-white font-black p-2 border-2 border-black uppercase text-xs shadow-[3px_3px_0_0_#000]"
+        className="bg-blue-500 text-white font-black p-2 border-2 border-black uppercase text-xs shadow-brutal-md"
       >
         {locating ? "..." : t('autoDetectGps')}
       </button>

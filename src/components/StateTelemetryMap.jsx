@@ -1,15 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
 import { Bell, MapPin } from 'lucide-react';
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import { getTelemetryData } from '../multilingual_data';
 import { listenAlerts } from '../services/firebase';
-
-// Odisha center coordinates
-const ODISHA_CENTER = {
-  lat: 20.2961,
-  lng: 85.8245
-};
+import { ODISHA_CENTER } from '../config/constants';
+import { useApp } from '../context/AppContext';
 
 const mapContainerStyle = {
   width: '100%',
@@ -24,13 +19,8 @@ const mapOptions = {
   fullscreenControl: false
 };
 
-StateTelemetryMap.propTypes = {
-  t: PropTypes.func.isRequired,
-  appLanguage: PropTypes.string.isRequired,
-  isOnline: PropTypes.bool.isRequired
-};
-
-export default function StateTelemetryMap({ t, appLanguage, isOnline }) {
+export default function StateTelemetryMap() {
+  const { t, appLanguage, isOnline } = useApp();
   const [alerts, setAlerts] = useState([]);
   const [selectedAlert, setSelectedAlert] = useState(null);
   const [unsubscribe, setUnsubscribe] = useState(null);

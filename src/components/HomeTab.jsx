@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import { Camera, Leaf, Map, Wifi, WifiOff, Github, ExternalLink, Cpu, HardDrive, CheckCircle, AlertCircle } from 'lucide-react';
 import StatusBadge from './StatusBadge';
+import { useApp } from '../context/AppContext';
 
-HomeTab.propTypes = {
-  t: PropTypes.func.isRequired,
-  appLanguage: PropTypes.string.isRequired,
-  isOnline: PropTypes.bool.isRequired,
-  setActiveTab: PropTypes.func.isRequired
-};
-
-export default function HomeTab({ t, appLanguage, isOnline, setActiveTab }) {
+export default function HomeTab() {
+  const { t, isOnline } = useApp();
+  const navigate = useNavigate();
   const [modelReady, setModelReady] = useState(false);
   const [scanCount, setScanCount] = useState(0);
   const [pendingAlerts, setPendingAlerts] = useState(0);
@@ -31,7 +27,7 @@ export default function HomeTab({ t, appLanguage, isOnline, setActiveTab }) {
       icon: <Camera size={28} />,
       title: t('cropDoctor'),
       desc: { en: 'AI crop disease detection', or: 'ଏଆଇ ଫସଲ ରୋଗ ଚିହ୍ନଟ', hi: 'एआई फसल रोग पहचान' },
-      action: () => setActiveTab('scan'),
+      action: () => navigate('/scan'),
       color: 'bg-brutal-neon',
       badge: modelReady ? '✓' : '⚡'
     },
@@ -39,7 +35,7 @@ export default function HomeTab({ t, appLanguage, isOnline, setActiveTab }) {
       icon: <Leaf size={28} />,
       title: t('farmAdvice'),
       desc: { en: 'Weather, calendar & prices', or: 'ପାଗ, କ୍ୟାଲେଣ୍ଡର ଏବଂ ଦାମ', hi: 'मौसम, कैलेंडर और भाव' },
-      action: () => setActiveTab('advisory'),
+      action: () => navigate('/advisory'),
       color: 'bg-green-500',
       badge: null
     },
@@ -47,7 +43,7 @@ export default function HomeTab({ t, appLanguage, isOnline, setActiveTab }) {
       icon: <Map size={28} />,
       title: t('alerts'),
       desc: { en: 'Disease alerts network', or: 'ରୋଗ ସତର୍କ ନେଟୱାର୍କ', hi: 'रोग चेतावनी नेटवर्क' },
-      action: () => setActiveTab('network'),
+      action: () => navigate('/network'),
       color: 'bg-red-500',
       badge: pendingAlerts > 0 ? pendingAlerts : null
     }
@@ -60,7 +56,7 @@ export default function HomeTab({ t, appLanguage, isOnline, setActiveTab }) {
         <div className="absolute top-0 right-0 w-24 h-24 bg-brutal-neon opacity-5 rounded-full -translate-y-1/2 translate-x-1/2" />
         <div className="relative">
           <div className="flex items-center gap-2 mb-2">
-            <div className="w-10 h-10 bg-brutal-neon text-black border-2 border-black flex items-center justify-center text-2xl shadow-[3px_3px_0_0_#ccff00]">
+            <div className="w-10 h-10 bg-brutal-neon text-black border-2 border-black flex items-center justify-center text-2xl shadow-brutal-neon-sm">
               🚜
             </div>
             <div>
@@ -112,7 +108,7 @@ export default function HomeTab({ t, appLanguage, isOnline, setActiveTab }) {
           <button
             key={idx}
             onClick={feature.action}
-            className="bg-white border-2 border-black p-2.5 flex flex-col items-center gap-1.5 hover:bg-gray-50 active:bg-gray-100 transition-colors shadow-[2px_2px_0_0_#000] relative"
+            className="bg-white border-2 border-black p-2.5 flex flex-col items-center gap-1.5 hover:bg-gray-50 active:bg-gray-100 transition-colors shadow-brutal-sm relative"
           >
             {feature.badge && (
               <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[8px] font-black w-4 h-4 flex items-center justify-center border border-black">
@@ -129,17 +125,17 @@ export default function HomeTab({ t, appLanguage, isOnline, setActiveTab }) {
 
       {/* Stats */}
       <div className="grid grid-cols-3 gap-1.5">
-        <div className="bg-white border-2 border-black p-2 shadow-[2px_2px_0_0_#000] text-center">
+        <div className="bg-white border-2 border-black p-2 shadow-brutal-sm text-center">
           <Cpu size={16} className="mx-auto mb-0.5 text-brutal-green" />
           <p className="font-black text-sm">{modelReady ? '✓' : '✗'}</p>
           <p className="font-mono text-[7px] text-gray-500 uppercase">AI Model</p>
         </div>
-        <div className="bg-white border-2 border-black p-2 shadow-[2px_2px_0_0_#000] text-center">
+        <div className="bg-white border-2 border-black p-2 shadow-brutal-sm text-center">
           <Camera size={16} className="mx-auto mb-0.5 text-blue-500" />
           <p className="font-black text-sm">{scanCount}</p>
           <p className="font-mono text-[7px] text-gray-500 uppercase">Scans</p>
         </div>
-        <div className="bg-white border-2 border-black p-2 shadow-[2px_2px_0_0_#000] text-center">
+        <div className="bg-white border-2 border-black p-2 shadow-brutal-sm text-center">
           <HardDrive size={16} className="mx-auto mb-0.5 text-purple-500" />
           <p className="font-black text-sm">3</p>
           <p className="font-mono text-[7px] text-gray-500 uppercase">Languages</p>
@@ -168,11 +164,11 @@ export default function HomeTab({ t, appLanguage, isOnline, setActiveTab }) {
 
       {/* Links */}
       <div className="flex gap-1.5">
-        <a href="https://sahooshuvranshu.is-a.dev/KrishiSetu-AI/" target="_blank" rel="noopener noreferrer" className="flex-1 bg-white border-2 border-black p-2 flex items-center justify-center gap-1.5 hover:bg-gray-50 transition-colors shadow-[2px_2px_0_0_#000]">
+        <a href="https://sahooshuvranshu.is-a.dev/KrishiSetu-AI/" target="_blank" rel="noopener noreferrer" className="flex-1 bg-white border-2 border-black p-2 flex items-center justify-center gap-1.5 hover:bg-gray-50 transition-colors shadow-brutal-sm">
           <ExternalLink size={12} />
           <span className="font-black text-[10px] uppercase">{t('showcase') || 'Showcase'}</span>
         </a>
-        <a href="https://github.com/SahooShuvranshu/KrishiSetu-AI" target="_blank" rel="noopener noreferrer" className="flex-1 bg-white border-2 border-black p-2 flex items-center justify-center gap-1.5 hover:bg-gray-50 transition-colors shadow-[2px_2px_0_0_#000]">
+        <a href="https://github.com/SahooShuvranshu/KrishiSetu-AI" target="_blank" rel="noopener noreferrer" className="flex-1 bg-white border-2 border-black p-2 flex items-center justify-center gap-1.5 hover:bg-gray-50 transition-colors shadow-brutal-sm">
           <Github size={12} />
           <span className="font-black text-[10px] uppercase">{t('source') || 'Source'}</span>
         </a>

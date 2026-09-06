@@ -38,7 +38,7 @@ function Toast({ toast, onRemove }) {
 
   return (
     <div
-      className={`flex items-start gap-2 p-2 border-2 border-black shadow-[3px_3px_0_0_#000] ${typeConfig.bg} text-white max-w-xs w-full transition-all duration-300 ${
+      className={`flex items-start gap-2 p-2 border-2 border-black shadow-brutal-md ${typeConfig.bg} text-white max-w-xs w-full transition-all duration-300 ${
         isRemoving ? 'opacity-0 translate-x-full' : 'opacity-100 translate-x-0'
       }`}
     >

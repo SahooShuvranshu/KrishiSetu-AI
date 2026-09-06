@@ -1,42 +1,302 @@
 [
-  {
-    "id": "wheat_rust",
-    "crop_name": "Wheat",
-    "disease_name": "Yellow Rust (Puccinia striiformis)",
-    "severity": "High",
-    "symptoms": "Yellow pustules arranged in linear stripes on leaf surface.",
-    "organic_remedy": "Neem oil spray (5ml/liter) and bio-control using Trichoderma harzianum.",
-    "chemical_remedy": "Propiconazole 25% EC @ 1ml/liter of water at initial symptom appearance.",
-    "regenerative_advice": "Rotate with non-cereal crops like Chickpea to disrupt fungal spores."
-  },
-  {
-    "id": "rice_blast",
-    "crop_name": "Rice",
-    "disease_name": "Rice Blast (Magnaporthe oryzae)",
-    "severity": "High",
-    "symptoms": "Spindle-shaped lesions with grayish centers on leaves and neck nodes.",
-    "organic_remedy": "Foliar application of Pseudomonas fluorescens (10g/liter).",
-    "chemical_remedy": "Tricyclazole 75% WP @ 0.6g/liter of water.",
-    "regenerative_advice": "Maintain balanced nitrogen application; avoid excess urea in humid weather."
-  },
-  {
-    "id": "rice_bph",
-    "crop_name": "Rice",
-    "disease_name": "Brown Plant Hopper (BPH - Nilaparvata lugens)",
-    "severity": "Outbreak",
-    "symptoms": "Yellowing and drying of plants forming circular patches known as hopper burn.",
-    "organic_remedy": "Alternate wetting and drying (AWD) irrigation; neem oil 10,000 ppm @ 2ml/liter.",
-    "chemical_remedy": "Pymetrozine 50% WG @ 0.6g/liter or Dinotefuran 20% SG @ 0.4g/liter.",
-    "regenerative_advice": "Promote spider & mirid bug natural predator conservation by avoiding broad-spectrum sprays."
-  },
-  {
-    "id": "cotton_leaf_curl",
-    "crop_name": "Cotton",
-    "disease_name": "Cotton Leaf Curl Virus (CLCuV)",
-    "severity": "Outbreak",
-    "symptoms": "Upward or downward curling of leaves with enation on under-surface veins.",
-    "organic_remedy": "Control whitefly vector using yellow sticky traps (15 traps/acre) and Neem seed kernel extract.",
-    "chemical_remedy": "Imidacloprid 17.8% SL @ 0.5ml/liter to manage whiteflies.",
-    "regenerative_advice": "Plant border rows of Maize or Sorghum to block whitefly migration."
-  }
+ {
+  "id": "paddy_bacterial_blight",
+  "crop_name": "Paddy",
+  "disease_name": "Bacterial Leaf Blight (Xanthomonas oryzae pv. oryzae)",
+  "severity": "High",
+  "symptoms": "Yellow to white lesions with wavy margins along leaf veins; leaves turn yellow and dry.",
+  "organic_remedy": "Seed treatment with Pseudomonas fluorescens (10g/kg); spray neem-based bioformulation.",
+  "chemical_remedy": "Streptocycline 0.01% + Copper Oxychloride 0.3% spray at first sign.",
+  "regenerative_advice": "Grow resistant varieties; avoid excess nitrogen; ensure good drainage."
+ },
+ {
+  "id": "paddy_leaf_blight",
+  "crop_name": "Paddy",
+  "disease_name": "Leaf Blight (Helminthosporium oryzae)",
+  "severity": "High",
+  "symptoms": "Long elliptical, straw-colored lesions that coalesce and dry the leaf.",
+  "organic_remedy": "Spray Pseudomonas fluorescens (10g/l) twice at 10-day intervals.",
+  "chemical_remedy": "Spray Edifenphos 50% EC @ 1ml/l or Tricyclazole 75% WP @ 0.6g/l.",
+  "regenerative_advice": "Use certified seed; maintain field sanitation and balanced fertilization."
+ },
+ {
+  "id": "paddy_brown_spot",
+  "crop_name": "Paddy",
+  "disease_name": "Brown Spot (Bipolaris oryzae)",
+  "severity": "Moderate",
+  "symptoms": "Small oval brown spots with yellow halo; grain becomes chaffy and discolored.",
+  "organic_remedy": "Foliar spray of neem oil 3% and Pseudomonas fluorescens (10g/l).",
+  "chemical_remedy": "Spray Mancozeb 75% WP @ 2.5g/l or Propiconazole 25% EC @ 1ml/l.",
+  "regenerative_advice": "Apply potash and zinc; avoid water stress during tillering."
+ },
+ {
+  "id": "paddy_blast",
+  "crop_name": "Paddy",
+  "disease_name": "Rice Blast (Magnaporthe oryzae)",
+  "severity": "High",
+  "symptoms": "Spindle-shaped lesions with grayish centers and brown margins on leaves and neck nodes.",
+  "organic_remedy": "Foliar application of Pseudomonas fluorescens (10g/liter).",
+  "chemical_remedy": "Tricyclazole 75% WP @ 0.6g/liter of water at initial symptoms.",
+  "regenerative_advice": "Maintain balanced nitrogen; avoid excess urea in humid weather."
+ },
+ {
+  "id": "paddy_leaf_smut",
+  "crop_name": "Paddy",
+  "disease_name": "Leaf Smut (Entyloma oryzae)",
+  "severity": "Low",
+  "symptoms": "Small black sooty streaks and spots on leaf blades and sheaths.",
+  "organic_remedy": "Spray neem oil 3% to check spread; remove infected debris.",
+  "chemical_remedy": "Spray Propiconazole 25% EC @ 1ml/l at disease appearance.",
+  "regenerative_advice": "Avoid dense planting; improve aeration in the canopy."
+ },
+ {
+  "id": "paddy_tungro",
+  "crop_name": "Paddy",
+  "disease_name": "Tungro Virus",
+  "severity": "Outbreak",
+  "symptoms": "Yellow-orange discoloration with stunting; transmitted by green leafhoppers.",
+  "organic_remedy": "Control vector with neem seed kernel extract 5% spray.",
+  "chemical_remedy": "Spray Imidacloprid 17.8% SL @ 0.5ml/l to control leafhoppers.",
+  "regenerative_advice": "Plant resistant varieties; rogue infected hills early."
+ },
+ {
+  "id": "paddy_hispa",
+  "crop_name": "Paddy",
+  "disease_name": "Hispa (Dicladispa armigera)",
+  "severity": "Moderate",
+  "symptoms": "White parallel scrapped lines on leaves caused by adult feeding.",
+  "organic_remedy": "Collect and destroy adults; release egg parasitoid Trichogramma.",
+  "chemical_remedy": "Spray Chlorantraniliprole 18.5% SC @ 0.3ml/l.",
+  "regenerative_advice": "Avoid late transplanting; synchronize planting across fields."
+ },
+ {
+  "id": "paddy_sheath_blight",
+  "crop_name": "Paddy",
+  "disease_name": "Sheath Blight (Rhizoctonia solani)",
+  "severity": "High",
+  "symptoms": "Greenish-grey water-soaked lesions on leaf sheaths that enlarge and girdle the stem.",
+  "organic_remedy": "Apply Pseudomonas fluorescens @ 2.5kg/ha in paddy field water.",
+  "chemical_remedy": "Spray Hexaconazole 5% SC @ 2ml/l or Validamycin 3% L @ 2.5ml/l.",
+  "regenerative_advice": "Reduce plant density; avoid excessive nitrogen; drain fields at booting."
+ },
+ {
+  "id": "paddy_healthy",
+  "crop_name": "Paddy",
+  "disease_name": "Healthy",
+  "severity": "None",
+  "symptoms": "No visible disease symptoms; uniform green growth.",
+  "organic_remedy": "No treatment needed. Continue integrated nutrient and pest management.",
+  "chemical_remedy": "None needed.",
+  "regenerative_advice": "Maintain balanced nutrition and monitor weekly."
+ },
+ {
+  "id": "maize_rust",
+  "crop_name": "Maize",
+  "disease_name": "Common Rust (Puccinia sorghi)",
+  "severity": "Moderate",
+  "symptoms": "Small reddish-brown pustules scattered on both leaf surfaces.",
+  "organic_remedy": "Spray neem oil 3% or sulfur-based botanical formulations.",
+  "chemical_remedy": "Spray Mancozeb 75% WP @ 2.5g/l at pustule appearance.",
+  "regenerative_advice": "Grow tolerant hybrids; avoid late sowing; rotate with legumes."
+ },
+ {
+  "id": "maize_leaf_blight",
+  "crop_name": "Maize",
+  "disease_name": "Northern Leaf Blight (Exserohilum turcicum)",
+  "severity": "High",
+  "symptoms": "Large cigar-shaped grey-green lesions running parallel to leaf veins.",
+  "organic_remedy": "Foliar spray of Trichoderma viride and neem-based extracts.",
+  "chemical_remedy": "Spray Propiconazole 25% EC @ 1ml/l or Mancozeb @ 2.5g/l.",
+  "regenerative_advice": "Rotate crops; remove crop residue; plant resistant hybrids."
+ },
+ {
+  "id": "maize_gray_leaf_spot",
+  "crop_name": "Maize",
+  "disease_name": "Gray Leaf Spot (Cercospora zeae-maydis)",
+  "severity": "High",
+  "symptoms": "Rectangular tan to gray lesions delimited by leaf veins.",
+  "organic_remedy": "Spray neem-based fungicide; improve soil organic matter.",
+  "chemical_remedy": "Spray Azoxystrobin 23% SC @ 1ml/l or Tebuconazole @ 1ml/l.",
+  "regenerative_advice": "Rotate away from maize for 1-2 seasons; manage residue."
+ },
+ {
+  "id": "maize_healthy",
+  "crop_name": "Maize",
+  "disease_name": "Healthy",
+  "severity": "None",
+  "symptoms": "No visible symptoms; healthy green foliage.",
+  "organic_remedy": "No treatment needed. Follow standard agronomy.",
+  "chemical_remedy": "None needed.",
+  "regenerative_advice": "Monitor fields; maintain soil fertility."
+ },
+ {
+  "id": "tomato_bacterial_spot",
+  "crop_name": "Tomato",
+  "disease_name": "Bacterial Spot (Xanthomonas campestris pv. vesicatoria)",
+  "severity": "Moderate",
+  "symptoms": "Small dark water-soaked spots on leaves and green fruits.",
+  "organic_remedy": "Spray copper-oxylate or Bordeaux mixture weekly.",
+  "chemical_remedy": "Spray Streptocycline 0.01% + Copper Oxychloride 0.3%.",
+  "regenerative_advice": "Use disease-free seed; avoid overhead irrigation."
+ },
+ {
+  "id": "tomato_early_blight",
+  "crop_name": "Tomato",
+  "disease_name": "Early Blight (Alternaria solani)",
+  "severity": "Moderate",
+  "symptoms": "Brown concentric ring spots with yellow halo on older leaves.",
+  "organic_remedy": "Spray neem oil 3% and Trichoderma-based biofungicide.",
+  "chemical_remedy": "Spray Mancozeb 75% WP @ 2.5g/l or Chlorothalonil 75% WP @ 2g/l.",
+  "regenerative_advice": "Mulch soil; rotate with non-solanaceous crops; stake plants."
+ },
+ {
+  "id": "tomato_late_blight",
+  "crop_name": "Tomato",
+  "disease_name": "Late Blight (Phytophthora infestans)",
+  "severity": "Outbreak",
+  "symptoms": "Dark greasy lesions on leaves and stems; white mold under humid leaves; fruit rot.",
+  "organic_remedy": "Spray Bordeaux mixture 1% or Pseudomonas fluorescens.",
+  "chemical_remedy": "Spray Metalaxyl + Mancozeb 72% WP @ 2.5g/l immediately.",
+  "regenerative_advice": "Remove infected plants; avoid dense canopy; improve drainage."
+ },
+ {
+  "id": "tomato_leaf_mold",
+  "crop_name": "Tomato",
+  "disease_name": "Leaf Mold (Passalora fulva)",
+  "severity": "Moderate",
+  "symptoms": "Pale yellow spots that turn brown with olive mold on the underside of leaves.",
+  "organic_remedy": "Improve ventilation; spray neem oil formulation.",
+  "chemical_remedy": "Spray Hexaconazole 5% SC @ 2ml/l or Copper Oxychloride 0.3%.",
+  "regenerative_advice": "Reduce humidity; avoid overhead watering in polyhouses."
+ },
+ {
+  "id": "tomato_septoria",
+  "crop_name": "Tomato",
+  "disease_name": "Septoria Leaf Spot (Septoria lycopersici)",
+  "severity": "Moderate",
+  "symptoms": "Small circular spots with gray centers and dark borders on lower leaves.",
+  "organic_remedy": "Remove infected lower leaves; spray copper-based organics.",
+  "chemical_remedy": "Spray Mancozeb 75% WP @ 2.5g/l every 7-10 days.",
+  "regenerative_advice": "Rotate crops; stake and prune for airflow."
+ },
+ {
+  "id": "tomato_spider_mite",
+  "crop_name": "Tomato",
+  "disease_name": "Spider Mite (Tetranychus urticae)",
+  "severity": "Moderate",
+  "symptoms": "Fine webbing, yellow stippling and bronzing of leaves.",
+  "organic_remedy": "Release predatory mites; spray neem oil 2% or garlic extract.",
+  "chemical_remedy": "Spray Fenazaquin 10% EC @ 2ml/l or Abamectin 1.9% EC @ 0.5ml/l.",
+  "regenerative_advice": "Avoid moisture stress; maintain natural enemies."
+ },
+ {
+  "id": "tomato_target_spot",
+  "crop_name": "Tomato",
+  "disease_name": "Target Spot (Corynespora cassiicola)",
+  "severity": "Moderate",
+  "symptoms": "Small brown spots that enlarge into concentric target-like rings.",
+  "organic_remedy": "Spray Trichoderma-based biofungicide.",
+  "chemical_remedy": "Spray Mancozeb 2.5g/l or Difenoconazole 25% EC @ 0.5ml/l.",
+  "regenerative_advice": "Improve field hygiene; rotate with non-host crops."
+ },
+ {
+  "id": "tomato_yellow_leaf_curl",
+  "crop_name": "Tomato",
+  "disease_name": "Yellow Leaf Curl Virus (TYLCV)",
+  "severity": "Outbreak",
+  "symptoms": "Leaf curling, yellowing, stunted plants; transmitted by whiteflies.",
+  "organic_remedy": "Control whitefly with yellow sticky traps and neem seed kernel extract 5%.",
+  "chemical_remedy": "Spray Imidacloprid 17.8% SL @ 0.5ml/l against whitefly vectors.",
+  "regenerative_advice": "Use resistant hybrids; rogue infected plants immediately."
+ },
+ {
+  "id": "tomato_mosaic",
+  "crop_name": "Tomato",
+  "disease_name": "Mosaic Virus (ToMV)",
+  "severity": "Moderate",
+  "symptoms": "Mottled light and dark green mosaic on leaves; leaf distortion.",
+  "organic_remedy": "Remove infected plants; control aphids; sanitize hands/tools with milk.",
+  "chemical_remedy": "No direct cure - manage aphid vectors with Imidacloprid spray.",
+  "regenerative_advice": "Use virus-free seed; rotate with non-solanaceous crops."
+ },
+ {
+  "id": "tomato_healthy",
+  "crop_name": "Tomato",
+  "disease_name": "Healthy",
+  "severity": "None",
+  "symptoms": "No visible symptoms; vigorous growth.",
+  "organic_remedy": "No treatment needed.",
+  "chemical_remedy": "None needed.",
+  "regenerative_advice": "Maintain good canopy management and nutrition."
+ },
+ {
+  "id": "potato_early_blight",
+  "crop_name": "Potato",
+  "disease_name": "Early Blight (Alternaria solani)",
+  "severity": "Moderate",
+  "symptoms": "Dark brown angular spots with concentric rings on older leaves.",
+  "organic_remedy": "Spray neem oil 3% and Trichoderma formulation.",
+  "chemical_remedy": "Spray Mancozeb 75% WP @ 2.5g/l at first symptom.",
+  "regenerative_advice": "Rotate with cereals; avoid excess nitrogen; hill soil well."
+ },
+ {
+  "id": "potato_late_blight",
+  "crop_name": "Potato",
+  "disease_name": "Late Blight (Phytophthora infestans)",
+  "severity": "Outbreak",
+  "symptoms": "Water-soaked dark lesions; white fungal ring under wet leaves; tuber rot.",
+  "organic_remedy": "Spray Bordeaux mixture 1% or Pseudomonas fluorescens.",
+  "chemical_remedy": "Spray Metalaxyl + Mancozeb 72% WP @ 2.5g/l; repeat weekly.",
+  "regenerative_advice": "Destroy infected haulms; store tubers dry; use certified seed."
+ },
+ {
+  "id": "potato_healthy",
+  "crop_name": "Potato",
+  "disease_name": "Healthy",
+  "severity": "None",
+  "symptoms": "No visible symptoms; healthy foliage.",
+  "organic_remedy": "No treatment needed.",
+  "chemical_remedy": "None needed.",
+  "regenerative_advice": "Follow standard crop management."
+ },
+ {
+  "id": "cotton_leaf_curl",
+  "crop_name": "Cotton",
+  "disease_name": "Cotton Leaf Curl Virus (CLCuV)",
+  "severity": "Outbreak",
+  "symptoms": "Upward/downward curling of leaves with vein thickening; stunted growth.",
+  "organic_remedy": "Control whitefly with yellow sticky traps and neem seed kernel extract 5%.",
+  "chemical_remedy": "Spray Imidacloprid 17.8% SL @ 0.5ml/l to manage whitefly vectors.",
+  "regenerative_advice": "Plant border rows of maize/sorghum to block whitefly migration."
+ },
+ {
+  "id": "cotton_bacterial_blight",
+  "crop_name": "Cotton",
+  "disease_name": "Bacterial Blight (Xanthomonas axonopodis pv. malvacearum)",
+  "severity": "Moderate",
+  "symptoms": "Angular water-soaked lesions on leaves; black arm on stems and bolls.",
+  "organic_remedy": "Acid-delint seed; spray copper oxychloride 0.3%.",
+  "chemical_remedy": "Spray Streptocycline 0.01% + Copper Oxychloride 0.3%.",
+  "regenerative_advice": "Use certified delinted seed; rotate with non-host crops."
+ },
+ {
+  "id": "cotton_fusarium_wilt",
+  "crop_name": "Cotton",
+  "disease_name": "Fusarium Wilt (Fusarium oxysporum f.sp. vasinfectum)",
+  "severity": "High",
+  "symptoms": "Sudden wilting, yellowing and browning of leaves; vascular discoloration.",
+  "organic_remedy": "Seed treatment with Trichoderma viride (4g/kg); soil application of neem cake.",
+  "chemical_remedy": "Drench Carbendazim 50% WP @ 1g/l around the root zone.",
+  "regenerative_advice": "Grow resistant varieties; long rotation; improve drainage."
+ },
+ {
+  "id": "cotton_healthy",
+  "crop_name": "Cotton",
+  "disease_name": "Healthy",
+  "severity": "None",
+  "symptoms": "No visible symptoms; healthy growth.",
+  "organic_remedy": "No treatment needed.",
+  "chemical_remedy": "None needed.",
+  "regenerative_advice": "Monitor for sucking pests and maintain nutrition."
+ }
 ]

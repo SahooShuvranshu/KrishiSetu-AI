@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 export async function diagnoseCropLeaf(base64Image, language = 'English') {
-  const API_KEY = localStorage.getItem('krishisetu_gemini_key') || import.meta.env.VITE_GEMINI_API_KEY;
+  const API_KEY = sessionStorage.getItem('krishisetu_gemini_key') || import.meta.env.VITE_GEMINI_API_KEY;
 
   if (!API_KEY) {
     throw new Error("No Gemini API key found. Please add it in settings.");
