@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Camera, Map, Leaf, Home } from 'lucide-react';
+import { Camera, Leaf, Home } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
 export default function Navbar() {
@@ -10,7 +10,6 @@ export default function Navbar() {
     { id: 'home', to: '/', icon: <Home size={22} />, label: t('home') || 'Home' },
     { id: 'scan', to: '/scan', icon: <Camera size={22} />, label: t('cropDoctor') },
     { id: 'advisory', to: '/advisory', icon: <Leaf size={22} />, label: t('farmAdvice') },
-    { id: 'network', to: '/network', icon: <Map size={22} />, label: t('alerts') },
   ];
 
   return (

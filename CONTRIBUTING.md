@@ -44,11 +44,10 @@ To get Krishi Setu running on your local machine:
    `ash
    npm install
    `
-3. **Configure Environment Variables**:
-   Create a .env file in the root directory and add your Gemini API key:
-   `env
-   VITE_GEMINI_API_KEY=your_google_gemini_api_key
-   `
+3. **API keys**: nothing to configure at build time. The app reads no key from
+   the environment, because anything in a Vite bundle is public. Run the app and
+   add your own keys in **Settings → API KEYS (THIS DEVICE)** (Gemini for online
+   diagnosis, Google Maps for the district risk map). They stay on your device.
 4. **Run the Development Server**:
    `ash
    npm run dev

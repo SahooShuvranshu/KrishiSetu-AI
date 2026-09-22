@@ -74,27 +74,121 @@
   box-shadow: 8px 12px 0px 0px rgba(0,0,0,1);
 }
 
-/* Dark mode overrides */
+/* Dark mode overrides ---------------------------------------------------------
+   The light design is built from hardcoded utility classes (bg-white, text-black,
+   bg-yellow-100, ...), so the dark theme remaps those classes instead of adding a
+   parallel set of variants. One rule drives everything else: `text-black` becomes
+   white. Every surface that keeps a light background must therefore also be
+   remapped, or its text disappears - which is exactly what used to happen to the
+   pastel notice cards, the grey icon boxes and .text-brutal-green. */
+html.dark { background-color: #111827; }
+html.dark body { background-color: #111827; color: #ffffff; }
+
+/* Surfaces */
 .dark .bg-white { background-color: #1f2937 !important; }
 .dark .bg-gray-50 { background-color: #374151 !important; }
-.dark .bg-gray-100 { background-color: #4b5563 !important; }
+.dark .bg-gray-100 { background-color: #374151 !important; }
+.dark .bg-gray-200 { background-color: #4b5563 !important; }
+.dark .bg-gray-300 { background-color: #4b5563 !important; }
+.dark .bg-gray-400 { background-color: #6b7280 !important; }
 .dark .bg-brutal-bg { background-color: #111827 !important; }
+.dark .bg-black { background-color: #030712 !important; }
+
+/* Tinted notice surfaces - remapped to a dark tint of the same hue so the colour
+   still communicates status instead of turning white. */
+.dark .bg-green-50 { background-color: #052e1b !important; }
+.dark .bg-green-100 { background-color: #064e3b !important; }
+.dark .bg-blue-50 { background-color: #172554 !important; }
+.dark .bg-blue-100 { background-color: #1e3a8a !important; }
+.dark .bg-red-50 { background-color: #450a0a !important; }
+.dark .bg-red-100 { background-color: #7f1d1d !important; }
+.dark .bg-yellow-50 { background-color: #422006 !important; }
+.dark .bg-yellow-100 { background-color: #78350f !important; }
+.dark .bg-yellow-400 { background-color: #a16207 !important; }
+
+/* Text */
 .dark .text-black { color: #ffffff !important; }
+.dark .text-gray-700 { color: #d1d5db !important; }
 .dark .text-gray-600 { color: #9ca3af !important; }
 .dark .text-gray-500 { color: #9ca3af !important; }
+.dark .text-green-600 { color: #4ade80 !important; }
+.dark .text-green-700 { color: #86efac !important; }
+.dark .text-blue-600 { color: #60a5fa !important; }
+.dark .text-blue-700 { color: #93c5fd !important; }
+.dark .text-red-600 { color: #f87171 !important; }
+.dark .text-red-700 { color: #fca5a5 !important; }
+.dark .text-yellow-600 { color: #fcd34d !important; }
+.dark .text-yellow-700 { color: #fcd34d !important; }
+.dark .text-yellow-800 { color: #fde68a !important; }
+.dark .text-orange-600 { color: #fb923c !important; }
+
+/* #14532d is a text colour in the light theme and is invisible on a dark one. */
+.dark .text-brutal-green { color: #86efac !important; }
+
+/* Borders */
 .dark .border-black { border-color: #4b5563 !important; }
+.dark .border-gray-200 { border-color: #374151 !important; }
 .dark .border-gray-300 { border-color: #4b5563 !important; }
 .dark .border-gray-400 { border-color: #6b7280 !important; }
+
+/* Brutalist offsets are pure black, which is invisible on a dark page. */
 .dark .shadow-brutal { box-shadow: 6px 6px 0px 0px rgba(75,85,99,1) !important; }
 .dark .shadow-brutal-hover { box-shadow: 2px 2px 0px 0px rgba(75,85,99,1) !important; }
 .dark .shadow-brutal-sm { box-shadow: 2px 2px 0px 0px rgba(75,85,99,1) !important; }
 .dark .shadow-brutal-md { box-shadow: 3px 3px 0px 0px rgba(75,85,99,1) !important; }
+.dark .shadow-brutal-lg { box-shadow: 12px 12px 0px 0px rgba(75,85,99,1) !important; }
 .dark .shadow-brutal-xl { box-shadow: 4px 4px 0px 0px rgba(75,85,99,1) !important; }
 .dark .shadow-brutal-top { box-shadow: 0 -4px 0 0 rgba(75,85,99,1) !important; }
 .dark .shadow-brutal-inset-top { box-shadow: inset 0 4px 0 0 rgba(75,85,99,1) !important; }
-.dark input, .dark select { background-color: #374151 !important; color: #ffffff !important; border-color: #4b5563 !important; }
-.dark ::placeholder { color: #9ca3af !important; }
 
+/* Interaction states, which a static class remap cannot reach. */
+.dark .hover\:bg-gray-50:hover { background-color: #374151 !important; }
+.dark .hover\:bg-gray-100:hover { background-color: #4b5563 !important; }
+.dark .hover\:bg-white:hover { background-color: #374151 !important; }
+.dark .active\:bg-gray-100:active { background-color: #4b5563 !important; }
+
+/* Inputs */
+.dark input, .dark select, .dark textarea { background-color: #374151 !important; color: #ffffff !important; border-color: #4b5563 !important; }
+.dark ::placeholder { color: #9ca3af !important; }
+.dark select option { background-color: #1f2937; color: #ffffff; }
+
+/* The neon and deep-green surfaces stay bright, so text on them stays black -
+   otherwise the generic .dark .text-black rule turns the own-brand buttons and
+   the "model ready" card white-on-lime. */
+.dark .bg-brutal-neon.text-black,
+.dark .bg-brutal-neon .text-black {
+  color: #000000 !important;
+}
+
+/* .bg-brutal-green is a dark green, so black text on it is unreadable in either
+   theme; white is the only usable contrast on it. */
+.dark .bg-brutal-green.text-black,
+.dark .bg-brutal-green .text-black {
+  color: #ffffff !important;
+}
+
+/* Background patterns are drawn in light greys and disappear on a dark page. */
+.dark .bg-dots { background-image: radial-gradient(circle, #374151 1px, transparent 1px); }
+.dark .bg-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+}
+.dark .bg-diagonal {
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.04) 10px, rgba(255,255,255,0.04) 20px);
+}
+.dark .bg-zigzag {
+  background-image:
+    linear-gradient(135deg, #1f2937 25%, transparent 25%),
+    linear-gradient(225deg, #1f2937 25%, transparent 25%),
+    linear-gradient(315deg, #1f2937 25%, transparent 25%),
+    linear-gradient(45deg, #1f2937 25%, transparent 25%);
+}
+
+/* Scrollbar chrome is drawn with black borders and a light track. */
+.dark ::-webkit-scrollbar { border-left-color: #374151; }
+.dark ::-webkit-scrollbar-track { background: #111827; }
+.dark ::-webkit-scrollbar-thumb { background: #4b5563; border-left-color: #374151; }
 /* Background patterns */
 .bg-dots {
   background-image: radial-gradient(circle, #d1d5db 1px, transparent 1px);

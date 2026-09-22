@@ -1,10 +1,27 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { getTranslation } from '../translations';
+import { readApiKey } from './apiKeys';
 
-export async function diagnoseCropLeaf(base64Image, language = 'English') {
-  const API_KEY = sessionStorage.getItem('krishisetu_gemini_key') || import.meta.env.VITE_GEMINI_API_KEY;
+// The app passes a short code ('en' / 'or' / 'hi'). Handing that straight to the
+// prompt asked Gemini to answer "in hi", so it often replied in English or in
+// mixed script. Map the code to a real language name for the instruction.
+const LANG_NAMES = {
+  en: 'English',
+  or: 'Odia (ଓଡ଼ିଆ)',
+  hi: 'Hindi (हिन्दी)'
+};
+
+// Two newline characters, for the blank line between treatment sections.
+const GAP = String.fromCharCode(10, 10);
+
+export async function diagnoseCropLeaf(base64Image, language = 'en') {
+  const languageName = LANG_NAMES[language] || 'English';
+  // The user's own key, from this device. Deliberately no import.meta.env
+  // fallback: a key in the bundle is a key published in dist/.
+  const API_KEY = readApiKey('gemini');
 
   if (!API_KEY) {
-    throw new Error("No Gemini API key found. Please add it in settings.");
+    throw new Error('No Gemini API key on this device. Add yours in Settings or switch to the offline model.');
   }
 
   const genAI = new GoogleGenerativeAI(API_KEY);
@@ -17,10 +34,10 @@ Return strictly a valid JSON object (no markdown formatting, no code blocks) wit
   "disease_name": "Name of disease or 'Healthy'",
   "confidence": 88,
   "severity": "Low" | "Moderate" | "High" | "Outbreak",
-  "symptoms": "Detailed symptoms in ${language}",
-  "organic_remedy": "Organic / biological treatment in ${language}",
-  "chemical_remedy": "Chemical treatment dosage in ${language}",
-  "regenerative_advice": "Soil & crop rotation advice for sustainable recovery in ${language}"
+  "symptoms": "Detailed symptoms in ${languageName}",
+  "organic_remedy": "Organic / biological treatment in ${languageName}",
+  "chemical_remedy": "Chemical treatment dosage in ${languageName}",
+  "regenerative_advice": "Soil & crop rotation advice for sustainable recovery in ${languageName}"
 }`;
 
   // Extract exactly the mimeType and base64 string
@@ -48,9 +65,21 @@ Return strictly a valid JSON object (no markdown formatting, no code blocks) wit
   const cleanedText = text.replace(/```json|```/g, '').trim();
   const parsed = JSON.parse(cleanedText);
   
-  // Map it to match the UI expectations
+  // Map it to match the UI expectations. Section labels are translated, and a
+  // section the model left out is dropped rather than printed as "undefined".
+  const label = (key, fallback) => {
+    const value = getTranslation(language, key);
+    return value && value !== key ? value : fallback;
+  };
+
+  const sections = [
+    `${label('organicLabel', 'Organic')}: ${parsed.organic_remedy || ''}`.trim(),
+    `${label('chemicalLabel', 'Chemical')}: ${parsed.chemical_remedy || ''}`.trim(),
+    parsed.regenerative_advice ? `${label('advice', 'Advice')}: ${parsed.regenerative_advice}` : null
+  ].filter(Boolean);
+
   return {
     disease: `${parsed.crop_name}: ${parsed.disease_name}`,
-    treatment: `Organic: ${parsed.organic_remedy}\n\nChemical: ${parsed.chemical_remedy}\n\nAdvice: ${parsed.regenerative_advice}`
+    treatment: sections.join(GAP)
   };
 }

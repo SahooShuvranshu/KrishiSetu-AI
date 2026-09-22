@@ -7,7 +7,23 @@
   "symptoms": "Yellow to white lesions with wavy margins along leaf veins; leaves turn yellow and dry.",
   "organic_remedy": "Seed treatment with Pseudomonas fluorescens (10g/kg); spray neem-based bioformulation.",
   "chemical_remedy": "Streptocycline 0.01% + Copper Oxychloride 0.3% spray at first sign.",
-  "regenerative_advice": "Grow resistant varieties; avoid excess nitrogen; ensure good drainage."
+  "regenerative_advice": "Grow resistant varieties; avoid excess nitrogen; ensure good drainage.",
+  "i18n": {
+   "or": {
+    "disease_name": "ବ୍ୟାକ୍ଟେରିଆଲ୍ ପତ୍ର ବ୍ଲାଇଟ୍ (Xanthomonas oryzae pv. oryzae)",
+    "symptoms": "ପତ୍ରର ଶିରା ଧାରରେ ଲହରୀଯୁକ୍ତ ଧାର ସହ ହଳଦିଆରୁ ଧଳା ଦାଗ; ପତ୍ର ହଳଦିଆ ହୋଇ ଶୁଖିଯାଏ।",
+    "organic_remedy": "ବୀଜ ଉପଚାର Pseudomonas fluorescens (10 ଗ୍ରାମ/କିଲୋ); ନିମ୍ବ ଆଧାରିତ ଜୈବ ଫର୍ମୁଲେସନ ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "chemical_remedy": "ପ୍ରଥମ ଲକ୍ଷଣରେ Streptocycline 0.01% + Copper Oxychloride 0.3% ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "ରୋଗ ପ୍ରତିରୋଧକ କିସମ ଲଗାନ୍ତୁ; ଅଧିକ ଯବକ୍ଷାରଜାନ ଦିଅନ୍ତୁ ନାହିଁ; ଭଲ ଜଳ ନିକାସ ରଖନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "बैक्टीरियल लीफ ब्लाइट (Xanthomonas oryzae pv. oryzae)",
+    "symptoms": "पत्ती की नसों के किनारे लहरदार किनारों वाले पीले से सफ़ेद धब्बे; पत्तियाँ पीली होकर सूख जाती हैं।",
+    "organic_remedy": "बीजोपचार Pseudomonas fluorescens (10 ग्राम/किलो); नीम आधारित जैव फ़ॉर्मूलेशन का छिड़काव करें।",
+    "chemical_remedy": "पहले लक्षण पर Streptocycline 0.01% + Copper Oxychloride 0.3% का छिड़काव करें।",
+    "regenerative_advice": "रोग-प्रतिरोधी किस्में लगाएँ; अधिक नाइट्रोजन न दें; जल निकासी अच्छी रखें।"
+   }
+  }
  },
  {
   "id": "paddy_leaf_blight",
@@ -17,7 +33,23 @@
   "symptoms": "Long elliptical, straw-colored lesions that coalesce and dry the leaf.",
   "organic_remedy": "Spray Pseudomonas fluorescens (10g/l) twice at 10-day intervals.",
   "chemical_remedy": "Spray Edifenphos 50% EC @ 1ml/l or Tricyclazole 75% WP @ 0.6g/l.",
-  "regenerative_advice": "Use certified seed; maintain field sanitation and balanced fertilization."
+  "regenerative_advice": "Use certified seed; maintain field sanitation and balanced fertilization.",
+  "i18n": {
+   "or": {
+    "disease_name": "ପତ୍ର ବ୍ଲାଇଟ୍ (Helminthosporium oryzae)",
+    "symptoms": "ଲମ୍ବା ଅଣ୍ଡାକୃତି, ନଡ଼ା ରଙ୍ଗର ଦାଗ ଯାହା ମିଶିଯାଇ ପତ୍ରକୁ ଶୁଖାଇ ଦିଏ।",
+    "organic_remedy": "Pseudomonas fluorescens (10 ଗ୍ରାମ/ଲିଟର) ୧୦ ଦିନ ଅନ୍ତରରେ ଦୁଇଥର ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "chemical_remedy": "Edifenphos 50% EC @ 1 ମିଲି/ଲିଟର କିମ୍ବା Tricyclazole 75% WP @ 0.6 ଗ୍ରାମ/ଲିଟର ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "ପ୍ରମାଣିତ ବୀଜ ବ୍ୟବହାର କରନ୍ତୁ; କ୍ଷେତ ପରିଷ୍କାର ରଖନ୍ତୁ ଓ ସନ୍ତୁଳିତ ସାର ଦିଅନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "लीफ ब्लाइट (Helminthosporium oryzae)",
+    "symptoms": "लंबे अंडाकार, भूसे रंग के धब्बे जो मिलकर पत्ती को सुखा देते हैं।",
+    "organic_remedy": "Pseudomonas fluorescens (10 ग्राम/लीटर) 10 दिन के अंतराल पर दो बार छिड़कें।",
+    "chemical_remedy": "Edifenphos 50% EC @ 1 मिली/लीटर या Tricyclazole 75% WP @ 0.6 ग्राम/लीटर छिड़कें।",
+    "regenerative_advice": "प्रमाणित बीज इस्तेमाल करें; खेत साफ़ रखें और संतुलित खाद दें।"
+   }
+  }
  },
  {
   "id": "paddy_brown_spot",
@@ -27,7 +59,23 @@
   "symptoms": "Small oval brown spots with yellow halo; grain becomes chaffy and discolored.",
   "organic_remedy": "Foliar spray of neem oil 3% and Pseudomonas fluorescens (10g/l).",
   "chemical_remedy": "Spray Mancozeb 75% WP @ 2.5g/l or Propiconazole 25% EC @ 1ml/l.",
-  "regenerative_advice": "Apply potash and zinc; avoid water stress during tillering."
+  "regenerative_advice": "Apply potash and zinc; avoid water stress during tillering.",
+  "i18n": {
+   "or": {
+    "disease_name": "ବ୍ରାଉନ୍ ସ୍ପଟ୍ (Bipolaris oryzae)",
+    "symptoms": "ହଳଦିଆ ଚାରିପାଖ ସହ ଛୋଟ ଅଣ୍ଡାକୃତି ବାଦାମୀ ଦାଗ; ଧାନ ଚୋପା ଭଳି ଓ ରଙ୍ଗ ଫିକା ହୋଇଯାଏ।",
+    "organic_remedy": "ନିମ୍ବ ତେଲ 3% ଓ Pseudomonas fluorescens (10 ଗ୍ରାମ/ଲିଟର) ପତ୍ରରେ ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "chemical_remedy": "Mancozeb 75% WP @ 2.5 ଗ୍ରାମ/ଲିଟର କିମ୍ବା Propiconazole 25% EC @ 1 ମିଲି/ଲିଟର ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "ପୋଟାସ୍ ଓ ଜିଙ୍କ ଦିଅନ୍ତୁ; କଣ୍ଟା ଅବସ୍ଥାରେ ପାଣି ଅଭାବ ହେବାକୁ ଦିଅନ୍ତୁ ନାହିଁ।"
+   },
+   "hi": {
+    "disease_name": "ब्राउन स्पॉट (Bipolaris oryzae)",
+    "symptoms": "पीले घेरे वाले छोटे अंडाकार भूरे धब्बे; दाना भूसा जैसा और रंग फीका हो जाता है।",
+    "organic_remedy": "नीम तेल 3% और Pseudomonas fluorescens (10 ग्राम/लीटर) का पत्तियों पर छिड़काव करें।",
+    "chemical_remedy": "Mancozeb 75% WP @ 2.5 ग्राम/लीटर या Propiconazole 25% EC @ 1 मिली/लीटर छिड़कें।",
+    "regenerative_advice": "पोटाश और ज़िंक दें; कल्ले बनते समय पानी की कमी न होने दें।"
+   }
+  }
  },
  {
   "id": "paddy_blast",
@@ -37,7 +85,23 @@
   "symptoms": "Spindle-shaped lesions with grayish centers and brown margins on leaves and neck nodes.",
   "organic_remedy": "Foliar application of Pseudomonas fluorescens (10g/liter).",
   "chemical_remedy": "Tricyclazole 75% WP @ 0.6g/liter of water at initial symptoms.",
-  "regenerative_advice": "Maintain balanced nitrogen; avoid excess urea in humid weather."
+  "regenerative_advice": "Maintain balanced nitrogen; avoid excess urea in humid weather.",
+  "i18n": {
+   "or": {
+    "disease_name": "ଧାନ ବ୍ଲାସ୍‌ଟ୍ (Magnaporthe oryzae)",
+    "symptoms": "ପତ୍ର ଓ ବେକ ଗଣ୍ଠିରେ ପାଉଁଶିଆ ମଧ୍ୟଭାଗ ଓ ବାଦାମୀ ଧାର ସହ ତକୁଆ ଆକୃତିର ଦାଗ।",
+    "organic_remedy": "Pseudomonas fluorescens (10 ଗ୍ରାମ/ଲିଟର) ପତ୍ରରେ ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "chemical_remedy": "ପ୍ରାରମ୍ଭିକ ଲକ୍ଷଣରେ Tricyclazole 75% WP @ 0.6 ଗ୍ରାମ/ଲିଟର ପାଣିରେ ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "ସନ୍ତୁଳିତ ଯବକ୍ଷାରଜାନ ରଖନ୍ତୁ; ଆର୍ଦ୍ର ପାଗରେ ଅଧିକ ୟୁରିଆ ଦିଅନ୍ତୁ ନାହିଁ।"
+   },
+   "hi": {
+    "disease_name": "राइस ब्लास्ट (Magnaporthe oryzae)",
+    "symptoms": "पत्तियों और गर्दन की गाँठ पर राख जैसे बीच और भूरे किनारों वाले तकली आकार के धब्बे।",
+    "organic_remedy": "Pseudomonas fluorescens (10 ग्राम/लीटर) का पत्तियों पर छिड़काव करें।",
+    "chemical_remedy": "शुरुआती लक्षण पर Tricyclazole 75% WP @ 0.6 ग्राम/लीटर पानी में छिड़कें।",
+    "regenerative_advice": "संतुलित नाइट्रोजन रखें; नम मौसम में अधिक यूरिया न दें।"
+   }
+  }
  },
  {
   "id": "paddy_leaf_smut",
@@ -47,7 +111,23 @@
   "symptoms": "Small black sooty streaks and spots on leaf blades and sheaths.",
   "organic_remedy": "Spray neem oil 3% to check spread; remove infected debris.",
   "chemical_remedy": "Spray Propiconazole 25% EC @ 1ml/l at disease appearance.",
-  "regenerative_advice": "Avoid dense planting; improve aeration in the canopy."
+  "regenerative_advice": "Avoid dense planting; improve aeration in the canopy.",
+  "i18n": {
+   "or": {
+    "disease_name": "ପତ୍ର ସ୍ମଟ୍ (Entyloma oryzae)",
+    "symptoms": "ପତ୍ର ଫଳକ ଓ ଖୋଳପାରେ ଛୋଟ କଳା ଛାଇ ଭଳି ରେଖା ଓ ଦାଗ।",
+    "organic_remedy": "ବ୍ୟାପିବା ରୋକିବାକୁ ନିମ୍ବ ତେଲ 3% ସ୍ପ୍ରେ କରନ୍ତୁ; ରୋଗାକ୍ରାନ୍ତ ଅବଶିଷ୍ଟାଂଶ ହଟାନ୍ତୁ।",
+    "chemical_remedy": "ରୋଗ ଦେଖାଦେଲେ Propiconazole 25% EC @ 1 ମିଲି/ଲିଟର ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "ଘନ ରୋପଣ କରନ୍ତୁ ନାହିଁ; ଗଛ ମଧ୍ୟରେ ପବନ ଚଳାଚଳ ବଢ଼ାନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "लीफ स्मट (Entyloma oryzae)",
+    "symptoms": "पत्ती के ब्लेड और शीथ पर छोटी काली कालिख जैसी धारियाँ और धब्बे।",
+    "organic_remedy": "फैलाव रोकने के लिए नीम तेल 3% छिड़कें; संक्रमित अवशेष हटाएँ।",
+    "chemical_remedy": "रोग दिखने पर Propiconazole 25% EC @ 1 मिली/लीटर छिड़कें।",
+    "regenerative_advice": "घनी रोपाई न करें; पौधों के बीच हवा का आवागमन बढ़ाएँ।"
+   }
+  }
  },
  {
   "id": "paddy_tungro",
@@ -57,7 +137,23 @@
   "symptoms": "Yellow-orange discoloration with stunting; transmitted by green leafhoppers.",
   "organic_remedy": "Control vector with neem seed kernel extract 5% spray.",
   "chemical_remedy": "Spray Imidacloprid 17.8% SL @ 0.5ml/l to control leafhoppers.",
-  "regenerative_advice": "Plant resistant varieties; rogue infected hills early."
+  "regenerative_advice": "Plant resistant varieties; rogue infected hills early.",
+  "i18n": {
+   "or": {
+    "disease_name": "ଟୁଙ୍ଗ୍ରୋ ଭୂତାଣୁ",
+    "symptoms": "ହଳଦିଆ-କମଳା ରଙ୍ଗ ଫିକା ହେବା ସହ ବୃଦ୍ଧି ଅଟକିଯାଏ; ସବୁଜ ଫୁଟିଆ ପୋକଦ୍ୱାରା ବ୍ୟାପେ।",
+    "organic_remedy": "ନିମ୍ବ ମଞ୍ଜି କେନେଲ୍ ଏକ୍ସଟ୍ରାକ୍ଟ 5% ସ୍ପ୍ରେ କରି ପୋକ ନିୟନ୍ତ୍ରଣ କରନ୍ତୁ।",
+    "chemical_remedy": "ଫୁଟିଆ ପୋକ ନିୟନ୍ତ୍ରଣ ପାଇଁ Imidacloprid 17.8% SL @ 0.5 ମିଲି/ଲିଟର ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "ପ୍ରତିରୋଧକ କିସମ ଲଗାନ୍ତୁ; ଆକ୍ରାନ୍ତ ଗଛକୁ ଶୀଘ୍ର ଉତ୍ପାଟନ କରନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "टुंग्रो वायरस",
+    "symptoms": "पीला-नारंगी रंग फीका होना और बढ़वार रुकना; हरे फुदके से फैलता है।",
+    "organic_remedy": "नीम बीज गिरी अर्क 5% छिड़ककर फुदके नियंत्रित करें।",
+    "chemical_remedy": "फुदके नियंत्रण के लिए Imidacloprid 17.8% SL @ 0.5 मिली/लीटर छिड़कें।",
+    "regenerative_advice": "प्रतिरोधी किस्में लगाएँ; संक्रमित पौधे जल्दी उखाड़ें।"
+   }
+  }
  },
  {
   "id": "paddy_hispa",
@@ -67,7 +163,23 @@
   "symptoms": "White parallel scrapped lines on leaves caused by adult feeding.",
   "organic_remedy": "Collect and destroy adults; release egg parasitoid Trichogramma.",
   "chemical_remedy": "Spray Chlorantraniliprole 18.5% SC @ 0.3ml/l.",
-  "regenerative_advice": "Avoid late transplanting; synchronize planting across fields."
+  "regenerative_advice": "Avoid late transplanting; synchronize planting across fields.",
+  "i18n": {
+   "or": {
+    "disease_name": "ହିସ୍ପା (Dicladispa armigera)",
+    "symptoms": "ବୟସ୍କ ପୋକ ଖାଇବା ଯୋଗୁଁ ପତ୍ରରେ ଧଳା ସମାନ୍ତରାଳ ରେଖା।",
+    "organic_remedy": "ବୟସ୍କ ପୋକ ସଂଗ୍ରହ କରି ନଷ୍ଟ କରନ୍ତୁ; ଅଣ୍ଡି ପରଜୀବୀ Trichogramma ଛାଡ଼ନ୍ତୁ।",
+    "chemical_remedy": "Chlorantraniliprole 18.5% SC @ 0.3 ମିଲି/ଲିଟର ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "ଡେରିରେ ରୋପଣ କରନ୍ତୁ ନାହିଁ; ପାଖ କ୍ଷେତରେ ସମାନ ସମୟରେ ରୋପଣ କରନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "हिस्पा (Dicladispa armigera)",
+    "symptoms": "वयस्क कीट के खाने से पत्तियों पर सफ़ेद समानांतर रेखाएँ।",
+    "organic_remedy": "वयस्क कीट इकट्ठा करके नष्ट करें; अंड परजीवी Trichogramma छोड़ें।",
+    "chemical_remedy": "Chlorantraniliprole 18.5% SC @ 0.3 मिली/लीटर छिड़कें।",
+    "regenerative_advice": "देर से रोपाई न करें; आसपास के खेतों में एक साथ रोपाई करें।"
+   }
+  }
  },
  {
   "id": "paddy_sheath_blight",
@@ -77,7 +189,23 @@
   "symptoms": "Greenish-grey water-soaked lesions on leaf sheaths that enlarge and girdle the stem.",
   "organic_remedy": "Apply Pseudomonas fluorescens @ 2.5kg/ha in paddy field water.",
   "chemical_remedy": "Spray Hexaconazole 5% SC @ 2ml/l or Validamycin 3% L @ 2.5ml/l.",
-  "regenerative_advice": "Reduce plant density; avoid excessive nitrogen; drain fields at booting."
+  "regenerative_advice": "Reduce plant density; avoid excessive nitrogen; drain fields at booting.",
+  "i18n": {
+   "or": {
+    "disease_name": "ଶୀଥ୍ ବ୍ଲାଇଟ୍ (Rhizoctonia solani)",
+    "symptoms": "ପତ୍ର ଖୋଳପାରେ ସବୁଜ-ପାଉଁଶିଆ ପାଣିଭରା ଦାଗ ଯାହା ବଢ଼ି କାଣ୍ଡକୁ ଘେରି ଦିଏ।",
+    "organic_remedy": "ଧାନ କ୍ଷେତର ପାଣିରେ Pseudomonas fluorescens @ 2.5 କିଲୋ/ହେକ୍ଟର ଦିଅନ୍ତୁ।",
+    "chemical_remedy": "Hexaconazole 5% SC @ 2 ମିଲି/ଲିଟର କିମ୍ବା Validamycin 3% L @ 2.5 ମିଲି/ଲିଟର ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "ଗଛର ଘନତ୍ୱ କମାନ୍ତୁ; ଅଧିକ ଯବକ୍ଷାରଜାନ ଦିଅନ୍ତୁ ନାହିଁ; ବାଲି ଅବସ୍ଥାରେ ପାଣି ବାହାର କରନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "शीथ ब्लाइट (Rhizoctonia solani)",
+    "symptoms": "पत्ती की शीथ पर हरे-राख जैसे पानी भरे धब्बे जो बढ़कर तने को घेर लेते हैं।",
+    "organic_remedy": "धान के खेत के पानी में Pseudomonas fluorescens @ 2.5 किलो/हेक्टेयर डालें।",
+    "chemical_remedy": "Hexaconazole 5% SC @ 2 मिली/लीटर या Validamycin 3% L @ 2.5 मिली/लीटर छिड़कें।",
+    "regenerative_advice": "पौधों का घनत्व कम करें; अधिक नाइट्रोजन न दें; बाली आते समय पानी निकालें।"
+   }
+  }
  },
  {
   "id": "paddy_healthy",
@@ -87,7 +215,23 @@
   "symptoms": "No visible disease symptoms; uniform green growth.",
   "organic_remedy": "No treatment needed. Continue integrated nutrient and pest management.",
   "chemical_remedy": "None needed.",
-  "regenerative_advice": "Maintain balanced nutrition and monitor weekly."
+  "regenerative_advice": "Maintain balanced nutrition and monitor weekly.",
+  "i18n": {
+   "or": {
+    "disease_name": "ସୁସ୍ଥ",
+    "symptoms": "ଦୃଶ୍ୟମାନ ରୋଗ ଲକ୍ଷଣ ନାହିଁ; ସମାନ ସବୁଜ ବୃଦ୍ଧି।",
+    "organic_remedy": "ଉପଚାର ଆବଶ୍ୟକ ନାହିଁ। ସମନ୍ୱିତ ପୋଷକ ଓ ପୋକ ପରିଚାଳନା ଜାରି ରଖନ୍ତୁ।",
+    "chemical_remedy": "ଆବଶ୍ୟକ ନାହିଁ।",
+    "regenerative_advice": "ସନ୍ତୁଳିତ ପୋଷଣ ରଖନ୍ତୁ ଓ ସାପ୍ତାହିକ ନିରୀକ୍ଷଣ କରନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "स्वस्थ",
+    "symptoms": "कोई दिखने वाला रोग लक्षण नहीं; समान हरी बढ़वार।",
+    "organic_remedy": "किसी उपचार की ज़रूरत नहीं। एकीकृत पोषण व कीट प्रबंधन जारी रखें।",
+    "chemical_remedy": "ज़रूरत नहीं।",
+    "regenerative_advice": "संतुलित पोषण रखें और साप्ताहिक निगरानी करें।"
+   }
+  }
  },
  {
   "id": "maize_rust",
@@ -97,7 +241,23 @@
   "symptoms": "Small reddish-brown pustules scattered on both leaf surfaces.",
   "organic_remedy": "Spray neem oil 3% or sulfur-based botanical formulations.",
   "chemical_remedy": "Spray Mancozeb 75% WP @ 2.5g/l at pustule appearance.",
-  "regenerative_advice": "Grow tolerant hybrids; avoid late sowing; rotate with legumes."
+  "regenerative_advice": "Grow tolerant hybrids; avoid late sowing; rotate with legumes.",
+  "i18n": {
+   "or": {
+    "disease_name": "ସାଧାରଣ ରଷ୍ଟ (Puccinia sorghi)",
+    "symptoms": "ପତ୍ରର ଦୁଇ ପାଖରେ ଛୋଟ ଲାଲ-ବାଦାମୀ ଫୋଟକା ଛିନ୍ନଭିନ୍ନ ଭାବେ ଦେଖାଯାଏ।",
+    "organic_remedy": "ନିମ୍ବ ତେଲ 3% କିମ୍ବା ସଲଫର ଆଧାରିତ ଜୈବ ଫର୍ମୁଲେସନ ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "chemical_remedy": "ଫୋଟକା ଦେଖାଦେଲେ Mancozeb 75% WP @ 2.5 ଗ୍ରାମ/ଲିଟର ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "ସହନଶୀଳ ହାଇବ୍ରିଡ୍ ଲଗାନ୍ତୁ; ଡେରିରେ ବୁଣନ୍ତୁ ନାହିଁ; ଡାଲି ଫସଲ ସହ ଚକ୍ର କରନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "कॉमन रस्ट (Puccinia sorghi)",
+    "symptoms": "पत्ती की दोनों सतहों पर छोटे लाल-भूरे फुंसीनुमा धब्बे बिखरे रहते हैं।",
+    "organic_remedy": "नीम तेल 3% या सल्फर आधारित जैव फ़ॉर्मूलेशन छिड़कें।",
+    "chemical_remedy": "फुंसी दिखने पर Mancozeb 75% WP @ 2.5 ग्राम/लीटर छिड़कें।",
+    "regenerative_advice": "सहनशील हाइब्रिड लगाएँ; देर से बुवाई न करें; दलहन के साथ फ़सल चक्र करें।"
+   }
+  }
  },
  {
   "id": "maize_leaf_blight",
@@ -107,7 +267,23 @@
   "symptoms": "Large cigar-shaped grey-green lesions running parallel to leaf veins.",
   "organic_remedy": "Foliar spray of Trichoderma viride and neem-based extracts.",
   "chemical_remedy": "Spray Propiconazole 25% EC @ 1ml/l or Mancozeb @ 2.5g/l.",
-  "regenerative_advice": "Rotate crops; remove crop residue; plant resistant hybrids."
+  "regenerative_advice": "Rotate crops; remove crop residue; plant resistant hybrids.",
+  "i18n": {
+   "or": {
+    "disease_name": "ନର୍ଦନ୍ ପତ୍ର ବ୍ଲାଇଟ୍ (Exserohilum turcicum)",
+    "symptoms": "ପତ୍ର ଶିରା ସହ ସମାନ୍ତରାଳ ଭାବେ ଚାଲୁଥିବା ବଡ଼ ଚୁରୁଟ୍ ଆକୃତିର ପାଉଁଶିଆ-ସବୁଜ ଦାଗ।",
+    "organic_remedy": "Trichoderma viride ଓ ନିମ୍ବ ଆଧାରିତ ଅର୍କ ପତ୍ରରେ ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "chemical_remedy": "Propiconazole 25% EC @ 1 ମିଲି/ଲିଟର କିମ୍ବା Mancozeb @ 2.5 ଗ୍ରାମ/ଲିଟର ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "ଫସଲ ଚକ୍ର କରନ୍ତୁ; ଫସଲ ଅବଶିଷ୍ଟାଂଶ ହଟାନ୍ତୁ; ପ୍ରତିରୋଧକ ହାଇବ୍ରିଡ୍ ଲଗାନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "नॉर्दर्न लीफ ब्लाइट (Exserohilum turcicum)",
+    "symptoms": "पत्ती की नसों के समानांतर चलने वाले बड़े सिगार आकार के राख-हरे धब्बे।",
+    "organic_remedy": "Trichoderma viride और नीम आधारित अर्क का पत्तियों पर छिड़काव करें।",
+    "chemical_remedy": "Propiconazole 25% EC @ 1 मिली/लीटर या Mancozeb @ 2.5 ग्राम/लीटर छिड़कें।",
+    "regenerative_advice": "फ़सल चक्र करें; फ़सल अवशेष हटाएँ; प्रतिरोधी हाइब्रिड लगाएँ।"
+   }
+  }
  },
  {
   "id": "maize_gray_leaf_spot",
@@ -117,7 +293,23 @@
   "symptoms": "Rectangular tan to gray lesions delimited by leaf veins.",
   "organic_remedy": "Spray neem-based fungicide; improve soil organic matter.",
   "chemical_remedy": "Spray Azoxystrobin 23% SC @ 1ml/l or Tebuconazole @ 1ml/l.",
-  "regenerative_advice": "Rotate away from maize for 1-2 seasons; manage residue."
+  "regenerative_advice": "Rotate away from maize for 1-2 seasons; manage residue.",
+  "i18n": {
+   "or": {
+    "disease_name": "ଗ୍ରେ ପତ୍ର ସ୍ପଟ୍ (Cercospora zeae-maydis)",
+    "symptoms": "ପତ୍ର ଶିରାଦ୍ୱାରା ସୀମିତ ଆୟତାକୃତି ନଡ଼ା ରଙ୍ଗରୁ ପାଉଁଶିଆ ଦାଗ।",
+    "organic_remedy": "ନିମ୍ବ ଆଧାରିତ ଫଙ୍ଗିସାଇଡ ସ୍ପ୍ରେ କରନ୍ତୁ; ମାଟିର ଜୈବ ପଦାର୍ଥ ବଢ଼ାନ୍ତୁ।",
+    "chemical_remedy": "Azoxystrobin 23% SC @ 1 ମିଲି/ଲିଟର କିମ୍ବା Tebuconazole @ 1 ମିଲି/ଲିଟର ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "୧-୨ ଋତୁ ମକା ନ ଲଗାଇ ଫସଲ ଚକ୍ର କରନ୍ତୁ; ଅବଶିଷ୍ଟାଂଶ ପରିଚାଳନା କରନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "ग्रे लीफ स्पॉट (Cercospora zeae-maydis)",
+    "symptoms": "पत्ती की नसों से सीमित आयताकार भूसे से राख जैसे धब्बे।",
+    "organic_remedy": "नीम आधारित फफूंदनाशक छिड़कें; मिट्टी का जैविक पदार्थ बढ़ाएँ।",
+    "chemical_remedy": "Azoxystrobin 23% SC @ 1 मिली/लीटर या Tebuconazole @ 1 मिली/लीटर छिड़कें।",
+    "regenerative_advice": "1-2 मौसम मक्का छोड़कर फ़सल चक्र करें; अवशेष का प्रबंधन करें।"
+   }
+  }
  },
  {
   "id": "maize_healthy",
@@ -127,7 +319,23 @@
   "symptoms": "No visible symptoms; healthy green foliage.",
   "organic_remedy": "No treatment needed. Follow standard agronomy.",
   "chemical_remedy": "None needed.",
-  "regenerative_advice": "Monitor fields; maintain soil fertility."
+  "regenerative_advice": "Monitor fields; maintain soil fertility.",
+  "i18n": {
+   "or": {
+    "disease_name": "ସୁସ୍ଥ",
+    "symptoms": "ଦୃଶ୍ୟମାନ ଲକ୍ଷଣ ନାହିଁ; ସୁସ୍ଥ ସବୁଜ ପତ୍ର।",
+    "organic_remedy": "ଉପଚାର ଆବଶ୍ୟକ ନାହିଁ। ମାନକ ଚାଷ ପଦ୍ଧତି ଅନୁସରଣ କରନ୍ତୁ।",
+    "chemical_remedy": "ଆବଶ୍ୟକ ନାହିଁ।",
+    "regenerative_advice": "କ୍ଷେତ ନିରୀକ୍ଷଣ କରନ୍ତୁ; ମାଟିର ଉର୍ବରତା ବଜାୟ ରଖନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "स्वस्थ",
+    "symptoms": "कोई दिखने वाला लक्षण नहीं; स्वस्थ हरी पत्तियाँ।",
+    "organic_remedy": "उपचार की ज़रूरत नहीं। मानक खेती पद्धति अपनाएँ।",
+    "chemical_remedy": "ज़रूरत नहीं।",
+    "regenerative_advice": "खेत की निगरानी करें; मिट्टी की उर्वरता बनाए रखें।"
+   }
+  }
  },
  {
   "id": "tomato_bacterial_spot",
@@ -137,7 +345,23 @@
   "symptoms": "Small dark water-soaked spots on leaves and green fruits.",
   "organic_remedy": "Spray copper-oxylate or Bordeaux mixture weekly.",
   "chemical_remedy": "Spray Streptocycline 0.01% + Copper Oxychloride 0.3%.",
-  "regenerative_advice": "Use disease-free seed; avoid overhead irrigation."
+  "regenerative_advice": "Use disease-free seed; avoid overhead irrigation.",
+  "i18n": {
+   "or": {
+    "disease_name": "ବ୍ୟାକ୍ଟେରିଆଲ୍ ସ୍ପଟ୍ (Xanthomonas campestris pv. vesicatoria)",
+    "symptoms": "ପତ୍ର ଓ ସବୁଜ ଫଳରେ ଛୋଟ ଗାଢ଼ ପାଣିଭରା ଦାଗ।",
+    "organic_remedy": "ସାପ୍ତାହିକ ଭାବେ copper-oxylate କିମ୍ବା ବୋର୍ଡୋ ମିଶ୍ରଣ ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "chemical_remedy": "Streptocycline 0.01% + Copper Oxychloride 0.3% ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "ରୋଗମୁକ୍ତ ବୀଜ ବ୍ୟବହାର କରନ୍ତୁ; ଉପରୁ ପାଣି ଦେବା ବନ୍ଦ କରନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "बैक्टीरियल स्पॉट (Xanthomonas campestris pv. vesicatoria)",
+    "symptoms": "पत्तियों और हरे फलों पर छोटे गहरे पानी भरे धब्बे।",
+    "organic_remedy": "साप्ताहिक रूप से copper-oxylate या बोर्डो मिश्रण छिड़कें।",
+    "chemical_remedy": "Streptocycline 0.01% + Copper Oxychloride 0.3% छिड़कें।",
+    "regenerative_advice": "रोगमुक्त बीज इस्तेमाल करें; ऊपर से सिंचाई करने से बचें।"
+   }
+  }
  },
  {
   "id": "tomato_early_blight",
@@ -147,7 +371,23 @@
   "symptoms": "Brown concentric ring spots with yellow halo on older leaves.",
   "organic_remedy": "Spray neem oil 3% and Trichoderma-based biofungicide.",
   "chemical_remedy": "Spray Mancozeb 75% WP @ 2.5g/l or Chlorothalonil 75% WP @ 2g/l.",
-  "regenerative_advice": "Mulch soil; rotate with non-solanaceous crops; stake plants."
+  "regenerative_advice": "Mulch soil; rotate with non-solanaceous crops; stake plants.",
+  "i18n": {
+   "or": {
+    "disease_name": "ଅର୍ଲି ବ୍ଲାଇଟ୍ (Alternaria solani)",
+    "symptoms": "ପୁରୁଣା ପତ୍ରରେ ହଳଦିଆ ଚାରିପାଖ ସହ ବାଦାମୀ କେନ୍ଦ୍ରାଭିମୁଖୀ ବୃତ୍ତ ଦାଗ।",
+    "organic_remedy": "ନିମ୍ବ ତେଲ 3% ଓ Trichoderma ଆଧାରିତ ଜୈବ ଫଙ୍ଗିସାଇଡ ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "chemical_remedy": "Mancozeb 75% WP @ 2.5 ଗ୍ରାମ/ଲିଟର କିମ୍ବା Chlorothalonil 75% WP @ 2 ଗ୍ରାମ/ଲିଟର ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "ମାଟିରେ ମଲ୍ଚ ଦିଅନ୍ତୁ; ସୋଲାନେସି ବ୍ୟତୀତ ଫସଲ ସହ ଚକ୍ର କରନ୍ତୁ; ଗଛକୁ ଖୁଣ୍ଟି ଦିଅନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "अर्ली ब्लाइट (Alternaria solani)",
+    "symptoms": "पुरानी पत्तियों पर पीले घेरे के साथ भूरे केंद्रित वलय वाले धब्बे।",
+    "organic_remedy": "नीम तेल 3% और Trichoderma आधारित जैव फफूंदनाशक छिड़कें।",
+    "chemical_remedy": "Mancozeb 75% WP @ 2.5 ग्राम/लीटर या Chlorothalonil 75% WP @ 2 ग्राम/लीटर छिड़कें।",
+    "regenerative_advice": "मिट्टी पर मल्च डालें; सोलानेसी के अलावा फ़सल के साथ चक्र करें; पौधों को सहारा दें।"
+   }
+  }
  },
  {
   "id": "tomato_late_blight",
@@ -157,7 +397,23 @@
   "symptoms": "Dark greasy lesions on leaves and stems; white mold under humid leaves; fruit rot.",
   "organic_remedy": "Spray Bordeaux mixture 1% or Pseudomonas fluorescens.",
   "chemical_remedy": "Spray Metalaxyl + Mancozeb 72% WP @ 2.5g/l immediately.",
-  "regenerative_advice": "Remove infected plants; avoid dense canopy; improve drainage."
+  "regenerative_advice": "Remove infected plants; avoid dense canopy; improve drainage.",
+  "i18n": {
+   "or": {
+    "disease_name": "ଲେଟ୍ ବ୍ଲାଇଟ୍ (Phytophthora infestans)",
+    "symptoms": "ପତ୍ର ଓ କାଣ୍ଡରେ କଳା ଚିକଣା ଦାଗ; ଆର୍ଦ୍ର ପତ୍ର ତଳେ ଧଳା ପାଉଁଶ; ଫଳ ସଢ଼ିଯାଏ।",
+    "organic_remedy": "ବୋର୍ଡୋ ମିଶ୍ରଣ 1% କିମ୍ବା Pseudomonas fluorescens ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "chemical_remedy": "ତୁରନ୍ତ Metalaxyl + Mancozeb 72% WP @ 2.5 ଗ୍ରାମ/ଲିଟର ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "ଆକ୍ରାନ୍ତ ଗଛ ହଟାନ୍ତୁ; ଘନ ଛାଇ ରଖନ୍ତୁ ନାହିଁ; ଜଳ ନିକାସ ଉନ୍ନତ କରନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "लेट ब्लाइट (Phytophthora infestans)",
+    "symptoms": "पत्तियों और तनों पर काले चिकने धब्बे; नम पत्तियों के नीचे सफ़ेद फफूंद; फल सड़ जाते हैं।",
+    "organic_remedy": "बोर्डो मिश्रण 1% या Pseudomonas fluorescens छिड़कें।",
+    "chemical_remedy": "तुरंत Metalaxyl + Mancozeb 72% WP @ 2.5 ग्राम/लीटर छिड़कें।",
+    "regenerative_advice": "संक्रमित पौधे हटाएँ; घनी छतरी न रखें; जल निकासी सुधारें।"
+   }
+  }
  },
  {
   "id": "tomato_leaf_mold",
@@ -167,7 +423,23 @@
   "symptoms": "Pale yellow spots that turn brown with olive mold on the underside of leaves.",
   "organic_remedy": "Improve ventilation; spray neem oil formulation.",
   "chemical_remedy": "Spray Hexaconazole 5% SC @ 2ml/l or Copper Oxychloride 0.3%.",
-  "regenerative_advice": "Reduce humidity; avoid overhead watering in polyhouses."
+  "regenerative_advice": "Reduce humidity; avoid overhead watering in polyhouses.",
+  "i18n": {
+   "or": {
+    "disease_name": "ପତ୍ର ମୋଲ୍ଡ (Passalora fulva)",
+    "symptoms": "ଫିକା ହଳଦିଆ ଦାଗ ଯାହା ପରେ ବାଦାମୀ ହୋଇ ପତ୍ର ତଳେ ଅଲିଭ୍ ପାଉଁଶ ହୁଏ।",
+    "organic_remedy": "ପବନ ଚଳାଚଳ ବଢ଼ାନ୍ତୁ; ନିମ୍ବ ତେଲ ଫର୍ମୁଲେସନ ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "chemical_remedy": "Hexaconazole 5% SC @ 2 ମିଲି/ଲିଟର କିମ୍ବା Copper Oxychloride 0.3% ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "ଆର୍ଦ୍ରତା କମାନ୍ତୁ; ପଲିହାଉସରେ ଉପରୁ ପାଣି ଦିଅନ୍ତୁ ନାହିଁ।"
+   },
+   "hi": {
+    "disease_name": "लीफ मोल्ड (Passalora fulva)",
+    "symptoms": "हल्के पीले धब्बे जो बाद में भूरे होकर पत्ती के नीचे जैतूनी फफूंद बनाते हैं।",
+    "organic_remedy": "हवा का आवागमन बढ़ाएँ; नीम तेल फ़ॉर्मूलेशन छिड़कें।",
+    "chemical_remedy": "Hexaconazole 5% SC @ 2 मिली/लीटर या Copper Oxychloride 0.3% छिड़कें।",
+    "regenerative_advice": "नमी कम करें; पॉलीहाउस में ऊपर से पानी न दें।"
+   }
+  }
  },
  {
   "id": "tomato_septoria",
@@ -177,7 +449,23 @@
   "symptoms": "Small circular spots with gray centers and dark borders on lower leaves.",
   "organic_remedy": "Remove infected lower leaves; spray copper-based organics.",
   "chemical_remedy": "Spray Mancozeb 75% WP @ 2.5g/l every 7-10 days.",
-  "regenerative_advice": "Rotate crops; stake and prune for airflow."
+  "regenerative_advice": "Rotate crops; stake and prune for airflow.",
+  "i18n": {
+   "or": {
+    "disease_name": "ସେପ୍ଟୋରିଆ ପତ୍ର ସ୍ପଟ୍ (Septoria lycopersici)",
+    "symptoms": "ତଳ ପତ୍ରରେ ପାଉଁଶିଆ ମଧ୍ୟଭାଗ ଓ ଗାଢ଼ ଧାର ସହ ଛୋଟ ଗୋଲ ଦାଗ।",
+    "organic_remedy": "ଆକ୍ରାନ୍ତ ତଳ ପତ୍ର ହଟାନ୍ତୁ; ତମ୍ବା ଆଧାରିତ ଜୈବ ଔଷଧ ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "chemical_remedy": "ପ୍ରତି ୭-୧୦ ଦିନରେ Mancozeb 75% WP @ 2.5 ଗ୍ରାମ/ଲିଟର ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "ଫସଲ ଚକ୍ର କରନ୍ତୁ; ପବନ ପାଇଁ ଖୁଣ୍ଟି ଦେଇ ଛାଟନ୍ କରନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "सेप्टोरिया लीफ स्पॉट (Septoria lycopersici)",
+    "symptoms": "निचली पत्तियों पर राख जैसे बीच और गहरे किनारों वाले छोटे गोल धब्बे।",
+    "organic_remedy": "संक्रमित निचली पत्तियाँ हटाएँ; ताँबा आधारित जैविक दवा छिड़कें।",
+    "chemical_remedy": "हर 7-10 दिन में Mancozeb 75% WP @ 2.5 ग्राम/लीटर छिड़कें।",
+    "regenerative_advice": "फ़सल चक्र करें; हवा के लिए सहारा दें और छँटाई करें।"
+   }
+  }
  },
  {
   "id": "tomato_spider_mite",
@@ -187,7 +475,23 @@
   "symptoms": "Fine webbing, yellow stippling and bronzing of leaves.",
   "organic_remedy": "Release predatory mites; spray neem oil 2% or garlic extract.",
   "chemical_remedy": "Spray Fenazaquin 10% EC @ 2ml/l or Abamectin 1.9% EC @ 0.5ml/l.",
-  "regenerative_advice": "Avoid moisture stress; maintain natural enemies."
+  "regenerative_advice": "Avoid moisture stress; maintain natural enemies.",
+  "i18n": {
+   "or": {
+    "disease_name": "ମକଡ଼ି ମାଇଟ୍ (Tetranychus urticae)",
+    "symptoms": "ସୂକ୍ଷ୍ମ ଜାଲ, ହଳଦିଆ ଟିପିଆ ଦାଗ ଓ ପତ୍ର ପିତ୍ତଳ ରଙ୍ଗ ହୋଇଯାଏ।",
+    "organic_remedy": "ଶିକାରୀ ମାଇଟ୍ ଛାଡ଼ନ୍ତୁ; ନିମ୍ବ ତେଲ 2% କିମ୍ବା ରସୁଣ ଅର୍କ ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "chemical_remedy": "Fenazaquin 10% EC @ 2 ମିଲି/ଲିଟର କିମ୍ବା Abamectin 1.9% EC @ 0.5 ମିଲି/ଲିଟର ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "ପାଣି ଅଭାବ ହେବାକୁ ଦିଅନ୍ତୁ ନାହିଁ; ପ୍ରାକୃତିକ ଶତ୍ରୁ ବଜାୟ ରଖନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "स्पाइडर माइट (Tetranychus urticae)",
+    "symptoms": "बारीक जाला, पीले बिंदु और पत्तियों का काँसे जैसा रंग।",
+    "organic_remedy": "शिकारी माइट छोड़ें; नीम तेल 2% या लहसुन अर्क छिड़कें।",
+    "chemical_remedy": "Fenazaquin 10% EC @ 2 मिली/लीटर या Abamectin 1.9% EC @ 0.5 मिली/लीटर छिड़कें।",
+    "regenerative_advice": "पानी की कमी न होने दें; प्राकृतिक शत्रु बनाए रखें।"
+   }
+  }
  },
  {
   "id": "tomato_target_spot",
@@ -197,7 +501,23 @@
   "symptoms": "Small brown spots that enlarge into concentric target-like rings.",
   "organic_remedy": "Spray Trichoderma-based biofungicide.",
   "chemical_remedy": "Spray Mancozeb 2.5g/l or Difenoconazole 25% EC @ 0.5ml/l.",
-  "regenerative_advice": "Improve field hygiene; rotate with non-host crops."
+  "regenerative_advice": "Improve field hygiene; rotate with non-host crops.",
+  "i18n": {
+   "or": {
+    "disease_name": "ଟାର୍ଗେଟ୍ ସ୍ପଟ୍ (Corynespora cassiicola)",
+    "symptoms": "ଛୋଟ ବାଦାମୀ ଦାଗ ଯାହା ବଢ଼ି କେନ୍ଦ୍ରାଭିମୁଖୀ ଲକ୍ଷ୍ୟ ଭଳି ବୃତ୍ତ ହୁଏ।",
+    "organic_remedy": "Trichoderma ଆଧାରିତ ଜୈବ ଫଙ୍ଗିସାଇଡ ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "chemical_remedy": "Mancozeb 2.5 ଗ୍ରାମ/ଲିଟର କିମ୍ବା Difenoconazole 25% EC @ 0.5 ମିଲି/ଲିଟର ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "କ୍ଷେତ ପରିଷ୍କାର ରଖନ୍ତୁ; ଅନ୍ୟ ଫସଲ ସହ ଚକ୍ର କରନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "टारगेट स्पॉट (Corynespora cassiicola)",
+    "symptoms": "छोटे भूरे धब्बे जो बढ़कर केंद्रित लक्ष्य जैसे छल्ले बनाते हैं।",
+    "organic_remedy": "Trichoderma आधारित जैव फफूंदनाशक छिड़कें।",
+    "chemical_remedy": "Mancozeb 2.5 ग्राम/लीटर या Difenoconazole 25% EC @ 0.5 मिली/लीटर छिड़कें।",
+    "regenerative_advice": "खेत की सफ़ाई सुधारें; अन्य फ़सल के साथ चक्र करें।"
+   }
+  }
  },
  {
   "id": "tomato_yellow_leaf_curl",
@@ -207,7 +527,23 @@
   "symptoms": "Leaf curling, yellowing, stunted plants; transmitted by whiteflies.",
   "organic_remedy": "Control whitefly with yellow sticky traps and neem seed kernel extract 5%.",
   "chemical_remedy": "Spray Imidacloprid 17.8% SL @ 0.5ml/l against whitefly vectors.",
-  "regenerative_advice": "Use resistant hybrids; rogue infected plants immediately."
+  "regenerative_advice": "Use resistant hybrids; rogue infected plants immediately.",
+  "i18n": {
+   "or": {
+    "disease_name": "ହଳଦିଆ ପତ୍ର କର୍ଲ ଭୂତାଣୁ (TYLCV)",
+    "symptoms": "ପତ୍ର କୁଞ୍ଚିତ ହେବା, ହଳଦିଆ ହେବା, ଗଛ ଛୋଟ ରହିବା; ଧଳା ମାଛିଦ୍ୱାରା ବ୍ୟାପେ।",
+    "organic_remedy": "ହଳଦିଆ ଷ୍ଟିକି ଟ୍ରାପ୍ ଓ ନିମ୍ବ ମଞ୍ଜି କେନେଲ୍ ଏକ୍ସଟ୍ରାକ୍ଟ 5% ଦ୍ୱାରା ଧଳା ମାଛି ନିୟନ୍ତ୍ରଣ କରନ୍ତୁ।",
+    "chemical_remedy": "ଧଳା ମାଛି ପାଇଁ Imidacloprid 17.8% SL @ 0.5 ମିଲି/ଲିଟର ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "ପ୍ରତିରୋଧକ ହାଇବ୍ରିଡ୍ ଲଗାନ୍ତୁ; ଆକ୍ରାନ୍ତ ଗଛ ତୁରନ୍ତ ଉତ୍ପାଟନ କରନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "येलो लीफ कर्ल वायरस (TYLCV)",
+    "symptoms": "पत्तियाँ मुड़ना, पीलापन, पौधे छोटे रहना; सफ़ेद मक्खी से फैलता है।",
+    "organic_remedy": "पीले स्टिकी ट्रैप और नीम बीज गिरी अर्क 5% से सफ़ेद मक्खी नियंत्रित करें।",
+    "chemical_remedy": "सफ़ेद मक्खी के लिए Imidacloprid 17.8% SL @ 0.5 मिली/लीटर छिड़कें।",
+    "regenerative_advice": "प्रतिरोधी हाइब्रिड लगाएँ; संक्रमित पौधे तुरंत उखाड़ें।"
+   }
+  }
  },
  {
   "id": "tomato_mosaic",
@@ -217,7 +553,23 @@
   "symptoms": "Mottled light and dark green mosaic on leaves; leaf distortion.",
   "organic_remedy": "Remove infected plants; control aphids; sanitize hands/tools with milk.",
   "chemical_remedy": "No direct cure - manage aphid vectors with Imidacloprid spray.",
-  "regenerative_advice": "Use virus-free seed; rotate with non-solanaceous crops."
+  "regenerative_advice": "Use virus-free seed; rotate with non-solanaceous crops.",
+  "i18n": {
+   "or": {
+    "disease_name": "ମୋଜାଇକ୍ ଭୂତାଣୁ (ToMV)",
+    "symptoms": "ପତ୍ରରେ ଫିକା ଓ ଗାଢ଼ ସବୁଜ ମୋଜାଇକ୍ ଦାଗ; ପତ୍ର ବିକୃତ ହୁଏ।",
+    "organic_remedy": "ଆକ୍ରାନ୍ତ ଗଛ ହଟାନ୍ତୁ; ଜୁଆଁ ପୋକ ନିୟନ୍ତ୍ରଣ କରନ୍ତୁ; ହାତ/ଯନ୍ତ୍ର କ୍ଷୀରରେ ସଫା କରନ୍ତୁ।",
+    "chemical_remedy": "ସିଧା ଉପଚାର ନାହିଁ - Imidacloprid ସ୍ପ୍ରେ କରି ଜୁଆଁ ପୋକ ନିୟନ୍ତ୍ରଣ କରନ୍ତୁ।",
+    "regenerative_advice": "ଭୂତାଣୁମୁକ୍ତ ବୀଜ ବ୍ୟବହାର କରନ୍ତୁ; ସୋଲାନେସି ବ୍ୟତୀତ ଫସଲ ସହ ଚକ୍ର କରନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "मोज़ेक वायरस (ToMV)",
+    "symptoms": "पत्तियों पर हल्के-गहरे हरे मोज़ेक धब्बे; पत्तियाँ विकृत हो जाती हैं।",
+    "organic_remedy": "संक्रमित पौधे हटाएँ; माहू नियंत्रित करें; हाथ/औज़ार दूध से साफ़ करें।",
+    "chemical_remedy": "सीधा इलाज नहीं - Imidacloprid छिड़ककर माहू नियंत्रित करें।",
+    "regenerative_advice": "वायरस-मुक्त बीज इस्तेमाल करें; सोलानेसी के अलावा फ़सल के साथ चक्र करें।"
+   }
+  }
  },
  {
   "id": "tomato_healthy",
@@ -227,7 +579,23 @@
   "symptoms": "No visible symptoms; vigorous growth.",
   "organic_remedy": "No treatment needed.",
   "chemical_remedy": "None needed.",
-  "regenerative_advice": "Maintain good canopy management and nutrition."
+  "regenerative_advice": "Maintain good canopy management and nutrition.",
+  "i18n": {
+   "or": {
+    "disease_name": "ସୁସ୍ଥ",
+    "symptoms": "ଦୃଶ୍ୟମାନ ଲକ୍ଷଣ ନାହିଁ; ଭଲ ବୃଦ୍ଧି।",
+    "organic_remedy": "ଉପଚାର ଆବଶ୍ୟକ ନାହିଁ।",
+    "chemical_remedy": "ଆବଶ୍ୟକ ନାହିଁ।",
+    "regenerative_advice": "ଭଲ ଛାଇ ପରିଚାଳନା ଓ ପୋଷଣ ବଜାୟ ରଖନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "स्वस्थ",
+    "symptoms": "कोई दिखने वाला लक्षण नहीं; अच्छी बढ़वार।",
+    "organic_remedy": "उपचार की ज़रूरत नहीं।",
+    "chemical_remedy": "ज़रूरत नहीं।",
+    "regenerative_advice": "अच्छी छतरी प्रबंधन और पोषण बनाए रखें।"
+   }
+  }
  },
  {
   "id": "potato_early_blight",
@@ -237,7 +605,23 @@
   "symptoms": "Dark brown angular spots with concentric rings on older leaves.",
   "organic_remedy": "Spray neem oil 3% and Trichoderma formulation.",
   "chemical_remedy": "Spray Mancozeb 75% WP @ 2.5g/l at first symptom.",
-  "regenerative_advice": "Rotate with cereals; avoid excess nitrogen; hill soil well."
+  "regenerative_advice": "Rotate with cereals; avoid excess nitrogen; hill soil well.",
+  "i18n": {
+   "or": {
+    "disease_name": "ଅର୍ଲି ବ୍ଲାଇଟ୍ (Alternaria solani)",
+    "symptoms": "ପୁରୁଣା ପତ୍ରରେ କେନ୍ଦ୍ରାଭିମୁଖୀ ବୃତ୍ତ ସହ ଗାଢ଼ ବାଦାମୀ କୋଣୀୟ ଦାଗ।",
+    "organic_remedy": "ନିମ୍ବ ତେଲ 3% ଓ Trichoderma ଫର୍ମୁଲେସନ ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "chemical_remedy": "ପ୍ରଥମ ଲକ୍ଷଣରେ Mancozeb 75% WP @ 2.5 ଗ୍ରାମ/ଲିଟର ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "ଧାନ୍ୟ ଫସଲ ସହ ଚକ୍ର କରନ୍ତୁ; ଅଧିକ ଯବକ୍ଷାରଜାନ ଦିଅନ୍ତୁ ନାହିଁ; ମାଟି ଭଲ ଭାବେ ଚଢ଼ାନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "अर्ली ब्लाइट (Alternaria solani)",
+    "symptoms": "पुरानी पत्तियों पर केंद्रित छल्लों वाले गहरे भूरे कोणीय धब्बे।",
+    "organic_remedy": "नीम तेल 3% और Trichoderma फ़ॉर्मूलेशन छिड़कें।",
+    "chemical_remedy": "पहले लक्षण पर Mancozeb 75% WP @ 2.5 ग्राम/लीटर छिड़कें।",
+    "regenerative_advice": "अनाज की फ़सल के साथ चक्र करें; अधिक नाइट्रोजन न दें; मिट्टी अच्छी तरह चढ़ाएँ।"
+   }
+  }
  },
  {
   "id": "potato_late_blight",
@@ -247,7 +631,23 @@
   "symptoms": "Water-soaked dark lesions; white fungal ring under wet leaves; tuber rot.",
   "organic_remedy": "Spray Bordeaux mixture 1% or Pseudomonas fluorescens.",
   "chemical_remedy": "Spray Metalaxyl + Mancozeb 72% WP @ 2.5g/l; repeat weekly.",
-  "regenerative_advice": "Destroy infected haulms; store tubers dry; use certified seed."
+  "regenerative_advice": "Destroy infected haulms; store tubers dry; use certified seed.",
+  "i18n": {
+   "or": {
+    "disease_name": "ଲେଟ୍ ବ୍ଲାଇଟ୍ (Phytophthora infestans)",
+    "symptoms": "ପାଣିଭରା କଳା ଦାଗ; ଓଦା ପତ୍ର ତଳେ ଧଳା ଫଙ୍ଗସ ବୃତ୍ତ; କନ୍ଦ ସଢ଼ିଯାଏ।",
+    "organic_remedy": "ବୋର୍ଡୋ ମିଶ୍ରଣ 1% କିମ୍ବା Pseudomonas fluorescens ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "chemical_remedy": "Metalaxyl + Mancozeb 72% WP @ 2.5 ଗ୍ରାମ/ଲିଟର ସ୍ପ୍ରେ କରନ୍ତୁ; ସାପ୍ତାହିକ ପୁନରାବୃତ୍ତି କରନ୍ତୁ।",
+    "regenerative_advice": "ଆକ୍ରାନ୍ତ ଗଛ ନଷ୍ଟ କରନ୍ତୁ; କନ୍ଦ ଶୁଖିଲା ରଖନ୍ତୁ; ପ୍ରମାଣିତ ବୀଜ ବ୍ୟବହାର କରନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "लेट ब्लाइट (Phytophthora infestans)",
+    "symptoms": "पानी भरे काले धब्बे; गीली पत्तियों के नीचे सफ़ेद फफूंद का छल्ला; कंद सड़ जाते हैं।",
+    "organic_remedy": "बोर्डो मिश्रण 1% या Pseudomonas fluorescens छिड़कें।",
+    "chemical_remedy": "Metalaxyl + Mancozeb 72% WP @ 2.5 ग्राम/लीटर छिड़कें; साप्ताहिक दोहराएँ।",
+    "regenerative_advice": "संक्रमित पौधे नष्ट करें; कंद सूखा रखें; प्रमाणित बीज इस्तेमाल करें।"
+   }
+  }
  },
  {
   "id": "potato_healthy",
@@ -257,7 +657,23 @@
   "symptoms": "No visible symptoms; healthy foliage.",
   "organic_remedy": "No treatment needed.",
   "chemical_remedy": "None needed.",
-  "regenerative_advice": "Follow standard crop management."
+  "regenerative_advice": "Follow standard crop management.",
+  "i18n": {
+   "or": {
+    "disease_name": "ସୁସ୍ଥ",
+    "symptoms": "ଦୃଶ୍ୟମାନ ଲକ୍ଷଣ ନାହିଁ; ସୁସ୍ଥ ପତ୍ର।",
+    "organic_remedy": "ଉପଚାର ଆବଶ୍ୟକ ନାହିଁ।",
+    "chemical_remedy": "ଆବଶ୍ୟକ ନାହିଁ।",
+    "regenerative_advice": "ମାନକ ଫସଲ ପରିଚାଳନା ଅନୁସରଣ କରନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "स्वस्थ",
+    "symptoms": "कोई दिखने वाला लक्षण नहीं; स्वस्थ पत्तियाँ।",
+    "organic_remedy": "उपचार की ज़रूरत नहीं।",
+    "chemical_remedy": "ज़रूरत नहीं।",
+    "regenerative_advice": "मानक फ़सल प्रबंधन अपनाएँ।"
+   }
+  }
  },
  {
   "id": "cotton_leaf_curl",
@@ -267,7 +683,23 @@
   "symptoms": "Upward/downward curling of leaves with vein thickening; stunted growth.",
   "organic_remedy": "Control whitefly with yellow sticky traps and neem seed kernel extract 5%.",
   "chemical_remedy": "Spray Imidacloprid 17.8% SL @ 0.5ml/l to manage whitefly vectors.",
-  "regenerative_advice": "Plant border rows of maize/sorghum to block whitefly migration."
+  "regenerative_advice": "Plant border rows of maize/sorghum to block whitefly migration.",
+  "i18n": {
+   "or": {
+    "disease_name": "କପା ପତ୍ର କର୍ଲ ଭୂତାଣୁ (CLCuV)",
+    "symptoms": "ପତ୍ର ଉପରକୁ/ତଳକୁ କୁଞ୍ଚିତ ହେବା ସହ ଶିରା ମୋଟା ହୁଏ; ବୃଦ୍ଧି ଅଟକିଯାଏ।",
+    "organic_remedy": "ହଳଦିଆ ଷ୍ଟିକି ଟ୍ରାପ୍ ଓ ନିମ୍ବ ମଞ୍ଜି କେନେଲ୍ ଏକ୍ସଟ୍ରାକ୍ଟ 5% ଦ୍ୱାରା ଧଳା ମାଛି ନିୟନ୍ତ୍ରଣ କରନ୍ତୁ।",
+    "chemical_remedy": "ଧଳା ମାଛି ନିୟନ୍ତ୍ରଣ ପାଇଁ Imidacloprid 17.8% SL @ 0.5 ମିଲି/ଲିଟର ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "ଧଳା ମାଛି ପ୍ରବେଶ ରୋକିବାକୁ ମକା/ଯୁଆର ଧାର ଧାଡ଼ି ଲଗାନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "कपास लीफ कर्ल वायरस (CLCuV)",
+    "symptoms": "पत्तियाँ ऊपर/नीचे मुड़ना और नसें मोटी होना; बढ़वार रुक जाती है।",
+    "organic_remedy": "पीले स्टिकी ट्रैप और नीम बीज गिरी अर्क 5% से सफ़ेद मक्खी नियंत्रित करें।",
+    "chemical_remedy": "सफ़ेद मक्खी नियंत्रण के लिए Imidacloprid 17.8% SL @ 0.5 मिली/लीटर छिड़कें।",
+    "regenerative_advice": "सफ़ेद मक्खी की आवाजाही रोकने के लिए मक्का/ज्वार की किनारी पंक्तियाँ लगाएँ।"
+   }
+  }
  },
  {
   "id": "cotton_bacterial_blight",
@@ -277,7 +709,23 @@
   "symptoms": "Angular water-soaked lesions on leaves; black arm on stems and bolls.",
   "organic_remedy": "Acid-delint seed; spray copper oxychloride 0.3%.",
   "chemical_remedy": "Spray Streptocycline 0.01% + Copper Oxychloride 0.3%.",
-  "regenerative_advice": "Use certified delinted seed; rotate with non-host crops."
+  "regenerative_advice": "Use certified delinted seed; rotate with non-host crops.",
+  "i18n": {
+   "or": {
+    "disease_name": "ବ୍ୟାକ୍ଟେରିଆଲ୍ ବ୍ଲାଇଟ୍ (Xanthomonas axonopodis pv. malvacearum)",
+    "symptoms": "ପତ୍ରରେ କୋଣୀୟ ପାଣିଭରା ଦାଗ; କାଣ୍ଡ ଓ ବଡ଼ିରେ କଳା ଆର୍ମ।",
+    "organic_remedy": "ବୀଜ ଏସିଡ୍ ଡିଲିଣ୍ଟ କରନ୍ତୁ; copper oxychloride 0.3% ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "chemical_remedy": "Streptocycline 0.01% + Copper Oxychloride 0.3% ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "ପ୍ରମାଣିତ ଡିଲିଣ୍ଟେଡ୍ ବୀଜ ବ୍ୟବହାର କରନ୍ତୁ; ଅନ୍ୟ ଫସଲ ସହ ଚକ୍ର କରନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "बैक्टीरियल ब्लाइट (Xanthomonas axonopodis pv. malvacearum)",
+    "symptoms": "पत्तियों पर कोणीय पानी भरे धब्बे; तने और टिंडों पर ब्लैक आर्म।",
+    "organic_remedy": "बीज को एसिड डिलिंट करें; copper oxychloride 0.3% छिड़कें।",
+    "chemical_remedy": "Streptocycline 0.01% + Copper Oxychloride 0.3% छिड़कें।",
+    "regenerative_advice": "प्रमाणित डिलिंटेड बीज इस्तेमाल करें; अन्य फ़सल के साथ चक्र करें।"
+   }
+  }
  },
  {
   "id": "cotton_fusarium_wilt",
@@ -287,7 +735,23 @@
   "symptoms": "Sudden wilting, yellowing and browning of leaves; vascular discoloration.",
   "organic_remedy": "Seed treatment with Trichoderma viride (4g/kg); soil application of neem cake.",
   "chemical_remedy": "Drench Carbendazim 50% WP @ 1g/l around the root zone.",
-  "regenerative_advice": "Grow resistant varieties; long rotation; improve drainage."
+  "regenerative_advice": "Grow resistant varieties; long rotation; improve drainage.",
+  "i18n": {
+   "or": {
+    "disease_name": "ଫ୍ୟୁଜାରିଅମ୍ ୱିଲ୍ଟ (Fusarium oxysporum f.sp. vasinfectum)",
+    "symptoms": "ଆକସ୍ମିକ ମୁର୍ଚ୍ଛା, ପତ୍ର ହଳଦିଆ ଓ ବାଦାମୀ ହେବା; ଭିତର ଶିରା ରଙ୍ଗ ବଦଳେ।",
+    "organic_remedy": "Trichoderma viride (4 ଗ୍ରାମ/କିଲୋ) ରେ ବୀଜ ଉପଚାର; ମାଟିରେ ନିମ୍ବ ଖଳି ଦିଅନ୍ତୁ।",
+    "chemical_remedy": "ମୂଳ ଅଞ୍ଚଳରେ Carbendazim 50% WP @ 1 ଗ୍ରାମ/ଲିଟର ଢାଳନ୍ତୁ।",
+    "regenerative_advice": "ପ୍ରତିରୋଧକ କିସମ ଲଗାନ୍ତୁ; ଦୀର୍ଘ ଫସଲ ଚକ୍ର କରନ୍ତୁ; ଜଳ ନିକାସ ଉନ୍ନତ କରନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "फ्यूजेरियम विल्ट (Fusarium oxysporum f.sp. vasinfectum)",
+    "symptoms": "अचानक मुरझाना, पत्तियाँ पीली व भूरी होना; अंदर की नसों का रंग बदलना।",
+    "organic_remedy": "Trichoderma viride (4 ग्राम/किलो) से बीजोपचार; मिट्टी में नीम खली डालें।",
+    "chemical_remedy": "जड़ क्षेत्र में Carbendazim 50% WP @ 1 ग्राम/लीटर डालें।",
+    "regenerative_advice": "प्रतिरोधी किस्में लगाएँ; लंबा फ़सल चक्र करें; जल निकासी सुधारें।"
+   }
+  }
  },
  {
   "id": "cotton_healthy",
@@ -297,6 +761,22 @@
   "symptoms": "No visible symptoms; healthy growth.",
   "organic_remedy": "No treatment needed.",
   "chemical_remedy": "None needed.",
-  "regenerative_advice": "Monitor for sucking pests and maintain nutrition."
+  "regenerative_advice": "Monitor for sucking pests and maintain nutrition.",
+  "i18n": {
+   "or": {
+    "disease_name": "ସୁସ୍ଥ",
+    "symptoms": "ଦୃଶ୍ୟମାନ ଲକ୍ଷଣ ନାହିଁ; ସୁସ୍ଥ ବୃଦ୍ଧି।",
+    "organic_remedy": "ଉପଚାର ଆବଶ୍ୟକ ନାହିଁ।",
+    "chemical_remedy": "ଆବଶ୍ୟକ ନାହିଁ।",
+    "regenerative_advice": "ରସ ଶୋଷକ ପୋକ ପାଇଁ ନିରୀକ୍ଷଣ କରନ୍ତୁ ଓ ପୋଷଣ ବଜାୟ ରଖନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "स्वस्थ",
+    "symptoms": "कोई दिखने वाला लक्षण नहीं; स्वस्थ बढ़वार।",
+    "organic_remedy": "उपचार की ज़रूरत नहीं।",
+    "chemical_remedy": "ज़रूरत नहीं।",
+    "regenerative_advice": "रस चूसने वाले कीटों की निगरानी करें और पोषण बनाए रखें।"
+   }
+  }
  }
 ]

@@ -8,6 +8,7 @@ dist/
 build/
 
 # Environment variables
+.freebuff/
 .env
 .env.local
 .env.development.local
@@ -57,9 +58,12 @@ public/model/*.tflite
 tfjs_model/
 
 # Internal tracking files
+ppt.md
 todo.md
 phases.md
 model_train.md
+MODEL_PLAN.md
+document.md
 
 # Misc
 *.log

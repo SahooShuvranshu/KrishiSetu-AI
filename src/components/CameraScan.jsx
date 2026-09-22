@@ -3,10 +3,8 @@ import { Camera, Upload, Share2, WifiOff, X } from 'lucide-react';
 import { diagnoseCropLeaf } from '../services/gemini';
 import { runInBrowserVisionInference } from '../services/modelStorageService';
 import { speakText } from '../services/voice';
-import { broadcastAlert } from '../services/firebase';
 import { saveImage, getImage, deleteImage } from '../services/imageStorage';
-import { getCurrentPosition, DEFAULT_POSITION } from '../services/geolocation';
-import { GEMINI_TIMEOUT, MAX_SCAN_HISTORY } from '../config/constants';
+import { GEMINI_TIMEOUT, MODEL_INFERENCE_TIMEOUT, MAX_SCAN_HISTORY } from '../config/constants';
 import ScanAnimation from './ScanAnimation';
 import { useToast } from './Toast.jsx';
 import { useApp } from '../context/AppContext';
@@ -33,6 +31,24 @@ const compressImage = (base64, maxWidth = 512) => {
   });
 };
 
+// Reject after `ms` so that no analysis path can leave the screen spinning.
+// The timer is always cleared, so a fast result does not keep it alive.
+const withTimeout = (promise, ms) => {
+  let timer;
+  const timeout = new Promise((_, reject) => {
+    timer = setTimeout(() => reject(new Error('ANALYSIS_TIMEOUT')), ms);
+  });
+  return Promise.race([promise, timeout]).finally(() => clearTimeout(timer));
+};
+
+// Resolve only once the photo really decoded - a broken file must not hang.
+const loadImage = (src) => new Promise((resolve, reject) => {
+  const img = new Image();
+  img.onload = () => resolve(img);
+  img.onerror = () => reject(new Error('IMAGE_LOAD_FAILED'));
+  img.src = src;
+});
+
 export default function CameraScan() {
   const { isOnline, appLanguage, t } = useApp();
   const [imagePreview, setImagePreview] = useState(null);
@@ -40,7 +56,6 @@ export default function CameraScan() {
   const [result, setResult] = useState(null);
   const [scanHistory, setScanHistory] = useState([]);
   const [selectedCrop, setSelectedCrop] = useState('general');
-  const [broadcasting, setBroadcasting] = useState(false);
   const toast = useToast();
 
   // Guards against state updates after the user starts a fresh scan
@@ -54,6 +69,11 @@ export default function CameraScan() {
     { id: 'potato', icon: '🥔', name: { en: 'Potato', or: 'ଆଳୁ', hi: 'आलू' } },
     { id: 'maize', icon: '🌽', name: { en: 'Maize', or: 'ମକା', hi: 'मक्का' } }
   ];
+
+  // Shown as a chip on the result so the user can see which crop context was
+  // actually given to the model.
+  const selectedCropOption = cropOptions.find((c) => c.id === selectedCrop) || cropOptions[0];
+  const currentCropName = selectedCropOption.name[appLanguage] || selectedCropOption.name.en;
 
   // Load scan history from localStorage
   useEffect(() => {
@@ -69,7 +89,7 @@ export default function CameraScan() {
   }, []);
 
   // Restore a previous scan ONLY when both image and result exist.
-  // If only a stray photo is stored (e.g. after an interrupted share/broadcast),
+  // If only a stray photo is stored (e.g. after an interrupted share),
   // start fresh so the user is never stuck with a photo and no way forward.
   useEffect(() => {
     const loadLastScan = async () => {
@@ -123,48 +143,47 @@ export default function CameraScan() {
       let diagnosis;
       if (isOnline) {
         // Timeout so a hung request can never leave the screen stuck on "scanning"
-        const timeoutPromise = new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('ANALYSIS_TIMEOUT')), GEMINI_TIMEOUT)
-        );
-        diagnosis = await Promise.race([
-          diagnoseCropLeaf(base64Image, appLanguage),
-          timeoutPromise
-        ]);
+        diagnosis = await withTimeout(diagnoseCropLeaf(base64Image, appLanguage), GEMINI_TIMEOUT);
       } else {
-        const img = new Image();
-        img.src = base64Image;
-        await new Promise(resolve => img.onload = resolve);
-
-        diagnosis = await runInBrowserVisionInference(img);
+        // The on-device path needs its own, longer budget: the first run has to
+        // load and warm up the TF.js model before it can predict anything.
+        const img = await loadImage(base64Image);
+        // selectedCrop is the context the model cannot get from a photo: with it,
+        // only that crop's classes are considered.
+        const offline = await withTimeout(
+          runInBrowserVisionInference(img, selectedCrop, appLanguage),
+          MODEL_INFERENCE_TIMEOUT
+        );
+        diagnosis = offline.status === 'not_a_leaf'
+          ? { disease: t('notALeafTitle'), treatment: t('notALeafAdvice'), status: 'not_a_leaf' }
+          : offline;
       }
       if (scanId !== scanIdRef.current) return; // user moved on - ignore stale result
       const res = {
         source: isOnline ? 'Cloud AI' : t('offlineModel'),
         disease: diagnosis.disease,
-        treatment: diagnosis.treatment
+        treatment: diagnosis.treatment,
+        status: diagnosis.status || 'ok',
+        confidence: typeof diagnosis.confidence === 'number' ? diagnosis.confidence : null
       };
       setResult(res);
       saveLastResult(res);
     } catch (error) {
       if (scanId !== scanIdRef.current) return;
-      if (error.message === "MODEL_NOT_INSTALLED") {
-        const res = {
-          source: 'System',
-          disease: 'Model Not Installed',
-          treatment: 'Please go to Settings (gear icon) and download the Offline AI Model to scan photos without internet.'
-        };
+      const failed = (diseaseKey, treatmentKey, source) => {
+        const res = { source, disease: t(diseaseKey), treatment: t(treatmentKey) };
         setResult(res);
         saveLastResult(res);
+      };
+
+      if (error.message === 'MODEL_NOT_INSTALLED') {
+        failed('modelNotInstalled', 'modelNotInstalledAdvice', 'System');
+      } else if (error.message === 'IMAGE_LOAD_FAILED') {
+        failed('photoUnreadable', 'photoUnreadableAdvice', t('errorLabel'));
+      } else if (error.message === 'ANALYSIS_TIMEOUT') {
+        failed('analysisTimeout', 'analysisTimeoutAdvice', t('errorLabel'));
       } else {
-        const res = {
-          source: 'Error',
-          disease: error.message === 'ANALYSIS_TIMEOUT' ? 'Analysis Timed Out' : 'Analysis Failed',
-          treatment: error.message === 'ANALYSIS_TIMEOUT'
-            ? 'The analysis took too long. Check your internet connection and try again.'
-            : 'Please check your connection or switch to Offline mode in settings.'
-        };
-        setResult(res);
-        saveLastResult(res);
+        failed('analysisFailed', 'analysisFailedAdvice', t('errorLabel'));
       }
     } finally {
       if (scanId === scanIdRef.current) {
@@ -192,6 +211,8 @@ export default function CameraScan() {
         disease: result.disease,
         treatment: result.treatment,
         source: result.source,
+        status: result.status || 'ok',
+        confidence: result.confidence === undefined ? null : result.confidence,
         thumbnail: imagePreview ? imagePreview.substring(0, 100) + '...' : null
       };
       const newHistory = [historyEntry, ...scanHistory].slice(0, MAX_SCAN_HISTORY); // Keep last N
@@ -206,55 +227,15 @@ export default function CameraScan() {
     localStorage.removeItem('krishisetu_scan_history');
   };
 
-  const handleBroadcastAlert = async () => {
-    if (!result || broadcasting) return;
-    setBroadcasting(true);
-    try {
-      // Get device location if available (debounced via geolocation service)
-      let lat = DEFAULT_POSITION.lat; // Default: Odisha center
-      let lng = DEFAULT_POSITION.lng;
-
-      try {
-        const position = await getCurrentPosition();
-        lat = position.coords.latitude;
-        lng = position.coords.longitude;
-      } catch (error) {
-        console.warn('GPS not available, using default location');
-      }
-
-      const newAlert = {
-        origin: "Your Farm (Local)",
-        target: "Nearby Districts",
-        lat: lat,
-        lng: lng,
-        pest: result.disease.replace(/\(.*\)/, '').trim(),
-        crop: "Local Crop",
-        severity: "High",
-        advice: "Automated AI Warning: A local farmer just detected this pest. Inspect crops immediately."
-      };
-
-      // Broadcast via Firebase (or localStorage fallback)
-      const broadcastResult = await broadcastAlert(newAlert);
-      toast.success(broadcastResult.queued ? t('broadcastQueued') || 'Alert queued - will sync when online' : t('broadcastSuccess'), 'Alert Sent');
-      // Get ready for the next photo automatically after a successful broadcast
-      await clearScan();
-    } catch (error) {
-      console.error('Broadcast failed', error);
-      toast.error(t('broadcastFailed') || 'Broadcast failed. Try again.', 'Alert Error');
-    } finally {
-      setBroadcasting(false);
-    }
-  };
-
   const handleShare = async () => {
     if (!result) return;
-    const shareText = `Krishi Setu AI Diagnosis:\n${result.disease}\n\nAdvice:\n${result.treatment}`;
+    const shareText = `${t('diagnosisLabel')}: ${result.disease}\n\n${t('advice')}: ${result.treatment}`;
     try {
       if (navigator.share) {
-        await navigator.share({ title: 'Krishi Setu - Crop Diagnosis', text: shareText });
+        await navigator.share({ title: t('shareDialogTitle'), text: shareText });
       } else {
         await navigator.clipboard.writeText(shareText);
-        toast.info('Copied!', 'Copied');
+        toast.info(t('copied'), t('copiedTitle'));
       }
       // Get ready for the next photo automatically after a successful share
       await clearScan();
@@ -262,7 +243,7 @@ export default function CameraScan() {
       // User dismissed the share sheet (AbortError) - keep the result visible
       if (error && error.name !== 'AbortError') {
         console.warn('Share failed', error);
-        toast.error('Share failed. Try again.', 'Share');
+        toast.error(t('shareFailed'), t('share'));
       }
     }
   };
@@ -273,8 +254,8 @@ export default function CameraScan() {
         <div className="bg-yellow-100 border-2 border-yellow-500 p-2 flex items-center gap-2">
           <WifiOff size={16} className="text-yellow-600 flex-shrink-0" />
           <div>
-            <p className="font-black text-[10px] uppercase text-yellow-800">Offline Mode Active</p>
-            <p className="font-mono text-[8px] text-yellow-700">Using local AI model.</p>
+            <p className="font-black text-[10px] uppercase text-yellow-800">{t('offlineModeActive')}</p>
+            <p className="font-mono text-[8px] text-yellow-700">{t('usingLocalAi')}</p>
           </div>
         </div>
       )}
@@ -282,7 +263,10 @@ export default function CameraScan() {
       {!imagePreview && (
         <div className="flex flex-col gap-2.5 mt-2">
           <div className="bg-white border-2 border-black p-2">
-            <p className="font-mono text-[9px] uppercase text-gray-500 mb-1.5">{t('selectCrop') || 'Select Crop Type'}:</p>
+            <p className="font-mono text-[9px] uppercase text-gray-500 mb-1.5 flex items-center gap-1.5">
+            <span className="bg-black text-brutal-neon border border-black px-1.5 leading-tight">1</span>
+            {t('selectCrop')}
+          </p>
             <div className="grid grid-cols-3 gap-1.5">
               {cropOptions.map((crop) => (
                 <button
@@ -299,13 +283,17 @@ export default function CameraScan() {
                 </button>
               ))}
             </div>
+            <p className="font-mono text-[8px] text-gray-500 mt-1.5 leading-snug">{t('cropHint')}</p>
           </div>
 
-          <p className="font-mono text-xs uppercase text-gray-600 text-center">{t('takePhotoInstruction')}</p>
+          <p className="font-mono text-[9px] uppercase text-gray-500 flex items-center gap-1.5 mt-1">
+            <span className="bg-black text-brutal-neon border border-black px-1.5 leading-tight">2</span>
+            {t('takePhotoInstruction')}
+          </p>
 
           <label
             className="brutal-button bg-brutal-neon text-black p-4 flex flex-col items-center justify-center gap-1.5 cursor-pointer border-2 border-black shadow-brutal text-sm uppercase tracking-wider"
-            aria-label="Open camera to take photo"
+            aria-label={t('openCamera')}
           >
             <Camera size={28} />
             {t('openCamera')}
@@ -314,7 +302,7 @@ export default function CameraScan() {
 
           <label
             className="brutal-button bg-white text-black p-4 flex flex-col items-center justify-center gap-1.5 cursor-pointer border-2 border-black shadow-brutal text-sm uppercase tracking-wider"
-            aria-label="Upload photo from gallery"
+            aria-label={t('uploadPhoto')}
           >
             <Upload size={28} />
             {t('uploadPhoto')}
@@ -333,35 +321,56 @@ export default function CameraScan() {
       )}
 
       {imagePreview && (
-        <div className="relative border-2 border-black shadow-brutal-hover bg-black aspect-[3/4] overflow-hidden">
-          <img src={imagePreview} alt="Scan Preview" className="w-full h-full object-contain" />
+        // Once a diagnosis exists the photo shrinks to a strip: a full-height
+        // preview above the result pushed the actual answer off the screen.
+        <div className={`relative border-2 border-black bg-black overflow-hidden ${
+          result ? 'h-36 shadow-brutal-sm' : 'aspect-[3/4] shadow-brutal-hover'
+        }`}>
+          <img
+            src={imagePreview}
+            alt={t('cropFieldAlt')}
+            className={`w-full h-full ${result ? 'object-cover opacity-90' : 'object-contain'}`}
+          />
 
           {/* Always-visible exit button so the user is never stuck on a photo */}
           <button
             onClick={clearScan}
             className="absolute top-2 right-2 z-50 bg-red-500 text-white border-2 border-black p-1.5 shadow-brutal-sm active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
-            aria-label={t('newPhoto') || 'Take a new photo'}
-            title={t('newPhoto') || 'Take a new photo'}
+            aria-label={t('newPhoto')}
+            title={t('newPhoto')}
           >
             <X size={16} />
           </button>
 
-          <ScanAnimation isActive={loading} message={t('checkingCrop')} />
+          {!result && <ScanAnimation isActive={loading} message={t('checkingCrop')} />}
+
+          {result && (
+            <span className="absolute bottom-0 left-0 bg-black/80 text-brutal-neon font-mono text-[8px] uppercase px-1.5 py-0.5 border-t-2 border-r-2 border-black">
+              {currentCropName}
+            </span>
+          )}
         </div>
       )}
 
       {result && (
-        <div className="brutal-box p-3 bg-brutal-green border-2 border-black">
+        <div className="brutal-box p-3 bg-brutal-green text-white border-2 border-black">
           <div className="flex justify-between items-start mb-2 border-b-2 border-black pb-1.5">
             <h3 className="font-black text-sm uppercase tracking-tighter leading-none">
               {result.disease}
             </h3>
-            <span className="bg-black text-brutal-neon font-mono text-[8px] px-1.5 py-0.5 font-bold">
-              {result.source}
+            <span className="bg-black text-brutal-neon font-mono text-[8px] px-1.5 py-0.5 font-bold whitespace-nowrap">
+              {result.source}{result.confidence !== null && result.confidence !== undefined ? ` · ${Math.round(result.confidence * 100)}%` : ''}
             </span>
           </div>
 
-          <div className="mb-3 font-mono font-bold text-[10px] bg-white p-2 border-2 border-black whitespace-pre-line leading-relaxed">
+          {result.status === 'uncertain' && (
+            <div className="mb-2 bg-yellow-100 border-2 border-yellow-500 p-1.5">
+              <p className="font-black text-[9px] uppercase text-yellow-800">{t('lowConfidenceTitle')}</p>
+              <p className="font-mono text-[8px] text-yellow-700 leading-snug">{t('lowConfidenceAdvice')}</p>
+            </div>
+          )}
+
+          <div className="mb-3 font-mono font-bold text-[10px] text-black bg-white p-2 border-2 border-black whitespace-pre-line leading-relaxed">
             <h4 className="uppercase text-[9px] text-gray-500 mb-1 border-b border-gray-300 pb-0.5">{t('advice')}:</h4>
             {result.treatment}
           </div>
@@ -375,14 +384,9 @@ export default function CameraScan() {
             </button>
           </div>
 
-          <div className="grid grid-cols-2 gap-1.5">
-            <button onClick={handleBroadcastAlert} disabled={broadcasting} className="bg-red-500 text-white py-2 text-[10px] font-black border-2 border-black flex justify-center items-center uppercase shadow-brutal-md disabled:opacity-40">
-              {broadcasting ? '...' : t('broadcastAlert')}
-            </button>
-            <button onClick={handleShare} className="bg-brutal-neon text-black py-2 text-[10px] font-black border-2 border-black flex justify-center items-center uppercase">
-              <Share2 size={12} className="mr-1" /> {t('share') || 'Share'}
-            </button>
-          </div>
+          <button onClick={handleShare} className="w-full bg-brutal-neon text-black py-2 text-[10px] font-black border-2 border-black flex justify-center items-center uppercase">
+            <Share2 size={12} className="mr-1" /> {t('share') || 'Share'}
+          </button>
         </div>
       )}
 
@@ -396,7 +400,7 @@ export default function CameraScan() {
           </div>
           <div className="flex flex-col gap-1.5">
             {scanHistory.slice(0, 5).map((entry) => (
-              <div key={entry.id} className="bg-white border-2 border-black p-2 cursor-pointer hover:bg-gray-50" onClick={() => setResult({ source: entry.source, disease: entry.disease, treatment: entry.treatment })}>
+              <div key={entry.id} className="bg-white border-2 border-black p-2 cursor-pointer hover:bg-gray-50" onClick={() => setResult({ source: entry.source, disease: entry.disease, treatment: entry.treatment, status: entry.status || 'ok', confidence: entry.confidence === undefined ? null : entry.confidence })}>
                 <div className="flex justify-between items-start">
                   <span className="font-black text-[10px] uppercase">{entry.disease}</span>
                   <span className="text-[8px] font-mono text-gray-500">{new Date(entry.timestamp).toLocaleDateString()}</span>

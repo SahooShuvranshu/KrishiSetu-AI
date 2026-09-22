@@ -1,101 +1,168 @@
-import offlineDiseases from '../data/offline_diseases.json';
+// KrishiSetu AI - on-device model loading and inference.
+//
+// The reasoning lives in ./offlineDiagnosis (pure, unit-testable in Node). This
+// file is only the browser-facing wrapper: load the model, sample the pixels for
+// the leaf guard, run one prediction, and hand the numbers to the decision layer.
 import * as tf from '@tensorflow/tfjs';
+import {
+  rankCandidates,
+  gate,
+  assessLeafPixels,
+  composeOfflineResult
+} from './offlineDiagnosis';
+import {
+  hasInstalledModel,
+  createOPFSIOHandler,
+  readModelFileText,
+  isNonEmptyClassList
+} from './storageService';
+import { getTranslation } from '../translations';
+
+// Localised section labels and fallbacks for the offline result card. Built
+// here, at the i18n boundary, so ./offlineDiagnosis stays free of translations
+// and can still be unit-tested in plain Node.
+const labelsFor = (lang) => ({
+  organic: getTranslation(lang, 'organicLabel'),
+  chemical: getTranslation(lang, 'chemicalLabel'),
+  advice: getTranslation(lang, 'advice'),
+  fallbackOrganic: getTranslation(lang, 'noRemedyOrganic'),
+  fallbackChemical: getTranslation(lang, 'noRemedyChemical')
+});
 
 let localModel = null;
 let classNames = null;
-
-// Normalize "Paddy_Bacterial_Blight" -> " paddy bacterial blight "
-const normalize = (s) => ` ${String(s || '').toLowerCase().replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim()} `;
-
-// Find the best-matching offline protocol for a predicted class name.
-// Scores records by crop match + disease-keyword overlap so "Paddy_Blast"
-// finds the Paddy Blast record instead of the first Paddy record.
-const lookupProtocol = (predictedClass) => {
-  const pred = normalize(predictedClass);
-  const predWords = pred.split(' ').filter(Boolean);
-  const cropWord = predWords[0] || '';
-
-  let best = null;
-  let bestScore = 0;
-
-  for (const d of offlineDiseases) {
-    const crop = normalize(d.crop_name).split(' ').filter(Boolean)[0] || '';
-    // Wrong crop -> skip
-    if (crop && crop !== cropWord) continue;
-
-    const hay = normalize(d.disease_name);
-    const hayWords = hay.split(' ').filter(Boolean);
-    let score = 0;
-    for (let i = 0; i < hayWords.length; i++) {
-      if (hayWords[i].length > 2 && predWords.includes(hayWords[i])) score += 1;
-      const bigram = `${hayWords[i]} ${hayWords[i + 1] || ''}`.trim();
-      if (bigram.includes(' ') && pred.includes(` ${bigram} `)) score += 2;
-    }
-    if (score > bestScore) {
-      bestScore = score;
-      best = d;
-    }
-  }
-
-  return best;
-};
+let modelSource = null;
 
 export async function loadLocalModel() {
   try {
-    if (!localModel) {
-      // It expects the model.json to be in the public/model/ folder
-      localModel = await tf.loadLayersModel('/model/model.json');
-
-      // Load classes
-      const response = await fetch('/model/classes.json');
-      classNames = await response.json();
+    // Assign only after BOTH pieces are in hand. A model without class names
+    // cannot be used, and caching it would poison every later call (the previous
+    // version returned `true` and then threw a TypeError on classNames[maxIndex]).
+    if (!localModel || !classNames) {
+      const loaded = await loadModelAndClasses();
+      localModel = loaded.model;
+      classNames = loaded.names;
+      modelSource = loaded.source;
+      console.log('Local model ready: ' + loaded.names.length + ' classes (from ' + loaded.source + ')');
     }
     return true;
   } catch (err) {
-    console.warn("No local model found or TFJS failed. Falling back to JSON.", err);
+    localModel = null;
+    classNames = null;
+    console.warn('No local model found or TFJS failed. Falling back to JSON.', err);
     return false;
   }
 }
 
-export async function runInBrowserVisionInference(imageElement) {
-  try {
-    const isLoaded = await loadLocalModel();
-    if (!isLoaded) {
-      throw new Error("MODEL_NOT_INSTALLED");
-    }
+export const isLocalModelLoaded = () => Boolean(localModel && classNames);
 
-    // Prepare image for TFJS MobileNetV2 (224x224)
+export const getModelSource = () => modelSource;
+
+// Drop the in-memory model so the next scan reloads it (used after Delete Model).
+export const unloadLocalModel = () => {
+  localModel = null;
+  classNames = null;
+  modelSource = null;
+};
+
+// Prefer the copy stored on the device (OPFS): it is the one that works in
+// airplane mode and survives a cache clear. Fall back to the copy that ships
+// with the site, which is what a fresh install uses.
+async function loadModelAndClasses() {
+  if (await hasInstalledModel()) {
+    try {
+      const model = await tf.loadLayersModel(createOPFSIOHandler());
+      const names = JSON.parse(await readModelFileText('classes.json'));
+      if (!isNonEmptyClassList(names)) {
+        throw new Error('stored classes.json is not a class list');
+      }
+      return { model, names, source: 'device storage' };
+    } catch (err) {
+      console.warn('Stored model could not be loaded, using the server copy instead.', err);
+    }
+  }
+
+  const model = await tf.loadLayersModel('/model/model.json');
+  const response = await fetch('/model/classes.json');
+  const names = await response.json();
+  if (!isNonEmptyClassList(names)) {
+    throw new Error('classes.json is missing or empty');
+  }
+  return { model, names, source: 'server' };
+}
+
+// Sample a small canvas so the leaf guard can look at real pixels without
+// touching TensorFlow. Best-effort: this must never be able to block a scan.
+const samplePixels = (imageElement, size = 64) => {
+  const canvas = document.createElement('canvas');
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+  ctx.drawImage(imageElement, 0, 0, size, size);
+  return ctx.getImageData(0, 0, size, size);
+};
+
+// `cropId` comes from the crop picker on the scan screen. Passing it is what
+// gives the on-device model the context it otherwise cannot have.
+export async function runInBrowserVisionInference(imageElement, cropId = 'general', lang = 'en') {
+  const isLoaded = await loadLocalModel();
+  if (!isLoaded) {
+    throw new Error('MODEL_NOT_INSTALLED');
+  }
+
+  // Leaf guard first: no point warming up the model for a photo of a wall.
+  let leaf = { verdict: 'unclear', leafFraction: 0, detail: 0 };
+  try {
+    const image = samplePixels(imageElement);
+    leaf = assessLeafPixels(image.data, image.width, image.height);
+  } catch (err) {
+    console.warn('Leaf guard skipped', err);
+  }
+
+  if (leaf.verdict === 'no_leaf') {
+    return {
+      status: 'not_a_leaf',
+      disease: null,
+      treatment: null,
+      confidence: null,
+      leaf
+    };
+  }
+
+  // tidy() disposes the input tensor and the prediction tensor, so repeated
+  // scans cannot leak the 224x224x3 buffer the way the old version did.
+  const predictions = tf.tidy(() => {
     const tensor = tf.browser.fromPixels(imageElement)
       .resizeNearestNeighbor([224, 224])
       .toFloat()
       .expandDims(0)
-      .div(255.0); // Normalize to 0-1
+      .div(255.0); // the model's own Rescaling layer expects 0-1 input
+    return Array.from(localModel.predict(tensor).dataSync());
+  });
 
-    const predictions = await localModel.predict(tensor).data();
+  const { candidates, masked, global } = rankCandidates(predictions, classNames, cropId);
+  const gateResult = gate(candidates, { global });
 
-    // Find highest probability
-    let maxProb = 0;
-    let maxIndex = 0;
-    for (let i = 0; i < predictions.length; i++) {
-      if (predictions[i] > maxProb) {
-        maxProb = predictions[i];
-        maxIndex = i;
-      }
-    }
-
-    const predictedClass = classNames[maxIndex];
-
-    // Use the JSON strictly as a dictionary to lookup treatments for the predicted class
-    const protocol = lookupProtocol(predictedClass)
-      || { organic_remedy: "Maintain soil health.", chemical_remedy: "Consult local agriculture officer." };
-
+  // The trained Other class said this is not a leaf of the selected crop. Same
+  // shape as the pixel guard's answer, so the UI handles both the same way.
+  if (gateResult.status === 'not_a_leaf') {
     return {
-      disease: `${predictedClass} (${(maxProb * 100).toFixed(1)}%)`,
-      treatment: `Organic: ${protocol.organic_remedy}\n\nChemical: ${protocol.chemical_remedy}`
+      status: 'not_a_leaf',
+      disease: null,
+      treatment: null,
+      confidence: null,
+      leaf,
+      other: gateResult.other ? gateResult.other.name : null
     };
-
-  } catch (error) {
-    console.error("TFJS Inference Error", error);
-    throw error;
   }
+
+  return composeOfflineResult({
+    candidates,
+    gateResult,
+    leaf,
+    masked,
+    cropId,
+    lang,
+    labels: labelsFor(lang)
+  });
 }

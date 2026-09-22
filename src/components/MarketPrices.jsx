@@ -15,9 +15,9 @@ const MARKET_DATA = {
     name: { en: 'Paddy (Dhan)', or: 'ଧାନ', hi: 'धान' },
     icon: '🌾',
     varieties: [
-      { name: 'Common', price: 2183, change: 0 },
-      { name: 'Grade A', price: 2220, change: 15 },
-      { name: 'Fine', price: 2350, change: -10 }
+      { name: { en: 'Common', or: 'ସାଧାରଣ', hi: 'सामान्य' }, price: 2183, change: 0 },
+      { name: { en: 'Grade A', or: 'ଗ୍ରେଡ୍ A', hi: 'ग्रेड A' }, price: 2220, change: 15 },
+      { name: { en: 'Fine', or: 'ଫାଇନ୍', hi: 'फ़ाइन' }, price: 2350, change: -10 }
     ],
     mandis: ['Cuttack', 'Bhubaneswar', 'Sambalpur']
   },
@@ -25,8 +25,8 @@ const MARKET_DATA = {
     name: { en: 'Wheat', or: 'ଗହମ', hi: 'गेहूं' },
     icon: '🌾',
     varieties: [
-      { name: 'Common', price: 2275, change: 25 },
-      { name: 'Grade A', price: 2350, change: 0 }
+      { name: { en: 'Common', or: 'ସାଧାରଣ', hi: 'सामान्य' }, price: 2275, change: 25 },
+      { name: { en: 'Grade A', or: 'ଗ୍ରେଡ୍ A', hi: 'ग्रेड A' }, price: 2350, change: 0 }
     ],
     mandis: ['Cuttack', 'Balasore']
   },
@@ -34,8 +34,8 @@ const MARKET_DATA = {
     name: { en: 'Maize (Maka)', or: 'ମକା', hi: 'मक्का' },
     icon: '🌽',
     varieties: [
-      { name: 'Yellow', price: 1950, change: -20 },
-      { name: 'White', price: 2050, change: 10 }
+      { name: { en: 'Yellow', or: 'ହଳଦିଆ', hi: 'पीला' }, price: 1950, change: -20 },
+      { name: { en: 'White', or: 'ଧଳା', hi: 'सफ़ेद' }, price: 2050, change: 10 }
     ],
     mandis: ['Cuttack', 'Angul']
   },
@@ -43,8 +43,8 @@ const MARKET_DATA = {
     name: { en: 'Groundnut', or: 'ଚିନିଗୁଡ଼', hi: 'मूंगफली' },
     icon: '🥜',
     varieties: [
-      { name: 'Bold', price: 5800, change: 50 },
-      { name: 'Java', price: 6200, change: 0 }
+      { name: { en: 'Bold', or: 'ବୋଲ୍ଡ', hi: 'बोल्ड' }, price: 5800, change: 50 },
+      { name: { en: 'Java', or: 'ଜାଭା', hi: 'जावा' }, price: 6200, change: 0 }
     ],
     mandis: ['Ganjam', 'Cuttack']
   },
@@ -52,8 +52,8 @@ const MARKET_DATA = {
     name: { en: 'Cotton', or: 'କପା', hi: 'कपाहा' },
     icon: '🏵️',
     varieties: [
-      { name: 'Medium Staple', price: 6620, change: 30 },
-      { name: 'Long Staple', price: 7150, change: 0 }
+      { name: { en: 'Medium Staple', or: 'ମଧ୍ୟମ ଷ୍ଟାପଲ୍', hi: 'मध्यम स्टेपल' }, price: 6620, change: 30 },
+      { name: { en: 'Long Staple', or: 'ଲମ୍ବା ଷ୍ଟାପଲ୍', hi: 'लंबा स्टेपल' }, price: 7150, change: 0 }
     ],
     mandis: ['Kalahandi', 'Nuapada']
   },
@@ -61,8 +61,8 @@ const MARKET_DATA = {
     name: { en: 'Turmeric', or: 'ହଳଦୀ', hi: 'हल्दी' },
     icon: '🟡',
     varieties: [
-      { name: 'Finger', price: 12500, change: 200 },
-      { name: 'Bulb', price: 11800, change: -100 }
+      { name: { en: 'Finger', or: 'ଫିଙ୍ଗର', hi: 'फिंगर' }, price: 12500, change: 200 },
+      { name: { en: 'Bulb', or: 'ବଲ୍ବ', hi: 'बल्ब' }, price: 11800, change: -100 }
     ],
     mandis: ['Cuttack', 'Ganjam']
   }
@@ -85,26 +85,30 @@ export default function MarketPrices({ t, appLanguage, isOnline }) {
     setLoading(true);
     // Simulated API call
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Add small random fluctuations to simulate live data
-    const updated = { ...prices };
-    Object.keys(updated).forEach(crop => {
-      updated[crop] = {
-        ...updated[crop],
-        varieties: updated[crop].varieties.map(v => ({
-          ...v,
-          price: v.price + Math.floor(Math.random() * 50 - 25),
-          change: Math.floor(Math.random() * 60 - 30)
-        }))
-      };
+
+    // Functional update: the 5-minute interval closed over the prices from the
+    // first render, so every refresh recalculated from stale data.
+    setPrices((prev) => {
+      const next = {};
+      Object.keys(prev).forEach((crop) => {
+        next[crop] = {
+          ...prev[crop],
+          varieties: prev[crop].varieties.map((v) => ({
+            ...v,
+            price: v.price + Math.floor(Math.random() * 50 - 25),
+            change: Math.floor(Math.random() * 60 - 30)
+          }))
+        };
+      });
+      return next;
     });
-    
-    setPrices(updated);
+
     setLastUpdated(new Date());
     setLoading(false);
   };
 
-  // Auto-refresh every 5 minutes
+  // Auto-refresh every 5 minutes. Intentionally not depending on refreshPrices:
+  // it is re-created every render, which would reset the interval constantly.
   useEffect(() => {
     const interval = setInterval(refreshPrices, 300000);
     return () => clearInterval(interval);
@@ -117,7 +121,7 @@ export default function MarketPrices({ t, appLanguage, isOnline }) {
           <h2 className="text-sm font-black uppercase tracking-tighter">{t('marketPrices') || 'Market Prices'}</h2>
           <p className="font-mono text-[8px] text-brutal-neon">{t('mandiPrices') || 'Mandi Prices (INR/Quintal)'}</p>
         </div>
-        <button onClick={refreshPrices} disabled={loading} className="p-1.5 hover:bg-white/20 transition-colors" aria-label="Refresh prices">
+        <button onClick={refreshPrices} disabled={loading} className="p-1.5 hover:bg-white/20 transition-colors" aria-label={t('refreshPrices')}>
           <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
         </button>
       </div>
@@ -155,7 +159,7 @@ export default function MarketPrices({ t, appLanguage, isOnline }) {
                   <p className="font-mono text-[8px] uppercase text-gray-500 mb-1">{t('varieties') || 'Varieties'}:</p>
                   {crop.varieties.map((v, idx) => (
                     <div key={idx} className="flex justify-between items-center py-0.5 border-b border-gray-200 last:border-0">
-                      <span className="font-mono text-[10px] font-bold">{v.name}</span>
+                      <span className="font-mono text-[10px] font-bold">{v.name[appLanguage] || v.name.en}</span>
                       <div className="flex items-center gap-1.5">
                         <span className="font-black text-[11px]">₹{v.price.toLocaleString()}</span>
                         <div className="flex items-center gap-0.5">

@@ -66,14 +66,14 @@ export default function WeatherDashboard({ t, appLanguage, isOnline, zone }) {
           })));
         }
       } catch (err) {
-        setError('Failed to fetch weather data');
+        setError(t('weatherFetchFailed'));
       } finally {
         setLoading(false);
       }
     };
 
     fetchWeather();
-  }, [lat, lng, isOnline, appLanguage]);
+  }, [lat, lng, isOnline, appLanguage, t]);
 
   if (!isOnline) {
     return (

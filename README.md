@@ -14,7 +14,6 @@
     <img src="https://img.shields.io/badge/TensorFlow.js-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" alt="TensorFlow.js" />
     <img src="https://img.shields.io/badge/Gemini_3.6_Flash-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google Gemini" />
     <img src="https://img.shields.io/badge/PWA-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white" alt="PWA" />
-    <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" alt="Firebase" />
     <img src="https://img.shields.io/badge/Google_Maps-4285F4?style=for-the-badge&logo=google-maps&logoColor=white" alt="Google Maps" />
     <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
   </p>
@@ -61,8 +60,8 @@ Build an interoperable digital agriculture network that delivers real-time, loca
 * **100% Offline AI Disease Scanning:** Uses highly quantized MobileNet/TensorFlow.js models permanently cached in IndexedDB to scan and diagnose leaf diseases directly on the device's CPU/GPU. No cloud needed. No latency.
 * **Generative Agronomy Engine:** Integrates Google's Gemini Flash to translate complex chemical and organic treatments into easy-to-understand native dialects.
 * **Native Tongue & TTS Support:** Built-in localization for **Hindi** and **Odia** with Web Speech API integration to read remedies out loud for farmers facing literacy barriers.
-* **DPI Telemetry Grid:** Utilizes Google Maps to build an interoperable mesh. When devices regain connection, anonymous disease outbreaks are broadcasted via Firebase to warn neighboring farmers of migrating blights.
-* **Google AI Integration:** Full hackathon compliance with Gemini API, Vertex AI, Google Maps, Firebase, Translation API, and Cloud TTS.
+* **District Risk Map:** Google Maps view of district-level pest and disease risk across Odisha, positioned at the top of the Farm Advice tab. The risk records ship with the app, so the list still works with no connection.
+* **Google AI Integration:** Gemini API for cloud diagnosis and Google Maps Platform for the risk layer. Remedies are spoken with the on-device Web Speech API, and UI text comes from the bundled EN/OR/HI dictionary.
 * **PWA with Offline Support:** vite-plugin-pwa with Workbox for automatic caching of all assets.
 * **IndexedDB Image Storage:** No size limits for storing scan images (replaces localStorage 5MB limit).
 * **Agri-Brutalism UX:** Designed strictly for outdoor usability. Massive high-contrast buttons, thick borders, and heavy typography ensure readability under blinding sunlight and usability with muddy hands.
@@ -80,7 +79,7 @@ We utilize a highly optimized **MobileNetV2** architecture fine-tuned via Transf
 The trained Keras/TensorFlow model is quantized and converted into the TensorFlow.js format (`model.json` and `.bin` weight shards). 
 - **Zero-Latency:** Inference executes in real-time utilizing the smartphone's CPU or WebGL hardware acceleration.
 - **Privacy-Preserving:** Photos taken by the farmer never leave their device.
-- **Offline Execution:** The ML model binaries are precached via Service Workers into the browser's IndexedDB upon the first app load, ensuring the AI functions even in airplane mode.
+- **Offline Execution:** The model is downloaded once from Settings into the device's own private storage (OPFS, with a persistent-storage grant requested first) and loaded from there by TensorFlow.js — so it keeps working in airplane mode and survives a cache clear.
 
 ---
 
@@ -90,10 +89,9 @@ The trained Keras/TensorFlow model is quantized and converted into the TensorFlo
 2. **Offline Caching:** Vite-PWA with Workbox (Service Workers) for absolute caching of HTML/CSS/JS and Model Binaries.
 3. **Edge ML:** `@tensorflow/tfjs` static bundling to avoid dynamic import chunk failure offline.
 4. **LLM Engine:** `@google/generative-ai` (Gemini Flash for crop diagnosis).
-5. **Real-time Sync:** Firebase Firestore for cross-device alert broadcasting.
-6. **Voice:** Google Cloud TTS with Web Speech API fallback.
-7. **Translation:** Google Translation API for dynamic AI response translation.
-8. **Geospatial:** Google Maps Platform for real-time disease mapping.
+5. **Voice:** Web Speech API for spoken remedies — no key, works offline.
+6. **Translation:** bundled EN/OR/HI dictionary (`src/translations.js`) — no network needed.
+7. **Geospatial:** Google Maps Platform for the district disease-risk map.
 9. **Styling:** TailwindCSS using a custom "Agri-Brutalism" design system.
 
 ## 📂 File Structure
@@ -105,9 +103,9 @@ KrishiSetu-AI/
 ├── public/                    # PWA Manifest, Service Worker, and ML Model binaries
 │   └── model/                 # Quantized TFJS model files (model.json, .bin)
 ├── src/                       # React Frontend Source Code
-│   ├── components/            # UI Components (CameraScan, Navbar, TelemetryMap, ErrorBoundary)
-│   ├── config/                # Centralized constants (ODISHA_CENTER, IMAGE_SIZE)
-│   ├── services/              # Core Logic (Firebase, Gemini, TTS, Translation, TFJS Loader)
+│   ├── components/            # UI Components (CameraScan, Navbar, DiseaseRiskMap, ErrorBoundary)
+│   ├── config/                # Centralized constants (ODISHA_CENTER, quality gates)
+│   ├── services/              # Core Logic (Gemini, TFJS loader, OPFS storage, offline diagnosis)
 │   ├── App.jsx                # Main Application Routing & State
 │   ├── index.css              # Agri-Brutalism Tailwind styling
 │   ├── main.jsx               # Entry point with PWA registration
@@ -130,9 +128,10 @@ cd KrishiSetu-AI
 # 2. Install dependencies
 npm install
 
-# 3. Configure Environment Variables
-# Create a .env file and add your Gemini API Key
-echo "VITE_GEMINI_API_KEY=your_key_here" > .env
+# 3. (Optional) nothing to configure
+# The app ships with no API keys. Users add their own in
+# Settings > API KEYS (THIS DEVICE) - Gemini for online diagnosis, Maps for the
+# district risk map. They are stored on the user's device only.
 
 # 4. Start the development server
 npm run dev
@@ -146,7 +145,7 @@ Deploy your own instance of Krishi Setu instantly using any of these platforms:
 
 ## 📚 Machine Learning Integration Guide
 To train your own quantized crop disease models for the offline engine, we have included a Jupyter Notebook in this repository.
-1. Open `notebooks/KrishiSetu_Real_Model_Training.ipynb` in Google Colab.
+1. Open `notebooks/KrishiSetu_Model_Training.ipynb` in Google Colab.
 2. Provide an agricultural dataset (minimum 500+ images per class recommended for high accuracy).
 3. The notebook will automatically apply OpenCV preprocessing and data augmentation.
 4. Export the resulting `model.json` and `.bin` files directly into the frontend's `/public/model` directory.

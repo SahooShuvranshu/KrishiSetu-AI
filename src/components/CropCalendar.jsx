@@ -18,7 +18,7 @@ const CROP_CALENDAR = {
       { name: { en: 'Maize', or: 'ମକା', hi: 'मक्का' }, icon: '🌽', tips: { en: 'Good for rotation. Requires well-drained soil.', or: 'ଚକ୍ରିୟ ଚାଷ ପାଇଁ ଭଲ। ଭଲ ଜଳ ନିକାସ ମାଟି ଆବଶ୍ୟକ।', hi: 'चक्रीय खेती के लिए अच्छा। अच्छी जल निकासी वाली मिट्टी चाहिए।' } },
       { name: { en: 'Cotton', or: 'କପା', hi: 'कपाहा' }, icon: '🏵️', tips: { en: 'Major cash crop. Needs warm weather and moderate rainfall.', or: 'ପ୍ରମୁଖ ନଗଦୀ ଫସଲ। ଉଷ୍ଣ ପାଗ ଏବଂ ମଧ୍ୟମ ବୃଷ୍ଟି ଆବଶ୍ୟକ।', hi: 'प्रमुख नकदी फसल। गर्म मौसम और मध्यम वर्षा चाहिए।' } },
       { name: { en: 'Groundnut', or: 'ଚିନିଗୁଡ଼', hi: 'मूंगफली' }, icon: '🥜', tips: { en: 'Fixes nitrogen in soil. Good for soil health.', or: 'ମାଟିରେ ନାଇଟ୍ରୋଜେନ ଫିକ୍ସ କରେ। ମାଟି ସ୍ୱାସ୍ଥ୍ୟ ପାଇଁ ଭଲ।', hi: 'मिट्टी में नाइट्रोजन ठीक करता है। मिट्टी स्वास्थ्य के लिए अच्छा।' } },
-      { name: { en: 'Turmeric', or: 'ହଳଦୀ', hi: 'हल्दी' }, icon: '🟡', tips: { en: 'High-value spice crop. Plant rhizomes in raised beds.', or: 'ମୂଲ୍ୟବାନ ମସଲା ଫସଲ। ଉଚ୍ଚ ବେଡରେ କନ୍ଦ ରୋପଣ କରନ୍ତ��।', hi: 'उच्च मूल्य का मसाला फसल। ऊंची क्यारियों में कंद रोपें।' } }
+      { name: { en: 'Turmeric', or: 'ହଳଦୀ', hi: 'हल्दी' }, icon: '🟡', tips: { en: 'High-value spice crop. Plant rhizomes in raised beds.', or: 'ମୂଲ୍ୟବାନ ମସଲା ଫସଲ। ଉଚ୍ଚ ବେଡରେ କନ୍ଦ ରୋପଣ କରନ୍ତୁ।', hi: 'उच्च मूल्य का मसाला फसल। ऊंची क्यारियों में कंद रोपें।' } }
     ]
   },
   rabi: {

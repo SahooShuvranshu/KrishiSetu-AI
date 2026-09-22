@@ -12,10 +12,10 @@ const STORE_NAME = 'scanImages';
 function openDB() {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(DB_NAME, DB_VERSION);
-    
+
     request.onerror = () => reject(request.error);
     request.onsuccess = () => resolve(request.result);
-    
+
     request.onupgradeneeded = (event) => {
       const db = event.target.result;
       if (!db.objectStoreNames.contains(STORE_NAME)) {
@@ -26,6 +26,42 @@ function openDB() {
 }
 
 /**
+ * Run one request inside its own transaction and only settle when the
+ * transaction is done.
+ *
+ * Every caller below must await this. Returning the promise without awaiting it
+ * meant a request-level failure (quota, disabled storage) never reached the
+ * caller's catch block, so the localStorage fallback was unreachable and a
+ * failed image write silently cancelled the whole scan.
+ *
+ * @param {string} mode - 'readonly' | 'readwrite'
+ * @param {Function} run - receives the object store, should return a request
+ * @returns {Promise<any>} - the request result
+ */
+function withStore(mode, run) {
+  return openDB().then((db) => new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE_NAME, mode);
+    let request;
+
+    const finish = (callback, payload) => {
+      db.close();
+      callback(payload);
+    };
+
+    tx.oncomplete = () => finish(resolve, request ? request.result : undefined);
+    tx.onerror = () => finish(reject, tx.error);
+    tx.onabort = () => finish(reject, tx.error);
+
+    try {
+      request = run(tx.objectStore(STORE_NAME));
+    } catch (error) {
+      tx.abort();
+      finish(reject, error);
+    }
+  }));
+}
+
+/**
  * Save an image to IndexedDB
  * @param {string} id - Unique identifier (e.g., 'last_scan')
  * @param {string} imageData - Base64 image data
@@ -33,28 +69,14 @@ function openDB() {
  */
 export async function saveImage(id, imageData) {
   try {
-    const db = await openDB();
-    const tx = db.transaction(STORE_NAME, 'readwrite');
-    const store = tx.objectStore(STORE_NAME);
-    
-    store.put({ id, data: imageData, timestamp: Date.now() });
-    
-    return new Promise((resolve, reject) => {
-      tx.oncomplete = () => {
-        db.close();
-        resolve();
-      };
-      tx.onerror = () => {
-        db.close();
-        reject(tx.error);
-      };
-    });
+    await withStore('readwrite', (store) =>
+      store.put({ id, data: imageData, timestamp: Date.now() }));
   } catch (error) {
-    // IndexedDB not available, fall back to localStorage
+    // IndexedDB unavailable or full - keep the image in localStorage instead
     try {
       localStorage.setItem(`krishisetu_${id}`, imageData);
     } catch (e) {
-      // Storage full - ignore
+      // Storage exhausted as well - the scan continues without a saved image
     }
   }
 }
@@ -66,27 +88,14 @@ export async function saveImage(id, imageData) {
  */
 export async function getImage(id) {
   try {
-    const db = await openDB();
-    const tx = db.transaction(STORE_NAME, 'readonly');
-    const store = tx.objectStore(STORE_NAME);
-    
-    return new Promise((resolve, reject) => {
-      const request = store.get(id);
-      
-      request.onsuccess = () => {
-        db.close();
-        resolve(request.result?.data || null);
-      };
-      
-      request.onerror = () => {
-        db.close();
-        reject(request.error);
-      };
-    });
+    const stored = await withStore('readonly', (store) => store.get(id));
+    if (stored && stored.data) {
+      return stored.data;
+    }
   } catch (error) {
-    // IndexedDB not available, fall back to localStorage
-    return localStorage.getItem(`krishisetu_${id}`) || null;
+    // Fall through to the localStorage copy
   }
+  return localStorage.getItem(`krishisetu_${id}`) || null;
 }
 
 /**
@@ -96,26 +105,13 @@ export async function getImage(id) {
  */
 export async function deleteImage(id) {
   try {
-    const db = await openDB();
-    const tx = db.transaction(STORE_NAME, 'readwrite');
-    const store = tx.objectStore(STORE_NAME);
-    
-    store.delete(id);
-    
-    return new Promise((resolve, reject) => {
-      tx.oncomplete = () => {
-        db.close();
-        resolve();
-      };
-      tx.onerror = () => {
-        db.close();
-        reject(tx.error);
-      };
-    });
+    await withStore('readwrite', (store) => store.delete(id));
   } catch (error) {
-    // IndexedDB not available, fall back to localStorage
-    localStorage.removeItem(`krishisetu_${id}`);
+    // Ignore - the localStorage copy is removed below either way
   }
+  // Always clear both stores, otherwise a stale localStorage copy could be
+  // served again by getImage() after the IndexedDB entry is gone.
+  localStorage.removeItem(`krishisetu_${id}`);
 }
 
 /**
@@ -124,31 +120,12 @@ export async function deleteImage(id) {
  */
 export async function getScanHistory() {
   try {
-    const db = await openDB();
-    const tx = db.transaction(STORE_NAME, 'readonly');
-    const store = tx.objectStore(STORE_NAME);
-    
-    return new Promise((resolve, reject) => {
-      const request = store.getAll();
-      
-      request.onsuccess = () => {
-        db.close();
-        const results = request.result || [];
-        // Filter out the 'last_scan' entry and sort by timestamp
-        const history = results
-          .filter(item => item.id !== 'last_scan' && item.id !== 'scan_history')
-          .sort((a, b) => b.timestamp - a.timestamp);
-        resolve(history);
-      };
-      
-      request.onerror = () => {
-        db.close();
-        reject(request.error);
-      };
-    });
+    const results = await withStore('readonly', (store) => store.getAll());
+    return (results || [])
+      .filter(item => item.id !== 'last_scan' && item.id !== 'scan_history')
+      .sort((a, b) => b.timestamp - a.timestamp);
   } catch (error) {
     // IndexedDB not available, fall back to localStorage
-    const history = JSON.parse(localStorage.getItem('krishisetu_scan_history') || '[]');
-    return history;
+    return JSON.parse(localStorage.getItem('krishisetu_scan_history') || '[]');
   }
 }
