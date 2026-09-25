@@ -140,8 +140,8 @@ export async function runInBrowserVisionInference(imageElement, cropId = 'genera
     return Array.from(localModel.predict(tensor).dataSync());
   });
 
-  const { candidates, masked, global } = rankCandidates(predictions, classNames, cropId);
-  const gateResult = gate(candidates, { global });
+  const { candidates, masked, cropMissing, global } = rankCandidates(predictions, classNames, cropId);
+  const gateResult = gate(candidates, { global, cropMissing });
 
   // The trained Other class said this is not a leaf of the selected crop. Same
   // shape as the pixel guard's answer, so the UI handles both the same way.
@@ -154,6 +154,14 @@ export async function runInBrowserVisionInference(imageElement, cropId = 'genera
       leaf,
       other: gateResult.other ? gateResult.other.name : null
     };
+  }
+
+  // The farmer picked a crop this model has no classes for (Maize in a model
+  // trained without the corn classes). There is no honest answer to give, so
+  // this is surfaced as its own outcome rather than a low-confidence guess at
+  // some other crop's disease.
+  if (gateResult.status === 'crop_not_in_model') {
+    throw new Error('CROP_NOT_IN_MODEL');
   }
 
   return composeOfflineResult({

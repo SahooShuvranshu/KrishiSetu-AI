@@ -36,24 +36,29 @@ Enhancement suggestions are also tracked as GitHub issues. When creating a sugge
 To get Krishi Setu running on your local machine:
 
 1. **Clone your fork**:
-   `ash
+   ```bash
    git clone https://github.com/<your-username>/KrishiSetu-AI.git
    cd KrishiSetu-AI
-   `
+   ```
 2. **Install dependencies**:
-   `ash
+   ```bash
    npm install
-   `
+   ```
 3. **API keys**: nothing to configure at build time. The app reads no key from
    the environment, because anything in a Vite bundle is public. Run the app and
    add your own keys in **Settings → API KEYS (THIS DEVICE)** (Gemini for online
    diagnosis, Google Maps for the district risk map). They stay on your device.
 4. **Run the Development Server**:
-   `ash
+   ```bash
    npm run dev
-   `
+   ```
 5. **Access the App**:
    Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+> **Note:** the offline model is a separate download. Trained model files are
+> git-ignored, so `public/model/` is empty in a fresh clone — see
+> [`public/model/README.md`](public/model/README.md) and
+> [`document.md`](document.md) §13. Online diagnosis works without it.
 
 ---
 

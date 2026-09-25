@@ -5,7 +5,7 @@
   
   <p>
     <a href="https://krishi-setu-ai-seven.vercel.app/"><img src="https://img.shields.io/badge/Live_App-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live App" /></a>
-    <a href="https://sahooshuvranshu.github.io/KrishiSetu-AI/"><img src="https://img.shields.io/badge/Landing_Page-GitHub_Pages-181717?style=for-the-badge&logo=github&logoColor=white" alt="Landing Page" /></a>
+    <a href="https://sahooshuvranshu.is-a.dev/KrishiSetu-AI/"><img src="https://img.shields.io/badge/Landing_Page-GitHub_Pages-181717?style=for-the-badge&logo=github&logoColor=white" alt="Landing Page" /></a>
   </p>
 
   <p>
@@ -57,7 +57,7 @@ Build an interoperable digital agriculture network that delivers real-time, loca
 
 ### 🌟 Key Features
 
-* **100% Offline AI Disease Scanning:** Uses highly quantized MobileNet/TensorFlow.js models permanently cached in IndexedDB to scan and diagnose leaf diseases directly on the device's CPU/GPU. No cloud needed. No latency.
+* **100% Offline AI Disease Scanning:** Uses highly quantized MobileNet/TensorFlow.js models stored in the device's own private storage (OPFS, with a persistent-storage grant requested first) to scan and diagnose leaf diseases directly on the device's CPU/GPU. No cloud needed. No latency.
 * **Generative Agronomy Engine:** Integrates Google's Gemini Flash to translate complex chemical and organic treatments into easy-to-understand native dialects.
 * **Native Tongue & TTS Support:** Built-in localization for **Hindi** and **Odia** with Web Speech API integration to read remedies out loud for farmers facing literacy barriers.
 * **District Risk Map:** Google Maps view of district-level pest and disease risk across Odisha, positioned at the top of the Farm Advice tab. The risk records ship with the app, so the list still works with no connection.
@@ -92,7 +92,7 @@ The trained Keras/TensorFlow model is quantized and converted into the TensorFlo
 5. **Voice:** Web Speech API for spoken remedies — no key, works offline.
 6. **Translation:** bundled EN/OR/HI dictionary (`src/translations.js`) — no network needed.
 7. **Geospatial:** Google Maps Platform for the district disease-risk map.
-9. **Styling:** TailwindCSS using a custom "Agri-Brutalism" design system.
+8. **Styling:** TailwindCSS using a custom "Agri-Brutalism" design system.
 
 ## 📂 File Structure
 

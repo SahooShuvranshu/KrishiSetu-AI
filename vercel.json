@@ -5,7 +5,7 @@
   "outputDirectory": "dist",
   "installCommand": "npm install",
   "rewrites": [
-    { "source": "/((?!assets/).*)", "destination": "/index.html" }
+    { "source": "/((?!assets/|model/|api/).*)", "destination": "/index.html" }
   ],
   "headers": [
     {

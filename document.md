@@ -1,6 +1,6 @@
 # KrishiSetu AI — Complete Project Documentation
 
-> **Last updated:** September 7, 2026
+> **Last updated:** September 23, 2026
 > **Hackathon:** Google AI Hackathon 2026 — Code for Communities (Problem Statement 4: Cooperation)
 > **Team:** Crystal Studio Labs
 > **Focus region:** Odisha, India
@@ -39,12 +39,13 @@ packaged as a Progressive Web App (PWA). A farmer in a remote Odisha village can
 1. Take a photo of a sick crop leaf.
 2. Get an instant diagnosis + organic and chemical remedies **in their own language**
    (English / ଓଡ଼ିଆ / हिन्दी), spoken aloud if needed.
-3. Broadcast an anonymous disease alert to the surrounding farming network (DPI telemetry grid).
+3. See a district-level disease-risk map for Odisha, plus soil, weather, crop-calendar and
+   mandi-price advice.
 4. Do all of this with **zero internet** — the ML model runs on the phone's own CPU/GPU
    through TensorFlow.js.
 
-The word "Setu" means **bridge**: the app bridges farmers to agronomists, to neighbouring
-villages, and to government advisories through shared, interoperable data.
+The word "Setu" means **bridge**: the app bridges a farmer to agronomists and to the
+district advisories that matter for their own field.
 
 ---
 
@@ -72,12 +73,11 @@ so states can exchange agricultural data and models.
 | 🌱 **Regenerative agronomy** | Soil-zone advisories with crop rotation recommendations (5 Odisha agro-climatic zones). |
 | 🌦️ **Live weather** | Zone-level temperature via Open-Meteo (free, no key). |
 | 📅 **Crop calendar** | Season-aware (Kharif/Rabi/Zaid) guidance. |
-| 💰 **Market prices** | Commodity price cards (static fallback, demo data). |
-| 🗺️ **DPI Telemetry Grid** | Google Maps showing disease alert markers broadcast across devices. |
-| 📢 **Alert broadcasting** | Anonymous outbreak alerts → Firebase real-time sync with offline queueing. |
-| 🔊 **Text-to-Speech** | Remedies read aloud (Web Speech API; Cloud TTS when configured). |
+| 💰 **Market prices** | Commodity price cards. Currently a bundled table that works offline; not yet wired to the live mandi API. |
+| 🗺️ **District Risk Map** | Google Maps view of district-level pest/disease risk for Odisha, at the top of the Farm Advice tab. |
+| 🔊 **Text-to-Speech** | Remedies read aloud with the browser's Web Speech API — no key, works offline. |
 | 🌐 **Multilingual** | Full UI + advice in English, Odia, Hindi. |
-| 🔌 **100% offline** | Service worker precaches all assets; TF.js model runs locally; alerts queue & sync later. |
+| 🔌 **100% offline** | Service worker precaches all assets; the TF.js model lives on the device; the risk list and every advisory work with no connection. |
 | 🎨 **Agri-Brutalism UI** | Huge high-contrast buttons, thick black borders — usable in blinding sunlight with muddy hands. |
 
 ---
@@ -97,11 +97,10 @@ so states can exchange agricultural data and models.
 
 **Google Platform (hackathon compliance)**
 - Gemini API — leaf diagnosis
-- Vertex AI — model training/registry (notebook optional section)
-- Google Maps — telemetry grid (`@react-google-maps/api`)
-- Firebase / Firestore — real-time alert sync
-- Google Translation API — service-based translation (fallback: bundled dictionary)
-- Google Cloud TTS — spoken remedies (fallback: Web Speech API)
+- Vertex AI — *not used*; training is MobileNetV2 transfer learning on Colab (T4), exported straight to TensorFlow.js
+- Google Maps — district risk map (`@react-google-maps/api`)
+- Translation — the bundled EN/OR/HI dictionary (`src/translations.js`); no translation API is called
+- Text-to-speech — the on-device Web Speech API (`src/services/tts.js`)
 
 **Infra**
 - vite-plugin-pwa (Workbox) — offline caching, installable PWA
@@ -119,7 +118,7 @@ KrishiSetu-AI/
 ├── todo.md / phases.md          ← internal progress trackers (git-ignored)
 ├── model_train.md               ← legacy Google Cloud setup guide (git-ignored)
 ├── notebooks/
-│   └── KrishiSetu_Real_Model_Training.ipynb   ← THE training notebook
+│   └── KrishiSetu_Model_Training.ipynb   ← THE training notebook
 ├── public/
 │   ├── model/                   ← PUT TRAINED MODEL FILES HERE (see §13)
 │   │   ├── model.json
@@ -131,7 +130,7 @@ KrishiSetu-AI/
 │   ├── App.jsx                  ← shell: header, modals, <Routes>
 │   ├── index.css                ← Tailwind + dark-mode + background patterns
 │   ├── translations.js          ← EN/OR/HI dictionary
-│   ├── multilingual_data.js     ← soil zones, telemetry demo data
+│   ├── multilingual_data.js     ← soil zones + district risk data
 │   ├── context/
 │   │   └── AppContext.jsx       ← shared state (language, theme, online, model, key)
 │   ├── config/
@@ -139,9 +138,9 @@ KrishiSetu-AI/
 │   ├── components/
 │   │   ├── Navbar.jsx           ← bottom nav (NavLink routes)
 │   │   ├── HomeTab.jsx          ← dashboard home
-│   │   ├── CameraScan.jsx       ← THE SCAN FLOW (camera, analysis, share, broadcast)
+│   │   ├── CameraScan.jsx       ← THE SCAN FLOW (camera, analysis, share)
 │   │   ├── SoilAdvisory.jsx     ← zones + weather/calendar/prices tabs
-│   │   ├── StateTelemetryMap.jsx← Google Maps alert grid
+│   │   ├── DiseaseRiskMap.jsx   ← Google Maps district risk layer (Farm Advice)
 │   │   ├── FocusTrap.jsx        ← modal a11y (traps Tab, restores focus)
 │   │   ├── ErrorBoundary.jsx    ← crash guard
 │   │   ├── Toast.jsx            ← toast system (context)
@@ -150,7 +149,8 @@ KrishiSetu-AI/
 │   ├── services/
 │   │   ├── gemini.js            ← cloud diagnosis (reads session key or env)
 │   │   ├── modelStorageService.js ← loads TF.js model + runs local inference
-│   │   ├── firebase.js          ← alerts sync w/ offline queue
+│   │   ├── offlineDiagnosis.js  ← crop mask, confidence gate, leaf guard, remedy lookup
+│   │   ├── storageService.js    ← persistent storage + model files in OPFS
 │   │   ├── geolocation.js       ← debounced GPS wrapper
 │   │   ├── imageStorage.js      ← IndexedDB helper
 │   │   ├── translation.js / tts.js / voice.js
@@ -171,7 +171,7 @@ KrishiSetu-AI/
 
 ```
 main.jsx
-  └─ <HashRouter>          → URL-based tabs (#/, #/scan, #/advisory, #/network)
+  └─ <HashRouter>          → URL-based tabs (#/, #/scan, #/advisory)
        └─ <AppProvider>    → global state (language, theme, online, model, gemini key…)
             └─ <ToastProvider>
                  └─ <App>  → splash (2.5s), header, modals, <Routes>, <Navbar>
@@ -193,29 +193,30 @@ tab area is wrapped in an error boundary so a crash can't blank the app.
         │
 5. analyzeImage():
      ├─ ONLINE  → diagnoseCropLeaf(base64, lang)  [Gemini, 60s timeout]
-     └─ OFFLINE → runInBrowserVisionInference(img) [TF.js model, 0–1 pixels]
+     └─ OFFLINE → runInBrowserVisionInference(img, selectedCrop) [TF.js model]
         │
-6. Result card: disease + % + source + Organic/Chemical advice
+6. Result card: disease + source + confidence, or a "Not Sure" / "No Leaf Detected" card
         │
 7. Actions:
      ├─ 🔊 Play audio        speakText()
      ├─ ✕ New photo          resetScan() → back to intake
-     ├─ 📢 Broadcast alert   GPS (debounced) + broadcastAlert() → Firebase/local
      └─ ⤴ Share              navigator.share() / clipboard
 ```
 
-**After a successful broadcast or share the scan resets automatically**, saving the
-diagnosis to history first, so the app is always ready for the next photo. There is also
-an always-visible ✕ button on the preview — you are never stuck on a photo.
+**After a successful share the scan resets automatically**, saving the diagnosis to
+history first, so the app is always ready for the next photo. There is also an
+always-visible ✕ button on the preview — you are never stuck on a photo.
 
 ### 6.3 Offline behaviour
 
 - All app shell assets are precached by the service worker → the app opens offline.
 - `isOnline` (from `navigator.onLine`) switches diagnosis from Gemini to the local model.
-- The local model + `classes.json` are fetched from `/model/…` and cached in the
-  browser HTTP cache after first download (see §13 for making the model available).
-- Broadcasts made offline are saved to localStorage, then pushed to Firebase
-  automatically when the device regains connectivity (`syncPendingAlerts`).
+- The local model + `classes.json` are downloaded from `/model/…` into **OPFS** (the
+  origin-private filesystem) rather than the HTTP cache, so clearing browser cache no longer
+  deletes the model. The app asks for **persistent storage** first so Android cannot evict it
+  when space runs low. See §13 for making the model available.
+- The district risk records are bundled with the app, so the list works offline; only the
+  Google Map itself needs a connection.
 
 ---
 
@@ -224,11 +225,11 @@ an always-visible ✕ button on the preview — you are never stuck on a photo.
 | Google product | Where it's used | Status |
 |---|---|---|
 | Gemini API | `src/services/gemini.js` — leaf diagnosis | ✅ wired |
-| Vertex AI | notebook §10 — optional Model Registry upload | ✅ in notebook |
-| Google Maps | `StateTelemetryMap.jsx` | ✅ wired |
-| Firebase | `firebase.js` — real-time alerts | ✅ wired |
-| Translation API | `src/services/translation.js` (with bundled fallback) | ✅ wired |
-| Cloud TTS | `src/services/tts.js` (with Web Speech fallback) | ✅ wired |
+| Google Maps | `DiseaseRiskMap.jsx` — district risk map | ✅ wired |
+| Translation API | *not used* — never had a backend; the bundled dictionary is what actually runs. The dead `/api/translate` call was removed | ❌ removed |
+| Cloud TTS | *not used* — never had a backend; the Web Speech API is what actually speaks. The dead `/api/tts` call was removed | ❌ removed |
+| Vertex AI | *not used* — the notebook exports straight to TF.js | ❌ not used |
+| Firebase | *removed* — the app has no backend | ❌ removed |
 
 ---
 
@@ -240,9 +241,9 @@ git clone https://github.com/SahooShuvranshu/KrishiSetu-AI.git
 cd KrishiSetu-AI
 npm install
 
-# 2. Environment file
-cp .env.example .env
-# → fill at least VITE_GEMINI_API_KEY to test cloud diagnosis
+# 2. Environment file (nothing to fill in)
+# The app ships with no API keys. Add your own in the app instead:
+#   Settings (gear icon) → API KEYS (THIS DEVICE)
 
 # 3. Run dev server
 npm run dev        # http://localhost:5173
@@ -255,20 +256,30 @@ npm run deploy     # build + vercel --prod
 
 ---
 
-## 9. Environment Variables
+## 9. API Keys (entered in the app, not in the environment)
 
-See `.env.example`. Summary:
+**There are no build-time variables for keys, on purpose.** Anything in a Vite
+bundle is public: `VITE_*` values are inlined into `dist/`, and the Gemini key
+used to be verifiably readable there. The app now reads no key from the
+environment at all (`src/services/apiKeys.js` never touches `import.meta.env`).
 
-| Variable | Required for | Where to get it |
+| Key | Required for | Where the user gets it |
 |---|---|---|
-| `VITE_GEMINI_API_KEY` | Cloud diagnosis | https://aistudio.google.com |
-| `VITE_GOOGLE_MAPS_KEY` | Telemetry map | https://console.cloud.google.com (Maps JS API) |
-| `VITE_FIREBASE_*` (6 vars) | Alert broadcast sync | https://console.firebase.google.com |
-| *(optional)* Translation / TTS | Cloud translation + speech | Google Cloud console |
+| Gemini API key | Cloud diagnosis | https://aistudio.google.com/apikey |
+| Google Maps JS key | District risk map | https://console.cloud.google.com (enable Maps JavaScript API) |
+| Translation / TTS | optional fallback; no backend serves these | Google Cloud console |
 
-> **Security note:** user-entered Gemini keys are kept in `sessionStorage` only and are
-> cleared when the tab closes. The recommended production path is `VITE_GEMINI_API_KEY`
-> baked in at build time. Never commit a real `.env`.
+Both are entered in **Settings → API KEYS (THIS DEVICE)**, stored in that
+browser's `localStorage` on that device, and never sent anywhere. If you ever set
+`VITE_GEMINI_API_KEY` / `VITE_GOOGLE_MAPS_KEY` earlier (here or in your hosting
+provider), delete them and rotate both keys — they were public.
+
+> **Do not** put a key back into the build just to make a demo easier. That is
+> exactly how the previous key ended up public inside `dist/`.
+
+> **History:** user-entered keys used to live in `sessionStorage` only and were
+> cleared when the tab closed, and the "recommended production path" was to bake the
+> key in at build time. That advice was wrong and has been removed.
 
 ---
 
@@ -280,8 +291,7 @@ See `.env.example`. Summary:
 |---|---|---|
 | `#/` | Home | `HomeTab` |
 | `#/scan` | Crop Doctor | `CameraScan` |
-| `#/advisory` | Farm Advice | `SoilAdvisory` |
-| `#/network` | Alerts Network | `StateTelemetryMap` |
+| `#/advisory` | Farm Advice (risk map + zones) | `SoilAdvisory` |
 
 ### AppContext (`useApp()`)
 
@@ -291,10 +301,11 @@ Components never receive settings via prop-drilling. They call:
 const { t, isOnline, appLanguage, isDark, ... } = useApp();
 ```
 
-The context owns: translation function `t`, language, theme, online/offline, notifications
-preference, auto-detect preference, Gemini key (session-scoped), model-downloaded flag,
-model downloading flag, and all mutators (`changeLanguage`, `toggleTheme`, `downloadModel`,
-`removeModel`, `clearAllData`, …).
+The context owns: translation function `t`, language, theme, online/offline, auto-detect
+preference, Gemini key (session-scoped), the model-installed flag (derived from the files
+actually present on the device, not a stored string), download progress, device storage
+usage, and all mutators (`changeLanguage`, `toggleTheme`, `downloadModel`,
+`installModelFiles`, `removeModel`, `clearAllData`, …).
 
 ---
 
@@ -311,8 +322,16 @@ model downloading flag, and all mutators (`changeLanguage`, `toggleTheme`, `down
      .toFloat()
      .div(255.0)                     // ← pixels become [0, 1]
    ```
-4. `model.predict(tensor)` → argmax → `classNames[maxIndex]` → e.g. `Paddy_Blast`.
-5. The class name is matched against `src/data/offline_diseases.json` for remedies.
+4. `model.predict(tensor)` → the **full probability vector**, not argmax.
+5. `offlineDiagnosis.js` then decides: filter to the crop the farmer picked and renormalise
+   (so the number is `P(disease | crop)`), apply the confidence + margin gate, and match the
+   class against `src/data/offline_diseases.json` for remedies.
+6. Below `MIN_CONFIDENCE` (0.5) or inside `MIN_MARGIN` (0.12) the app **refuses to name a
+   disease** and asks for a better photo. A non-leaf frame is rejected before inference runs
+   by the pixel guard (`LEAF_*` in `src/config/constants.js`).
+
+> A wrong treatment is more dangerous than no treatment, which is why the gate and the
+> "Not Sure" card exist. Tune `MIN_CONFIDENCE` / `LEAF_*` once you have field photos.
 
 ### Preprocessing contract (CRITICAL)
 
@@ -359,25 +378,35 @@ In the Colab **Files** panel upload to `/content/`:
 
 **Step 2 — Open the notebook in Colab.**
 `colab.research.google.com` → File → Upload notebook → pick
-`notebooks/KrishiSetu_Real_Model_Training.ipynb`.
+`notebooks/KrishiSetu_Model_Training.ipynb`.
 
 **Step 3 — Enable GPU.** Runtime → Change runtime type → **T4 GPU** → Save.
 
-**Step 4 — Run every cell top-to-bottom** (Shift+Enter). Key sections:
-1. Install packages
-2. *(auto)* extract your zips & discover image folders
-3. Build the Odisha dataset (`/content/odisha_crops/<Crop>_<Disease>/`)
-4. Load + augment (normalised to [0,1])
-5. Build MobileNetV2
-6. Phase 1 training (frozen base, ~10 epochs)
-7. Phase 2 fine-tuning (~5 epochs)
-8. Evaluate (report + confusion matrix)
-9. *(optional)* Vertex AI upload — needs service-account.json; skip if not configured
-10. **Export to TF.js** → writes `model.json`, `.bin`, `classes.json`
-11. **Download** `tfjs_model.zip`
+**Step 4 — Run every cell top-to-bottom** (Shift+Enter). The notebook is 12 steps:
 
-**Step 5 — Stop early for a smoke test** (optional). In the training cell, set
-`EPOCHS_P1 = 2`, `EPOCHS_P2 = 1` to prove the whole pipeline works end-to-end fast.
+| Step | What it does |
+|---|---|
+| 0 | Settings — Kaggle token, image size, epochs, `SMOKE_TEST`, `DROP_CLASSES_WITHOUT_REMEDY` |
+| 1 | Install `tensorflowjs`; print the environment and GPU |
+| 2 | Get the data — Kaggle CLI via `KAGGLE_API_TOKEN`, or archives/folders you uploaded, or a `tensorflow_datasets` fallback (Maize/Tomato/Potato, no account needed) |
+| 3 | Build `/content/odisha_crops/<Crop_Disease>/`: map folder names onto the app's taxonomy, dedupe, drop classes the remedy dictionary cannot advise on |
+| 4 | `tf.data` pipelines + augmentation |
+| 5 | Build MobileNetV2 (frozen base + new head) |
+| 6 | Phase 1 — train the classifier head |
+| 7 | Phase 2 — fine-tune the top of MobileNetV2 |
+| 8a/8b | Training curves, classification report, confusion matrix |
+| 9 | Contract checks — crop/disease prefixes, and that every trained class maps to a remedy record |
+| 10 | Export `model.json` + `.bin` shard(s) + `classes.json` |
+| 11 | Zip and auto-download `tfjs_model.zip` |
+
+> The Kaggle token goes in **Step 0** as `KAGGLE_API_TOKEN`. The notebook exports it as the
+> CLI's own env var *and* retries the download over REST with a `Bearer` header, so it works
+> whether or not the installed CLI honours the token. **Rotate the token on Kaggle and blank
+> that line before making the notebook public** — it lives in a git-tracked file.
+
+**Step 5 — Smoke-test it first** (optional but recommended). Set `SMOKE_TEST = True` in
+Step 0: 2 + 1 epochs on 60 images per class, a couple of minutes, and it exercises every
+cell including the export. Set it back to `False` for the real run.
 
 ### Colab-specific tips
 - If Colab says "NumPy 2.x" — the notebook pins `numpy<2.0` and asks you to restart the
@@ -404,17 +433,19 @@ In the Colab **Files** panel upload to `/content/`:
    ```bash
    npm run dev
    ```
-4. In the app open **Settings (gear)** → the model section shows "Download Offline Model"
-   (this writes the `model_downloaded` flag). Then **switch your device to offline /
-   airplane mode** (or test with DevTools → Network → Offline) so CameraScan uses the
-   local model, and scan a leaf photo.
+4. In the app open **Settings (gear)** → **Download** in the Offline AI Model section. This
+   really fetches `/model/model.json`, every weight shard it lists and `classes.json`, writes
+   them to OPFS, reads them back to verify, and only then shows "MODEL INSTALLED". If the
+   files are not deployed you get a red "Install failed — HTTP 404 …" message instead of a
+   false success. Then **switch the device to airplane mode** (or DevTools → Network →
+   Offline), pick the crop, and scan a leaf photo.
 
 > **Important:** online mode prefers Gemini (needs an API key). To force-test the local
 > model, go offline or temporarily empty the Gemini key.
 
 ### Option B — Just test cloud diagnosis (no model needed)
-With `VITE_GEMINI_API_KEY` set and an internet connection, take/upload any leaf photo and
-you'll get a Gemini diagnosis immediately — no training required.
+Add a Gemini key in **Settings → API KEYS (THIS DEVICE)** and take/upload any leaf photo
+with a connection: you'll get a Gemini diagnosis immediately — no training required.
 
 ### Option C — Simulate offline scan without a real model
 If you want to exercise the offline code path but haven't trained yet, the service worker
@@ -465,19 +496,17 @@ it — the app uses Gemini.
 - Make sure you did **not** remove the `Rescaling` layer / `rescale=1./255` (see §11).
 - Check `classes.json` order matches training (the notebook writes it automatically).
 
-### 15.4 Firebase alerts don't show
-- `VITE_FIREBASE_*` env vars missing → app falls back to local-only alerts. Fill `.env`.
-- Offline alerts queue in localStorage and sync when back online (up to 30s delay).
+### 15.4 The map says "The map needs internet", or shows "Error loading Google Maps"
+- Offline, that is expected — the map needs its tiles from Google.
+- No key on this device: the card says so and points at Settings.
+- Key present but rejected: the card says Google rejected it. Check that the key has the
+  Maps JavaScript API enabled and that its referrer restrictions allow this domain.
 
-### 15.5 Google Maps shows "Error loading Google Maps"
-- `VITE_GOOGLE_MAPS_KEY` missing/expired, or the Maps JavaScript API isn't enabled.
-- Without a key the network tab still works via local alert cards.
-
-### 15.6 Broadcast "stuck"/GPS slow
+### 15.5 GPS is slow in Farm Advice
 - Geolocation is debounced to one request per 5 seconds by design. A second tap reuses
   the default Odisha centre rather than blocking.
 
-### 15.7 Dark mode looks off on some screens
+### 15.6 Dark mode looks off on some screens
 - The app remaps white/black/borders to grays in dark mode via `index.css` overrides;
   shadows have named utilities (`shadow-brutal-sm/md/xl/…`) with dark variants.
 
@@ -489,9 +518,14 @@ it — the app uses Gemini.
 - **Precache:** HTML/CSS/JS and static assets are precached by Workbox (`dist/sw.js`).
 - **Hash routing:** all routes are `#/…` so no server rewrite is ever needed and deep
   links work offline.
-- **Model files:** big `.bin` weights are not precached (kept out of the service worker);
-  they're fetched on demand and then live in the browser HTTP cache. For a fully offline
-  model on first install, a future improvement is to add them to the precache manifest.
+- **Model files:** the `.bin` weights are kept **out** of the service-worker precache. The
+  Settings download fetches them once and stores them as real files in **OPFS**
+  (`storageService.js`), which survives cache clearing and is not evicted while the origin
+  holds the persistent-storage grant. TF.js reads them back through a custom IOHandler.
+- **Platform limit:** a PWA cannot write outside the browser sandbox, so this is "persistent
+  and origin-private", not a file in the phone's Downloads folder. On iOS Safari `persist()`
+  is unsupported and WebKit clears unused site storage after ~7 days — **Android/Chrome is
+  the target platform.**
 - **Images:** stored in IndexedDB via `services/imageStorage.js` (no 5 MB limit).
 
 ---
@@ -499,15 +533,20 @@ it — the app uses Gemini.
 ## 17. Known Issues & Roadmap
 
 See `todo.md` for the live list. Remaining items:
-- Model download in Settings is still a **placeholder** (2-second fake). Real behaviour:
-  fetch `/model/model.json` + shards and cache them explicitly.
-- `removeModel()` clears the flag but not the in-memory TF.js model (needs
-  `tf.dispose()` + reload of `modelStorageService`).
+- The district risk records in `multilingual_data.js` are **sample data** (e.g. the Ganjam →
+  Khurda brown-planthopper record). The map demonstrates the layout; it is not live field
+  reporting.
 - Market prices + a few advisory cards use static demo data — wire to a real API.
+- The leaf guard is a heuristic (green dominance + texture), not a classifier: soil and
+  skin-toned frames can still pass it. The real fix is a trained `Other` class.
+- `MIN_CONFIDENCE` / `MIN_MARGIN` / `LEAF_*` are initial estimates, never tuned against
+  field photos.
+- Classes the remedy dictionary cannot advise on are dropped by the notebook by default
+  (`DROP_CLASSES_WITHOUT_REMEDY`), which currently excludes `Paddy_Leaf_Scald`.
 - Geolocation debounce exists; a graceful "retry in a moment" prompt could be nicer UX.
 
-**Nice-to-haves:** real Kaggle dataset sizes, ensemble of 2 models, on-device
-quantization reporting, alert trust/verification layer.
+**Nice-to-haves:** real Kaggle dataset sizes, ensemble of 2 models, on-device quantization
+reporting, a field-photo dataset shot on the target phones.
 
 ---
 

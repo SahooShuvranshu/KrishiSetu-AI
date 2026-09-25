@@ -67,9 +67,17 @@ export const lookupProtocol = (predictedClass, lang = 'en') => {
     const hayWords = hay.split(' ').filter(Boolean);
     let score = 0;
     for (let i = 0; i < hayWords.length; i++) {
-      if (hayWords[i].length > 2 && predWords.includes(hayWords[i])) score += 1;
-      const bigram = `${hayWords[i]} ${hayWords[i + 1] || ''}`.trim();
-      if (bigram.includes(' ') && pred.includes(` ${bigram} `)) score += 2;
+      const word = hayWords[i];
+      const next = hayWords[i + 1] || '';
+      const bigram = `${word} ${next}`.trim();
+      // The crop word is not evidence of a disease match. The Cotton record's
+      // disease_name is "Cotton Leaf Curl Virus (CLCuV)", so scoring it would let
+      // Cotton_Healthy match Leaf Curl Virus on the crop prefix alone - and that
+      // record comes first, so the real Healthy record (equal score) could never
+      // win. A wrong pesticide dose is the worst thing this app can hand out.
+      if (word !== cropWord && word.length > 2 && predWords.includes(word)) score += 1;
+      const informative = bigram.includes(' ') && word !== cropWord && next !== cropWord;
+      if (informative && pred.includes(` ${bigram} `)) score += 2;
     }
     if (score > bestScore) {
       bestScore = score;
@@ -107,6 +115,7 @@ export function rankCandidates(predictions, classNames, cropId) {
   const prefix = cropPrefixFor(cropId);
   let pool = all;
   let masked = false;
+  let cropMissing = false;
 
   if (prefix) {
     const subset = all.filter(
@@ -116,11 +125,19 @@ export function rankCandidates(predictions, classNames, cropId) {
       const total = subset.reduce((sum, c) => sum + c.p, 0);
       pool = total > 0 ? subset.map((c) => ({ ...c, p: c.p / total })) : subset;
       masked = true;
+    } else {
+      // The farmer picked a crop this model was never trained on (Maize in a
+      // model built without the corn classes is the live example). Scoring every
+      // class here would silently drop the crop mask and could name a tomato
+      // disease for a maize leaf - the exact failure the mask exists to prevent.
+      // Return no candidates so the caller can say the crop is not in the model.
+      cropMissing = true;
+      pool = [];
     }
   }
 
   pool.sort((a, b) => b.p - a.p);
-  return { candidates: pool, masked, global };
+  return { candidates: pool, masked, cropMissing, global };
 }
 
 // Decide whether the result is good enough to name a disease.
@@ -136,6 +153,12 @@ export function gate(candidates, opts = {}) {
   const global = opts.global;
   if (global && global.p >= otherMin) {
     return { status: 'not_a_leaf', confidence: global.p, margin: 0, top: null, other: global };
+  }
+
+  // The selected crop has no class in this model at all, so there is nothing to
+  // rank. Answering anyway would mean scoring crops the farmer did not pick.
+  if (opts.cropMissing) {
+    return { status: 'crop_not_in_model', confidence: 0, margin: 0, top: null };
   }
 
   const top = candidates[0] || null;

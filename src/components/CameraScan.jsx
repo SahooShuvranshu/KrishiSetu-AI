@@ -178,6 +178,8 @@ export default function CameraScan() {
 
       if (error.message === 'MODEL_NOT_INSTALLED') {
         failed('modelNotInstalled', 'modelNotInstalledAdvice', 'System');
+      } else if (error.message === 'CROP_NOT_IN_MODEL') {
+        failed('cropNotInModel', 'cropNotInModelAdvice', 'System');
       } else if (error.message === 'IMAGE_LOAD_FAILED') {
         failed('photoUnreadable', 'photoUnreadableAdvice', t('errorLabel'));
       } else if (error.message === 'ANALYSIS_TIMEOUT') {

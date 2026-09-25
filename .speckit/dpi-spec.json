@@ -1,17 +1,95 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "KrishiSetuCrossStateTelemetry",
+  "title": "KrishiSetuDistrictRiskRecord",
+  "description": "One district-level pest/disease risk advisory as bundled with the KrishiSetu AI app. These records ship inside the app (src/multilingual_data.js, getTelemetryData) so the risk list renders with no connection, and they are SAMPLE data - not live field reports. An earlier version of this file described a cross-state telemetry broadcast envelope (originStateCode, telemetryId, JSON-LD outbreak vectors). That feature was removed and never shipped; this schema documents the record shape that actually exists.",
   "type": "object",
+  "additionalProperties": false,
+  "required": ["lat", "lng", "en", "or", "hi"],
   "properties": {
-    "telemetryId": { "type": "string", "format": "uuid" },
-    "originStateCode": { "type": "string", "enum": ["OD", "PB", "HR", "MH", "TN", "UP", "KA", "WB", "AP"] },
-    "targetStateCode": { "type": "string" },
-    "eventType": { "type": "string", "enum": ["pest_outbreak_warning", "soil_degradation_alert", "climate_risk"] },
-    "cropTarget": { "type": "string" },
-    "pathogenOrPest": { "type": "string" },
-    "severityScore": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
-    "districtVector": { "type": "string" },
-    "timestamp": { "type": "string", "format": "date-time" }
+    "lat": {
+      "type": "number",
+      "minimum": -90,
+      "maximum": 90,
+      "description": "Latitude the map marker is placed at."
+    },
+    "lng": {
+      "type": "number",
+      "minimum": -180,
+      "maximum": 180,
+      "description": "Longitude the map marker is placed at."
+    },
+    "en": { "$ref": "#/$defs/localisedAdvisory" },
+    "or": { "$ref": "#/$defs/localisedAdvisory" },
+    "hi": { "$ref": "#/$defs/localisedAdvisory" }
   },
-  "required": ["telemetryId", "originStateCode", "eventType", "cropTarget", "severityScore", "timestamp"]
+  "$defs": {
+    "localisedAdvisory": {
+      "type": "object",
+      "description": "The same advisory in one language. Every language block must be present: the app renders the block matching the selected UI language and has no runtime translation service.",
+      "additionalProperties": false,
+      "required": ["origin", "target", "pest", "crop", "severity", "advice"],
+      "properties": {
+        "origin": {
+          "type": "string",
+          "minLength": 1,
+          "description": "District the risk is currently reported in, e.g. \"Ganjam\"."
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1,
+          "description": "District the advisory is addressed to, e.g. \"Khurda\"."
+        },
+        "pest": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Pest or pathogen name, e.g. \"Brown Plant Hopper\"."
+        },
+        "crop": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Affected crop, e.g. \"Paddy (Rice)\"."
+        },
+        "severity": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Localised severity label. English records use \"High\", \"Moderate\" or \"Low\"; the Odia and Hindi blocks carry their own translated label, so this is deliberately not an enum."
+        },
+        "advice": {
+          "type": "string",
+          "minLength": 1,
+          "description": "One or two sentences of actionable advice for the target district."
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "lat": 19.37,
+      "lng": 84.79,
+      "en": {
+        "origin": "Ganjam",
+        "target": "Khurda",
+        "pest": "Brown Plant Hopper",
+        "crop": "Paddy (Rice)",
+        "severity": "High",
+        "advice": "Farmers in Khurda should check paddy fields today. Outbreak detected in Ganjam."
+      },
+      "or": {
+        "origin": "ଗଞ୍ଜାମ",
+        "target": "ଖୋର୍ଦ୍ଧା",
+        "pest": "ମାଟିଆ ଗୁଣ୍ଡି ପୋକ",
+        "crop": "ଧାନ",
+        "severity": "ଉଚ୍ଚ",
+        "advice": "ଖୋର୍ଦ୍ଧାର ଚାଷୀମାନେ ଆଜି ଧାନ କ୍ଷେତ ଯାଞ୍ଚ କରିବା ଉଚିତ୍।"
+      },
+      "hi": {
+        "origin": "गंजम",
+        "target": "खुर्दा",
+        "pest": "ब्राउन प्लांट हॉपर",
+        "crop": "धान",
+        "severity": "उच्च",
+        "advice": "खुर्दा के किसानों को धान के खेतों की जांच करनी चाहिए।"
+      }
+    }
+  ]
 }

@@ -1,0 +1,8 @@
+# KrishiSetu AI - landing page robots.txt
+# Served from the GitHub Pages site at:
+#   https://sahooshuvranshu.is-a.dev/KrishiSetu-AI/
+
+User-agent: *
+Allow: /
+
+Sitemap: https://sahooshuvranshu.is-a.dev/KrishiSetu-AI/sitemap.xml

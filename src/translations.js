@@ -1,5 +1,3 @@
-import { translateText } from './services/translation';
-
 // Static translations for offline use
 const staticTranslations = {
   en: {
@@ -83,6 +81,8 @@ const staticTranslations = {
   lowConfidenceAdvice: "The photo was not clear enough to be certain. Take another photo closer to the leaf, or show this to your agriculture officer before spraying.",
   notALeafTitle: "No Leaf Detected",
   notALeafAdvice: "That photo does not look like a leaf. Fill the frame with one affected leaf in good light and try again.",
+  cropNotInModel: "Crop Not Supported",
+  cropNotInModelAdvice: "The offline model on this phone was not trained for this crop, so it cannot name the disease. Turn on internet for a cloud diagnosis. Do not spray anything until the disease is confirmed.",
     appTitle: "Krishi Setu",
     appSubtitle: "Odisha Farmer Network",
     settings: "App Settings",
@@ -242,6 +242,8 @@ const staticTranslations = {
   lowConfidenceAdvice: "ଫଟୋ ଯଥେଷ୍ଟ ସ୍ପଷ୍ଟ ନଥିଲା। ପତ୍ରର ନିକଟରୁ ଆଉ ଏକ ଫଟୋ ନିଅନ୍ତୁ, କିମ୍ବା ଔଷଧ ଛିଞ୍ଚିବା ପୂର୍ବରୁ ଏହା କୃଷି ଅଧିକାରୀଙ୍କୁ ଦେଖାନ୍ତୁ।",
   notALeafTitle: "ପତ୍ର ଚିହ୍ନଟ ହେଲା ନାହିଁ",
   notALeafAdvice: "ଏହି ଫଟୋ ପତ୍ର ପରି ଦେଖାଯାଉନାହିଁ। ଭଲ ଆଲୋକରେ ଗୋଟିଏ ପ୍ରଭାବିତ ପତ୍ରର ଫଟୋ ନିଅନ୍ତୁ ଏବଂ ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।",
+  cropNotInModel: "ଏହି ଫସଲ ସମର୍ଥିତ ନୁହେଁ",
+  cropNotInModelAdvice: "ଏହି ଫୋନର ଅଫଲାଇନ୍ ମଡେଲ୍ ଏହି ଫସଲ ପାଇଁ ତାଲିମ ପାଇନାହିଁ, ତେଣୁ ଏହା ରୋଗର ନାମ କହିପାରିବ ନାହିଁ। କ୍ଲାଉଡ୍ ରୋଗ ନିର୍ଣ୍ଣୟ ପାଇଁ ଇଣ୍ଟରନେଟ୍ ଚାଲୁ କରନ୍ତୁ। ରୋଗ ନିଶ୍ଚିତ ନହେବା ପର୍ଯ୍ୟନ୍ତ କୌଣସି ଔଷଧ ଛିଞ୍ଚନ୍ତୁ ନାହିଁ।",
     appTitle: "କୃଷିସେତୁ",
     appSubtitle: "ଓଡ଼ିଶା କୃଷକ ନେଟୱାର୍କ",
     settings: "ଆପ୍ ସେଟିଂସ୍",
@@ -401,6 +403,8 @@ const staticTranslations = {
   lowConfidenceAdvice: "फ़ोटो इतनी साफ़ नहीं थी कि पक्का कहा जाए। पत्ती के पास से दूसरी फ़ोटो लें, या दवा छिड़कने से पहले यह कृषि अधिकारी को दिखाएँ।",
   notALeafTitle: "पत्ती नहीं मिली",
   notALeafAdvice: "यह फ़ोटो पत्ती जैसी नहीं दिखती। अच्छी रोशनी में एक प्रभावित पत्ती की फ़ोटो लें और फिर कोशिश करें।",
+  cropNotInModel: "यह फ़सल समर्थित नहीं है",
+  cropNotInModelAdvice: "इस फ़ोन का ऑफ़लाइन मॉडल इस फ़सल पर प्रशिक्षित नहीं है, इसलिए यह रोग का नाम नहीं बता सकता। क्लाउड से जाँच के लिए इंटरनेट चालू करें। रोग की पुष्टि से पहले कोई दवा न छिड़कें।",
     appTitle: "कृषिसेतु",
     appSubtitle: "ओडिशा किसान नेटवर्क",
     settings: "ऐप सेटिंग्स",
@@ -483,7 +487,7 @@ const staticTranslations = {
 
 /**
  * Get translation for a key
- * Uses static translations for offline, can use Translation API for dynamic text
+ * Reads the bundled dictionary only - there is no translation API to call.
  * 
  * @param {string} lang - Language code
  * @param {string} key - Translation key
@@ -493,21 +497,7 @@ export const getTranslation = (lang, key) => {
   return staticTranslations[lang]?.[key] || staticTranslations['en']?.[key] || key;
 };
 
-/**
- * Translate dynamic text (for AI responses, etc.)
- * Uses Google Translation API when online, falls back to original text
- * 
- * @param {string} text - Text to translate
- * @param {string} targetLang - Target language
- * @param {string} sourceLang - Source language (default: en)
- * @returns {Promise<string>} - Translated text
- */
-export const translateDynamicText = async (text, targetLang, sourceLang = 'en') => {
-  return await translateText(text, targetLang, sourceLang);
-};
-
 export default {
   translations: staticTranslations,
-  getTranslation,
-  translateDynamicText
+  getTranslation
 };
