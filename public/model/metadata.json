@@ -1,6 +1,6 @@
 {
   "model_name": "KrishiSetu Odisha Crop Disease Classifier",
-  "architecture": "MobileNetV2 alpha=0.5 + transfer learning",
+  "architecture": "MobileNetV2 alpha=1.0 + transfer learning",
   "input_size": [
     224,
     224,
@@ -11,15 +11,22 @@
     1.0
   ],
   "first_layer": "Rescaling(scale=2.0, offset=-1.0)",
-  "num_classes": 21,
+  "num_classes": 28,
   "class_names": [
     "Cotton_Bacterial_Blight",
+    "Cotton_Fusarium_Wilt",
+    "Cotton_Healthy",
     "Cotton_Leaf_Curl",
+    "Maize_Gray_Leaf_Spot",
+    "Maize_Healthy",
+    "Maize_Leaf_Blight",
+    "Maize_Rust",
     "Other_NotALeaf",
     "Paddy_Bacterial_Blight",
     "Paddy_Blast",
     "Paddy_Brown_Spot",
     "Paddy_Healthy",
+    "Paddy_Leaf_Scald",
     "Paddy_Sheath_Blight",
     "Potato_Early_Blight",
     "Potato_Healthy",
@@ -36,7 +43,10 @@
     "Tomato_Yellow_Leaf_Curl"
   ],
   "quantization": "float16",
-  "val_accuracy": 0.8273,
-  "parameters": 872901,
+  "parameters": 2425564,
+  "weight_shards": [
+    "group1-shard1of2.bin",
+    "group1-shard2of2.bin"
+  ],
   "trained_on": "Google Colab, T4 GPU"
 }

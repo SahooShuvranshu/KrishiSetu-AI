@@ -7,9 +7,10 @@ Put your trained model files here:
 - `classes.json` — JSON array of class names in the model's output order
 - `metadata.json` — (optional) training metadata; the app ignores it
 
-These files are **git-ignored** (see `.gitignore`), so a fresh clone has none of
-them. The app runs fine without them — online diagnosis uses Gemini. They are
-only needed for the offline (on-device) path.
+These files are **tracked by git** (only `*.tflite` is ignored), so a fresh
+clone ships with the current model and Vercel serves it from the repo. To ship
+a retrained model: replace all files here, commit, and push — then remind users
+to hard-reload, because the service worker precaches the old weights.
 
 ## How to get these files
 

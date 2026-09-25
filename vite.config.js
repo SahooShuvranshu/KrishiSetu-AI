@@ -40,10 +40,14 @@ export default defineConfig({
         // has not run a scan yet would still be offline-broken. Without this the
         // precache has model.json but not the weights, tf.loadLayersModel dies
         // part-way through the load, and a device that skipped Settings ->
-        // Download can never scan offline. ~1.75 MB, which is the whole point
-        // of an offline-first app. OPFS stays the primary copy; this is the
-        // bootstrap for a device that has not installed one yet.
+        // Download can never scan offline. ~4.6 MB across two shards (the
+        // alpha=1.0 model), which is the whole point of an offline-first app.
+        // maximumFileSizeToCacheInBytes is raised above workbox's 2 MiB
+        // default because the largest shard is ~4.2 MB. OPFS stays the
+        // primary copy; this is the bootstrap for a device that has not
+        // installed one yet.
         globPatterns: ['**/*.{js,css,html,ico,png,svg,json,bin}'],
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
