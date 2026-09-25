@@ -34,7 +34,16 @@ export default defineConfig({
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
+        // The .bin weight shard is precached deliberately. Workbox's precache
+        // is the only cache that can serve something the device has never
+        // fetched: runtime caching fills up on demand, so a fresh install that
+        // has not run a scan yet would still be offline-broken. Without this the
+        // precache has model.json but not the weights, tf.loadLayersModel dies
+        // part-way through the load, and a device that skipped Settings ->
+        // Download can never scan offline. ~1.75 MB, which is the whole point
+        // of an offline-first app. OPFS stays the primary copy; this is the
+        // bootstrap for a device that has not installed one yet.
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,json,bin}'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
