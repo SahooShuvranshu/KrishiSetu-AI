@@ -1,0 +1,23 @@
+[
+  "Cotton_Bacterial_Blight",
+  "Cotton_Leaf_Curl",
+  "Other_NotALeaf",
+  "Paddy_Bacterial_Blight",
+  "Paddy_Blast",
+  "Paddy_Brown_Spot",
+  "Paddy_Healthy",
+  "Paddy_Sheath_Blight",
+  "Potato_Early_Blight",
+  "Potato_Healthy",
+  "Potato_Late_Blight",
+  "Tomato_Bacterial_Spot",
+  "Tomato_Early_Blight",
+  "Tomato_Healthy",
+  "Tomato_Late_Blight",
+  "Tomato_Leaf_Mold",
+  "Tomato_Mosaic",
+  "Tomato_Septoria",
+  "Tomato_Spider_Mite",
+  "Tomato_Target_Spot",
+  "Tomato_Yellow_Leaf_Curl"
+]

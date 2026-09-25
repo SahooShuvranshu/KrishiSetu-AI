@@ -41,9 +41,11 @@ __pycache__/
 *.keras
 *.tflite
 
-# Model files (large, train separately)
-public/model/*.bin
-public/model/*.json
+# Model files ARE committed. Vercel builds from a git checkout (vercel.json has
+# buildCommand + outputDirectory), and there is no .vercelignore - so an
+# ignored public/model/* would silently omit the hosted copy and every
+# /model/model.json request would 404, breaking Settings -> Download for all
+# users. Keep this tracked. Only throwaway tflite artifacts stay out.
 public/model/*.tflite
 
 # Uploads
