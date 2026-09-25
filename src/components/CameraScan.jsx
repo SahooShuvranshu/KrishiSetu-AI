@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Camera, Upload, Share2, WifiOff, X } from 'lucide-react';
 import { diagnoseCropLeaf } from '../services/gemini';
+import { readApiKey } from '../services/apiKeys';
 import { runInBrowserVisionInference } from '../services/modelStorageService';
 import { speakText } from '../services/voice';
 import { saveImage, getImage, deleteImage } from '../services/imageStorage';
@@ -141,12 +142,11 @@ export default function CameraScan() {
     setResult(null);
     try {
       let diagnosis;
-      if (isOnline) {
-        // Timeout so a hung request can never leave the screen stuck on "scanning"
-        diagnosis = await withTimeout(diagnoseCropLeaf(base64Image, appLanguage), GEMINI_TIMEOUT);
-      } else {
-        // The on-device path needs its own, longer budget: the first run has to
-        // load and warm up the TF.js model before it can predict anything.
+      let usedCloud = false;
+
+      // The on-device model. Needs its own, longer budget: the first run has to
+      // load and warm up the TF.js model before it can predict anything.
+      const runDeviceModel = async () => {
         const img = await loadImage(base64Image);
         // selectedCrop is the context the model cannot get from a photo: with it,
         // only that crop's classes are considered.
@@ -154,13 +154,32 @@ export default function CameraScan() {
           runInBrowserVisionInference(img, selectedCrop, appLanguage),
           MODEL_INFERENCE_TIMEOUT
         );
-        diagnosis = offline.status === 'not_a_leaf'
+        return offline.status === 'not_a_leaf'
           ? { disease: t('notALeafTitle'), treatment: t('notALeafAdvice'), status: 'not_a_leaf' }
           : offline;
+      };
+
+      // Cloud is an upgrade, not a dependency. Previously "online" meant
+      // "Gemini or nothing", so a missing key, an exhausted quota or a flaky
+      // connection turned a perfectly good on-device diagnosis into an error
+      // screen - which is backwards for an offline-first app. Every cloud
+      // failure now falls back to the model already on the device, and a
+      // device without a key never asks the cloud at all.
+      if (isOnline && readApiKey('gemini')) {
+        try {
+          // Timeout so a hung request can never leave the screen stuck on "scanning"
+          diagnosis = await withTimeout(diagnoseCropLeaf(base64Image, appLanguage), GEMINI_TIMEOUT);
+          usedCloud = true;
+        } catch (cloudErr) {
+          console.warn('Cloud diagnosis failed, using the on-device model instead', cloudErr);
+          diagnosis = await runDeviceModel();
+        }
+      } else {
+        diagnosis = await runDeviceModel();
       }
       if (scanId !== scanIdRef.current) return; // user moved on - ignore stale result
       const res = {
-        source: isOnline ? 'Cloud AI' : t('offlineModel'),
+        source: usedCloud ? 'Cloud AI' : t('offlineModel'),
         disease: diagnosis.disease,
         treatment: diagnosis.treatment,
         status: diagnosis.status || 'ok',

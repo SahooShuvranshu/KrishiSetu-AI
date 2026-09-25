@@ -208,6 +208,32 @@
   }
  },
  {
+  "id": "paddy_leaf_scald",
+  "crop_name": "Paddy",
+  "disease_name": "Leaf Scald (Rhizoctonia oryzae-sativae)",
+  "severity": "Moderate",
+  "symptoms": "Whitish-grey drying that starts at the leaf tip and runs down the margin in a V or zigzag shape; badly infected leaves dry up and the tiller is stunted.",
+  "organic_remedy": "Rogue out infected stubble and bury crop residue; seed-treat with Trichoderma viride @ 4 g/kg seed and keep potash balanced to reduce incidence.",
+  "chemical_remedy": "Seed treat with Thiophanate-methyl 70% WP @ 2 g/kg or Validamycin 5% LA @ 3 g/kg. If it keeps spreading, spray Isoprothiolane 40% EC @ 1.5 ml/l or Propiconazole 25% EC @ 1 ml/l.",
+  "regenerative_advice": "Avoid excess nitrogen, which makes soft growth scald badly. Drain the field, bury residue, and rotate with a non-host crop on plots with a history of scald.",
+  "i18n": {
+   "or": {
+    "disease_name": "ପତ୍ର ସ୍କାଲ୍ଡ (Rhizoctonia oryzae-sativae)",
+    "symptoms": "ପତ୍ରର ଚୂଡ଼ାରୁ ଧଳା ଧୂସର ଚିହ୍ନ ଆରମ୍ଭ ହୋଇ କିନାରି ଧରି V କିମ୍ବା ଜିଗଜାଗ୍ ଆକାରରେ ବଢେ; ଗୁରୁତର ଅବସ୍ଥାରେ ପତ୍ର ଶୁଖି ଯାଏ।",
+    "organic_remedy": "ସଂକ୍ରମିତ ଗଛ ଓ ପତ୍ର କାଟି ପୋତି ଦିଅନ୍ତୁ; ବୀଜ ଚିକିତ୍ସା ପାଇଁ Trichoderma viride ୪ ଗ୍ରାମ/କିଲୋ ବୀଜରେ ମିଶାନ୍ତୁ ଏବଂ ପୋଟାସ୍ ସନ୍ତୁଳିତ ରଖନ୍ତୁ।",
+    "chemical_remedy": "ବୀଜକୁ Thiophanate-methyl 70% WP @ ୨ ଗ୍ରାମ/କିଲୋ କିମ୍ବା Validamycin 5% LA @ ୩ ଗ୍ରାମ/କିଲୋରେ ଚିକିତ୍ସା କରନ୍ତୁ। ବଢ଼ିବାରେ ଥିଲେ Isoprothiolane 40% EC @ ୧.୫ ମିଲି/ଲିଟର କିମ୍ବା Propiconazole 25% EC @ ୧ ମିଲି/ଲିଟର ସ୍ପ୍ରେ କରନ୍ତୁ।",
+    "regenerative_advice": "ଅତ୍ୟଧିକ ନାଇଟ୍ରୋଜନ ଦିଅନ୍ତୁ ନାହିଁ, ନହେଲେ ନରମ ପତ୍ରରେ ରୋଗ ବଢ଼େ। କ୍ଷେତ ଶୁଖାନ୍ତୁ, ଅବଶିଷ୍ଟ ପତ୍ର ପୋତି ଦିଅନ୍ତୁ ଏବଂ ପୂର୍ବରୁ ରୋଗ ଥିବା ଜାଗାରେ ଅନ୍ୟ ଫସଲ ଲଗାନ୍ତୁ।"
+   },
+   "hi": {
+    "disease_name": "पत्ती स्कॉल्ड (Rhizoctonia oryzae-sativae)",
+    "symptoms": "पत्ती की नोक से शुरू होकर किनारे पर V या ज़िगज़ैग आकार में फैलने वाला धब्बा; गंभीर होने पर पत्ती सूख जाती है।",
+    "organic_remedy": "संक्रमित तने व पत्ती हटाकर दबाएँ; बीज को Trichoderma viride 4 ग्राम/किलो से उपचारित करें और पोटाश संतुलित रखें।",
+    "chemical_remedy": "बीज उपचार Thiophanate-methyl 70% WP @ 2 ग्राम/किलो या Validamycin 5% LA @ 3 ग्राम/किलो से करें। फैलने पर Isoprothiolane 40% EC @ 1.5 मिली/लीटर या Propiconazole 25% EC @ 1 मिली/लीटर छिड़कें।",
+    "regenerative_advice": "अतिरिक्त नाइट्रोजन न दें, वरना नरम पत्तियों में रोग बढ़ता है। खेत सुखाएँ, अवशेष दबाएँ और इतिहास वाली जगह पर गैर-होस्ट फसल लगाएँ।"
+   }
+  }
+ },
+ {
   "id": "paddy_healthy",
   "crop_name": "Paddy",
   "disease_name": "Healthy",
