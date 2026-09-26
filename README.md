@@ -88,7 +88,7 @@ The trained Keras/TensorFlow model is quantized and converted into the TensorFlo
 1. **Frontend Core:** React 18 + Vite
 2. **Offline Caching:** Vite-PWA with Workbox (Service Workers) for absolute caching of HTML/CSS/JS and Model Binaries.
 3. **Edge ML:** `@tensorflow/tfjs` static bundling to avoid dynamic import chunk failure offline.
-4. **LLM Engine:** `@google/generative-ai` (Gemini Flash for crop diagnosis).
+4. **LLM Engine:** `@google/genai` (Gemini Flash for crop diagnosis).
 5. **Voice:** Web Speech API for spoken remedies — no key, works offline.
 6. **Translation:** bundled EN/OR/HI dictionary (`src/translations.js`) — no network needed.
 7. **Geospatial:** Google Maps Platform for the district disease-risk map.

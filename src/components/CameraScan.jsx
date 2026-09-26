@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Camera, Upload, Share2, WifiOff, X } from 'lucide-react';
-import { diagnoseCropLeaf } from '../services/gemini';
+import { diagnoseCropLeaf, CLOUD_ERROR_CODES } from '../services/gemini';
 import { readApiKey } from '../services/apiKeys';
 import { runInBrowserVisionInference } from '../services/modelStorageService';
 import { speakText } from '../services/voice';
@@ -143,6 +143,18 @@ export default function CameraScan() {
     try {
       let diagnosis;
       let usedCloud = false;
+      let cloudNote = null;
+
+      // Why the cloud path was skipped, in the user's language. A silent fall
+      // back to the offline model is what made a perfectly good API key look
+      // "broken": the exact reason now travels into the result card.
+      const cloudNoteFor = (err) => {
+        const code = err && err.code;
+        if (code === CLOUD_ERROR_CODES.keyRejected) return t('cloudKeyRejected');
+        if (code === CLOUD_ERROR_CODES.quota) return t('cloudQuota');
+        if (code === CLOUD_ERROR_CODES.modelUnavailable) return t('cloudModelUnavailable');
+        return t('cloudFailed');
+      };
 
       // The on-device model. Needs its own, longer budget: the first run has to
       // load and warm up the TF.js model before it can predict anything.
@@ -172,6 +184,7 @@ export default function CameraScan() {
           usedCloud = true;
         } catch (cloudErr) {
           console.warn('Cloud diagnosis failed, using the on-device model instead', cloudErr);
+          cloudNote = cloudNoteFor(cloudErr);
           diagnosis = await runDeviceModel();
         }
       } else {
@@ -183,7 +196,8 @@ export default function CameraScan() {
         disease: diagnosis.disease,
         treatment: diagnosis.treatment,
         status: diagnosis.status || 'ok',
-        confidence: typeof diagnosis.confidence === 'number' ? diagnosis.confidence : null
+        confidence: typeof diagnosis.confidence === 'number' ? diagnosis.confidence : null,
+        cloudNote
       };
       setResult(res);
       saveLastResult(res);
@@ -383,6 +397,12 @@ export default function CameraScan() {
               {result.source}{result.confidence !== null && result.confidence !== undefined ? ` · ${Math.round(result.confidence * 100)}%` : ''}
             </span>
           </div>
+
+          {result.cloudNote && (
+            <div className="mb-2 bg-blue-50 border-2 border-blue-400 p-1.5">
+              <p className="font-mono text-[8px] text-blue-800 leading-snug">{result.cloudNote}</p>
+            </div>
+          )}
 
           {result.status === 'uncertain' && (
             <div className="mb-2 bg-yellow-100 border-2 border-yellow-500 p-1.5">

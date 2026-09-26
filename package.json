@@ -11,7 +11,7 @@
     "deploy:preview": "vite build && vercel"
   },
   "dependencies": {
-    "@google/generative-ai": "^0.21.0",
+    "@google/genai": "^2.24.0",
     "@react-google-maps/api": "^2.20.0",
     "@tensorflow/tfjs": "^4.22.0",
     "lucide-react": "^0.395.0",
