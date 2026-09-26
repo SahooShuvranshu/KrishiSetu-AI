@@ -135,6 +135,13 @@ export async function saveModelFiles(entries) {
   return entries.map((e) => e.name);
 }
 
+// A missing file/dir is a normal "not installed" answer. Every OTHER error
+// (SecurityError, UnknownError, quota trouble) must propagate: swallowing them
+// here once made a transient Android OPFS read failure look exactly like "model
+// not installed", which silently cleared the installed flag with no error box.
+const isNotFound = (err) =>
+  !!err && (err.name === 'NotFoundError' || err.name === 'TypeMismatchError');
+
 export async function readModelFileText(name) {
   try {
     const dir = await modelDir(false);
@@ -142,7 +149,8 @@ export async function readModelFileText(name) {
     const file = await handle.getFile();
     return await file.text();
   } catch (err) {
-    return null;
+    if (isNotFound(err)) return null;
+    throw err;
   }
 }
 
@@ -153,7 +161,8 @@ export async function readModelFileBuffer(name) {
     const file = await handle.getFile();
     return await file.arrayBuffer();
   } catch (err) {
-    return null;
+    if (isNotFound(err)) return null;
+    throw err;
   }
 }
 
@@ -169,7 +178,8 @@ export async function listModelFiles() {
     }
     return out.sort((a, b) => a.name.localeCompare(b.name));
   } catch (err) {
-    return [];
+    if (isNotFound(err)) return [];
+    throw err;
   }
 }
 
@@ -186,12 +196,34 @@ export async function deleteModelFiles() {
 
 // Is a usable model actually stored? Returns null when OPFS is unavailable, so
 // the caller can fall back to the legacy flag instead of reporting a lie.
+// model.json and classes.json are written FIRST and are tiny, so checking only
+// those once reported "MODEL INSTALLED" for a download that died halfway
+// through the multi-megabyte shard. Every shard the manifest names must be
+// present and non-empty. Storage errors other than "file missing" propagate.
 export async function hasInstalledModel() {
   if (!isOPFSAvailable()) return null;
   const files = await listModelFiles();
-  const names = files.map((f) => f.name.toLowerCase());
-  const has = (n) => names.indexOf(n) !== -1 && files[names.indexOf(n)].size > 0;
-  return has('model.json') && has('classes.json');
+  const byName = {};
+  for (const f of files) byName[f.name.toLowerCase()] = f;
+  if (!byName['model.json'] || byName['model.json'].size === 0) return false;
+  if (!byName['classes.json'] || byName['classes.json'].size === 0) return false;
+
+  // Storage errors here are real problems and propagate; only a missing or
+  // corrupt model.json is an honest "not installed".
+  const modelJsonText = await readModelFileText('model.json');
+  if (modelJsonText === null) return false;
+  let manifest;
+  try {
+    manifest = parseModelManifest(JSON.parse(modelJsonText));
+  } catch (err) {
+    // Truncated or wrong-format model.json cannot be loaded either, so this is
+    // still an honest "not installed", not a swallowed storage failure.
+    console.warn('Stored model.json is unreadable, treating the model as not installed.', err);
+    return false;
+  }
+  return manifest.shards.every(
+    (s) => byName[s.toLowerCase()] && byName[s.toLowerCase()].size > 0
+  );
 }
 
 // Install from files the user picked by hand (the offline path in Settings).
@@ -225,8 +257,15 @@ export async function installModelFromFiles(fileList) {
     throw new Error('classes.json is not a list of class names.');
   }
 
-  await saveModelFiles(entries);
-  return entries.map((e) => e.name);
+  // Write shards first and model.json last. model.json is what turns
+  // hasInstalledModel() true, so an interrupted install leaves the model
+  // honestly "not installed" (retryable) instead of a broken "installed".
+  const ordered = entries.filter(
+    (e) => e.name.toLowerCase() !== 'model.json' && e.name.toLowerCase() !== 'classes.json'
+  );
+  ordered.push(byName['classes.json'], byName['model.json']);
+  await saveModelFiles(ordered);
+  return ordered.map((e) => e.name);
 }
 
 // A tfjs IOHandler that reads the model straight out of OPFS.

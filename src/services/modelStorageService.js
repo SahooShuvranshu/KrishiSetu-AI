@@ -69,7 +69,17 @@ export const unloadLocalModel = () => {
 // airplane mode and survives a cache clear. Fall back to the copy that ships
 // with the site, which is what a fresh install uses.
 async function loadModelAndClasses() {
-  if (await hasInstalledModel()) {
+  // A storage failure while CHECKING must not block a scan: the server copy
+  // (precached by the service worker) may be perfectly good, and scans should
+  // degrade to it. The download/Settings paths surface that error instead;
+  // only here is silently falling back the right call.
+  let installed = false;
+  try {
+    installed = await hasInstalledModel();
+  } catch (err) {
+    console.warn('Could not check device storage for the model; using the server copy.', err);
+  }
+  if (installed) {
     try {
       const model = await tf.loadLayersModel(createOPFSIOHandler());
       const names = JSON.parse(await readModelFileText('classes.json'));

@@ -29,7 +29,7 @@ function App() {
   const {
     t, isOnline, isDark, modelDownloaded, downloading,
     modelProgress, modelError, storageInfo, downloadModel, installModelFiles,
-    removeModel, appLanguage, changeLanguage, toggleTheme,
+    removeModel, clearModelError, appLanguage, changeLanguage, toggleTheme,
     autoDetect, toggleAutoDetect, clearAllData
   } = useApp();
   const toast = useToast();
@@ -215,7 +215,11 @@ function App() {
                       <span className="flex items-center gap-2 text-green-400 font-bold bg-green-900 p-2 border border-green-600"><HardDrive size={14} /> {t('modelInstalled')}</span>
                       <button onClick={removeModel} className="bg-red-500 text-white py-2 px-3 border-2 border-black font-black uppercase text-xs">{t('deleteModel')}</button>
                     </div>
-                  ) : isOnline ? (
+                  ) : (isOnline || downloading) ? (
+                    // `|| downloading` pins this branch while a download runs:
+                    // a mid-download network blip used to morph the button into
+                    // the offline file-picker, which looked like the button
+                    // reverting for no reason.
                     <div className="flex flex-col gap-1.5">
                       <button onClick={downloadModel} disabled={downloading} className="w-full bg-brutal-neon text-black py-2 px-3 border-2 border-black font-black uppercase text-xs">{downloading ? t('downloading') : t('download')}</button>
                       {downloading && (
@@ -239,7 +243,10 @@ function App() {
 
                   {modelError && (
                     <div className="mt-2 bg-red-100 border-2 border-red-500 p-2">
-                      <p className="font-black text-[10px] uppercase text-red-700">{t('modelInstallFailed') || 'Install failed'}</p>
+                      <div className="flex items-center justify-between gap-2">
+                        <p className="font-black text-[10px] uppercase text-red-700">{t('modelInstallFailed') || 'Install failed'}</p>
+                        <button onClick={clearModelError} aria-label="Dismiss" className="text-red-700 font-black text-xs leading-none px-1 active:scale-95">✕</button>
+                      </div>
                       <p className="font-mono text-[9px] text-red-700 leading-snug break-words">{modelError}</p>
                     </div>
                   )}

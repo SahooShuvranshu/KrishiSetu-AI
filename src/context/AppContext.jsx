@@ -16,11 +16,14 @@ import { readApiKey, writeApiKey, clearApiKey } from '../services/apiKeys';
 
 const AppContext = createContext(null);
 
-// Fetch with a real error for the "model not deployed yet" case. The previous
-// downloadModel flipped a flag after a 2s timeout and claimed success over
-// nothing, which made "MODEL INSTALLED" a lie.
+// Fetch with a real error for the "model not deployed yet" 404 case, plus a
+// timeout so a hung connection cannot stall the download for minutes. The
+// previous downloadModel flipped a flag after a 2s timeout and claimed success
+// over nothing, which made "MODEL INSTALLED" a lie.
+const FETCH_TIMEOUT_MS = 20000; // plenty for a 4 MB shard on a slow 3G link
+
 const fetchChecked = async (url, as = 'text') => {
-  const response = await fetch(url, { cache: 'no-store' });
+  const response = await fetch(url, { cache: 'no-store', signal: AbortSignal.timeout(FETCH_TIMEOUT_MS) });
   if (!response.ok) {
     throw new Error('HTTP ' + response.status + ' for ' + url
       + (response.status === 404 ? ' - the model files are not on the server yet' : ''));
@@ -50,17 +53,29 @@ export function AppProvider({ children }) {
     window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline);
 
-    // The installed flag must mirror reality. A flag with no files on the device
-    // is exactly what made the app claim "MODEL INSTALLED" over an empty folder.
+    // The installed flag must mirror reality. A flag with no files on the
+    // device is exactly what made the app claim "MODEL INSTALLED" over an
+    // empty folder. BUT a storage failure is not the same as "not installed":
+    // swallowing it here silently reverted the Download button with no error
+    // box. Missing/corrupt files -> false (flag cleared). A real storage
+    // error -> keep the flag and show why, instead of a lie.
     (async () => {
-      const installed = await hasInstalledModel();
-      if (installed === null) {
-        // No OPFS in this browser - fall back to the stored flag.
-        setModelDownloaded(localStorage.getItem('krishisetu_model_downloaded') === 'true');
-      } else {
-        setModelDownloaded(installed);
-        if (installed) localStorage.setItem('krishisetu_model_downloaded', 'true');
-        else localStorage.removeItem('krishisetu_model_downloaded');
+      try {
+        const installed = await hasInstalledModel();
+        if (installed === null) {
+          // No OPFS in this browser - fall back to the stored flag.
+          setModelDownloaded(localStorage.getItem('krishisetu_model_downloaded') === 'true');
+        } else {
+          setModelDownloaded(installed);
+          if (installed) localStorage.setItem('krishisetu_model_downloaded', 'true');
+          else localStorage.removeItem('krishisetu_model_downloaded');
+        }
+      } catch (err) {
+        console.warn('Could not verify the installed model', err);
+        setModelError(
+          'Could not check the installed model on this device: '
+          + String((err && err.message) || err)
+        );
       }
       setStorageInfo(await getStorageStatus());
     })();
@@ -167,6 +182,9 @@ export function AppProvider({ children }) {
     } catch (err) {
       console.error('Model download failed', err);
       setModelError(String((err && err.message) || err));
+      // markInstalled(false) refreshes storageInfo; it deliberately does NOT
+      // touch modelError, so the red box stays visible after a failed download
+      // instead of being cleared away with the flag.
       await markInstalled(false);
     } finally {
       setDownloading(false);
@@ -206,6 +224,12 @@ export function AppProvider({ children }) {
     await markInstalled(false);
   }, [markInstalled]);
 
+  // Dismisses the red model-error box. Kept separate from removeModel (which
+  // also resets it) so a failed download's message can be dismissed without
+  // touching anything else. Without this the error text was permanent until
+  // reload, which read as "stuck".
+  const clearModelError = useCallback(() => setModelError(''), []);
+
   const clearAllData = useCallback(() => {
     if (window.confirm(getTranslation(appLanguage, 'confirmClearData'))) {
       localStorage.clear();
@@ -237,13 +261,14 @@ export function AppProvider({ children }) {
     downloadModel,
     installModelFiles,
     removeModel,
+    clearModelError,
     clearAllData
   }), [
     t, isOnline, appLanguage, theme, autoDetect, geminiKey, mapsKey,
     modelDownloaded, downloading, modelProgress, modelError, storageInfo,
     changeLanguage, toggleTheme, toggleAutoDetect,
     saveGeminiKey, saveMapsKey, removeApiKey,
-    downloadModel, installModelFiles, removeModel, clearAllData
+    downloadModel, installModelFiles, removeModel, clearModelError, clearAllData
   ]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
