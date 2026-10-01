@@ -7,7 +7,7 @@
   <!-- Row 1: Hackathon, Track & Regional Focus -->
   <p>
     <a href="https://hack2skill.com/event/codeforcommunities2"><img src="https://img.shields.io/badge/Build_with_AI-Code_for_Communities_2nd_Ed-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Build with AI: Code for Communities - Second Edition" /></a>
-    <a href="https://hack2skill.com/event/codeforcommunities2"><img src="https://img.shields.io/badge/Track-Code_for_Communities-34A853?style=for-the-badge" alt="Code for Communities" /></a>
+    <a href="https://hack2skill.com/event/codeforcommunities2"><img src="https://img.shields.io/badge/Track_4-AgriN_•_Regenerative_Agriculture_Intelligence-34A853?style=for-the-badge" alt="Track 4: AgriN & Regenerative Agriculture Intelligence" /></a>
     <a href="https://hack2skill.com/event/codeforcommunities2"><img src="https://img.shields.io/badge/Problem-Cooperation_PS4-EA4335?style=for-the-badge" alt="Problem Statement 4" /></a>
     <a href="https://hack2skill.com/event/codeforcommunities2"><img src="https://img.shields.io/badge/Status-Officially_Submitted-success?style=for-the-badge" alt="Officially Submitted" /></a>
     <img src="https://img.shields.io/badge/Focus-Odisha,_India-FBBC05?style=for-the-badge" alt="Focus Region" />
@@ -30,7 +30,7 @@
 <br/>
 
 ## 📑 Table of Contents
-- [🌾 The Crisis: Problem Statement 4](#-the-crisis-problem-statement-4-theme-cooperation)
+- [🌾 The Crisis: Track 4 — AgriN & Regenerative Agriculture Intelligence](#-the-crisis-track-4--agrin--regenerative-agriculture-intelligence-theme-cooperation--problem-statement-4)
 - [⚡ The Solution: Krishi Setu](#-the-solution-krishi-setu)
 - [📱 Mobile App Experience & Feature Gallery](#-mobile-app-experience--feature-gallery)
 - [🧠 Machine Learning Architecture](#-machine-learning-architecture)
@@ -45,7 +45,7 @@
 
 ---
 
-## 🌾 The Crisis: Problem Statement 4 (Theme: Cooperation)
+## 🌾 The Crisis: Track 4 — AgriN & Regenerative Agriculture Intelligence (Theme: Cooperation • Problem Statement 4)
 
 Small and marginal farmers across India lack access to data-driven agricultural guidance. Relying on traditional methods instead of satellite data, soil health analytics, and climate forecasting leads to crop failure and threatens food security. The absence of shared digital infrastructure also blocks cross-state collaboration on climate-resilient farming.
 

@@ -29,7 +29,7 @@
 ## Table of Contents
 
 1. [What is KrishiSetu AI?](#1-what-is-krishisetu-ai)
-2. [Problem Statement](#2-problem-statement)
+2. [Track 4: AgriN & Regenerative Agriculture Intelligence](#2-track-4-agrin--regenerative-agriculture-intelligence-problem-statement-4-cooperation)
 3. [Key Features](#3-key-features)
 4. [Tech Stack](#4-tech-stack)
 5. [Repository Structure](#5-repository-structure)
@@ -66,7 +66,7 @@ district advisories that matter for their own field.
 
 ---
 
-## 2. Problem Statement 4 (Theme: Cooperation)
+## 2. Track 4: AgriN & Regenerative Agriculture Intelligence (Problem Statement 4: Cooperation)
 
 ### The Problem
 Small and marginal farmers across India lack access to data-driven agricultural guidance. Relying on traditional methods instead of satellite data, soil health analytics, and climate forecasting leads to crop failure and threatens food security. The absence of shared digital infrastructure also blocks cross-state collaboration on climate-resilient farming.

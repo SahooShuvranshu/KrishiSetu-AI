@@ -3,7 +3,7 @@
 <div align="center">
 
 [![Build with AI](https://img.shields.io/badge/Hackathon-Code_for_Communities_2nd_Ed-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://hack2skill.com/event/codeforcommunities2)
-[![Track](https://img.shields.io/badge/Track-Code_for_Communities-34A853?style=for-the-badge)](https://hack2skill.com/event/codeforcommunities2)
+[![Track](https://img.shields.io/badge/Track_4-AgriN_•_Regenerative_Agriculture_Intelligence-34A853?style=for-the-badge)](https://hack2skill.com/event/codeforcommunities2)
 [![Problem](https://img.shields.io/badge/Problem_Statement-4:_Cooperation-EA4335?style=for-the-badge)](https://hack2skill.com/event/codeforcommunities2)
 [![Submission Status](https://img.shields.io/badge/Submission-Officially_Submitted-success?style=for-the-badge)](https://hack2skill.com/event/codeforcommunities2)
 [![Edge AI](https://img.shields.io/badge/ML_Engine-100%25_Offline_TF.js-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](Document.md#11-the-offline-ml-engine)
@@ -25,7 +25,7 @@
 
 ## 🌍 Executive & Operational Context
 
-### 🌾 Problem Statement 4 (Theme: Cooperation)
+### 🌾 Track 4: AgriN & Regenerative Agriculture Intelligence (Theme: Cooperation • Problem Statement 4)
 - **The Problem**: Small and marginal farmers across India lack access to data-driven agricultural guidance. Relying on traditional methods instead of satellite data, soil health analytics, and climate forecasting leads to crop failure and threatens food security. The absence of shared digital infrastructure also blocks cross-state collaboration on climate-resilient farming.
 - **The Challenge**: Build an interoperable digital agriculture network that delivers real-time, localised agro-advisories using AI. It should offer regenerative crop recommendations based on satellite data, soil health, and weather forecasting, plus a diagnostic tool for crop diseases, and be designed as a scalable digital public good enabling Indian states to share agricultural data models and strengthen cooperation on sustainable food production.
 

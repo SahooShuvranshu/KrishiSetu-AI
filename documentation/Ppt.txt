@@ -56,18 +56,19 @@ Core Pillars:
 
 Presenter Info:
 Team: Crystal Studio Labs (Odisha, India)
-Event: Build with AI: Code for Communities - Second Edition (Track 4: Code for Communities)
+Event: Build with AI: Code for Communities - Second Edition
+Track: Track 4: AgriN & Regenerative Agriculture Intelligence
 Theme: Cooperation (Problem Statement 4)
 
 Image to Insert:
 documentation/screenshots/01_splash_tractor_logo.png (Authentic vector tractor logo with cyber-lime loading progress)
 
 Speaker Notes:
-"Good morning judges. We are Crystal Studio Labs, presenting KrishiSetu AI for Problem Statement 4 under Track 4: Code for Communities — Theme: Cooperation. In one sentence: a smallholder farmer snaps a photo of a sick leaf in the middle of a remote field and hears the verified cure spoken aloud in Odia — completely in airplane mode with zero internet."
+"Good morning judges. We are Crystal Studio Labs, presenting KrishiSetu AI for Track 4: AgriN & Regenerative Agriculture Intelligence — Theme: Cooperation (Problem Statement 4). In one sentence: a smallholder farmer snaps a photo of a sick leaf in the middle of a remote field and hears the verified cure spoken aloud in Odia — completely in airplane mode with zero internet."
 
 
 --------------------------------------------------------------------------------
-SLIDE 2: PROBLEM STATEMENT 4 (THEME: COOPERATION) — THE GUIDANCE & INFRASTRUCTURE GAP
+SLIDE 2: TRACK 4: AgriN & REGENERATIVE AGRICULTURE INTELLIGENCE — THE GUIDANCE & INFRASTRUCTURE GAP
 --------------------------------------------------------------------------------
 Title: The Rural Guidance & Infrastructure Gap
 Subtitle: Small and marginal farmers lack data-driven guidance, while the lack of shared infrastructure blocks inter-state climate cooperation.
@@ -81,7 +82,7 @@ Image to Insert:
 documentation/screenshots/02_home_dashboard_top.png (KrishiSetu home dashboard showing offline readiness)
 
 Speaker Notes:
-"Under Problem Statement 4 — Theme: Cooperation, the core challenge is building an interoperable digital public good delivering real-time, localized agro-advisories. Traditional tools demand high-speed cloud connections, excluding the 85% of rural Indian fields that are dead zones. KrishiSetu decentralizes agricultural intelligence directly onto the farmer's smartphone, making cooperation truly inclusive."
+"Under Track 4: AgriN & Regenerative Agriculture Intelligence — Theme: Cooperation, the core challenge is building an interoperable digital public good delivering real-time, localized agro-advisories. Traditional tools demand high-speed cloud connections, excluding the 85% of rural Indian fields that are dead zones. KrishiSetu decentralizes agricultural intelligence directly onto the farmer's smartphone, making cooperation truly inclusive."
 
 
 --------------------------------------------------------------------------------

@@ -27,16 +27,17 @@
 Instant plant pathology & spoken voice remedies in Odia, Hindi, and English — with zero internet connection.
 
 - **Team**: Crystal Studio Labs (Odisha, India)
-- **Event**: Build with AI: Code for Communities - Second Edition (Track 4: Code for Communities)
+- **Event**: Build with AI: Code for Communities - Second Edition
+- **Track**: Track 4: AgriN & Regenerative Agriculture Intelligence
 - **Theme**: Cooperation (Problem Statement 4)
 - **Core Pillars**: `[100% Client-Side TF.js]` `[Trilingual Voice]` `[OPFS Storage]` `[Zero-Backend PWA]`
 
 > **Visual**: Show [`screenshots/01_splash_tractor_logo.png`](screenshots/01_splash_tractor_logo.png)  
-> **Speaker Notes**: *"Good morning judges. We are Crystal Studio Labs, presenting KrishiSetu AI for Problem Statement 4 under Track 4: Code for Communities — Theme: Cooperation. In one sentence: a smallholder farmer snaps a photo of a sick leaf in the middle of a remote field and hears the verified cure spoken aloud in Odia — completely in airplane mode with zero internet."*
+> **Speaker Notes**: *"Good morning judges. We are Crystal Studio Labs, presenting KrishiSetu AI for Track 4: AgriN & Regenerative Agriculture Intelligence — Theme: Cooperation (Problem Statement 4). In one sentence: a smallholder farmer snaps a photo of a sick leaf in the middle of a remote field and hears the verified cure spoken aloud in Odia — completely in airplane mode with zero internet."*
 
 ---
 
-## Slide 2: Problem Statement 4 (Theme: Cooperation) — The Guidance & Infrastructure Gap
+## Slide 2: Track 4: AgriN & Regenerative Agriculture Intelligence — The Guidance & Infrastructure Gap
 
 ### Small and marginal farmers lack data-driven guidance, while the lack of shared infrastructure blocks inter-state climate cooperation.
 
@@ -45,7 +46,7 @@ Instant plant pathology & spoken voice remedies in Odia, Hindi, and English — 
 - **Ground Reality in Odisha**: 85%+ cellular dead zones, 1 officer per 1,500+ farmers, 40% yield loss to preventable pathogens.
 
 > **Visual**: Show [`screenshots/02_home_dashboard_top.png`](screenshots/02_home_dashboard_top.png)  
-> **Speaker Notes**: *"Under Problem Statement 4 — Theme: Cooperation, the core challenge is building an interoperable digital public good delivering real-time, localized agro-advisories. Traditional tools demand high-speed cloud connections, excluding the 85% of rural Indian fields that are dead zones. KrishiSetu decentralizes agricultural intelligence directly onto the farmer's smartphone, making cooperation truly inclusive."*
+> **Speaker Notes**: *"Under Track 4: AgriN & Regenerative Agriculture Intelligence — Theme: Cooperation, the core challenge is building an interoperable digital public good delivering real-time, localized agro-advisories. Traditional tools demand high-speed cloud connections, excluding the 85% of rural Indian fields that are dead zones. KrishiSetu decentralizes agricultural intelligence directly onto the farmer's smartphone, making cooperation truly inclusive."*
 
 ---
 
