@@ -66,18 +66,14 @@ district advisories that matter for their own field.
 
 ---
 
-## 2. Problem Statement
+## 2. Problem Statement 4 (Theme: Cooperation)
 
-Small and marginal farmers across India lack access to data-driven agricultural guidance.
-Reliance on traditional methods (instead of satellite data, soil health analytics and
-climate forecasting) leads to crop failure and threatens food security. The absence of
-shared digital infrastructure also blocks cross-state cooperation on climate-resilient
-farming.
+### The Problem
+Small and marginal farmers across India lack access to data-driven agricultural guidance. Relying on traditional methods instead of satellite data, soil health analytics, and climate forecasting leads to crop failure and threatens food security. The absence of shared digital infrastructure also blocks cross-state collaboration on climate-resilient farming.
 
-**The challenge:** build an interoperable digital agriculture network delivering real-time,
-localised agro-advisories using AI — with a crop-disease diagnostic, regenerative crop
-recommendations from soil + weather + satellite data, and shared public-good infrastructure
-so states can exchange agricultural data and models.
+### The Challenge
+Build an interoperable digital agriculture network that delivers real-time, localised agro-advisories using AI. It should offer regenerative crop recommendations based on satellite data, soil health, and weather forecasting, plus a diagnostic tool for crop diseases, and be designed as a scalable digital public good enabling Indian states to share agricultural data models and strengthen cooperation on sustainable food production.
+
 
 ---
 

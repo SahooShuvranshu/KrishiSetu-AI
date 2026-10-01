@@ -25,8 +25,12 @@
 
 ## 🌍 Executive & Operational Context
 
+### 🌾 Problem Statement 4 (Theme: Cooperation)
+- **The Problem**: Small and marginal farmers across India lack access to data-driven agricultural guidance. Relying on traditional methods instead of satellite data, soil health analytics, and climate forecasting leads to crop failure and threatens food security. The absence of shared digital infrastructure also blocks cross-state collaboration on climate-resilient farming.
+- **The Challenge**: Build an interoperable digital agriculture network that delivers real-time, localised agro-advisories using AI. It should offer regenerative crop recommendations based on satellite data, soil health, and weather forecasting, plus a diagnostic tool for crop diseases, and be designed as a scalable digital public good enabling Indian states to share agricultural data models and strengthen cooperation on sustainable food production.
+
 > [!IMPORTANT]
-> **The Real-World Crisis (Problem Statement 4: Cooperation)**  
+> **The Ground Reality in Rural Odisha**  
 > Smallholder farmers in Odisha and across rural India lose up to **40% of their annual crop yields** to preventable plant pathogens. Over **85% of agricultural fields operate in cellular dead zones** where cloud-only agritech tools completely fail. With an extension deficit of **1 government agronomist per 1,500+ farming families**, remote farmers rely on informal pesticide dealers who often prescribe wrong chemical treatments, creating crippling debt cycles and soil degradation.
 
 ### 🚜 How KrishiSetu AI Solves This
