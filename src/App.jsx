@@ -132,7 +132,13 @@ function App() {
                   <p className="font-bold uppercase text-gray-500 mb-1">{t('projectNameLabel')}</p>
                   <p className="text-base font-black bg-brutal-green text-white p-2 border-2 border-black mb-3">Krishi Setu AI</p>
                   <p className="font-bold uppercase text-gray-500 mb-1">{t('teamNameLabel')}</p>
-                  <p className="text-base font-black bg-brutal-neon p-2 border-2 border-black mb-3">Crystal Studio Labs</p>
+                  <p className="text-base font-black bg-brutal-neon p-2 border-2 border-black mb-1">Crystal Studio Labs</p>
+                  <div className={`p-2 border-2 ${isDark ? 'border-gray-600 bg-gray-700' : 'border-black bg-gray-50'} mb-3 text-[11px] leading-tight flex flex-col gap-1`}>
+                    <a href="https://github.com/SahooShuvranshu" target="_blank" rel="noopener noreferrer" className="font-bold hover:underline text-blue-600 dark:text-blue-400">👤 Shuvransu Sekhar Sahoo (Lead Architect)</a>
+                    <a href="https://github.com/SnehalMoharana" target="_blank" rel="noopener noreferrer" className="font-bold hover:underline text-blue-600 dark:text-blue-400">👤 Snehal Kumar Moharana (Frontend &amp; Agronomy)</a>
+                    <a href="https://github.com/Subhankar101" target="_blank" rel="noopener noreferrer" className="font-bold hover:underline text-blue-600 dark:text-blue-400">👤 Subhankar Mohapatra (UX &amp; Speech)</a>
+                    <a href="https://github.com/Pruthiraj2007" target="_blank" rel="noopener noreferrer" className="font-bold hover:underline text-blue-600 dark:text-blue-400">👤 Pruthiraj Lenka (Research &amp; Radar)</a>
+                  </div>
                   <p className="font-bold uppercase text-gray-500 mb-1">{t('hackathonLabel')}</p>
                   <p className={`${isDark ? 'bg-gray-700' : 'bg-gray-100'} p-2 border-2 ${isDark ? 'border-gray-600' : 'border-black'} mb-3`}>Build with AI: Code for Communities - Second Edition</p>
                   <p className="font-bold uppercase text-gray-500 mb-1">{t('trackThemeLabel')}</p>

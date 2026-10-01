@@ -41,6 +41,7 @@
 - [☁️ One-Click Deployment](#️-one-click-deployment)
 - [📚 ML Integration Guide](#-machine-learning-integration-guide)
 - [🤝 Contributing & Security](#-contributing)
+- [👥 Meet the Team](#-meet-the-team--crystal-studio-labs)
 - [🌟 Star History](#-star-history)
 
 ---
@@ -292,6 +293,21 @@ We treat the security of our offline models and data pipelines with the highest 
 - To disclose responsibly, please email our lead security maintainer directly at: **[contact@sahooshuvranshu.is-a.dev](mailto:contact@sahooshuvranshu.is-a.dev)**.
 - We acknowledge all vulnerability reports within **24–48 hours**. Please do **not** file public GitHub issues for security vulnerabilities.
 
+## 👥 Meet the Team — Crystal Studio Labs
+
+KrishiSetu AI was engineered with dedication by **Crystal Studio Labs** for **Build with AI: Code for Communities - Second Edition**:
+
+<div align="center">
+
+| Contributor | Role & Responsibilities | GitHub Profile |
+| :---: | :--- | :---: |
+| <a href="https://github.com/SahooShuvranshu"><img src="https://github.com/SahooShuvranshu.png?size=96" width="64" height="64" style="border-radius:50%;" alt="Shuvransu Sekhar Sahoo"/><br/><b>Shuvransu Sekhar Sahoo</b></a> | **Lead Full-Stack & ML Architect**<br/>• MobileNetV2 edge pipeline & Float16 quantization<br/>• OPFS persistent sandbox & client offline storage<br/>• Google Gemini multimodal cloud integration | [![GitHub](https://img.shields.io/badge/GitHub-@SahooShuvranshu-181717?style=flat&logo=github)](https://github.com/SahooShuvranshu) |
+| <a href="https://github.com/SnehalMoharana"><img src="https://github.com/SnehalMoharana.png?size=96" width="64" height="64" style="border-radius:50%;" alt="Snehal Kumar Moharana"/><br/><b>Snehal Kumar Moharana</b></a> | **Core Frontend & Agronomy Systems**<br/>• Regenerative crop rotation advisories & soil health<br/>• Soil classification across 5 Odisha agro-climatic zones<br/>• Real-time APMC Mandi commodity rates integration | [![GitHub](https://img.shields.io/badge/GitHub-@SnehalMoharana-181717?style=flat&logo=github)](https://github.com/SnehalMoharana) |
+| <a href="https://github.com/Subhankar101"><img src="https://github.com/Subhankar101.png?size=96" width="64" height="64" style="border-radius:50%;" alt="Subhankar Mohapatra"/><br/><b>Subhankar Mohapatra</b></a> | **Mobile UX & Edge Optimization**<br/>• High-contrast Agri-Brutalism design system<br/>• Trilingual Web Speech voice synthesis (Odia/Hindi/English)<br/>• Workbox service worker offline precaching & PWA | [![GitHub](https://img.shields.io/badge/GitHub-@Subhankar101-181717?style=flat&logo=github)](https://github.com/Subhankar101) |
+| <a href="https://github.com/Pruthiraj2007"><img src="https://github.com/Pruthiraj2007.png?size=96" width="64" height="64" style="border-radius:50%;" alt="Pruthiraj Lenka"/><br/><b>Pruthiraj Lenka</b></a> | **Agronomy Research & Systems Validation**<br/>• Odisha 5-crop leaf pathology dataset curation<br/>• 30-district disease risk radar geospatial mapping<br/>• Organic & chemical remedy ground truth validation | [![GitHub](https://img.shields.io/badge/GitHub-@Pruthiraj2007-181717?style=flat&logo=github)](https://github.com/Pruthiraj2007) |
+
+</div>
+
 ---
 
 ## 🌟 Star History
@@ -322,5 +338,10 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 <div align="center">
   <p>Built with 💡 by <b>Crystal Studio Labs</b></p>
-  <p><sub>Shuvransu Sekhar Sahoo • Snehal Kumar Moharana • Subhankar Mohapatra • Pruthiraj Lenka</sub></p>
+  <p>
+    <a href="https://github.com/SahooShuvranshu"><b>Shuvransu Sekhar Sahoo</b></a> • 
+    <a href="https://github.com/SnehalMoharana"><b>Snehal Kumar Moharana</b></a> • 
+    <a href="https://github.com/Subhankar101"><b>Subhankar Mohapatra</b></a> • 
+    <a href="https://github.com/Pruthiraj2007"><b>Pruthiraj Lenka</b></a>
+  </p>
 </div>
