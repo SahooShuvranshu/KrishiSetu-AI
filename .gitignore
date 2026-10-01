@@ -1,0 +1,124 @@
+# ==============================================================================
+# KrishiSetu AI — .gitignore
+# Clean, robust ignore rules for Vite React PWA + Edge ML architecture
+# ==============================================================================
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+.pnpm-store/
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# Production Build Output & Caches
+dist/
+dist-ssr/
+build/
+out/
+.cache/
+.vite/
+.parcel-cache/
+.turbo/
+
+# Environment Variables & Secrets
+.env
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+!.env.example
+
+# Service Account Keys & Sensitive Credentials (NEVER commit)
+*service-account*.json
+*credentials*.json
+*.pem
+*.key
+*.cert
+
+# Editor & IDE Configurations
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*.swn
+*~
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Thumbs.db:encryptable
+desktop.ini
+$RECYCLE.BIN/
+
+# Debug Logs & Error Reports
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Testing & Coverage
+coverage/
+.nyc_output/
+cypress/videos/
+cypress/screenshots/
+
+# AI Assistants, Code Generators & Temporary Workspaces
+.agents/
+.speckit/
+.freebuff/
+.codebuff/
+.claude/
+.cursor/
+.windsurf/
+_temp_*
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+*.orig
+scratch/
+
+# Python & Notebook Checkpoints
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Machine Learning Weights & Archives Policy
+# NOTE: Active TF.js model files (model.json, .bin shards, classes.json) in
+# public/model/ ARE COMMITTED so Vercel can serve them for offline OPFS downloads.
+# Only intermediate Colab training archives and non-web tflite files are ignored.
+public/model/*.tflite
+*.keras
+*.tflite
+*.h5
+*.hdf5
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+tfjs_model/
+
+# Deployment & Hosting Platforms
+.vercel/
+.netlify/

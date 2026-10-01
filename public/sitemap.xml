@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  KrishiSetu AI - Progressive Web App sitemap (Vercel origin).
+
+  The app uses hash routing (#/scan, #/advisory) and URL fragments are not
+  sent to a server, so they are not separately indexable. That leaves exactly
+  one indexable URL: the app root.
+
+  The landing / showcase page is on a different origin and has its own sitemap:
+  https://sahooshuvranshu.is-a.dev/KrishiSetu-AI/sitemap.xml
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://krishi-setu-ai-seven.vercel.app/</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

@@ -1,0 +1,11 @@
+# KrishiSetu AI - Progressive Web App (Vercel)
+# https://krishi-setu-ai-seven.vercel.app/
+
+User-agent: *
+Allow: /
+
+# The trained model weights are multi-megabyte binaries with no crawl value.
+# They are git-ignored and only present if a deployer added them by hand.
+Disallow: /model/
+
+Sitemap: https://krishi-setu-ai-seven.vercel.app/sitemap.xml

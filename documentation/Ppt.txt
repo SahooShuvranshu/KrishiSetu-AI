@@ -1,0 +1,257 @@
+================================================================================
+KRISHISETU AI — OFFICIAL PITCH DECK FOR GOOGLE SLIDES AI (10 SLIDES)
+Format: Plain text optimized for Gemini in Google Slides, SlidesAI, MagicSlides & Gamma
+Companion Screenshots: documentation/screenshots/ (10 high-resolution png files)
+Live PWA: https://krishi-setu-ai-seven.vercel.app/
+Event: Google AI Hackathon 2026 — Code for Communities
+================================================================================
+
+--------------------------------------------------------------------------------
+HOW TO USE THIS WITH GOOGLE SLIDES AI:
+--------------------------------------------------------------------------------
+METHOD 1: Gemini in Google Slides ("Help me create"):
+1. Open Google Slides (slides.new).
+2. Click "Help me create a presentation" (Gemini icon).
+3. Paste the "MASTER PROMPT FOR GEMINI IN GOOGLE SLIDES" below.
+4. Replace/fine-tune the generated content using the 10-slide text blocks below.
+5. Insert the corresponding screenshot from "documentation/screenshots/" on each slide.
+
+METHOD 2: SlidesAI / MagicSlides / Plus AI Extension:
+1. In Google Slides -> Extensions -> SlidesAI / MagicSlides -> "Generate Slides from Text".
+2. Set Slide Count: 10 | Aspect Ratio: 16:9.
+3. Paste the entire "10-SLIDE PRESENTATION CONTENT" section below.
+4. Choose Style: "Minimal Clean" or "Professional High Contrast".
+
+METHOD 3: Quick Import via Google Docs:
+1. Paste this text into a Google Doc.
+2. In Google Slides: File -> Import Slides (or use Google Vids / Slides sync).
+
+--------------------------------------------------------------------------------
+MASTER PROMPT FOR GEMINI IN GOOGLE SLIDES:
+--------------------------------------------------------------------------------
+"Create a clean, professional, high-impact 10-slide pitch presentation for KrishiSetu AI, an open-source, 100% offline AI crop doctor and smart agricultural advisory grid designed for smallholder farmers in rural India.
+
+Presentation Style:
+- Clean, simple, minimalist modern layout with high readability.
+- Color Palette: Dark Slate (#0A0F14), Cyber Lime Green (#CCFF00), Forest Green (#14532D), Clean Off-White (#F8FAFC).
+- Typography: Bold clean sans-serif titles (Inter / Space Grotesk) and clear bullet points.
+- Structure: 16:9 widescreen slides with balanced whitespace, punchy metrics, comparison tables, and dedicated image slots on every slide."
+
+================================================================================
+10-SLIDE PRESENTATION CONTENT (COPY & PASTE READY)
+================================================================================
+
+--------------------------------------------------------------------------------
+SLIDE 1: TITLE SLIDE — THE VISION
+--------------------------------------------------------------------------------
+Title: KRISHISETU AI
+Subtitle: 100% Offline AI Crop Doctor & Smart Agricultural Advisory Grid
+Tagline: Instant plant pathology & spoken voice remedies in Odia, Hindi, and English — with zero internet connection.
+
+Core Pillars:
+• 100% Client-Side TensorFlow.js (Runs in Airplane Mode)
+• Trilingual Voice Guidance (Odia, Hindi, English)
+• Sandboxed OPFS Storage (Zero Cloud Dependence)
+• Zero-Backend Progressive Web App (PWA)
+
+Presenter Info:
+Team: Crystal Studio Labs (Odisha, India)
+Event: Google AI Hackathon 2026 — Track: Code for Communities
+
+Image to Insert:
+documentation/screenshots/01_splash_tractor_logo.png (Authentic vector tractor logo with cyber-lime loading progress)
+
+Speaker Notes:
+"Good morning judges. We are Crystal Studio Labs, presenting KrishiSetu AI — 'The Farmer's Bridge'. In one sentence: a smallholder farmer snaps a photo of a sick leaf in the middle of a remote field and hears the verified cure spoken aloud in Odia — completely in airplane mode with zero internet."
+
+
+--------------------------------------------------------------------------------
+SLIDE 2: THE PROBLEM — THE RURAL DIAGNOSIS GAP
+--------------------------------------------------------------------------------
+Title: The Rural Diagnosis Gap
+Subtitle: Smallholder farmers lose up to 40% of their crop yields to preventable plant pathogens.
+
+Key Bottlenecks in Rural Agriculture:
+• 85%+ Connectivity Dead Zones: Smallholder fields across Odisha have little to no cellular reception.
+• Severe Extension Deficit: Only 1 government agriculture extension officer per 1,500+ farming families.
+• Language & Literacy Barriers: Chemical packaging and diagnostic apps are written in English or Hindi, excluding millions of Odia-speaking farmers.
+• Hazardous Guesswork: Unverified advice from chemical dealers leads to soil degradation, ineffective spraying, and crop debt.
+
+Image to Insert:
+documentation/screenshots/02_home_dashboard_top.png (KrishiSetu home dashboard showing offline readiness)
+
+Speaker Notes:
+"The tragedy of modern agritech is that the farmer with the weakest signal always gets the least advice. Waiting days for an officer or sending photos over WhatsApp usually means getting an answer after the harvest is already lost. We built KrishiSetu to close that loop directly on the smartphone."
+
+
+--------------------------------------------------------------------------------
+SLIDE 3: THE SOLUTION — THE ON-DEVICE AGRONOMY ENGINE
+--------------------------------------------------------------------------------
+Title: The On-Device Agronomy Engine
+Subtitle: Complete crop pathology and smart farming advisory running directly inside the phone's browser.
+
+Four Core Capabilities:
+1. 100% Offline AI Scanner: Lightweight MobileNetV2 neural network running on-device in under 150ms.
+2. Trilingual Voice Synthesis: Instant speech synthesis in Odia (ଓଡ଼ିଆ), Hindi (हिन्दी), and English using the Web Speech API.
+3. Balanced Dual Prescriptions: Eco-friendly organic remedies alongside precise chemical treatments with safety dosages.
+4. Holistic Farming Hub: Bundled Odisha district disease risk map, localized weather advisories, and real-time Mandi market commodity prices.
+
+Image to Insert:
+documentation/screenshots/03_home_dashboard_offline_readiness.png (100% Offline readiness badge and features)
+
+Speaker Notes:
+"KrishiSetu acts like a master agronomist living inside the farmer's pocket. It diagnoses diseases on the spot and speaks the remedies in the farmer's native dialect. And because it runs entirely on-device, it never fails in the middle of a remote field."
+
+
+--------------------------------------------------------------------------------
+SLIDE 4: THE 60-SECOND LIVE DEMO PROTOCOL
+--------------------------------------------------------------------------------
+Title: The 60-Second Live Demo Protocol
+Subtitle: Proving true on-device inference in airplane mode.
+
+Step-by-Step Flow:
+Step 1: Airplane Mode -> Toggle airplane mode on phone to confirm zero connectivity.
+Step 2: Crop Selection -> Select crop category (e.g., Paddy) to activate specialized disease mask.
+Step 3: Capture Leaf -> Snap or upload leaf photo with instant green-pixel pre-check.
+Step 4: Instant Diagnosis -> 120ms TensorFlow.js inference reveals disease name, confidence %, and remedies.
+Step 5: Native Audio -> Tap 'Play Audio' to hear instructions read aloud in fluent Odia.
+
+Safety Check:
+Photographing a hand, table, or wall triggers "No Leaf Detected" — refusing to hallucinate false pesticide advice.
+
+Image to Insert:
+documentation/screenshots/04_camera_scan_view.png (Crop doctor scanner with 5 crops and zero demo buttons)
+
+Speaker Notes:
+"The demo is our entire pitch. Turn on airplane mode, pick Paddy, snap a photo, and in 120ms the cure appears and speaks in Odia. If you photograph a non-leaf or a muddy hand, our pixel guard immediately says 'No Leaf Detected' — refusing to hallucinate wrong dosages."
+
+
+--------------------------------------------------------------------------------
+SLIDE 5: MACHINE LEARNING & EDGE ARCHITECTURE
+--------------------------------------------------------------------------------
+Title: Machine Learning & Edge Architecture
+Subtitle: Bringing state-of-the-art computer vision to low-end Android hardware.
+
+Technical Specifications:
+• Neural Architecture: MobileNetV2 fine-tuned with transfer learning for agricultural disease classes across Paddy, Cotton, Tomato, Potato, and Maize.
+• Quantization & Size: Model quantized to lightweight TF.js shards (~4.6 MB total footprint) that load in under 2 seconds.
+• Private Device Storage: Model weights live in the browser's Origin Private File System (OPFS) — immune to cache purges and surviving device reboots.
+• Dual Engine Pipeline: Client-side TF.js for guaranteed offline execution; optional Google Gemini Flash for cloud multimodal reasoning when online.
+
+Image to Insert:
+documentation/screenshots/10_settings_storage_and_system.png (Settings telemetry gauges and OPFS storage metrics)
+
+Speaker Notes:
+"Instead of running a heavy cloud model that requires connectivity, we quantized MobileNetV2 into TF.js layers. It downloads once into the device's Origin Private File System and loads into WebGL hardware acceleration in milliseconds."
+
+
+--------------------------------------------------------------------------------
+SLIDE 6: BREAKING THE LITERACY BARRIER WITH TRILINGUAL AUDIO
+--------------------------------------------------------------------------------
+Title: Breaking the Literacy Barrier with Trilingual Audio
+Subtitle: Agronomy delivered in the farmer's mother tongue.
+
+Key Inclusions:
+• Native Dialect Support: Built-in, zero-latency switching between Odia (ଓଡ଼ିଆ), Hindi (हिन्दी), and English.
+• Offline Text-to-Speech: Leverages browser-native Web Speech API speech synthesis — requires zero API tokens and zero internet bandwidth.
+• Universal Literacy Access: Allows illiterate and elderly farmers to listen to critical chemical dosage calculations without needing to read fine print.
+• Dual Treatment Regimen: Every diagnosis provides both low-cost organic remedies (neem oil, bio-fungicides) and chemical cures with exact dilution ratios.
+
+Image to Insert:
+documentation/screenshots/05_odia_native_language.png (Complete native Odia UI translation)
+
+Speaker Notes:
+"A text diagnosis is useless to a farmer who cannot read. By combining localized Odia translations with offline Web Speech synthesis, KrishiSetu democratizes agricultural expertise for everyone."
+
+
+--------------------------------------------------------------------------------
+SLIDE 7: SAFETY-FIRST ENGINEERING — KNOWING WHEN NOT TO ANSWER
+--------------------------------------------------------------------------------
+Title: Safety-First Engineering: Knowing When NOT to Answer
+Subtitle: In agriculture, an incorrect chemical dosage is far worse than no answer.
+
+Four Protective Guardrails:
+1. Dynamic Crop Masking: Renormalizes predictions strictly within the selected crop. A paddy leaf cannot misclassify as tomato blight.
+2. Confidence & Margin Gates: Requires ≥50% confidence AND a ≥12% margin over the second candidate; otherwise surfaces "Uncertain — Verify with Officer".
+3. Non-Leaf Pixel Guard: Analyzes green spectrum and luminance variance before running inference, rejecting hands, walls, and soil in under 5ms.
+4. Trained Negative Class: Includes explicit 'Other_NotALeaf' training samples to eliminate false positive diagnoses.
+
+Image to Insert:
+documentation/screenshots/04_camera_scan_view.png (Camera view showing dynamic crop selector)
+
+Speaker Notes:
+"Most AI apps guess wildly when shown a wrong picture. KrishiSetu is engineered with strict confidence thresholds, green-spectrum pixel guards, and crop masks to ensure farmers never spray expensive chemicals based on an AI hallucination."
+
+
+--------------------------------------------------------------------------------
+SLIDE 8: THE AGRICULTURAL GRID — ADVISORY & MANDI PRICES
+--------------------------------------------------------------------------------
+Title: The Agricultural Grid: Advisory & Mandi Prices
+Subtitle: Holistic digital infrastructure for climate-resilient farming.
+
+Grid Components:
+• District Risk Radar: Interactive disease risk map visualizing pest prevalence across all 30 districts of Odisha.
+• Weather & Humidity Alerts: Real-time atmospheric monitoring predicting fungal and bacterial spore outbreaks.
+• Mandi Market Rates: Live commodity pricing for Paddy, Cotton, Potato, and Vegetables across major Odisha mandis (Bhubaneswar, Cuttack, Sambalpur, Berhampur).
+• Seasonal Crop Calendar: Complete Kharif, Rabi, and Zaid planting and harvest timelines.
+
+Image to Insert:
+documentation/screenshots/06_farm_advice_district_risk_map.png (Odisha district disease map & Mandi prices)
+
+Speaker Notes:
+"KrishiSetu is more than a scanner — it is an agricultural grid. Farmers can plan planting using the seasonal crop calendar, track humidity-driven disease risks, and check fair mandi commodity prices before selling to middlemen."
+
+
+--------------------------------------------------------------------------------
+SLIDE 9: MEASURABLE FARMER IMPACT
+--------------------------------------------------------------------------------
+Title: Measurable Farmer Impact
+Subtitle: Evaluating success in the units a farmer actually cares about.
+
+Comparison: Traditional Agronomy vs KrishiSetu AI:
+• Diagnostic Cost: ₹200–₹500 per visit/travel -> ₹0 (100% Free Public Good)
+• Turnaround Time: 24 to 72 hours -> Under 150 milliseconds
+• Connectivity Needed: Requires 4G/5G or trip to town -> Works 100% in Airplane Mode
+• Data Privacy: Photos uploaded to cloud servers -> Photos never leave the smartphone
+• Language Accessibility: English/Hindi print leaflets -> Spoken Odia native voice guidance
+
+Image to Insert:
+documentation/screenshots/07_mandi_market_prices.png (Live Mandi commodity prices)
+
+Speaker Notes:
+"We measure impact in farmer terms: zero cost per diagnosis, zero cellular data consumed, complete personal data privacy, and guidance in their own spoken mother tongue."
+
+
+--------------------------------------------------------------------------------
+SLIDE 10: TEAM, TECH STACK & PROJECT LINKS
+--------------------------------------------------------------------------------
+Title: Crystal Studio Labs — Team & Open Standards
+Subtitle: Built with pride for Google AI Hackathon 2026 — Code for Communities.
+
+Team Members (Crystal Studio Labs):
+• Shuvransu Sekhar Sahoo
+• Snehal Kumar Moharana
+• Subhankar Mohapatra
+• Pruthiraj Lenka
+
+Open Technology Stack:
+• React 18, Vite PWA, Tailwind CSS
+• TensorFlow.js (MobileNetV2 on OPFS)
+• Google Gemini Flash API & Google Maps Platform
+• Web Speech API Speech Synthesis
+
+Verified Project Links:
+• Live Application: https://krishi-setu-ai-seven.vercel.app/
+• Product Showcase: https://sahooshuvranshu.is-a.dev/KrishiSetu-AI/
+• GitHub Main App: https://github.com/SahooShuvranshu/KrishiSetu-AI
+• GitHub ML Model: https://github.com/SahooShuvranshu/KrishiSetu-ML-Model
+
+Image to Insert:
+documentation/screenshots/08_weather_dashboard.png (Live meteorological weather dashboard)
+
+Speaker Notes:
+"Thank you judges. KrishiSetu AI is live, open-source, and ready to empower India's rural farming communities. We invite you to test it in airplane mode right now."
+
+================================================================================
+END OF PRESENTATION SPECIFICATION
+================================================================================

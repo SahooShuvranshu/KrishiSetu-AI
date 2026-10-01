@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  KrishiSetu AI - landing / showcase page sitemap.
+
+  This covers only the GitHub Pages landing site. A sitemap may not list URLs
+  from another origin, and the app itself is served from
+  https://krishi-setu-ai-seven.vercel.app/ (which is where the "LAUNCH APP"
+  button sends visitors).
+
+  Most recent content change: 2026-09-25
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://sahooshuvranshu.is-a.dev/KrishiSetu-AI/</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
