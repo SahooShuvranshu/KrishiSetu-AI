@@ -13,50 +13,13 @@
     <img src="https://img.shields.io/badge/Focus-Odisha,_India-FBBC05?style=for-the-badge" alt="Focus Region" />
   </p>
 
-  <!-- Row 2: Live Deployments & Companion Repositories -->
+  <!-- Row 2: Live Deployments, Companion Repositories & License -->
   <p>
     <a href="https://krishi-setu-ai-seven.vercel.app/"><img src="https://img.shields.io/badge/Live_PWA-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live App" /></a>
     <a href="https://sahooshuvranshu.is-a.dev/KrishiSetu-AI/"><img src="https://img.shields.io/badge/Showcase_Site-GitHub_Pages-181717?style=for-the-badge&logo=github&logoColor=white" alt="Landing Page" /></a>
     <a href="https://github.com/Crystal-Studio-Labs/KrishiSetu-ML-Model"><img src="https://img.shields.io/badge/ML_Model-Colab_T4-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=white" alt="Colab Model Repo" /></a>
     <a href="documentation/Readme.md"><img src="https://img.shields.io/badge/Docs-Engineering_Hub-4285F4?style=for-the-badge&logo=read-the-docs&logoColor=white" alt="Documentation Hub" /></a>
-  </p>
-
-  <!-- Row 3: Edge AI, Vision & Multimodal Intelligence -->
-  <p>
-    <a href="documentation/Document.md#11-the-offline-ml-engine"><img src="https://img.shields.io/badge/Edge_ML-TensorFlow.js_Offline-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" alt="TensorFlow.js" /></a>
-    <img src="https://img.shields.io/badge/Neural_Net-MobileNetV2_Quantized-107C41?style=for-the-badge" alt="MobileNetV2" />
-    <img src="https://img.shields.io/badge/Cloud_LLM-Gemini_3.6_Flash-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google Gemini" />
-    <img src="https://img.shields.io/badge/Inference-Zero_Latency_WebGL-990000?style=for-the-badge&logo=webgl&logoColor=white" alt="WebGL Hardware Acceleration" />
-    <img src="https://img.shields.io/badge/Architecture-Transfer_Learning-5B2C6F?style=for-the-badge" alt="Transfer Learning" />
-  </p>
-
-  <!-- Row 4: Core Web Platform & Storage Technologies -->
-  <p>
-    <img src="https://img.shields.io/badge/Frontend-React_18-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React 18" />
-    <img src="https://img.shields.io/badge/Bundler-Vite_5-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" alt="Vite" />
-    <img src="https://img.shields.io/badge/PWA-Workbox_Offline-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white" alt="PWA" />
-    <img src="https://img.shields.io/badge/Styling-Tailwind_CSS_3-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
-    <img src="https://img.shields.io/badge/Local_Model-Persistent_OPFS-00599C?style=for-the-badge" alt="OPFS Storage" />
-    <img src="https://img.shields.io/badge/Image_Store-IndexedDB-E34F26?style=for-the-badge" alt="IndexedDB" />
-  </p>
-
-  <!-- Row 5: Multilingual Voice & Agricultural Data Grid -->
-  <p>
-    <img src="https://img.shields.io/badge/Voice-Web_Speech_API-8E44AD?style=for-the-badge" alt="Web Speech API" />
-    <img src="https://img.shields.io/badge/Localization-Odia_•_Hindi_•_English-D35400?style=for-the-badge" alt="Languages" />
-    <img src="https://img.shields.io/badge/Geospatial-Google_Maps_Platform-4285F4?style=for-the-badge&logo=googlemaps&logoColor=white" alt="Google Maps" />
-    <img src="https://img.shields.io/badge/Weather-Open--Meteo_Free_API-2ECC71?style=for-the-badge" alt="Open-Meteo" />
-    <img src="https://img.shields.io/badge/Mandi_Feeds-Data.gov.in_APMC-16A085?style=for-the-badge" alt="Data.gov.in" />
-  </p>
-
-  <!-- Row 6: Governance, Security & Quality Standards -->
-  <p>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" alt="MIT License" /></a>
-    <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge" alt="PRs Welcome" /></a>
-    <a href="CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Code_of_Conduct-Enforced-blue?style=for-the-badge" alt="Code of Conduct" /></a>
-    <a href="SECURITY.md"><img src="https://img.shields.io/badge/Security-Protected-success?style=for-the-badge" alt="Security" /></a>
-    <img src="https://img.shields.io/badge/Telemetry-Zero_Server_Tracking-critical?style=for-the-badge" alt="Zero Server Tracking" />
-    <img src="https://img.shields.io/badge/Status-Production_Ready-success?style=for-the-badge" alt="Production Ready" />
   </p>
 </div>
 
@@ -93,9 +56,24 @@ Build an interoperable digital agriculture network that delivers real-time, loca
 
 ## ⚡ The Solution: Krishi Setu
 
+<div align="left">
+  <img src="https://img.shields.io/badge/Status-Production_Ready-success?style=for-the-badge" alt="Production Ready" />
+  <img src="https://img.shields.io/badge/Telemetry-Zero_Server_Tracking-critical?style=for-the-badge" alt="Zero Server Tracking" />
+  <img src="https://img.shields.io/badge/PWA-Workbox_Offline-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white" alt="PWA" />
+  <img src="https://img.shields.io/badge/Inference-Zero_Latency_WebGL-990000?style=for-the-badge&logo=webgl&logoColor=white" alt="WebGL Hardware Acceleration" />
+</div>
+
 **Krishi Setu** (Agriculture Bridge) is a heavy-duty, offline-first digital public good built to bridge the connectivity gap for Indian farmers. Utilizing industrial-grade Progressive Web App (PWA) architecture and Edge AI, it delivers state-of-the-art agricultural guidance directly to the farmer's pocket—even in the deepest rural fields with **zero internet connection**.
 
 ### 🌟 Key Features
+
+<div align="left">
+  <img src="https://img.shields.io/badge/Voice-Web_Speech_API-8E44AD?style=for-the-badge" alt="Web Speech API" />
+  <img src="https://img.shields.io/badge/Localization-Odia_•_Hindi_•_English-D35400?style=for-the-badge" alt="Languages" />
+  <img src="https://img.shields.io/badge/Geospatial-Google_Maps_Platform-4285F4?style=for-the-badge&logo=googlemaps&logoColor=white" alt="Google Maps" />
+  <img src="https://img.shields.io/badge/Weather-Open--Meteo_Free_API-2ECC71?style=for-the-badge" alt="Open-Meteo" />
+  <img src="https://img.shields.io/badge/Mandi_Feeds-Data.gov.in_APMC-16A085?style=for-the-badge" alt="Data.gov.in" />
+</div>
 
 * **100% Offline AI Disease Scanning:** Uses highly quantized MobileNet/TensorFlow.js models stored in the device's own private storage (OPFS) to scan and diagnose leaf diseases directly on the device's CPU/GPU. No cloud needed. No latency.
 * **Generative Agronomy Engine:** Integrates Google's Gemini Flash to translate complex chemical and organic treatments into easy-to-understand native dialects.
@@ -131,6 +109,13 @@ KrishiSetu AI is engineered mobile-first for smallholder farmers using affordabl
 
 ## 🧠 Machine Learning Architecture
 
+<div align="left">
+  <a href="documentation/Document.md#11-the-offline-ml-engine"><img src="https://img.shields.io/badge/Edge_ML-TensorFlow.js_Offline-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" alt="TensorFlow.js" /></a>
+  <img src="https://img.shields.io/badge/Neural_Net-MobileNetV2_Quantized-107C41?style=for-the-badge" alt="MobileNetV2" />
+  <img src="https://img.shields.io/badge/Cloud_LLM-Gemini_3.6_Flash-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google Gemini" />
+  <img src="https://img.shields.io/badge/Architecture-Transfer_Learning-5B2C6F?style=for-the-badge" alt="Transfer Learning" />
+</div>
+
 Krishi Setu brings state-of-the-art computer vision directly to the edge. Instead of relying on cloud APIs which inevitably fail in low-connectivity rural areas, the entire diagnostic pipeline runs locally on the farmer's smartphone.
 
 ### 1. The Model (MobileNetV2 & Transfer Learning)
@@ -145,6 +130,14 @@ The trained Keras/TensorFlow model is quantized and converted into TensorFlow.js
 ---
 
 ## 🛠️ System Architecture & Tech Stack
+
+<div align="left">
+  <img src="https://img.shields.io/badge/Frontend-React_18-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React 18" />
+  <img src="https://img.shields.io/badge/Bundler-Vite_5-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" alt="Vite" />
+  <img src="https://img.shields.io/badge/Styling-Tailwind_CSS_3-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Local_Model-Persistent_OPFS-00599C?style=for-the-badge" alt="OPFS Storage" />
+  <img src="https://img.shields.io/badge/Image_Store-IndexedDB-E34F26?style=for-the-badge" alt="IndexedDB" />
+</div>
 
 1. **Frontend Core:** React 18 + Vite Single Page Application.
 2. **Offline Caching:** Vite-PWA with Workbox for complete offline precaching.
