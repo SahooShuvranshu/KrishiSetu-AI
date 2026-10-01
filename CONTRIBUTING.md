@@ -51,7 +51,7 @@ We welcome contributions across diverse skill sets, from front-end engineering t
 | :--- | :--- | :--- |
 | 🐛 **Bug Reporting** | Identify UI flaws, memory leaks, PWA caching issues, or device-specific edge cases. | [Open a GitHub Issue](https://github.com/SahooShuvranshu/KrishiSetu-AI/issues) |
 | 🌾 **Agronomy & Remedies** | Verify chemical dosages, recommend organic biopesticides, and curate Odisha crop schedules. | Edit [`src/data/offline_diseases.json`](src/data/offline_diseases.json) |
-| 🧠 **ML & Model Training** | Train and fine-tune MobileNetV2 models using Google Colab T4 GPU acceleration. | Visit [`KrishiSetu-ML-Model`](https://github.com/SahooShuvranshu/KrishiSetu-ML-Model) |
+| 🧠 **ML & Model Training** | Train and fine-tune MobileNetV2 models using Google Colab T4 GPU acceleration. | Visit [`KrishiSetu-ML-Model`](https://github.com/Crystal-Studio-Labs/KrishiSetu-ML-Model) & read [`ModelTraining.md`](documentation/ModelTraining.md) |
 | 🌐 **Localization** | Expand Odia dialects, refine Hindi phrasing, or add regional agricultural terms. | Edit [`src/i18n/translations.js`](src/i18n/translations.js) |
 | 🎨 **UI / UX Design** | Improve outdoor accessibility, tactile feedback, focus traps, and responsive mobile layouts. | Inspect [`src/index.css`](src/index.css) & components |
 | 📖 **Documentation** | Refine setup guides, create video tutorials, and improve architectural clarity. | Edit [`documentation/`](documentation/) |

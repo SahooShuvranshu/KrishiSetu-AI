@@ -17,7 +17,7 @@
 **The central engineering, architectural, and presentation nexus for KrishiSetu AI**  
 *100% Client-Side Crop Disease Diagnosis & Multilingual Agro-Advisory Grid*
 
-[🌾 Live PWA Application](https://krishi-setu-ai-seven.vercel.app/) • [🌐 Static Showcase Page](https://sahooshuvranshu.is-a.dev/KrishiSetu-AI/) • [🧠 Standalone ML Repo](https://github.com/SahooShuvranshu/KrishiSetu-ML-Model)
+[🌾 Live PWA Application](https://krishi-setu-ai-seven.vercel.app/) • [🌐 Static Showcase Page](https://sahooshuvranshu.is-a.dev/KrishiSetu-AI/) • [🧠 Standalone ML Repo](https://github.com/Crystal-Studio-Labs/KrishiSetu-ML-Model)
 
 </div>
 
@@ -62,7 +62,8 @@ graph TD
     D --> D3["screenshots/: Sequential Feature Cues"]
 
     E --> E1["Document.md §11-13: TF.js Quantization"]
-    E --> E2["KrishiSetu-ML-Model: Training Notebook"]
+    E --> E2["ModelTraining.md: Engineering Guide"]
+    E --> E3["KrishiSetu-ML-Model: Colab T4 Notebook"]
 ```
 
 | Pathway | Starting Document | Purpose & Context | Recommended Next Step |
@@ -70,7 +71,7 @@ graph TD
 | **⚖️ Hackathon Judges** | [Document.md](Document.md) | Architectural compliance, problem alignment, and Google AI integration verification | Review [Ppt.md](Ppt.md) & [Live Demo](https://krishi-setu-ai-seven.vercel.app/) |
 | **💻 Core Engineers** | [Document.md](Document.md) | Complete local development setup, routing, state management, and OPFS engine | Inspect [Todo.md](Todo.md) & codebase |
 | **🎙️ Presenters & Video** | [Script.md](Script.md) | Word-for-word voiceover script, visual timings, and companion screenshot mapping | Open [Ppt.txt](Ppt.txt) in Google Slides AI |
-| **🔬 ML Researchers** | [KrishiSetu-ML-Model](https://github.com/SahooShuvranshu/KrishiSetu-ML-Model) | Google Colab training notebook, transfer learning pipeline, and TFJS converter | Read [Document.md §11-12](Document.md#11-the-offline-ml-engine) |
+| **🔬 ML Researchers** | [ModelTraining.md](ModelTraining.md) | Colab T4 transfer learning pipeline, Step 9 contract assertions, and TFJS converter | Open [KrishiSetu-ML-Model](https://github.com/Crystal-Studio-Labs/KrishiSetu-ML-Model) |
 
 ---
 
@@ -84,9 +85,10 @@ graph TD
 | [**Script.txt**](Script.txt) | `Plaintext` | ![Status](https://img.shields.io/badge/Status-Ready-brightgreen?style=flat-square) | Presenters / Voiceover | **Plaintext Narration Script**<br/>Raw unformatted text file optimized for teleprompters, text-to-speech tools, and rapid voiceover recording. |
 | [**Ppt.md**](Ppt.md) | `Markdown` | ![Status](https://img.shields.io/badge/Status-Ready-brightgreen?style=flat-square) | Product Leads / Judges | **Pitch Deck Specification (10 Slides)**<br/>Clean 16:9 minimalist pitch deck formatted with speaker notes and screenshot slot references for Gamma, Canva, or Marp. |
 | [**Ppt.txt**](Ppt.txt) | `Plaintext` | ![Status](https://img.shields.io/badge/Status-Ready-brightgreen?style=flat-square) | Presenters / AI Tools | **Google Slides AI Master Prompt**<br/>Structured prompt and copy-paste ready blocks for Gemini in Google Slides, SlidesAI, MagicSlides, and Plus AI. |
+| [**ModelTraining.md**](ModelTraining.md) | `Markdown` | ![Status](https://img.shields.io/badge/Status-Complete-brightgreen?style=flat-square) | ML Scientists / Devs | **Machine Learning Integration & Training Guide**<br/>Complete manual for dataset curation, OpenCV augmentation, MobileNetV2 transfer learning, Step 9 contract assertions, and OPFS integration. |
 | [**Todo.md**](Todo.md) | `Markdown` | ![Status](https://img.shields.io/badge/Status-Submitted-success?style=flat-square) | Core Developers | **Task Checklist & Verification Log**<br/>Audited task inventory documenting 30+ completed architectural fixes, dead code removal, and launch readiness items. |
 | [**Screenshots/**](screenshots/) | `Gallery` | ![Status](https://img.shields.io/badge/Status-Mobile_2x-orange?style=flat-square) | Designers / Evaluators | **Smartphone Screenshot Gallery (10 Shots)**<br/>Sequentially numbered 390x844 mobile captures (DPR=2) covering splash, scanner, Odia UI, radar map, mandi rates, and storage gauges. |
-| [**KrishiSetu-ML-Model**](https://github.com/SahooShuvranshu/KrishiSetu-ML-Model) | `Repository` | ![Status](https://img.shields.io/badge/Status-Open_Source-purple?style=flat-square) | ML Scientists | **Standalone ML Training Repository**<br/>Colab T4 training notebook, MobileNetV2 fine-tuning code, dataset loaders, contract tests, and Keras-to-TFJS exporters. |
+| [**KrishiSetu-ML-Model**](https://github.com/Crystal-Studio-Labs/KrishiSetu-ML-Model) | `Repository` | ![Status](https://img.shields.io/badge/Status-Open_Source-purple?style=flat-square) | ML Scientists | **Standalone ML Training Repository**<br/>Colab T4 training notebook, MobileNetV2 fine-tuning code, dataset loaders, contract tests, and Keras-to-TFJS exporters. |
 
 ---
 

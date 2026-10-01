@@ -170,7 +170,7 @@ Instant plant pathology & spoken voice remedies in Odia, Hindi, and English — 
   - Live PWA: [krishi-setu-ai-seven.vercel.app](https://krishi-setu-ai-seven.vercel.app/)
   - Showcase Site: [sahooshuvranshu.is-a.dev/KrishiSetu-AI/](https://sahooshuvranshu.is-a.dev/KrishiSetu-AI/)
   - Main App Repo: [github.com/SahooShuvranshu/KrishiSetu-AI](https://github.com/SahooShuvranshu/KrishiSetu-AI)
-  - ML Model Repo: [github.com/SahooShuvranshu/KrishiSetu-ML-Model](https://github.com/SahooShuvranshu/KrishiSetu-ML-Model)
+  - ML Model Repo: [github.com/Crystal-Studio-Labs/KrishiSetu-ML-Model](https://github.com/Crystal-Studio-Labs/KrishiSetu-ML-Model)
 
 > **Visual**: Show [`screenshots/08_weather_dashboard.png`](screenshots/08_weather_dashboard.png)  
 > **Speaker Notes**: *"Thank you judges. KrishiSetu AI is live, open-source, and ready to empower India's rural farming communities. We invite you to test it in airplane mode right now."*

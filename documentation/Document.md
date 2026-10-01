@@ -109,7 +109,7 @@ so states can exchange agricultural data and models.
 
 **AI / ML**
 - TensorFlow.js (`@tensorflow/tfjs`) — on-device inference
-- MobileNetV2 transfer learning (training repository at [KrishiSetu-ML-Model](https://github.com/SahooShuvranshu/KrishiSetu-ML-Model))
+- MobileNetV2 transfer learning (training repository at [KrishiSetu-ML-Model](https://github.com/Crystal-Studio-Labs/KrishiSetu-ML-Model), complete guide at [ModelTraining.md](ModelTraining.md))
 - `@google/genai` — cloud diagnosis (Gemini Flash)
 
 **Google Platform (hackathon compliance)**
@@ -428,7 +428,7 @@ In the Colab **Files** panel upload to `/content/`:
 
 **Step 2 — Open the notebook in Colab.**
 `colab.research.google.com` → File → Upload notebook → pick
-`KrishiSetu_Model_Training.ipynb` from the companion repository [KrishiSetu-ML-Model](https://github.com/SahooShuvranshu/KrishiSetu-ML-Model).
+`KrishiSetu_Model_Training.ipynb` from the companion repository [KrishiSetu-ML-Model](https://github.com/Crystal-Studio-Labs/KrishiSetu-ML-Model) (or read the complete [ModelTraining.md](ModelTraining.md) engineering manual).
 
 **Step 3 — Enable GPU.** Runtime → Change runtime type → **T4 GPU** → Save.
 

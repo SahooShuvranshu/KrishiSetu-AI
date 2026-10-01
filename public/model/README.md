@@ -14,6 +14,10 @@ to hard-reload, because the service worker precaches the old weights.
 
 ## How to get these files
 
+Train or export the model using the notebook in our companion repository:
+👉 [**Crystal-Studio-Labs/KrishiSetu-ML-Model**](https://github.com/Crystal-Studio-Labs/KrishiSetu-ML-Model)  
+👉 Detailed manual: [`ModelTraining.md`](../../documentation/ModelTraining.md)
+
 Run `notebooks/KrishiSetu_Model_Training.ipynb` on Google Colab (T4 GPU). At the
 end it produces `tfjs_model.zip`. Then, from the repo root:
 

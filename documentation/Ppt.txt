@@ -244,7 +244,7 @@ Verified Project Links:
 • Live Application: https://krishi-setu-ai-seven.vercel.app/
 • Product Showcase: https://sahooshuvranshu.is-a.dev/KrishiSetu-AI/
 • GitHub Main App: https://github.com/SahooShuvranshu/KrishiSetu-AI
-• GitHub ML Model: https://github.com/SahooShuvranshu/KrishiSetu-ML-Model
+• GitHub ML Model: https://github.com/Crystal-Studio-Labs/KrishiSetu-ML-Model
 
 Image to Insert:
 documentation/screenshots/08_weather_dashboard.png (Live meteorological weather dashboard)

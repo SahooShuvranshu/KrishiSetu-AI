@@ -17,7 +17,7 @@
   <p>
     <a href="https://krishi-setu-ai-seven.vercel.app/"><img src="https://img.shields.io/badge/Live_PWA-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live App" /></a>
     <a href="https://sahooshuvranshu.is-a.dev/KrishiSetu-AI/"><img src="https://img.shields.io/badge/Showcase_Site-GitHub_Pages-181717?style=for-the-badge&logo=github&logoColor=white" alt="Landing Page" /></a>
-    <a href="https://github.com/SahooShuvranshu/KrishiSetu-ML-Model"><img src="https://img.shields.io/badge/ML_Model-Colab_T4-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=white" alt="Colab Model Repo" /></a>
+    <a href="https://github.com/Crystal-Studio-Labs/KrishiSetu-ML-Model"><img src="https://img.shields.io/badge/ML_Model-Colab_T4-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=white" alt="Colab Model Repo" /></a>
     <a href="documentation/Readme.md"><img src="https://img.shields.io/badge/Docs-Engineering_Hub-4285F4?style=for-the-badge&logo=read-the-docs&logoColor=white" alt="Documentation Hub" /></a>
   </p>
 
@@ -204,6 +204,7 @@ Explore the full engineering manual, milestone tracking, pitch decks, and narrat
 
 [![Documentation Hub](https://img.shields.io/badge/Docs-Explore_Hub-4285F4?style=for-the-badge&logo=read-the-docs&logoColor=white)](documentation/Readme.md)
 [![Technical Manual](https://img.shields.io/badge/Manual-Document.md-34A853?style=for-the-badge)](documentation/Document.md)
+[![ML Training](https://img.shields.io/badge/ML_Guide-ModelTraining.md-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=white)](documentation/ModelTraining.md)
 [![Progress Tracker](https://img.shields.io/badge/Progress-Phases.md-blue?style=for-the-badge)](documentation/Phases.md)
 [![Pitch Deck](https://img.shields.io/badge/Pitch_Deck-Ppt.md-orange?style=for-the-badge)](documentation/Ppt.md)
 [![Demo Script](https://img.shields.io/badge/Demo_Script-Script.md-purple?style=for-the-badge)](documentation/Script.md)
@@ -213,6 +214,7 @@ Explore the full engineering manual, milestone tracking, pitch decks, and narrat
 | Resource | Format | Description | Target Audience |
 | :--- | :---: | :--- | :--- |
 | [**Document.md**](documentation/Document.md) | `Markdown` | Complete engineering architecture, OPFS storage, TF.js pipeline, and Google AI compliance. | All Contributors, Judges, Developers |
+| [**ModelTraining.md**](documentation/ModelTraining.md) | `Markdown` | Machine learning training guide, Colab T4 pipeline, TF.js export, and OPFS integration contract. | ML Engineers, Agronomists |
 | [**Phases.md**](documentation/Phases.md) | `Markdown` | 11-phase milestone progress tracker, quality gates, and verified architectural fixes. | Project Leads, Maintainers |
 | [**Ppt.md**](documentation/Ppt.md) & [**Ppt.txt**](documentation/Ppt.txt) | `Deck / Text` | High-contrast 10-slide pitch presentation with speaker notes and Google Slides AI prompt. | Presenters, Product Leads |
 | [**Script.md**](documentation/Script.md) & [**Script.txt**](documentation/Script.txt) | `Script / Text` | Official 90s walkthrough and 60s lightning pitch voiceover scripts with visual cues. | Presenters, Video Creators |
@@ -253,14 +255,25 @@ Deploy your own instance of Krishi Setu instantly:
 
 ---
 
-## 📚 Machine Learning Integration Guide
-To train or fine-tune your own quantized crop disease models for the offline engine, visit the standalone repository:
-👉 [**KrishiSetu-ML-Model (GitHub)**](https://github.com/SahooShuvranshu/KrishiSetu-ML-Model)
+## 🧠 Machine Learning Integration & Training Guide
 
-1. Open `KrishiSetu_Model_Training.ipynb` in Google Colab with T4 GPU acceleration.
-2. Provide an agricultural dataset (minimum 500+ images per class recommended for high accuracy).
-3. The notebook will automatically apply OpenCV preprocessing, data augmentation, MobileNetV2 transfer learning, and fine-tuning.
-4. Export the resulting quantized `model.json` and `.bin` weight shards directly into `/public/model/`.
+<div align="left">
+
+[![ML Repo](https://img.shields.io/badge/ML_Repo-Crystal--Studio--Labs%2FKrishiSetu--ML--Model-blue?style=for-the-badge&logo=github)](https://github.com/Crystal-Studio-Labs/KrishiSetu-ML-Model)
+[![Colab Notebook](https://img.shields.io/badge/Notebook-Open_in_Colab-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=white)](https://colab.research.google.com/github/Crystal-Studio-Labs/KrishiSetu-ML-Model/blob/main/notebooks/KrishiSetu_Model_Training.ipynb)
+[![Full Manual](https://img.shields.io/badge/Engineering_Manual-ModelTraining.md-success?style=for-the-badge)](documentation/ModelTraining.md)
+
+</div>
+
+To train, fine-tune, or quantize custom crop disease vision models for the offline edge engine, use our companion repository and detailed engineering manual:
+👉 **Companion Repository**: [**Crystal-Studio-Labs/KrishiSetu-ML-Model**](https://github.com/Crystal-Studio-Labs/KrishiSetu-ML-Model)  
+👉 **Engineering Guide**: [**Machine Learning Integration & Training Guide (documentation/ModelTraining.md)**](documentation/ModelTraining.md)
+
+1. **Launch in Colab**: Open [`KrishiSetu_Model_Training.ipynb`](https://colab.research.google.com/github/Crystal-Studio-Labs/KrishiSetu-ML-Model/blob/main/notebooks/KrishiSetu_Model_Training.ipynb) on Google Colab with NVIDIA T4 GPU acceleration.
+2. **Dataset & Augmentation**: Train on Odisha crop disease datasets (Paddy, Cotton, Tomato, Potato, Sugarcane) plus the `Other_NotALeaf` negative guard class.
+3. **MobileNetV2 Transfer Learning**: Fine-tune top layers with in-graph `Rescaling(scale=2.0, offset=-1.0)` normalization.
+4. **Contract Verification**: Run Step 9 automated assertions ensuring input shape `(224, 224, 3)` and class ordering match the frontend contract.
+5. **TensorFlow.js Sharded Export**: Quantize with Float16 and export `model.json` + `.bin` weight shards directly into `public/model/`.
 
 ---
 
