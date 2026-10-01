@@ -2,10 +2,10 @@
 
 <div align="center">
 
-[![Hackathon](https://img.shields.io/badge/Google_AI_Hackathon-2026_Submitted-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://googleai.devpost.com/)
-[![Track](https://img.shields.io/badge/Track-Code_for_Communities-34A853?style=for-the-badge)](https://googleai.devpost.com/)
-[![Problem](https://img.shields.io/badge/Problem-Cooperation_PS4-EA4335?style=for-the-badge)](https://googleai.devpost.com/)
-[![Submission Status](https://img.shields.io/badge/Submission-Officially_Submitted-success?style=for-the-badge)](https://googleai.devpost.com/)
+[![Hackathon](https://img.shields.io/badge/Build_with_AI-Code_for_Communities_2nd_Ed-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://hack2skill.com/event/codeforcommunities2)
+[![Track](https://img.shields.io/badge/Track-Code_for_Communities-34A853?style=for-the-badge)](https://hack2skill.com/event/codeforcommunities2)
+[![Problem](https://img.shields.io/badge/Problem-Cooperation_PS4-EA4335?style=for-the-badge)](https://hack2skill.com/event/codeforcommunities2)
+[![Submission Status](https://img.shields.io/badge/Submission-Officially_Submitted-success?style=for-the-badge)](https://hack2skill.com/event/codeforcommunities2)
 [![Inference](https://img.shields.io/badge/Inference-100%25_Offline_TF.js-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](#11-the-offline-ml-engine)
 [![Voice](https://img.shields.io/badge/Voice-Web_Speech_API-5A0FC8?style=for-the-badge)](#3-key-features)
 [![Storage](https://img.shields.io/badge/Storage-Persistent_OPFS-008080?style=for-the-badge)](#16-pwa--offline-notes)

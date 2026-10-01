@@ -6,10 +6,10 @@
   
   <!-- Row 1: Hackathon, Track & Regional Focus -->
   <p>
-    <a href="https://googleai.devpost.com/"><img src="https://img.shields.io/badge/Google_AI_Hackathon-2026_Submitted-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google AI Hackathon 2026 Submitted" /></a>
-    <a href="https://googleai.devpost.com/"><img src="https://img.shields.io/badge/Track-Code_for_Communities-34A853?style=for-the-badge" alt="Code for Communities" /></a>
-    <a href="https://googleai.devpost.com/"><img src="https://img.shields.io/badge/Problem-Cooperation_PS4-EA4335?style=for-the-badge" alt="Problem Statement 4" /></a>
-    <a href="https://googleai.devpost.com/"><img src="https://img.shields.io/badge/Status-Officially_Submitted-success?style=for-the-badge" alt="Officially Submitted" /></a>
+    <a href="https://hack2skill.com/event/codeforcommunities2"><img src="https://img.shields.io/badge/Build_with_AI-Code_for_Communities_2nd_Ed-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Build with AI: Code for Communities - Second Edition" /></a>
+    <a href="https://hack2skill.com/event/codeforcommunities2"><img src="https://img.shields.io/badge/Track-Code_for_Communities-34A853?style=for-the-badge" alt="Code for Communities" /></a>
+    <a href="https://hack2skill.com/event/codeforcommunities2"><img src="https://img.shields.io/badge/Problem-Cooperation_PS4-EA4335?style=for-the-badge" alt="Problem Statement 4" /></a>
+    <a href="https://hack2skill.com/event/codeforcommunities2"><img src="https://img.shields.io/badge/Status-Officially_Submitted-success?style=for-the-badge" alt="Officially Submitted" /></a>
     <img src="https://img.shields.io/badge/Focus-Odisha,_India-FBBC05?style=for-the-badge" alt="Focus Region" />
   </p>
 

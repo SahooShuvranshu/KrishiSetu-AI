@@ -3,7 +3,7 @@ KRISHISETU AI — OFFICIAL DEMO VIDEO & PRESENTATION SCRIPT
 Optimized for: Google Vids, Loom, Google Docs Voiceover, and Video Generation
 Companion Screenshots: documentation/screenshots/ (10 high-resolution png files)
 Target Duration: 90 Seconds (Full Video) / 60 Seconds (Lightning Pitch)
-Team: Crystal Studio Labs | Google AI Hackathon 2026 — Code for Communities
+Team: Crystal Studio Labs | Build with AI: Code for Communities - Second Edition
 ================================================================================
 
 --------------------------------------------------------------------------------
@@ -83,7 +83,7 @@ Visual Asset: documentation/screenshots/10_settings_storage_and_system.png
 On-Screen Title: PRIVACY FIRST // ON-DEVICE KEYS // ZERO DATA TRACKING
 
 Voiceover Narration:
-"Every image taken by the farmer stays strictly on their device. Stored locally in OPFS with zero telemetry tracking, KrishiSetu is a true digital public good for communities. Built with pride by Crystal Studio Labs for Google AI Hackathon 2026."
+"Every image taken by the farmer stays strictly on their device. Stored locally in OPFS with zero telemetry tracking, KrishiSetu is a true digital public good for communities. Built with pride by Crystal Studio Labs for Build with AI: Code for Communities - Second Edition."
 
 ================================================================================
 ⚡ 60-SECOND LIGHTNING PITCH SCRIPT (FOR FAST 1-MINUTE DEMOS)

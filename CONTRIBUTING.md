@@ -33,7 +33,7 @@
 
 ## 🌟 1. Our Vision & Invariants
 
-**KrishiSetu AI** ("The Agriculture Bridge") is an open-source Digital Public Good created for the **Google AI Hackathon 2026 (Code for Communities — Problem Statement 4: Cooperation)**. 
+**KrishiSetu AI** ("The Agriculture Bridge") is an open-source Digital Public Good created for [**Build with AI: Code for Communities - Second Edition**](https://hack2skill.com/event/codeforcommunities2) (Track: Code for Communities — Problem Statement 4: Cooperation). 
 
 Our core user is a smallholder farmer in rural Odisha standing in the middle of a remote paddy or cotton field with **zero cellular signal**. Every line of code, design choice, and model optimization must preserve these core promises:
 - **100% Offline Diagnostic Capability**: The core pathology scanner must run entirely on-device via TensorFlow.js without requiring internet connectivity.

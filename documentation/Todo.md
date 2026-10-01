@@ -4,7 +4,7 @@
 
 [![Audit Status](https://img.shields.io/badge/Audit_Status-100%25_Verified-brightgreen?style=for-the-badge)](Todo.md#verified-fixed-september-25-2026)
 [![Critical Bugs](https://img.shields.io/badge/Critical_Bugs-0_Remaining-success?style=for-the-badge)](Todo.md#fixed-items-from-previous-sessions)
-[![Hackathon Entry](https://img.shields.io/badge/Submission-Officially_Submitted-success?style=for-the-badge)](https://googleai.devpost.com/)
+[![Hackathon Entry](https://img.shields.io/badge/Submission-Officially_Submitted-success?style=for-the-badge)](https://hack2skill.com/event/codeforcommunities2)
 [![Scope](https://img.shields.io/badge/Scope-Odisha_Regional_Launch-FBBC05?style=for-the-badge)](Todo.md)
 [![Build Health](https://img.shields.io/badge/Build_Health-0_Errors-4285F4?style=for-the-badge)](Todo.md)
 
@@ -167,7 +167,7 @@ The two items the previous edition of this file still listed as open:
 
 - [x] 3.1 **Record demo video** (scene-by-scene walkthrough script in `Script.md` / `Ppt.txt` with 10-shot mobile UI cues).
 - [x] 3.2 **Add demo video & showcase gallery to `README.md`** (mobile portrait showcase gallery embedded with direct links).
-- [x] 3.3 **Prepare and submit hackathon entry** (officially submitted to Google AI Hackathon 2026 — Code for Communities).
+- [x] 3.3 **Prepare and submit hackathon entry** (officially submitted to Build with AI: Code for Communities - Second Edition on Hack2skill).
 
 ---
 

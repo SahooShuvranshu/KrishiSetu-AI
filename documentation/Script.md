@@ -3,7 +3,7 @@
 <div align="center">
 
 [![Walkthrough](https://img.shields.io/badge/Walkthrough-90_Seconds-4285F4?style=for-the-badge)](Script.md#scene-by-scene-script-with-visual-cues--narration)
-[![Submission Status](https://img.shields.io/badge/Status-Officially_Submitted-success?style=for-the-badge)](https://googleai.devpost.com/)
+[![Submission Status](https://img.shields.io/badge/Status-Officially_Submitted-success?style=for-the-badge)](https://hack2skill.com/event/codeforcommunities2)
 [![Lightning Pitch](https://img.shields.io/badge/Lightning_Pitch-60_Seconds-34A853?style=for-the-badge)](Script.md#-60-second-lightning-pitch-script-fast-demo)
 [![Voice](https://img.shields.io/badge/Languages-Odia_•_Hindi_•_English-FF6F00?style=for-the-badge)](Script.md#scene-5-breaking-the-literacy-barrier-with-trilingual-voice-052---108)
 [![Asset Folder](https://img.shields.io/badge/Visual_Cues-10_Screenshots-purple?style=for-the-badge)](screenshots/)
@@ -16,7 +16,7 @@
 </div>
 
 > [!NOTE]
-> **Production Context**: This script is tailored for Google AI Hackathon video submissions. It emphasizes the contrast between cloud failure in rural connectivity dead zones and KrishiSetu's guaranteed on-device performance in airplane mode.
+> **Production Context**: This script is tailored for Build with AI: Code for Communities - Second Edition video submissions. It emphasizes the contrast between cloud failure in rural connectivity dead zones and KrishiSetu's guaranteed on-device performance in airplane mode.
 
 ---
 
@@ -97,7 +97,7 @@
 * **Visual in Video**: Show [`screenshots/10_settings_storage_and_system.png`](screenshots/10_settings_storage_and_system.png).
 * **On-Screen Text**: `PRIVACY FIRST // ON-DEVICE KEYS // ZERO DATA TRACKING`
 * **Spoken Narration (Voiceover)**:
-  > *"Every image taken by the farmer stays strictly on their device. Stored locally in OPFS with zero telemetry tracking, KrishiSetu is a true digital public good for communities. Built with pride by Crystal Studio Labs for Google AI Hackathon 2026."*
+  > *"Every image taken by the farmer stays strictly on their device. Stored locally in OPFS with zero telemetry tracking, KrishiSetu is a true digital public good for communities. Built with pride by Crystal Studio Labs for Build with AI: Code for Communities - Second Edition."*
 
 ---
 

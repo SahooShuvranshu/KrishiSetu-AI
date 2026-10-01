@@ -134,7 +134,7 @@ function App() {
                   <p className="font-bold uppercase text-gray-500 mb-1">{t('teamNameLabel')}</p>
                   <p className="text-base font-black bg-brutal-neon p-2 border-2 border-black mb-3">Crystal Studio Labs</p>
                   <p className="font-bold uppercase text-gray-500 mb-1">{t('hackathonLabel')}</p>
-                  <p className={`${isDark ? 'bg-gray-700' : 'bg-gray-100'} p-2 border-2 ${isDark ? 'border-gray-600' : 'border-black'} mb-3`}>Google AI Hackathon 2026: Code for Communities</p>
+                  <p className={`${isDark ? 'bg-gray-700' : 'bg-gray-100'} p-2 border-2 ${isDark ? 'border-gray-600' : 'border-black'} mb-3`}>Build with AI: Code for Communities - Second Edition</p>
                   <p className="font-bold uppercase text-gray-500 mb-1">{t('aboutLabel')}</p>
                   <p className={`text-xs leading-relaxed ${isDark ? 'bg-gray-700 border-gray-600' : 'bg-white border-black'} border-2 p-3 mb-4`}>{t('aboutBody')}</p>
                   <div className="flex gap-3">

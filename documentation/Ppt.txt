@@ -3,7 +3,7 @@ KRISHISETU AI — OFFICIAL PITCH DECK FOR GOOGLE SLIDES AI (10 SLIDES)
 Format: Plain text optimized for Gemini in Google Slides, SlidesAI, MagicSlides & Gamma
 Companion Screenshots: documentation/screenshots/ (10 high-resolution png files)
 Live PWA: https://krishi-setu-ai-seven.vercel.app/
-Event: Google AI Hackathon 2026 — Code for Communities
+Event: Build with AI: Code for Communities - Second Edition (Track: Code for Communities)
 ================================================================================
 
 --------------------------------------------------------------------------------
@@ -56,7 +56,7 @@ Core Pillars:
 
 Presenter Info:
 Team: Crystal Studio Labs (Odisha, India)
-Event: Google AI Hackathon 2026 — Track: Code for Communities
+Event: Build with AI: Code for Communities - Second Edition (Track: Code for Communities)
 
 Image to Insert:
 documentation/screenshots/01_splash_tractor_logo.png (Authentic vector tractor logo with cyber-lime loading progress)
@@ -226,7 +226,7 @@ Speaker Notes:
 SLIDE 10: TEAM, TECH STACK & PROJECT LINKS
 --------------------------------------------------------------------------------
 Title: Crystal Studio Labs — Team & Open Standards
-Subtitle: Built with pride for Google AI Hackathon 2026 — Code for Communities.
+Subtitle: Built with pride for Build with AI: Code for Communities - Second Edition.
 
 Team Members (Crystal Studio Labs):
 • Shuvransu Sekhar Sahoo

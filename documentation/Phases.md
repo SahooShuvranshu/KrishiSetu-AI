@@ -4,7 +4,7 @@
 
 [![Milestones](https://img.shields.io/badge/Milestones-11_Phases-4285F4?style=for-the-badge)](Phases.md)
 [![Status](https://img.shields.io/badge/Status-Feature_Complete-success?style=for-the-badge)](Phases.md#quick-status)
-[![Submission](https://img.shields.io/badge/Submission-Officially_Submitted-success?style=for-the-badge)](https://googleai.devpost.com/)
+[![Submission](https://img.shields.io/badge/Submission-Officially_Submitted-success?style=for-the-badge)](https://hack2skill.com/event/codeforcommunities2)
 [![Critical Fixes](https://img.shields.io/badge/Critical_Fixes-5%2F5_Resolved-brightgreen?style=for-the-badge)](Phases.md#phase-4-critical-bug-fixes-)
 [![High Priority](https://img.shields.io/badge/High_Priority-9%2F9_Resolved-brightgreen?style=for-the-badge)](Phases.md#phase-4-critical-bug-fixes-)
 [![Code Audit](https://img.shields.io/badge/Code_Audit-100%25_Verified-blue?style=for-the-badge)](Phases.md#phase-10-dead-code-removal-)
@@ -158,7 +158,7 @@ has been removed.
 - [x] Added Gemini and Google Maps badges
 - [x] Recorded official demo walkthrough video (using `Script.md` & `Ppt.txt`)
 - [x] Embedded mobile portrait screenshot gallery and demo flows in `README.md`
-- [x] Completed and officially submitted the hackathon entry for Google AI Hackathon 2026 (Code for Communities)
+- [x] Completed and officially submitted the hackathon entry for Build with AI: Code for Communities - Second Edition on Hack2skill
 
 ---
 

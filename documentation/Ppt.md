@@ -5,7 +5,7 @@
 [![Slide Count](https://img.shields.io/badge/Slides-10_Slides-4285F4?style=for-the-badge)](Ppt.md)
 [![Aspect Ratio](https://img.shields.io/badge/Aspect_Ratio-16%3A9_Widescreen-34A853?style=for-the-badge)](Ppt.md)
 [![Design Style](https://img.shields.io/badge/Style-Agri--Brutalism_Minimal-EA4335?style=for-the-badge)](Ppt.md)
-[![Submission Status](https://img.shields.io/badge/Status-Officially_Submitted-success?style=for-the-badge)](https://googleai.devpost.com/)
+[![Submission Status](https://img.shields.io/badge/Status-Officially_Submitted-success?style=for-the-badge)](https://hack2skill.com/event/codeforcommunities2)
 [![Compatibility](https://img.shields.io/badge/Export-Gamma_•_Slides_•_Canva-FF6F00?style=for-the-badge)](Ppt.md)
 [![Assets](https://img.shields.io/badge/Assets-10_Mobile_Captures-purple?style=for-the-badge)](screenshots/)
 
@@ -27,7 +27,7 @@
 Instant plant pathology & spoken voice remedies in Odia, Hindi, and English — with zero internet connection.
 
 - **Team**: Crystal Studio Labs (Odisha, India)
-- **Track**: Google AI Hackathon 2026 — Code for Communities
+- **Event**: Build with AI: Code for Communities - Second Edition (Track: Code for Communities)
 - **Core Pillars**: `[100% Client-Side TF.js]` `[Trilingual Voice]` `[OPFS Storage]` `[Zero-Backend PWA]`
 
 > **Visual**: Show [`screenshots/01_splash_tractor_logo.png`](screenshots/01_splash_tractor_logo.png)  
@@ -154,7 +154,7 @@ Instant plant pathology & spoken voice remedies in Odia, Hindi, and English — 
 
 ## Slide 10: Team, Tech Stack & Project Links
 
-### Built with Pride for Google AI Hackathon 2026 — Code for Communities
+### Built with Pride for Build with AI: Code for Communities - Second Edition
 
 - **Team**: **Crystal Studio Labs**
   - Shuvransu Sekhar Sahoo

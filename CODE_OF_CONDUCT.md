@@ -110,7 +110,7 @@ Community leaders will follow these Community Impact Guidelines in determining t
 
 This Code of Conduct applies within all official KrishiSetu AI project spaces (including the GitHub organization, repository issues, discussions, pull requests, project boards, and Discord/Slack channels), and it also applies when an individual is officially representing the project in public spaces.
 
-Examples of representing our project include using an official project e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event (such as the Google AI Hackathon 2026).
+Examples of representing our project include using an official project e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event (such as Build with AI: Code for Communities - Second Edition).
 
 ---
 
